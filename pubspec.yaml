@@ -8,8 +8,13 @@ environment:
   flutter: ">=1.17.0"
 
 dependencies:
+  font_awesome_flutter: ^9.1.0
+  get: 4.3.4
+
   flutter:
     sdk: flutter
+
+    
 
 dev_dependencies:
   flutter_test:

@@ -9,13 +9,14 @@ ThemeData makeAppTheme() {
 
   final textTheme = TextTheme(
     headline1: TextStyle(
-      fontSize: 32,
-      color: textColor,
+      fontSize: 18,
+      color: Colors.black,
+      fontWeight: FontWeight.bold,
     ),
     headline2: TextStyle(
       fontSize: 20,
-      color: textColor,
-      fontWeight: FontWeight.w500,
+      color: primaryColor,
+      fontWeight: FontWeight.bold,
     ),
     headline3: TextStyle(
       fontSize: 16,
