@@ -11,9 +11,36 @@ class DefaultButton extends StatelessWidget {
     return InkWell(
       onTap: function ?? () {},
       child: Container(
+        padding: EdgeInsets.all(8),
         height: 48,
         width: double.infinity,
         color: color ?? Theme.of(context).primaryColor,
+        child: child,
+      ),
+    );
+  }
+}
+
+class OutButton extends StatelessWidget {
+  final Color? color;
+  final Widget child;
+  final Function()? function;
+  OutButton({required this.child, this.function, this.color});
+
+  @override
+  Widget build(BuildContext context) {
+    return InkWell(
+      onTap: function ?? () {},
+      child: Container(
+        padding: EdgeInsets.all(8),
+        height: 48,
+        width: double.infinity,
+        decoration: BoxDecoration(
+          border: Border.all(
+            color: color ?? Theme.of(context).primaryColor,
+            width: 2,
+          ),
+        ),
         child: child,
       ),
     );
