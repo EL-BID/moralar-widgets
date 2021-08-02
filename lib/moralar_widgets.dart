@@ -6,6 +6,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 
 part 'button.dart';
+part 'card.dart';
 part 'scaffold.dart';
 part 'theme.dart';
 
