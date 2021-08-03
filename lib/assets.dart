@@ -1,7 +1,11 @@
+import 'package:flutter/painting.dart';
+
 class Assets {
   static const _path = 'assets';
 
   static _Images get images => _Images(_path);
+
+  static _Colors get colors => _Colors();
 }
 
 class _Images {
@@ -12,4 +16,17 @@ class _Images {
   }
 
   String get appLogo => '$_path/app_logo.png';
+}
+
+class _Colors {
+  final kellyGreen = Color(0xff06b12e);
+  final strawberry = Color(0xfffb2a47);
+  final blue = Color(0xff1950ef);
+  final waterBlue = Color(0xff107ece);
+  final brownishGrey = Color(0xff707070);
+  final darkBlueGrey = Color(0xff0e1a29);
+  final brownGrey = Color(0xffb2b2b2);
+  final algaeGreen = Color(0xff25d366);
+  final veryLightPink = Color(0xffe9e9e9);
+  final orangeYellow = Color(0xffffaa00);
 }
