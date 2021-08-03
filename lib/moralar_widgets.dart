@@ -7,10 +7,9 @@ import 'package:get/get.dart';
 
 part 'button.dart';
 part 'card.dart';
-
 part 'image.dart';
-
 part 'picker.dart';
+part 'quiz.dart';
 part 'scaffold.dart';
 part 'scheduling.dart';
 part 'status.dart';

@@ -36,21 +36,26 @@ class ActivityCard extends StatelessWidget {
   }
 }
 
-class SchedulingCard extends StatelessWidget {
+class DefaultCard extends StatelessWidget {
   final int status;
   final Function()? function;
-  SchedulingCard({required this.status, this.function});
+  final bool isQuiz;
+  DefaultCard({required this.status, required this.isQuiz, this.function});
 
   @override
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
     final brownGrey = Color(0xFFb2b2b2);
+    final currentColor =
+        isQuiz ? Quiz.statusColor(status) : Scheduling.statusColor(status);
+    final currentText =
+        isQuiz ? Quiz.statusName(status) : Scheduling.statusName(status);
 
     return InkWell(
       onTap: function ?? () {},
       child: Container(
         margin: const EdgeInsets.only(bottom: 24),
-        height: 140,
+        height: isQuiz ? 116 : 140,
         width: double.infinity,
         decoration: BoxDecoration(
           color: Colors.white,
@@ -74,7 +79,7 @@ class SchedulingCard extends StatelessWidget {
                     Text(
                       'Reunião TTS',
                       style: textTheme.headline1?.copyWith(
-                        color: statusColor(status),
+                        color: currentColor,
                       ),
                     ),
                     SizedBox(height: 8),
@@ -87,15 +92,22 @@ class SchedulingCard extends StatelessWidget {
                       '26/09/2020',
                       textTheme.bodyText1,
                     ),
-                    SizedBox(height: 8),
-                    rowWidgetText(
-                      Icon(
-                        FontAwesomeIcons.clock,
-                        size: 16,
-                        color: brownGrey,
+                    Visibility(
+                      visible: !isQuiz,
+                      child: Column(
+                        children: [
+                          SizedBox(height: 8),
+                          rowWidgetText(
+                            Icon(
+                              FontAwesomeIcons.clock,
+                              size: 16,
+                              color: brownGrey,
+                            ),
+                            '14:30hrs',
+                            textTheme.bodyText1,
+                          ),
+                        ],
                       ),
-                      '14:30hrs',
-                      textTheme.bodyText1,
                     ),
                     SizedBox(height: 16),
                     rowWidgetText(
@@ -104,12 +116,12 @@ class SchedulingCard extends StatelessWidget {
                           width: 16,
                           height: 16,
                           decoration: BoxDecoration(
-                            color: statusColor(status),
+                            color: currentColor,
                             shape: BoxShape.circle,
                           ),
                         ),
                       ),
-                      statusName(status),
+                      currentText,
                       textTheme.bodyText2,
                     ),
                   ],
@@ -117,7 +129,7 @@ class SchedulingCard extends StatelessWidget {
               ),
             ),
             Container(
-              color: statusColor(status),
+              color: currentColor,
               width: 24,
             )
           ],
@@ -133,6 +145,8 @@ class FinalizedCard extends StatelessWidget {
     final status = 3;
     final textTheme = Theme.of(context).textTheme;
     final brownGrey = Color(0xFFb2b2b2);
+    final currentColor = Scheduling.statusColor(status);
+    final currentText = Scheduling.statusName(status);
 
     return InkWell(
       onTap: () {},
@@ -155,7 +169,7 @@ class FinalizedCard extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           children: [
             Container(
-              color: statusColor(status),
+              color: currentColor,
               width: double.infinity,
               height: 24,
             ),
@@ -167,7 +181,7 @@ class FinalizedCard extends StatelessWidget {
                   Text(
                     'Reunião TTS',
                     style: textTheme.headline1?.copyWith(
-                      color: statusColor(status),
+                      color: currentColor,
                     ),
                   ),
                   SizedBox(height: 8),
@@ -197,12 +211,12 @@ class FinalizedCard extends StatelessWidget {
                         width: 16,
                         height: 16,
                         decoration: BoxDecoration(
-                          color: statusColor(status),
+                          color: currentColor,
                           shape: BoxShape.circle,
                         ),
                       ),
                     ),
-                    statusName(status),
+                    currentText,
                     textTheme.bodyText2,
                   ),
                   SizedBox(height: 32),
@@ -210,7 +224,7 @@ class FinalizedCard extends StatelessWidget {
                     child: Text(
                       'Descrição',
                       style: textTheme.headline1?.copyWith(
-                        color: statusColor(status),
+                        color: currentColor,
                       ),
                     ),
                   ),
