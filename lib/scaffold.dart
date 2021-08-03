@@ -26,7 +26,7 @@ class DefaultScaffold extends StatelessWidget {
         title: Text(title ?? '', style: textTheme.headline1),
         leading: leading ??
             IconButton(
-              icon: Icon(FontAwesomeIcons.angleLeft),
+              icon: Icon(FontAwesomeIcons.angleLeft, color: Colors.black),
               onPressed: () => Get.back(),
             ),
         actions: [actions ?? Container()],

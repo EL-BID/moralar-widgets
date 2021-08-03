@@ -7,6 +7,7 @@ import 'package:get/get.dart';
 
 part 'button.dart';
 part 'card.dart';
+part 'picker.dart';
 part 'scaffold.dart';
 part 'status.dart';
 part 'theme.dart';
