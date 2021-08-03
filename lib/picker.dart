@@ -1,17 +1,12 @@
 part of moralar_widgets;
 
-class SchedulingPicker extends StatefulWidget {
+class SchedulingPicker extends StatelessWidget {
   final List<String> types;
   final int isCurrent;
   final PageController? controller;
   SchedulingPicker(
       {required this.types, required this.isCurrent, this.controller});
 
-  @override
-  _SchedulingPickerState createState() => _SchedulingPickerState();
-}
-
-class _SchedulingPickerState extends State<SchedulingPicker> {
   @override
   Widget build(BuildContext context) {
     final textStyle =
@@ -40,14 +35,14 @@ class _SchedulingPickerState extends State<SchedulingPicker> {
       child: InkWell(
         onTap: () {
           print(index);
-          widget.controller?.jumpToPage(index);
+          controller?.jumpToPage(index);
         },
         child: Column(
           children: [
-            Text(widget.types[index], style: style),
+            Text(types[index], style: style),
             SizedBox(height: 4),
             Visibility(
-              visible: index == widget.isCurrent,
+              visible: index == isCurrent,
               child: Container(
                 width: double.infinity,
                 height: 2,

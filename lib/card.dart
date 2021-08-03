@@ -74,8 +74,9 @@ class SchedulingCard extends StatelessWidget {
                     children: [
                       Text(
                         'Reunião TTS',
-                        style:
-                            textTheme.headline1?.copyWith(color: statusColor()),
+                        style: textTheme.headline1?.copyWith(
+                          color: statusColor(status),
+                        ),
                       ),
                       SizedBox(height: 8),
                       rowWidgetText(
@@ -104,12 +105,12 @@ class SchedulingCard extends StatelessWidget {
                             width: 16,
                             height: 16,
                             decoration: BoxDecoration(
-                              color: statusColor(),
+                              color: statusColor(status),
                               shape: BoxShape.circle,
                             ),
                           ),
                         ),
-                        statusName(),
+                        statusName(status),
                         textTheme.bodyText2,
                       ),
                     ],
@@ -117,7 +118,7 @@ class SchedulingCard extends StatelessWidget {
                 ),
               ),
               Container(
-                color: statusColor(),
+                color: statusColor(status),
                 width: 24,
               )
             ],
@@ -125,34 +126,6 @@ class SchedulingCard extends StatelessWidget {
         ),
       ),
     );
-  }
-
-  String statusName() {
-    if (status == 0) {
-      return 'Confirmado';
-    } else if (status == 1) {
-      return 'Aguardando Confirmação';
-    } else if (status == 2) {
-      return 'Aguardando Reagendamento';
-    } else if (status == 3) {
-      return 'Finalizado';
-    } else {
-      return '';
-    }
-  }
-
-  Color statusColor() {
-    if (status == 0) {
-      return Color(0xFF06b12e);
-    } else if (status == 1) {
-      return Color(0xFFffaa00);
-    } else if (status == 2) {
-      return Color(0xFFfb2a47);
-    } else if (status == 3) {
-      return Color(0xFFb2b2b2);
-    } else {
-      return Colors.white;
-    }
   }
 
   Widget rowWidgetText(Widget widget, String text, TextStyle? style) {

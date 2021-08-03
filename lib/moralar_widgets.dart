@@ -9,6 +9,7 @@ part 'button.dart';
 part 'card.dart';
 part 'picker.dart';
 part 'scaffold.dart';
+part 'scheduling.dart';
 part 'status.dart';
 part 'theme.dart';
 
