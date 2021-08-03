@@ -56,8 +56,9 @@ ThemeData makeAppTheme() {
 
   return ThemeData(
     primaryColor: primaryColor,
-    highlightColor: secondaryColor,
+    highlightColor: dividerColor,
     accentColor: primaryColor,
+    focusColor: secondaryColor,
     backgroundColor: Colors.white,
     textTheme: textTheme,
     inputDecorationTheme: inputDecorationTheme,
