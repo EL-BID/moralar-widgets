@@ -12,9 +12,3 @@ part 'scaffold.dart';
 part 'scheduling.dart';
 part 'status.dart';
 part 'theme.dart';
-
-/// A Calculator.
-class Calculator {
-  /// Returns [value] plus 1.
-  int addOne(int value) => value + 1;
-}
