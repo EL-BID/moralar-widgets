@@ -4,7 +4,6 @@ class Assets {
   static const _path = 'assets';
 
   static _Images get images => _Images(_path);
-  static String get packageName => 'moralar_widgets';
   static _Colors get colors => _Colors();
 }
 
