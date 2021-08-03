@@ -8,7 +8,7 @@ void main() {
       expect(Assets.images.appLogo, 'assets/images/app_logo.png');
     });
     testWidgets('Should render', (tester) async {
-      tester.pumpWidget(Image.asset(Assets.images.appLogo));
+      await tester.pumpWidget(Image.asset(Assets.images.appLogo));
     });
   });
 }

@@ -4,6 +4,7 @@ class StatusResettlement extends StatelessWidget {
   final int status;
   final List<String> titles;
   final List<String>? descriptions;
+
   StatusResettlement(
       {required this.status, required this.titles, this.descriptions});
 
@@ -17,9 +18,9 @@ class StatusResettlement extends StatelessWidget {
   }
 
   List<Widget> checkboxList(TextTheme textTheme) {
-    int length = titles.length;
-    List<Widget> list = [];
-    for (int i = 1; i <= length; i++) {
+    final length = titles.length;
+    final list = <Widget>[];
+    for (var i = 1; i <= length; i++) {
       list.add(
         checkboxResettlement(
             i <= status, i + 1 <= 1, i == length, i - 1, textTheme),

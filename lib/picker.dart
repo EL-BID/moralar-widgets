@@ -4,6 +4,7 @@ class SchedulingPicker extends StatelessWidget {
   final List<String> types;
   final int isCurrent;
   final PageController? controller;
+
   SchedulingPicker(
       {required this.types, required this.isCurrent, this.controller});
 
@@ -21,12 +22,10 @@ class SchedulingPicker extends StatelessWidget {
   }
 
   List<Widget> typesScheduling(TextStyle? style) {
-    List<Widget> list = [];
-
-    for (int i = 0; i < 2; i++) {
+    final list = <Widget>[];
+    for (var i = 0; i < 2; i++) {
       list.add(typeScheduling(i, style));
     }
-
     return list;
   }
 
