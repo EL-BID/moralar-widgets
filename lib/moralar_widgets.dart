@@ -19,3 +19,4 @@ part 'splash.dart';
 part 'status.dart';
 part 'text_span.dart';
 part 'theme.dart';
+part 'urls.dart';

@@ -1,12 +1,21 @@
 part of moralar_widgets;
 
-class SchedulingPicker extends StatelessWidget {
+class MoralarPicker extends StatelessWidget {
   final List<String> types;
   final int isCurrent;
   final PageController? controller;
+  final Color? color;
+  final double? verticalPadding;
+  final double? horizontalPadding;
 
-  const SchedulingPicker(
-      {required this.types, required this.isCurrent, this.controller});
+  const MoralarPicker({
+    required this.types,
+    required this.isCurrent,
+    this.controller,
+    this.color,
+    this.verticalPadding,
+    this.horizontalPadding,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -14,7 +23,10 @@ class SchedulingPicker extends StatelessWidget {
         Theme.of(context).textTheme.headline1?.copyWith(fontSize: 16);
 
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 30),
+      padding: EdgeInsets.symmetric(
+        vertical: verticalPadding ?? 0,
+      ),
+      color: color ?? Colors.white,
       child: Row(
         children: typesScheduling(textStyle),
       ),
@@ -36,19 +48,29 @@ class SchedulingPicker extends StatelessWidget {
           print(index);
           controller?.jumpToPage(index);
         },
-        child: Column(
-          children: [
-            Text(types[index], style: style),
-            const SizedBox(height: 4),
-            Visibility(
-              visible: index == isCurrent,
-              child: Container(
-                width: double.infinity,
-                height: 2,
-                color: Colors.black,
+        child: Container(
+          padding: EdgeInsets.symmetric(
+            horizontal: horizontalPadding ?? 0,
+          ),
+          child: Column(
+            children: [
+              Text(
+                types[index],
+                style: color != null
+                    ? style?.copyWith(color: Colors.white)
+                    : style,
               ),
-            ),
-          ],
+              const SizedBox(height: 4),
+              Visibility(
+                visible: index == isCurrent,
+                child: Container(
+                  width: double.infinity,
+                  height: 2,
+                  color: color != null ? Colors.white : Colors.black,
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );
