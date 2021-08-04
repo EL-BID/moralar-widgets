@@ -22,6 +22,11 @@ ThemeData makeAppTheme() {
       fontSize: 16,
       color: primaryColor,
     ),
+    headline4: TextStyle(
+      fontSize: 18,
+      color: Assets.colors.darkBlueGrey,
+      fontWeight: FontWeight.bold,
+    ),
     bodyText1: TextStyle(
       fontSize: 14,
       color: textColor,

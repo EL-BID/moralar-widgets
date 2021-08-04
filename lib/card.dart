@@ -246,71 +246,75 @@ class FinalizedCard extends StatelessWidget {
 }
 
 class CourseCard extends StatelessWidget {
-  const CourseCard({Key? key}) : super(key: key);
+  final Function()? function;
+  CourseCard({this.function});
 
   @override
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
 
-    return Container(
-      height: 120,
-      margin: EdgeInsets.only(bottom: 24),
-      decoration: BoxDecoration(
-        color: Colors.white,
-        boxShadow: [
-          BoxShadow(
-            color: Colors.grey.withOpacity(0.7),
-            // spreadRadius: 1,
-            blurRadius: 3,
-            offset: Offset(0, 3),
-          ),
-        ],
-      ),
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Container(
-            width: 120,
-            child: Image.network('https://picsum.photos/200'),
-          ),
-          SizedBox(width: 12),
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Text(
-                  'Curso Lorem Ipsum',
-                  style: textTheme.headline1?.copyWith(
-                    color: Assets.colors.kellyGreen,
-                  ),
-                ),
-                SizedBox(height: 8),
-                rowWidgetText(
-                  Icon(
-                    FontAwesomeIcons.calendar,
-                    size: 16,
-                    color: Assets.colors.brownGrey,
-                  ),
-                  '26/09/2020 - 03/10/2020',
-                  textTheme.bodyText1,
-                ),
-                SizedBox(height: 8),
-                rowWidgetText(
-                  Icon(
-                    FontAwesomeIcons.clock,
-                    size: 16,
-                    color: Assets.colors.brownGrey,
-                  ),
-                  '14:30hrs',
-                  textTheme.bodyText1,
-                ),
-              ],
+    return InkWell(
+      onTap: function ?? () {},
+      child: Container(
+        height: 120,
+        margin: EdgeInsets.only(bottom: 24),
+        decoration: BoxDecoration(
+          color: Colors.white,
+          boxShadow: [
+            BoxShadow(
+              color: Colors.grey.withOpacity(0.7),
+              // spreadRadius: 1,
+              blurRadius: 3,
+              offset: Offset(0, 3),
             ),
-          ),
-          Icon(FontAwesomeIcons.angleRight, color: Assets.colors.kellyGreen),
-        ],
+          ],
+        ),
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Container(
+              width: 120,
+              child: Image.network('https://picsum.photos/200'),
+            ),
+            SizedBox(width: 12),
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Text(
+                    'Curso Lorem Ipsum',
+                    style: textTheme.headline1?.copyWith(
+                      color: Assets.colors.kellyGreen,
+                    ),
+                  ),
+                  SizedBox(height: 8),
+                  rowWidgetText(
+                    Icon(
+                      FontAwesomeIcons.calendar,
+                      size: 16,
+                      color: Assets.colors.brownGrey,
+                    ),
+                    '26/09/2020 - 03/10/2020',
+                    textTheme.bodyText1,
+                  ),
+                  SizedBox(height: 8),
+                  rowWidgetText(
+                    Icon(
+                      FontAwesomeIcons.clock,
+                      size: 16,
+                      color: Assets.colors.brownGrey,
+                    ),
+                    '14:30hrs',
+                    textTheme.bodyText1,
+                  ),
+                ],
+              ),
+            ),
+            Icon(FontAwesomeIcons.angleRight, color: Assets.colors.kellyGreen),
+          ],
+        ),
       ),
     );
   }

@@ -14,4 +14,5 @@ part 'quiz.dart';
 part 'scaffold.dart';
 part 'scheduling.dart';
 part 'status.dart';
+part 'text_span.dart';
 part 'theme.dart';
