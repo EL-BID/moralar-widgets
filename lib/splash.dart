@@ -4,7 +4,7 @@ class SplashScreen extends StatefulWidget {
   final Duration delay;
   final VoidCallback onDelayCompleted;
 
-  SplashScreen({
+  const SplashScreen({
     required this.onDelayCompleted,
     this.delay = const Duration(seconds: 3),
   });
@@ -46,7 +46,7 @@ class _SplashScreenState extends State<SplashScreen> {
       color: Assets.colors.veryLightPink,
       child: Center(
         child: Padding(
-          padding: EdgeInsets.fromLTRB(72, 48, 72, 48),
+          padding: const EdgeInsets.fromLTRB(72, 48, 72, 48),
           child: MoralarImage.asset(Assets.images.appLogo),
         ),
       ),

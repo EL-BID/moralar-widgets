@@ -7,7 +7,7 @@ class DefaultScaffold extends StatelessWidget {
   final Widget? actions;
   final double? elevation;
   final Color? color;
-  DefaultScaffold({
+  const DefaultScaffold({
     required this.body,
     this.title,
     this.leading,
@@ -37,7 +37,7 @@ class DefaultScaffold extends StatelessWidget {
                 FontAwesomeIcons.angleLeft,
                 color: color == null ? Colors.black : Colors.white,
               ),
-              onPressed: () => Get.back(),
+              onPressed: Get.back,
             ),
         actions: [actions ?? Container()],
       ),

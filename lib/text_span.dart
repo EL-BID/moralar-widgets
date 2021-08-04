@@ -3,7 +3,7 @@ part of moralar_widgets;
 class BoldNormal extends StatelessWidget {
   final String title;
   final String body;
-  BoldNormal({required this.title, required this.body});
+  const BoldNormal({required this.title, required this.body});
 
   @override
   Widget build(BuildContext context) {

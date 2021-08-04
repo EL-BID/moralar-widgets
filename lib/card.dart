@@ -5,7 +5,7 @@ class ActivityCard extends StatelessWidget {
   final String title;
   final Color? color;
   final Function()? function;
-  ActivityCard(
+  const ActivityCard(
       {required this.icon, required this.title, this.function, this.color});
 
   @override
@@ -15,7 +15,7 @@ class ActivityCard extends StatelessWidget {
     return InkWell(
       onTap: function ?? () {},
       child: Container(
-        padding: EdgeInsets.only(top: 16),
+        padding: const EdgeInsets.only(top: 16),
         height: 120,
         width: double.infinity,
         color: color ?? Theme.of(context).primaryColor,
@@ -27,7 +27,7 @@ class ActivityCard extends StatelessWidget {
               width: 50,
               child: icon,
             ),
-            SizedBox(height: 12),
+            const SizedBox(height: 12),
             Text(title, style: textTheme.button),
           ],
         )),
@@ -40,12 +40,13 @@ class DefaultCard extends StatelessWidget {
   final int status;
   final Function()? function;
   final bool isQuiz;
-  DefaultCard({required this.status, required this.isQuiz, this.function});
+  const DefaultCard(
+      {required this.status, required this.isQuiz, this.function});
 
   @override
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
-    final brownGrey = Color(0xFFb2b2b2);
+    const brownGrey = Color(0xFFb2b2b2);
     final currentColor =
         isQuiz ? Quiz.statusColor(status) : Scheduling.statusColor(status);
     final currentText =
@@ -64,7 +65,7 @@ class DefaultCard extends StatelessWidget {
               color: Colors.grey.withOpacity(0.7),
               // spreadRadius: 1,
               blurRadius: 3,
-              offset: Offset(0, 3),
+              offset: const Offset(0, 3),
             ),
           ],
         ),
@@ -72,7 +73,7 @@ class DefaultCard extends StatelessWidget {
           children: [
             Expanded(
               child: Container(
-                padding: EdgeInsets.only(right: 16, left: 16, top: 16),
+                padding: const EdgeInsets.only(right: 16, left: 16, top: 16),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -82,9 +83,9 @@ class DefaultCard extends StatelessWidget {
                         color: currentColor,
                       ),
                     ),
-                    SizedBox(height: 8),
+                    const SizedBox(height: 8),
                     rowWidgetText(
-                      Icon(
+                      const Icon(
                         FontAwesomeIcons.calendar,
                         size: 16,
                         color: brownGrey,
@@ -96,9 +97,9 @@ class DefaultCard extends StatelessWidget {
                       visible: !isQuiz,
                       child: Column(
                         children: [
-                          SizedBox(height: 8),
+                          const SizedBox(height: 8),
                           rowWidgetText(
-                            Icon(
+                            const Icon(
                               FontAwesomeIcons.clock,
                               size: 16,
                               color: brownGrey,
@@ -109,7 +110,7 @@ class DefaultCard extends StatelessWidget {
                         ],
                       ),
                     ),
-                    SizedBox(height: 16),
+                    const SizedBox(height: 16),
                     rowWidgetText(
                       Center(
                         child: Container(
@@ -142,7 +143,7 @@ class DefaultCard extends StatelessWidget {
 class FinalizedCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final status = 3;
+    const status = 3;
     final textTheme = Theme.of(context).textTheme;
     final currentColor = Scheduling.statusColor(status);
     final currentText = Scheduling.statusName(status);
@@ -159,7 +160,7 @@ class FinalizedCard extends StatelessWidget {
               color: Colors.grey.withOpacity(0.7),
               // spreadRadius: 1,
               blurRadius: 3,
-              offset: Offset(0, 3),
+              offset: const Offset(0, 3),
             ),
           ],
         ),
@@ -173,7 +174,7 @@ class FinalizedCard extends StatelessWidget {
               height: 24,
             ),
             Container(
-              padding: EdgeInsets.all(24),
+              padding: const EdgeInsets.all(24),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -183,7 +184,7 @@ class FinalizedCard extends StatelessWidget {
                       color: currentColor,
                     ),
                   ),
-                  SizedBox(height: 8),
+                  const SizedBox(height: 8),
                   rowWidgetText(
                     Icon(
                       FontAwesomeIcons.calendar,
@@ -193,7 +194,7 @@ class FinalizedCard extends StatelessWidget {
                     '26/09/2020',
                     textTheme.bodyText1,
                   ),
-                  SizedBox(height: 8),
+                  const SizedBox(height: 8),
                   rowWidgetText(
                     Icon(
                       FontAwesomeIcons.clock,
@@ -203,7 +204,7 @@ class FinalizedCard extends StatelessWidget {
                     '14:30hrs',
                     textTheme.bodyText1,
                   ),
-                  SizedBox(height: 16),
+                  const SizedBox(height: 16),
                   rowWidgetText(
                     Center(
                       child: Container(
@@ -218,7 +219,7 @@ class FinalizedCard extends StatelessWidget {
                     currentText,
                     textTheme.bodyText2,
                   ),
-                  SizedBox(height: 32),
+                  const SizedBox(height: 32),
                   Center(
                     child: Text(
                       'Descrição',
@@ -227,7 +228,7 @@ class FinalizedCard extends StatelessWidget {
                       ),
                     ),
                   ),
-                  SizedBox(height: 16),
+                  const SizedBox(height: 16),
                   Center(
                     child: Text(
                       'TextoTextoTextoTextoTextoTextoTextoTextoTextoTextoTexto',
@@ -247,7 +248,7 @@ class FinalizedCard extends StatelessWidget {
 
 class CourseCard extends StatelessWidget {
   final Function()? function;
-  CourseCard({this.function});
+  const CourseCard({this.function});
 
   @override
   Widget build(BuildContext context) {
@@ -257,7 +258,7 @@ class CourseCard extends StatelessWidget {
       onTap: function ?? () {},
       child: Container(
         height: 120,
-        margin: EdgeInsets.only(bottom: 24),
+        margin: const EdgeInsets.only(bottom: 24),
         decoration: BoxDecoration(
           color: Colors.white,
           boxShadow: [
@@ -265,19 +266,18 @@ class CourseCard extends StatelessWidget {
               color: Colors.grey.withOpacity(0.7),
               // spreadRadius: 1,
               blurRadius: 3,
-              offset: Offset(0, 3),
+              offset: const Offset(0, 3),
             ),
           ],
         ),
         child: Row(
-          crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Container(
               width: 120,
               child: Image.network('https://picsum.photos/200'),
             ),
-            SizedBox(width: 12),
+            const SizedBox(width: 12),
             Expanded(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -289,7 +289,7 @@ class CourseCard extends StatelessWidget {
                       color: Assets.colors.kellyGreen,
                     ),
                   ),
-                  SizedBox(height: 8),
+                  const SizedBox(height: 8),
                   rowWidgetText(
                     Icon(
                       FontAwesomeIcons.calendar,
@@ -299,7 +299,7 @@ class CourseCard extends StatelessWidget {
                     '26/09/2020 - 03/10/2020',
                     textTheme.bodyText1,
                   ),
-                  SizedBox(height: 8),
+                  const SizedBox(height: 8),
                   rowWidgetText(
                     Icon(
                       FontAwesomeIcons.clock,
@@ -325,7 +325,7 @@ Widget rowWidgetText(Widget widget, String text, TextStyle? style) {
     crossAxisAlignment: CrossAxisAlignment.start,
     children: [
       widget,
-      SizedBox(width: 8),
+      const SizedBox(width: 8),
       Flexible(child: Text(text, style: style))
     ],
   );

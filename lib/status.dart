@@ -5,7 +5,7 @@ class StatusResettlement extends StatelessWidget {
   final List<String> titles;
   final List<String>? descriptions;
 
-  StatusResettlement(
+  const StatusResettlement(
       {required this.status, required this.titles, this.descriptions});
 
   @override
@@ -36,19 +36,18 @@ class StatusResettlement extends StatelessWidget {
     int index,
     TextTheme textTheme,
   ) {
-    final kellyGreen = Color(0xFF06b12e);
-    final brownGrey = Color(0xFFb2b2b2);
+    const kellyGreen = Color(0xFF06b12e);
+    const brownGrey = Color(0xFFb2b2b2);
     return Row(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Container(
               height: 30,
               width: 30,
               decoration: isChecked
-                  ? BoxDecoration(
+                  ? const BoxDecoration(
                       color: kellyGreen,
                       borderRadius: BorderRadius.all(
                         Radius.circular(10),
@@ -60,19 +59,19 @@ class StatusResettlement extends StatelessWidget {
                         width: 2,
                         color: brownGrey,
                       ),
-                      borderRadius: BorderRadius.all(
+                      borderRadius: const BorderRadius.all(
                         Radius.circular(10),
                       ),
                     ),
               child: Visibility(
                 visible: isChecked,
-                child: Center(
+                child: const Center(
                   child: FaIcon(FontAwesomeIcons.check,
                       color: Colors.white, size: 18),
                 ),
               ),
             ),
-            SizedBox(height: 8),
+            const SizedBox(height: 8),
             Visibility(
               visible: !isFinal,
               child: Container(
@@ -81,10 +80,10 @@ class StatusResettlement extends StatelessWidget {
                 color: isNextChecked ? kellyGreen : brownGrey,
               ),
             ),
-            SizedBox(height: 8),
+            const SizedBox(height: 8),
           ],
         ),
-        SizedBox(width: 20),
+        const SizedBox(width: 20),
         Expanded(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,

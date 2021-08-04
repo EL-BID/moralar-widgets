@@ -5,7 +5,7 @@ class SchedulingPicker extends StatelessWidget {
   final int isCurrent;
   final PageController? controller;
 
-  SchedulingPicker(
+  const SchedulingPicker(
       {required this.types, required this.isCurrent, this.controller});
 
   @override
@@ -39,7 +39,7 @@ class SchedulingPicker extends StatelessWidget {
         child: Column(
           children: [
             Text(types[index], style: style),
-            SizedBox(height: 4),
+            const SizedBox(height: 4),
             Visibility(
               visible: index == isCurrent,
               child: Container(

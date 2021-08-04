@@ -12,7 +12,7 @@ class _Images {
   late final String _path;
 
   _Images(String basePath) {
-    _path = basePath + '/images';
+    _path = '$basePath/images';
   }
 
   String get agendamento => '$_path/agendamento.png';
@@ -24,14 +24,14 @@ class _Images {
 }
 
 class _Colors {
-  final kellyGreen = Color(0xff06b12e);
-  final strawberry = Color(0xfffb2a47);
-  final blue = Color(0xff1950ef);
-  final waterBlue = Color(0xff107ece);
-  final brownishGrey = Color(0xff707070);
-  final darkBlueGrey = Color(0xff0e1a29);
-  final brownGrey = Color(0xffb2b2b2);
-  final algaeGreen = Color(0xff25d366);
-  final veryLightPink = Color(0xffe9e9e9);
-  final orangeYellow = Color(0xffffaa00);
+  final kellyGreen = const Color(0xff06b12e);
+  final strawberry = const Color(0xfffb2a47);
+  final blue = const Color(0xff1950ef);
+  final waterBlue = const Color(0xff107ece);
+  final brownishGrey = const Color(0xff707070);
+  final darkBlueGrey = const Color(0xff0e1a29);
+  final brownGrey = const Color(0xffb2b2b2);
+  final algaeGreen = const Color(0xff25d366);
+  final veryLightPink = const Color(0xffe9e9e9);
+  final orangeYellow = const Color(0xffffaa00);
 }

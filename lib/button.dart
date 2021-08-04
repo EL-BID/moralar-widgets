@@ -4,14 +4,14 @@ class DefaultButton extends StatelessWidget {
   final Color? color;
   final Widget child;
   final Function()? function;
-  DefaultButton({required this.child, this.function, this.color});
+  const DefaultButton({required this.child, this.function, this.color});
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
       onTap: function ?? () {},
       child: Container(
-        padding: EdgeInsets.all(8),
+        padding: const EdgeInsets.all(8),
         height: 48,
         width: double.infinity,
         color: color ?? Theme.of(context).primaryColor,
@@ -25,14 +25,14 @@ class OutButton extends StatelessWidget {
   final Color? color;
   final Widget child;
   final Function()? function;
-  OutButton({required this.child, this.function, this.color});
+  const OutButton({required this.child, this.function, this.color});
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
       onTap: function ?? () {},
       child: Container(
-        padding: EdgeInsets.all(8),
+        padding: const EdgeInsets.all(8),
         height: 48,
         width: double.infinity,
         decoration: BoxDecoration(
