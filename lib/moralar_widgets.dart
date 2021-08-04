@@ -7,6 +7,7 @@ import 'package:get/get.dart';
 
 import 'assets.dart';
 
+part 'alert.dart';
 part 'button.dart';
 part 'card.dart';
 part 'image.dart';
