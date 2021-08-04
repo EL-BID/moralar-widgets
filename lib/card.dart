@@ -248,7 +248,8 @@ class FinalizedCard extends StatelessWidget {
 
 class CourseCard extends StatelessWidget {
   final Function()? function;
-  const CourseCard({this.function});
+  final bool isVideo;
+  const CourseCard({this.function, required this.isVideo});
 
   @override
   Widget build(BuildContext context) {
@@ -284,7 +285,7 @@ class CourseCard extends StatelessWidget {
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   Text(
-                    'Curso Lorem Ipsum',
+                    isVideo ? 'Vídeo Explicativo' : 'Curso Lorem Ipsum',
                     style: textTheme.headline1?.copyWith(
                       color: Assets.colors.kellyGreen,
                     ),
@@ -296,18 +297,21 @@ class CourseCard extends StatelessWidget {
                       size: 16,
                       color: Assets.colors.brownGrey,
                     ),
-                    '26/09/2020 - 03/10/2020',
+                    isVideo ? '26/09/2020' : '26/09/2020 - 03/10/2020',
                     textTheme.bodyText1,
                   ),
                   const SizedBox(height: 8),
-                  rowWidgetText(
-                    Icon(
-                      FontAwesomeIcons.clock,
-                      size: 16,
-                      color: Assets.colors.brownGrey,
+                  Visibility(
+                    visible: !isVideo,
+                    child: rowWidgetText(
+                      Icon(
+                        FontAwesomeIcons.clock,
+                        size: 16,
+                        color: Assets.colors.brownGrey,
+                      ),
+                      '14:30hrs',
+                      textTheme.bodyText1,
                     ),
-                    '14:30hrs',
-                    textTheme.bodyText1,
                   ),
                 ],
               ),
