@@ -1,15 +1,11 @@
 part of moralar_widgets;
 
-class Scheduling {
+class Quiz {
   static String statusName(int status) {
     if (status == 0) {
-      return 'Confirmado';
+      return 'Respondido';
     } else if (status == 1) {
-      return 'Aguardando Confirmação';
-    } else if (status == 2) {
-      return 'Aguardando Reagendamento';
-    } else if (status == 3) {
-      return 'Finalizado';
+      return 'Não respondido';
     } else {
       return '';
     }
@@ -19,11 +15,7 @@ class Scheduling {
     if (status == 0) {
       return Assets.colors.kellyGreen;
     } else if (status == 1) {
-      return Assets.colors.orangeYellow;
-    } else if (status == 2) {
       return Assets.colors.strawberry;
-    } else if (status == 3) {
-      return Assets.colors.brownGrey;
     } else {
       return Colors.white;
     }

@@ -36,21 +36,26 @@ class ActivityCard extends StatelessWidget {
   }
 }
 
-class SchedulingCard extends StatelessWidget {
+class DefaultCard extends StatelessWidget {
   final int status;
   final Function()? function;
-  SchedulingCard({required this.status, this.function});
+  final bool isQuiz;
+  DefaultCard({required this.status, required this.isQuiz, this.function});
 
   @override
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
     final brownGrey = Color(0xFFb2b2b2);
+    final currentColor =
+        isQuiz ? Quiz.statusColor(status) : Scheduling.statusColor(status);
+    final currentText =
+        isQuiz ? Quiz.statusName(status) : Scheduling.statusName(status);
 
     return InkWell(
       onTap: function ?? () {},
       child: Container(
         margin: const EdgeInsets.only(bottom: 24),
-        height: 140,
+        height: isQuiz ? 116 : 140,
         width: double.infinity,
         decoration: BoxDecoration(
           color: Colors.white,
@@ -66,7 +71,7 @@ class SchedulingCard extends StatelessWidget {
         child: Row(
           children: [
             Expanded(
-              child: Padding(
+              child: Container(
                 padding: EdgeInsets.only(right: 16, left: 16, top: 16),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -74,7 +79,7 @@ class SchedulingCard extends StatelessWidget {
                     Text(
                       'Reunião TTS',
                       style: textTheme.headline1?.copyWith(
-                        color: statusColor(status),
+                        color: currentColor,
                       ),
                     ),
                     SizedBox(height: 8),
@@ -87,15 +92,22 @@ class SchedulingCard extends StatelessWidget {
                       '26/09/2020',
                       textTheme.bodyText1,
                     ),
-                    SizedBox(height: 8),
-                    rowWidgetText(
-                      Icon(
-                        FontAwesomeIcons.clock,
-                        size: 16,
-                        color: brownGrey,
+                    Visibility(
+                      visible: !isQuiz,
+                      child: Column(
+                        children: [
+                          SizedBox(height: 8),
+                          rowWidgetText(
+                            Icon(
+                              FontAwesomeIcons.clock,
+                              size: 16,
+                              color: brownGrey,
+                            ),
+                            '14:30hrs',
+                            textTheme.bodyText1,
+                          ),
+                        ],
                       ),
-                      '14:30hrs',
-                      textTheme.bodyText1,
                     ),
                     SizedBox(height: 16),
                     rowWidgetText(
@@ -104,12 +116,12 @@ class SchedulingCard extends StatelessWidget {
                           width: 16,
                           height: 16,
                           decoration: BoxDecoration(
-                            color: statusColor(status),
+                            color: currentColor,
                             shape: BoxShape.circle,
                           ),
                         ),
                       ),
-                      statusName(status),
+                      currentText,
                       textTheme.bodyText2,
                     ),
                   ],
@@ -117,7 +129,7 @@ class SchedulingCard extends StatelessWidget {
               ),
             ),
             Container(
-              color: statusColor(status),
+              color: currentColor,
               width: 24,
             )
           ],
@@ -132,7 +144,8 @@ class FinalizedCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final status = 3;
     final textTheme = Theme.of(context).textTheme;
-    final brownGrey = Color(0xFFb2b2b2);
+    final currentColor = Scheduling.statusColor(status);
+    final currentText = Scheduling.statusName(status);
 
     return InkWell(
       onTap: () {},
@@ -155,7 +168,7 @@ class FinalizedCard extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           children: [
             Container(
-              color: statusColor(status),
+              color: currentColor,
               width: double.infinity,
               height: 24,
             ),
@@ -167,7 +180,7 @@ class FinalizedCard extends StatelessWidget {
                   Text(
                     'Reunião TTS',
                     style: textTheme.headline1?.copyWith(
-                      color: statusColor(status),
+                      color: currentColor,
                     ),
                   ),
                   SizedBox(height: 8),
@@ -175,7 +188,7 @@ class FinalizedCard extends StatelessWidget {
                     Icon(
                       FontAwesomeIcons.calendar,
                       size: 16,
-                      color: brownGrey,
+                      color: Assets.colors.brownGrey,
                     ),
                     '26/09/2020',
                     textTheme.bodyText1,
@@ -185,7 +198,7 @@ class FinalizedCard extends StatelessWidget {
                     Icon(
                       FontAwesomeIcons.clock,
                       size: 16,
-                      color: brownGrey,
+                      color: Assets.colors.brownGrey,
                     ),
                     '14:30hrs',
                     textTheme.bodyText1,
@@ -197,12 +210,12 @@ class FinalizedCard extends StatelessWidget {
                         width: 16,
                         height: 16,
                         decoration: BoxDecoration(
-                          color: statusColor(status),
+                          color: currentColor,
                           shape: BoxShape.circle,
                         ),
                       ),
                     ),
-                    statusName(status),
+                    currentText,
                     textTheme.bodyText2,
                   ),
                   SizedBox(height: 32),
@@ -210,7 +223,7 @@ class FinalizedCard extends StatelessWidget {
                     child: Text(
                       'Descrição',
                       style: textTheme.headline1?.copyWith(
-                        color: statusColor(status),
+                        color: currentColor,
                       ),
                     ),
                   ),
@@ -225,6 +238,81 @@ class FinalizedCard extends StatelessWidget {
                 ],
               ),
             ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class CourseCard extends StatelessWidget {
+  final Function()? function;
+  CourseCard({this.function});
+
+  @override
+  Widget build(BuildContext context) {
+    final textTheme = Theme.of(context).textTheme;
+
+    return InkWell(
+      onTap: function ?? () {},
+      child: Container(
+        height: 120,
+        margin: EdgeInsets.only(bottom: 24),
+        decoration: BoxDecoration(
+          color: Colors.white,
+          boxShadow: [
+            BoxShadow(
+              color: Colors.grey.withOpacity(0.7),
+              // spreadRadius: 1,
+              blurRadius: 3,
+              offset: Offset(0, 3),
+            ),
+          ],
+        ),
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Container(
+              width: 120,
+              child: Image.network('https://picsum.photos/200'),
+            ),
+            SizedBox(width: 12),
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Text(
+                    'Curso Lorem Ipsum',
+                    style: textTheme.headline1?.copyWith(
+                      color: Assets.colors.kellyGreen,
+                    ),
+                  ),
+                  SizedBox(height: 8),
+                  rowWidgetText(
+                    Icon(
+                      FontAwesomeIcons.calendar,
+                      size: 16,
+                      color: Assets.colors.brownGrey,
+                    ),
+                    '26/09/2020 - 03/10/2020',
+                    textTheme.bodyText1,
+                  ),
+                  SizedBox(height: 8),
+                  rowWidgetText(
+                    Icon(
+                      FontAwesomeIcons.clock,
+                      size: 16,
+                      color: Assets.colors.brownGrey,
+                    ),
+                    '14:30hrs',
+                    textTheme.bodyText1,
+                  ),
+                ],
+              ),
+            ),
+            Icon(FontAwesomeIcons.angleRight, color: Assets.colors.kellyGreen),
           ],
         ),
       ),

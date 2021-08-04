@@ -13,7 +13,7 @@ class SchedulingPicker extends StatelessWidget {
     final textStyle =
         Theme.of(context).textTheme.headline1?.copyWith(fontSize: 16);
 
-    return Padding(
+    return Container(
       padding: const EdgeInsets.symmetric(horizontal: 30),
       child: Row(
         children: typesScheduling(textStyle),
