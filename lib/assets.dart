@@ -20,8 +20,11 @@ class _Images {
   String get confirmado => '$_path/confirmado.png';
   String get cursos => '$_path/cursos.png';
   String get enquetes => '$_path/enquetes.png';
+  String get facebook => '$_path/facebook.png';
+  String get instagram => '$_path/instagram.png';
   String get jogos => '$_path/jogos.png';
   String get videos => '$_path/videos.png';
+  String get youtube => '$_path/youtube.png';
 }
 
 class _Colors {
