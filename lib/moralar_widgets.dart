@@ -20,6 +20,7 @@ part 'widgets/alert.dart';
 part 'widgets/button.dart';
 part 'widgets/card.dart';
 part 'widgets/checkbox.dart';
+part 'widgets/cpf_login.dart';
 part 'widgets/login.dart';
 part 'widgets/picker.dart';
 part 'widgets/scaffold.dart';

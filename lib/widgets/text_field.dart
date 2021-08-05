@@ -6,12 +6,14 @@ class MoralarTextField extends StatelessWidget {
   final TextInputType? keyboard;
   final List<TextInputFormatter>? formats;
   final List<String? Function(String?)>? validators;
+  final bool? isPassword;
   const MoralarTextField({
     this.label,
     this.hint,
     this.keyboard,
     this.formats,
     this.validators,
+    this.isPassword,
   });
 
   @override
@@ -24,6 +26,8 @@ class MoralarTextField extends StatelessWidget {
       keyboardType: keyboard,
       inputFormatters: formats ?? [],
       validator: Validatorless.multiple(validators ?? []),
+      obscureText: isPassword ?? false,
+      obscuringCharacter: '*',
     );
   }
 }
