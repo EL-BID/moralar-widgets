@@ -10,7 +10,11 @@ environment:
 dependencies:
   flutter_svg: ^0.22.0
   font_awesome_flutter: ^9.1.0
+  mask_text_input_formatter: ^2.0.0
   get: 4.3.4
+  validatorless: ^1.2.0
+  mega_flutter:
+    path: '../mega-flutter'
 
   flutter:
     sdk: flutter
