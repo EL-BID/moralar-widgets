@@ -324,6 +324,135 @@ class CourseCard extends StatelessWidget {
   }
 }
 
+class PropertyCard extends StatelessWidget {
+  final Function()? function;
+  final bool isHouse;
+  const PropertyCard({this.function, required this.isHouse});
+
+  @override
+  Widget build(BuildContext context) {
+    const status = 3;
+    final textTheme = Theme.of(context).textTheme;
+    final currentColor = Scheduling.statusColor(status);
+    final currentText = Scheduling.statusName(status);
+
+    return InkWell(
+      onTap: () {},
+      child: Container(
+        margin: const EdgeInsets.only(bottom: 24),
+        width: double.infinity,
+        decoration: BoxDecoration(
+          color: Colors.white,
+          boxShadow: [
+            BoxShadow(
+              color: Colors.grey.withOpacity(0.7),
+              // spreadRadius: 1,
+              blurRadius: 3,
+              offset: const Offset(0, 3),
+            ),
+          ],
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Stack(
+              children: [
+                Container(
+                  width: double.infinity,
+                  height: 164,
+                  child: Image.network(
+                    'https://picsum.photos/200',
+                    fit: BoxFit.cover,
+                  ),
+                ),
+                Positioned(
+                  width: isHouse ? 80 : 140,
+                  top: 16,
+                  left: 24,
+                  child: Container(
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.grey.withOpacity(0.7),
+                          blurRadius: 3,
+                          offset: const Offset(0, 1),
+                        ),
+                      ],
+                    ),
+                    padding: const EdgeInsets.all(8),
+                    child: Center(
+                      child: rowWidgetText(
+                        Icon(
+                          isHouse
+                              ? FontAwesomeIcons.home
+                              : FontAwesomeIcons.solidBuilding,
+                          size: 16,
+                          color: Assets.colors.brownGrey,
+                        ),
+                        isHouse ? 'Casa' : 'Apartamento',
+                        textTheme.bodyText1,
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            Container(
+              padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  rowWidgetText(
+                    Icon(
+                      FontAwesomeIcons.mapMarkerAlt,
+                      size: 16,
+                      color: Assets.colors.brownGrey,
+                    ),
+                    '26/09/2020',
+                    textTheme.bodyText1,
+                  ),
+                  const SizedBox(height: 16),
+                  rowWidgetText(
+                    Icon(
+                      FontAwesomeIcons.ruler,
+                      size: 16,
+                      color: Assets.colors.brownGrey,
+                    ),
+                    '120 m²',
+                    textTheme.bodyText1,
+                  ),
+                  rowWidgetText(
+                    Icon(
+                      FontAwesomeIcons.bed,
+                      size: 16,
+                      color: Assets.colors.brownGrey,
+                    ),
+                    '2 quartos (Mudar de lugar)',
+                    textTheme.bodyText1,
+                  ),
+                  const SizedBox(height: 8),
+                  rowWidgetText(
+                    Icon(
+                      FontAwesomeIcons.users,
+                      size: 16,
+                      color: Assets.colors.brownGrey,
+                    ),
+                    '20 famílias interessadas',
+                    textTheme.bodyText1,
+                  ),
+                  const SizedBox(height: 16),
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
 Widget rowWidgetText(Widget widget, String text, TextStyle? style) {
   return Row(
     crossAxisAlignment: CrossAxisAlignment.start,
