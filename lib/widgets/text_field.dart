@@ -7,6 +7,7 @@ class MoralarTextField extends StatelessWidget {
   final List<TextInputFormatter>? formats;
   final List<String? Function(String?)>? validators;
   final bool? isPassword;
+  final int? maxLenght;
   const MoralarTextField({
     this.label,
     this.hint,
@@ -14,6 +15,7 @@ class MoralarTextField extends StatelessWidget {
     this.formats,
     this.validators,
     this.isPassword,
+    this.maxLenght,
   });
 
   @override
@@ -22,7 +24,9 @@ class MoralarTextField extends StatelessWidget {
       decoration: InputDecoration(
         labelText: label ?? '',
         hintText: hint ?? '',
+        counterText: '',
       ),
+      maxLength: maxLenght,
       keyboardType: keyboard,
       inputFormatters: formats ?? [],
       validator: Validatorless.multiple(validators ?? []),

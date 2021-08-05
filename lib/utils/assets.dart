@@ -17,6 +17,7 @@ class _Images {
 
   String get agendamento => '$_path/agendamento.png';
   String get appLogo => '$_path/app_logo.png';
+  String get bolo => '$_path/bolo.png';
   String get confirmado => '$_path/confirmado.png';
   String get cursos => '$_path/cursos.png';
   String get enquetes => '$_path/enquetes.png';

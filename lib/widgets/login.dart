@@ -8,7 +8,7 @@ class LoginView extends GetView<LoginController> {
     final textTheme = Theme.of(context).textTheme;
     final _cpfFormKey = GlobalKey<FormState>();
     final _passwordFormKey = GlobalKey<FormState>();
-    PageController pageController = PageController(
+    final pageController = PageController(
       initialPage: isProfissional ? 1 : 0,
     );
 
@@ -47,7 +47,13 @@ class LoginView extends GetView<LoginController> {
                     child: Row(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        LoginCheckBox(),
+                        Obx(
+                          () => LoginCheckBox(
+                            checked: controller.checked.value,
+                            function: () => controller.checked.value =
+                                !controller.checked.value,
+                          ),
+                        ),
                         const SizedBox(width: 16),
                         TermsUse(),
                       ],
