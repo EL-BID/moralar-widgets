@@ -1,4 +1,4 @@
-import 'package:flutter/painting.dart';
+part of moralar_widgets;
 
 class Assets {
   static const _path = 'assets';

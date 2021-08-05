@@ -1,5 +1,4 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:moralar_widgets/assets.dart';
 import 'package:moralar_widgets/moralar_widgets.dart';
 
 void main() {

@@ -1,6 +1,6 @@
 import 'package:flutter/widgets.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:moralar_widgets/assets.dart';
+import 'package:moralar_widgets/moralar_widgets.dart';
 
 void main() {
   group('Assets', () {
