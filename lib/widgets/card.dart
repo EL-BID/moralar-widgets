@@ -19,8 +19,7 @@ class ActivityCard extends StatelessWidget {
         height: 120,
         width: double.infinity,
         color: color ?? Theme.of(context).primaryColor,
-        child: Center(
-            child: Column(
+        child: Column(
           children: [
             Container(
               height: 50,
@@ -30,7 +29,7 @@ class ActivityCard extends StatelessWidget {
             const SizedBox(height: 12),
             Text(title, style: textTheme.button),
           ],
-        )),
+        ),
       ),
     );
   }
@@ -112,14 +111,13 @@ class DefaultCard extends StatelessWidget {
                     ),
                     const SizedBox(height: 16),
                     rowWidgetText(
-                      Center(
-                        child: Container(
-                          width: 16,
-                          height: 16,
-                          decoration: BoxDecoration(
-                            color: currentColor,
-                            shape: BoxShape.circle,
-                          ),
+                      Container(
+                        width: 16,
+                        height: 16,
+                        alignment: Alignment.center,
+                        decoration: BoxDecoration(
+                          color: currentColor,
+                          shape: BoxShape.circle,
                         ),
                       ),
                       currentText,
@@ -206,21 +204,21 @@ class FinalizedCard extends StatelessWidget {
                   ),
                   const SizedBox(height: 16),
                   rowWidgetText(
-                    Center(
-                      child: Container(
-                        width: 16,
-                        height: 16,
-                        decoration: BoxDecoration(
-                          color: currentColor,
-                          shape: BoxShape.circle,
-                        ),
+                    Container(
+                      alignment: Alignment.center,
+                      width: 16,
+                      height: 16,
+                      decoration: BoxDecoration(
+                        color: currentColor,
+                        shape: BoxShape.circle,
                       ),
                     ),
                     currentText,
                     textTheme.bodyText2,
                   ),
                   const SizedBox(height: 32),
-                  Center(
+                  Container(
+                    alignment: Alignment.center,
                     child: Text(
                       'Descrição',
                       style: textTheme.headline1?.copyWith(
@@ -229,7 +227,8 @@ class FinalizedCard extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(height: 16),
-                  Center(
+                  Container(
+                    alignment: Alignment.center,
                     child: Text(
                       'TextoTextoTextoTextoTextoTextoTextoTextoTextoTextoTexto',
                       style: textTheme.bodyText1,
@@ -379,7 +378,8 @@ class PropertyCard extends StatelessWidget {
                       ],
                     ),
                     padding: const EdgeInsets.all(8),
-                    child: Center(
+                    child: Container(
+                      alignment: Alignment.center,
                       child: rowWidgetText(
                         Icon(
                           isHouse

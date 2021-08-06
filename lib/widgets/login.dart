@@ -75,7 +75,8 @@ class LoginView extends GetView<LoginController> {
                           print('Verifique os termos de uso');
                         }
                       },
-                      child: Center(
+                      child: Container(
+                        alignment: Alignment.center,
                         child: Text(
                           'Continuar',
                           style: textTheme.button,
@@ -155,7 +156,8 @@ class LoginView extends GetView<LoginController> {
                         print('não validado');
                       }
                     },
-                    child: Center(
+                    child: Container(
+                      alignment: Alignment.center,
                       child: Text(
                         'Continuar',
                         style: textTheme.button,
@@ -170,7 +172,8 @@ class LoginView extends GetView<LoginController> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Expanded(
-                          child: Center(
+                          child: Container(
+                            alignment: Alignment.center,
                             child: Text(
                               'Não lembra a senha? Recuperar.',
                               style: textTheme.button?.copyWith(

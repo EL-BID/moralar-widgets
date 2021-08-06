@@ -4,26 +4,24 @@ AlertDialog subscribeAlert(TextTheme textTheme) {
   return AlertDialog(
     buttonPadding: const EdgeInsets.all(24),
     contentPadding: const EdgeInsets.symmetric(horizontal: 32),
-    title: Center(
-      child: Column(
-        children: [
-          Container(
-            height: 120,
-            width: 120,
-            padding: const EdgeInsets.only(bottom: 24),
-            child: MoralarImage.asset(
-              Assets.images.confirmado,
-            ),
+    title: Column(
+      children: [
+        Container(
+          height: 120,
+          width: 120,
+          padding: const EdgeInsets.only(bottom: 24),
+          child: MoralarImage.asset(
+            Assets.images.confirmado,
           ),
-          Text(
-            'Inscrição Confirmada',
-            style: textTheme.headline1?.copyWith(
-              color: Assets.colors.kellyGreen,
-            ),
+        ),
+        Text(
+          'Inscrição Confirmada',
+          style: textTheme.headline1?.copyWith(
+            color: Assets.colors.kellyGreen,
           ),
-          const SizedBox(height: 16),
-        ],
-      ),
+        ),
+        const SizedBox(height: 16),
+      ],
     ),
     content: Text(
       // ignore: lines_longer_than_80_chars
@@ -36,7 +34,8 @@ AlertDialog subscribeAlert(TextTheme textTheme) {
         function: () {
           Get.back();
         },
-        child: Center(
+        child: Container(
+          alignment: Alignment.center,
           child: Text('Voltar', style: textTheme.button),
         ),
       ),

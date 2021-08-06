@@ -19,8 +19,9 @@ class LoginCheckBox extends StatelessWidget {
           border: Border.all(color: Assets.colors.kellyGreen),
           color: checked ? Assets.colors.kellyGreen : Colors.white,
         ),
-        child: const Center(
-          child: FaIcon(
+        child: Container(
+          alignment: Alignment.center,
+          child: const FaIcon(
             FontAwesomeIcons.check,
             color: Colors.white,
             size: 16,

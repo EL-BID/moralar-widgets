@@ -44,12 +44,9 @@ class _SplashScreenState extends State<SplashScreen> {
   Widget build(BuildContext context) {
     return Container(
       color: Assets.colors.veryLightPink,
-      child: Center(
-        child: Padding(
-          padding: const EdgeInsets.fromLTRB(72, 48, 72, 48),
-          child: MoralarImage.asset(Assets.images.appLogo),
-        ),
-      ),
+      alignment: Alignment.center,
+      padding: const EdgeInsets.symmetric(horizontal: 48),
+      child: MoralarImage.asset(Assets.images.appLogo),
     );
   }
 }

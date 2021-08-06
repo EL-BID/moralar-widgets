@@ -65,8 +65,9 @@ class StatusResettlement extends StatelessWidget {
                     ),
               child: Visibility(
                 visible: isChecked,
-                child: const Center(
-                  child: FaIcon(FontAwesomeIcons.check,
+                child: Container(
+                  alignment: Alignment.center,
+                  child: const FaIcon(FontAwesomeIcons.check,
                       color: Colors.white, size: 18),
                 ),
               ),
