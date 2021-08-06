@@ -14,7 +14,10 @@ dependencies:
   get: 4.3.4
   validatorless: ^1.2.0
   mega_flutter:
-    path: '../mega-flutter'
+    # git:
+    #   url: git@github.com:lucasbatista-megaleios/moralar-widgets.git
+    path: ../mega-flutter
+    
 
   flutter:
     sdk: flutter

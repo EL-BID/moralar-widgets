@@ -331,13 +331,10 @@ class PropertyCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    const status = 3;
     final textTheme = Theme.of(context).textTheme;
-    final currentColor = Scheduling.statusColor(status);
-    final currentText = Scheduling.statusName(status);
 
     return InkWell(
-      onTap: () {},
+      onTap: function!,
       child: Container(
         margin: const EdgeInsets.only(bottom: 24),
         width: double.infinity,
@@ -389,10 +386,12 @@ class PropertyCard extends StatelessWidget {
                               ? FontAwesomeIcons.home
                               : FontAwesomeIcons.solidBuilding,
                           size: 16,
-                          color: Assets.colors.brownGrey,
+                          color: Assets.colors.brownishGrey,
                         ),
                         isHouse ? 'Casa' : 'Apartamento',
-                        textTheme.bodyText1,
+                        textTheme.bodyText1?.copyWith(
+                          color: Assets.colors.brownishGrey,
+                        ),
                       ),
                     ),
                   ),
@@ -408,39 +407,54 @@ class PropertyCard extends StatelessWidget {
                     Icon(
                       FontAwesomeIcons.mapMarkerAlt,
                       size: 16,
-                      color: Assets.colors.brownGrey,
+                      color: Assets.colors.brownishGrey,
                     ),
-                    '26/09/2020',
-                    textTheme.bodyText1,
+                    'Bela Vista',
+                    textTheme.bodyText1?.copyWith(
+                      color: Assets.colors.brownishGrey,
+                    ),
                   ),
                   const SizedBox(height: 16),
-                  rowWidgetText(
-                    Icon(
-                      FontAwesomeIcons.ruler,
-                      size: 16,
-                      color: Assets.colors.brownGrey,
-                    ),
-                    '120 m²',
-                    textTheme.bodyText1,
-                  ),
-                  rowWidgetText(
-                    Icon(
-                      FontAwesomeIcons.bed,
-                      size: 16,
-                      color: Assets.colors.brownGrey,
-                    ),
-                    '2 quartos (Mudar de lugar)',
-                    textTheme.bodyText1,
+                  Row(
+                    children: [
+                      rowWidgetText(
+                        Icon(
+                          FontAwesomeIcons.ruler,
+                          size: 16,
+                          color: Assets.colors.brownishGrey,
+                        ),
+                        '120 m²',
+                        textTheme.bodyText1?.copyWith(
+                          color: Assets.colors.brownishGrey,
+                        ),
+                        noFlexible: true,
+                      ),
+                      const SizedBox(width: 32),
+                      rowWidgetText(
+                        Icon(
+                          FontAwesomeIcons.bed,
+                          size: 16,
+                          color: Assets.colors.brownishGrey,
+                        ),
+                        '2 quartos',
+                        textTheme.bodyText1?.copyWith(
+                          color: Assets.colors.brownishGrey,
+                        ),
+                        noFlexible: true,
+                      ),
+                    ],
                   ),
                   const SizedBox(height: 8),
                   rowWidgetText(
                     Icon(
                       FontAwesomeIcons.users,
                       size: 16,
-                      color: Assets.colors.brownGrey,
+                      color: Assets.colors.brownishGrey,
                     ),
                     '20 famílias interessadas',
-                    textTheme.bodyText1,
+                    textTheme.bodyText1?.copyWith(
+                      color: Assets.colors.brownishGrey,
+                    ),
                   ),
                   const SizedBox(height: 16),
                 ],
@@ -453,13 +467,18 @@ class PropertyCard extends StatelessWidget {
   }
 }
 
-Widget rowWidgetText(Widget widget, String text, TextStyle? style) {
+Widget rowWidgetText(Widget widget, String text, TextStyle? style,
+    {bool? noFlexible}) {
   return Row(
     crossAxisAlignment: CrossAxisAlignment.start,
     children: [
       widget,
       const SizedBox(width: 8),
-      Flexible(child: Text(text, style: style))
+      Visibility(
+        visible: noFlexible ?? false,
+        child: Text(text, style: style),
+        replacement: Flexible(child: Text(text, style: style)),
+      ),
     ],
   );
 }
