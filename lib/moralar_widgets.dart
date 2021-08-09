@@ -6,8 +6,9 @@ import 'package:flutter/services.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
-import 'package:mega_flutter/mega_flutter.dart';
 import 'package:validatorless/validatorless.dart';
+
+part 'controllers/login_controller.dart';
 
 part 'service/quiz.dart';
 part 'service/scheduling.dart';
