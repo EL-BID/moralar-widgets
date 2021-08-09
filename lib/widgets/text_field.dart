@@ -10,6 +10,7 @@ class MoralarTextField extends StatelessWidget {
   final int? maxLenght;
   final TextStyle? style;
   final Color? color;
+
   const MoralarTextField(
       {this.label,
       this.hint,
@@ -23,7 +24,6 @@ class MoralarTextField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final textTheme = Theme.of(context).textTheme;
     return TextFormField(
       decoration: InputDecoration(
         labelText: label ?? '',

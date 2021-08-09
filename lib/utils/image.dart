@@ -1,16 +1,10 @@
 part of moralar_widgets;
 
 class MoralarImage extends Image {
-  @override
-  final double? height;
-
-  @override
-  final double? width;
-
   MoralarImage.asset(
     String name, {
-    this.height,
-    this.width,
+    double? height,
+    double? width,
   }) : super(
           image: AssetImage(
             name,
