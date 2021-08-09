@@ -12,9 +12,7 @@ part 'controllers/login_controller.dart';
 part 'service/quiz.dart';
 part 'service/scheduling.dart';
 part 'utils/assets.dart';
-
 part 'utils/colors.dart';
-
 part 'utils/formats.dart';
 part 'utils/image.dart';
 part 'utils/theme.dart';
@@ -25,6 +23,9 @@ part 'widgets/button.dart';
 part 'widgets/card.dart';
 part 'widgets/checkbox.dart';
 part 'widgets/drawer.dart';
+
+part 'widgets/drawer_header.dart';
+
 part 'widgets/drawer_list_tile.dart';
 part 'widgets/login.dart';
 part 'widgets/picker.dart';
