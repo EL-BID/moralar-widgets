@@ -16,8 +16,8 @@ class LoginCheckBox extends StatelessWidget {
         padding: const EdgeInsets.all(4),
         decoration: BoxDecoration(
           borderRadius: const BorderRadius.all(Radius.circular(10)),
-          border: Border.all(color: Assets.colors.kellyGreen),
-          color: checked ? Assets.colors.kellyGreen : Colors.white,
+          border: Border.all(color: MoralarColors.kellyGreen),
+          color: checked ? MoralarColors.kellyGreen : Colors.white,
         ),
         child: Container(
           alignment: Alignment.center,

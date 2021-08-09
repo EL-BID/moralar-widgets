@@ -2,7 +2,9 @@ part of moralar_widgets;
 
 class LoginView extends GetView<LoginController> {
   final bool isProfissional;
+
   const LoginView({required this.isProfissional});
+
   @override
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
@@ -13,9 +15,10 @@ class LoginView extends GetView<LoginController> {
     );
 
     _cpfLogin() {
-      return DefaultScaffold(
-        title: 'Login',
-        leading: Container(),
+      return MoralarScaffold(
+        appBar: const MoralarAppBar(
+          titleText: 'Login',
+        ),
         body: SingleChildScrollView(
           child: Form(
             key: _cpfFormKey,
@@ -95,19 +98,21 @@ class LoginView extends GetView<LoginController> {
     }
 
     _passwordLogin() {
-      return DefaultScaffold(
-        title: 'Login',
-        leading: isProfissional
-            ? Container()
-            : IconButton(
-                icon: const Icon(
-                  FontAwesomeIcons.angleLeft,
-                  color: Colors.black,
+      return MoralarScaffold(
+        appBar: MoralarAppBar(
+          titleText: 'Login',
+          leading: isProfissional
+              ? Container()
+              : IconButton(
+                  icon: const Icon(
+                    FontAwesomeIcons.angleLeft,
+                    color: Colors.black,
+                  ),
+                  onPressed: () {
+                    pageController.jumpToPage(0);
+                  },
                 ),
-                onPressed: () {
-                  pageController.jumpToPage(0);
-                },
-              ),
+        ),
         body: SingleChildScrollView(
           child: Form(
             key: _passwordFormKey,
@@ -222,8 +227,8 @@ class LoginView extends GetView<LoginController> {
             decoration: BoxDecoration(
               shape: BoxShape.circle,
               color: isFirstPage
-                  ? Assets.colors.darkBlueGrey
-                  : Assets.colors.brownGrey,
+                  ? MoralarColors.darkBlueGrey
+                  : MoralarColors.brownGrey,
             ),
           ),
           const SizedBox(width: 16),
@@ -233,8 +238,8 @@ class LoginView extends GetView<LoginController> {
             decoration: BoxDecoration(
               shape: BoxShape.circle,
               color: isFirstPage
-                  ? Assets.colors.brownGrey
-                  : Assets.colors.darkBlueGrey,
+                  ? MoralarColors.brownGrey
+                  : MoralarColors.darkBlueGrey,
             ),
           ),
         ],

@@ -6,41 +6,40 @@ ThemeData makeAppTheme() {
   const textColor = Color(0xFFb2b2b2);
   const secondaryTextColor = Color(0xFF606060);
   const dividerColor = Color(0xFFCCCCCC);
-
-  final textTheme = TextTheme(
-    headline1: const TextStyle(
+  const textTheme = TextTheme(
+    headline1: TextStyle(
       fontSize: 18,
       color: Colors.black,
       fontWeight: FontWeight.bold,
     ),
-    headline2: const TextStyle(
+    headline2: TextStyle(
       fontSize: 20,
       color: primaryColor,
       fontWeight: FontWeight.bold,
     ),
-    headline3: const TextStyle(
+    headline3: TextStyle(
       fontSize: 16,
       color: primaryColor,
     ),
     headline4: TextStyle(
       fontSize: 18,
-      color: Assets.colors.darkBlueGrey,
+      color: MoralarColors.darkBlueGrey,
       fontWeight: FontWeight.bold,
     ),
     headline5: TextStyle(
       fontSize: 16,
-      color: Assets.colors.veryLightPink,
+      color: MoralarColors.veryLightPink,
       fontWeight: FontWeight.normal,
     ),
-    bodyText1: const TextStyle(
+    bodyText1: TextStyle(
       fontSize: 14,
       color: textColor,
     ),
-    bodyText2: const TextStyle(
+    bodyText2: TextStyle(
       fontSize: 14,
       color: secondaryTextColor,
     ),
-    button: const TextStyle(
+    button: TextStyle(
       fontSize: 18,
       color: Colors.white,
       fontWeight: FontWeight.bold,

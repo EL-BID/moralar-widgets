@@ -5,6 +5,7 @@ class ActivityCard extends StatelessWidget {
   final String title;
   final Color? color;
   final Function()? function;
+
   const ActivityCard(
       {required this.icon, required this.title, this.function, this.color});
 
@@ -39,6 +40,7 @@ class DefaultCard extends StatelessWidget {
   final int status;
   final Function()? function;
   final bool isQuiz;
+
   const DefaultCard(
       {required this.status, required this.isQuiz, this.function});
 
@@ -184,20 +186,20 @@ class FinalizedCard extends StatelessWidget {
                   ),
                   const SizedBox(height: 8),
                   rowWidgetText(
-                    Icon(
+                    const Icon(
                       FontAwesomeIcons.calendar,
                       size: 16,
-                      color: Assets.colors.brownGrey,
+                      color: MoralarColors.brownGrey,
                     ),
                     '26/09/2020',
                     textTheme.bodyText1,
                   ),
                   const SizedBox(height: 8),
                   rowWidgetText(
-                    Icon(
+                    const Icon(
                       FontAwesomeIcons.clock,
                       size: 16,
-                      color: Assets.colors.brownGrey,
+                      color: MoralarColors.brownGrey,
                     ),
                     '14:30hrs',
                     textTheme.bodyText1,
@@ -248,6 +250,7 @@ class FinalizedCard extends StatelessWidget {
 class CourseCard extends StatelessWidget {
   final Function()? function;
   final bool isVideo;
+
   const CourseCard({this.function, required this.isVideo});
 
   @override
@@ -286,15 +289,15 @@ class CourseCard extends StatelessWidget {
                   Text(
                     isVideo ? 'Vídeo Explicativo' : 'Curso Lorem Ipsum',
                     style: textTheme.headline1?.copyWith(
-                      color: Assets.colors.kellyGreen,
+                      color: MoralarColors.kellyGreen,
                     ),
                   ),
                   const SizedBox(height: 8),
                   rowWidgetText(
-                    Icon(
+                    const Icon(
                       FontAwesomeIcons.calendar,
                       size: 16,
-                      color: Assets.colors.brownGrey,
+                      color: MoralarColors.brownGrey,
                     ),
                     isVideo ? '26/09/2020' : '26/09/2020 - 03/10/2020',
                     textTheme.bodyText1,
@@ -303,10 +306,10 @@ class CourseCard extends StatelessWidget {
                   Visibility(
                     visible: !isVideo,
                     child: rowWidgetText(
-                      Icon(
+                      const Icon(
                         FontAwesomeIcons.clock,
                         size: 16,
-                        color: Assets.colors.brownGrey,
+                        color: MoralarColors.brownGrey,
                       ),
                       '14:30hrs',
                       textTheme.bodyText1,
@@ -315,7 +318,10 @@ class CourseCard extends StatelessWidget {
                 ],
               ),
             ),
-            Icon(FontAwesomeIcons.angleRight, color: Assets.colors.kellyGreen),
+            const Icon(
+              FontAwesomeIcons.angleRight,
+              color: MoralarColors.kellyGreen,
+            ),
           ],
         ),
       ),
@@ -326,6 +332,7 @@ class CourseCard extends StatelessWidget {
 class PropertyCard extends StatelessWidget {
   final Function()? function;
   final bool isHouse;
+
   const PropertyCard({this.function, required this.isHouse});
 
   @override
@@ -386,11 +393,11 @@ class PropertyCard extends StatelessWidget {
                               ? FontAwesomeIcons.home
                               : FontAwesomeIcons.solidBuilding,
                           size: 16,
-                          color: Assets.colors.brownishGrey,
+                          color: MoralarColors.brownishGrey,
                         ),
                         isHouse ? 'Casa' : 'Apartamento',
                         textTheme.bodyText1?.copyWith(
-                          color: Assets.colors.brownishGrey,
+                          color: MoralarColors.brownishGrey,
                         ),
                       ),
                     ),
@@ -404,41 +411,41 @@ class PropertyCard extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   rowWidgetText(
-                    Icon(
+                    const Icon(
                       FontAwesomeIcons.mapMarkerAlt,
                       size: 16,
-                      color: Assets.colors.brownishGrey,
+                      color: MoralarColors.brownishGrey,
                     ),
                     'Bela Vista',
                     textTheme.bodyText1?.copyWith(
-                      color: Assets.colors.brownishGrey,
+                      color: MoralarColors.brownishGrey,
                     ),
                   ),
                   const SizedBox(height: 16),
                   Row(
                     children: [
                       rowWidgetText(
-                        Icon(
+                        const Icon(
                           FontAwesomeIcons.ruler,
                           size: 16,
-                          color: Assets.colors.brownishGrey,
+                          color: MoralarColors.brownishGrey,
                         ),
                         '120 m²',
                         textTheme.bodyText1?.copyWith(
-                          color: Assets.colors.brownishGrey,
+                          color: MoralarColors.brownishGrey,
                         ),
                         noFlexible: true,
                       ),
                       const SizedBox(width: 32),
                       rowWidgetText(
-                        Icon(
+                        const Icon(
                           FontAwesomeIcons.bed,
                           size: 16,
-                          color: Assets.colors.brownishGrey,
+                          color: MoralarColors.brownishGrey,
                         ),
                         '2 quartos',
                         textTheme.bodyText1?.copyWith(
-                          color: Assets.colors.brownishGrey,
+                          color: MoralarColors.brownishGrey,
                         ),
                         noFlexible: true,
                       ),
@@ -446,14 +453,14 @@ class PropertyCard extends StatelessWidget {
                   ),
                   const SizedBox(height: 8),
                   rowWidgetText(
-                    Icon(
+                    const Icon(
                       FontAwesomeIcons.users,
                       size: 16,
-                      color: Assets.colors.brownishGrey,
+                      color: MoralarColors.brownishGrey,
                     ),
                     '20 famílias interessadas',
                     textTheme.bodyText1?.copyWith(
-                      color: Assets.colors.brownishGrey,
+                      color: MoralarColors.brownishGrey,
                     ),
                   ),
                   const SizedBox(height: 16),

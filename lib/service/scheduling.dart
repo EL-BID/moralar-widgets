@@ -17,13 +17,13 @@ class Scheduling {
 
   static Color statusColor(int status) {
     if (status == 0) {
-      return Assets.colors.kellyGreen;
+      return MoralarColors.kellyGreen;
     } else if (status == 1) {
-      return Assets.colors.orangeYellow;
+      return MoralarColors.orangeYellow;
     } else if (status == 2) {
-      return Assets.colors.strawberry;
+      return MoralarColors.strawberry;
     } else if (status == 3) {
-      return Assets.colors.brownGrey;
+      return MoralarColors.brownGrey;
     } else {
       return Colors.white;
     }

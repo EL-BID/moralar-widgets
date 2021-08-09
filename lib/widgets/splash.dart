@@ -43,7 +43,7 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Assets.colors.veryLightPink,
+      color: MoralarColors.veryLightPink,
       alignment: Alignment.center,
       padding: const EdgeInsets.symmetric(horizontal: 48),
       child: MoralarImage.asset(Assets.images.appLogo),

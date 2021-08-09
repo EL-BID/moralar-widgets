@@ -13,9 +13,9 @@ class Quiz {
 
   static Color statusColor(int status) {
     if (status == 0) {
-      return Assets.colors.kellyGreen;
+      return MoralarColors.kellyGreen;
     } else if (status == 1) {
-      return Assets.colors.strawberry;
+      return MoralarColors.strawberry;
     } else {
       return Colors.white;
     }

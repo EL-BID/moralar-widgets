@@ -17,7 +17,7 @@ AlertDialog subscribeAlert(TextTheme textTheme) {
         Text(
           'Inscrição Confirmada',
           style: textTheme.headline1?.copyWith(
-            color: Assets.colors.kellyGreen,
+            color: MoralarColors.kellyGreen,
           ),
         ),
         const SizedBox(height: 16),

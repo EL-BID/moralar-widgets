@@ -11,7 +11,7 @@ class YesOrNotRadio extends StatelessWidget {
     return Row(
       children: [
         Radio(
-          activeColor: Assets.colors.veryLightPink,
+          activeColor: MoralarColors.veryLightPink,
           value: 0,
           groupValue: value,
           onChanged: function,
@@ -21,7 +21,7 @@ class YesOrNotRadio extends StatelessWidget {
           style: textTheme.headline5,
         ),
         Radio(
-          activeColor: Assets.colors.veryLightPink,
+          activeColor: MoralarColors.veryLightPink,
           value: 1,
           groupValue: value,
           onChanged: function,
