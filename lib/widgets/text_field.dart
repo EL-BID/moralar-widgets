@@ -53,10 +53,10 @@ class MoralarTextField extends StatelessWidget {
   }
 }
 
-class RowTextField extends StatelessWidget {
+class WrappedTextField extends StatelessWidget {
   final List<Widget> textFields;
 
-  const RowTextField({
+  const WrappedTextField({
     required this.textFields,
   });
 

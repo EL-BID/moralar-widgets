@@ -1,10 +1,11 @@
 part of moralar_widgets;
 
-class DefaultButton extends StatelessWidget {
+class MoralarButton extends StatelessWidget {
   final Color? color;
   final Widget child;
   final Function()? function;
-  const DefaultButton({required this.child, this.function, this.color});
+
+  const MoralarButton({required this.child, this.function, this.color});
 
   @override
   Widget build(BuildContext context) {
@@ -21,11 +22,12 @@ class DefaultButton extends StatelessWidget {
   }
 }
 
-class OutButton extends StatelessWidget {
+class MoralarOutlinedButton extends StatelessWidget {
   final Color? color;
   final Widget child;
   final Function()? function;
-  const OutButton({required this.child, this.function, this.color});
+
+  const MoralarOutlinedButton({required this.child, this.function, this.color});
 
   @override
   Widget build(BuildContext context) {

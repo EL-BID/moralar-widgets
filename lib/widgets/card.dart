@@ -36,12 +36,12 @@ class ActivityCard extends StatelessWidget {
   }
 }
 
-class DefaultCard extends StatelessWidget {
+class MoralarCard extends StatelessWidget {
   final int status;
   final Function()? function;
   final bool isQuiz;
 
-  const DefaultCard(
+  const MoralarCard(
       {required this.status, required this.isQuiz, this.function});
 
   @override

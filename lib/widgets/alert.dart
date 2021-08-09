@@ -30,7 +30,7 @@ AlertDialog subscribeAlert(TextTheme textTheme) {
       textAlign: TextAlign.center,
     ),
     actions: [
-      DefaultButton(
+      MoralarButton(
         function: () {
           Get.back();
         },

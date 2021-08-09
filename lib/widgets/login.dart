@@ -65,7 +65,7 @@ class LoginView extends GetView<LoginController> {
                   const SizedBox(height: 32),
                   Obx(() {
                     final checked = controller.checked.value;
-                    return DefaultButton(
+                    return MoralarButton(
                       function: () {
                         if (checked) {
                           if (_cpfFormKey.currentState!.validate()) {
@@ -153,7 +153,7 @@ class LoginView extends GetView<LoginController> {
                     isPassword: true,
                   ),
                   const SizedBox(height: 128),
-                  DefaultButton(
+                  MoralarButton(
                     function: () {
                       if (_passwordFormKey.currentState!.validate()) {
                         print('validado');
@@ -170,7 +170,7 @@ class LoginView extends GetView<LoginController> {
                     ),
                   ),
                   const SizedBox(height: 32),
-                  OutButton(
+                  MoralarOutlinedButton(
                     color: Theme.of(context).focusColor,
                     // function: () => Get.toNamed(Routes.),
                     child: Row(
