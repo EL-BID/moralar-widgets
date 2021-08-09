@@ -23,7 +23,6 @@ class MoralarTextField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final textTheme = Theme.of(context).textTheme;
     return TextFormField(
       decoration: InputDecoration(
         labelText: label ?? '',

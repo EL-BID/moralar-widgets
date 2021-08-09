@@ -32,6 +32,10 @@ ThemeData makeAppTheme() {
       color: Assets.colors.veryLightPink,
       fontWeight: FontWeight.normal,
     ),
+    headline6: TextStyle(
+      fontSize: 20,
+      color: Assets.colors.waterBlue,
+    ),
     bodyText1: const TextStyle(
       fontSize: 14,
       color: textColor,
