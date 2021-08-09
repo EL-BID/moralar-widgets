@@ -1,6 +1,6 @@
 part of moralar_widgets;
 
-ThemeData makeAppTheme() {
+ThemeData get moralarTheme {
   const primaryColor = Color(0xFFfb2a47);
   const secondaryColor = Color(0xFF1950ef);
   const textColor = Color(0xFFb2b2b2);
