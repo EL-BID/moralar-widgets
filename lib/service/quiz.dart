@@ -25,10 +25,12 @@ class Quiz {
 class QuizHeader extends StatelessWidget {
   final int quizLength;
   final int number;
+  final bool onlyAnswer;
 
   const QuizHeader({
     required this.quizLength,
     required this.number,
+    this.onlyAnswer = false,
   });
 
   @override
@@ -63,7 +65,111 @@ class QuizHeader extends StatelessWidget {
           'TEXTONTEXTONTEXTONT EXTOTEXTONTEXTON TEXTONTEXTOTEXT ONTETONTEXTOTEXTONT EXTONTEXTON TEXTOTEXTONTEXTONTEXTONTEXTOTEXTONTEXTONTEXTONTEXTO',
           style: textTheme.headline6,
         ),
-        const SizedBox(height: 16),
+        Visibility(
+          visible: onlyAnswer,
+          child: Column(
+            children: [
+              const SizedBox(height: 32),
+              Text(
+                '* Escolha apenas uma alternativa',
+                style: textTheme.headline6?.copyWith(
+                  color: Assets.colors.brownishGrey,
+                  fontSize: 18,
+                ),
+              )
+            ],
+          ),
+        ),
+        const SizedBox(height: 64),
+      ],
+    );
+  }
+}
+
+class OpenQuestion extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    final textTheme = Theme.of(context).textTheme;
+    return Container(
+      alignment: Alignment.center,
+      child: MoralarTextField(
+        color: Assets.colors.waterBlue,
+        style: textTheme.bodyText1,
+        maxLines: 10,
+      ),
+    );
+  }
+}
+
+class ListQuestion extends StatelessWidget {
+  final int index;
+  final List<String> answers;
+  final Function(String?)? onChanged;
+  const ListQuestion({
+    required this.index,
+    required this.answers,
+    this.onChanged,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final textTheme = Theme.of(context).textTheme;
+    return DropdownButton<String>(
+      value: answers[index],
+      icon: const Icon(FontAwesomeIcons.angleDown),
+      elevation: 16,
+      style: textTheme.bodyText1,
+      underline: Container(
+        height: 2,
+        color: Assets.colors.waterBlue,
+      ),
+      isExpanded: true,
+      onChanged: onChanged!,
+      items: answers.map<DropdownMenuItem<String>>((value) {
+        return DropdownMenuItem<String>(
+          value: value,
+          child: Text(value),
+        );
+      }).toList(),
+    );
+  }
+}
+
+class CloseQuestion extends StatelessWidget {
+  final int questionIndex;
+  final List<String> answers;
+  final Function(int?)? onChanged;
+  const CloseQuestion({
+    required this.questionIndex,
+    required this.answers,
+    this.onChanged,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final textTheme = Theme.of(context).textTheme;
+    return Column(
+      children: [
+        GridView.builder(
+            gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
+              maxCrossAxisExtent: 200,
+              childAspectRatio: 2,
+              crossAxisSpacing: 20,
+            ),
+            shrinkWrap: true,
+            itemCount: answers.length,
+            itemBuilder: (context, index) {
+              return RadioListTile(
+                value: index,
+                groupValue: questionIndex,
+                onChanged: onChanged!,
+                contentPadding: EdgeInsets.zero,
+                title: Text(
+                  answers[index],
+                  style: textTheme.bodyText2,
+                ),
+              );
+            }),
       ],
     );
   }
