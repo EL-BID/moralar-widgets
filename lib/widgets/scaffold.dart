@@ -7,6 +7,7 @@ class DefaultScaffold extends StatelessWidget {
   final Widget? actions;
   final double? elevation;
   final Color? color;
+  final Color? backgroundColor;
   const DefaultScaffold({
     required this.body,
     this.title,
@@ -14,6 +15,7 @@ class DefaultScaffold extends StatelessWidget {
     this.actions,
     this.elevation,
     this.color,
+    this.backgroundColor,
   });
 
   @override
@@ -41,7 +43,7 @@ class DefaultScaffold extends StatelessWidget {
             ),
         actions: [actions ?? Container()],
       ),
-      backgroundColor: Colors.white,
+      backgroundColor: backgroundColor ?? Colors.white,
       body: body,
     );
   }

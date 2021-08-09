@@ -22,6 +22,7 @@ part 'widgets/card.dart';
 part 'widgets/checkbox.dart';
 part 'widgets/login.dart';
 part 'widgets/picker.dart';
+part 'widgets/radio.dart';
 part 'widgets/scaffold.dart';
 part 'widgets/splash.dart';
 part 'widgets/status.dart';
