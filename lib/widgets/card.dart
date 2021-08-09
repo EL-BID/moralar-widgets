@@ -55,7 +55,7 @@ class DefaultCard extends StatelessWidget {
       onTap: function ?? () {},
       child: Container(
         margin: const EdgeInsets.only(bottom: 24),
-        height: isQuiz ? 116 : 140,
+        height: isQuiz ? 124 : 164,
         width: double.infinity,
         decoration: BoxDecoration(
           color: Colors.white,
@@ -83,35 +83,36 @@ class DefaultCard extends StatelessWidget {
                       ),
                     ),
                     const SizedBox(height: 8),
-                    rowWidgetText(
-                      const Icon(
+                    MegaListTile(
+                      title: '26/09/2020',
+                      leading: const Icon(
                         FontAwesomeIcons.calendar,
                         size: 16,
                         color: brownGrey,
                       ),
-                      '26/09/2020',
-                      textTheme.bodyText1,
+                      style: textTheme.bodyText1,
                     ),
                     Visibility(
                       visible: !isQuiz,
                       child: Column(
                         children: [
                           const SizedBox(height: 8),
-                          rowWidgetText(
-                            const Icon(
+                          MegaListTile(
+                            title: '14:30hrs',
+                            leading: const Icon(
                               FontAwesomeIcons.clock,
                               size: 16,
                               color: brownGrey,
                             ),
-                            '14:30hrs',
-                            textTheme.bodyText1,
+                            style: textTheme.bodyText1,
                           ),
                         ],
                       ),
                     ),
-                    const SizedBox(height: 16),
-                    rowWidgetText(
-                      Container(
+                    const SizedBox(height: 8),
+                    MegaListTile(
+                      title: currentText,
+                      leading: Container(
                         width: 16,
                         height: 16,
                         alignment: Alignment.center,
@@ -120,8 +121,7 @@ class DefaultCard extends StatelessWidget {
                           shape: BoxShape.circle,
                         ),
                       ),
-                      currentText,
-                      textTheme.bodyText2,
+                      style: textTheme.bodyText2,
                     ),
                   ],
                 ),
@@ -183,28 +183,28 @@ class FinalizedCard extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(height: 8),
-                  rowWidgetText(
-                    Icon(
+                  MegaListTile(
+                    title: '26/09/2020',
+                    leading: Icon(
                       FontAwesomeIcons.calendar,
                       size: 16,
                       color: Assets.colors.brownGrey,
                     ),
-                    '26/09/2020',
-                    textTheme.bodyText1,
+                    style: textTheme.bodyText1,
                   ),
-                  const SizedBox(height: 8),
-                  rowWidgetText(
-                    Icon(
+                  MegaListTile(
+                    title: '14:30hrs',
+                    leading: Icon(
                       FontAwesomeIcons.clock,
                       size: 16,
                       color: Assets.colors.brownGrey,
                     ),
-                    '14:30hrs',
-                    textTheme.bodyText1,
+                    style: textTheme.bodyText1,
                   ),
-                  const SizedBox(height: 16),
-                  rowWidgetText(
-                    Container(
+                  const SizedBox(height: 8),
+                  MegaListTile(
+                    title: currentText,
+                    leading: Container(
                       alignment: Alignment.center,
                       width: 16,
                       height: 16,
@@ -213,10 +213,9 @@ class FinalizedCard extends StatelessWidget {
                         shape: BoxShape.circle,
                       ),
                     ),
-                    currentText,
-                    textTheme.bodyText2,
+                    style: textTheme.bodyText2,
                   ),
-                  const SizedBox(height: 32),
+                  const SizedBox(height: 16),
                   Container(
                     alignment: Alignment.center,
                     child: Text(
@@ -289,27 +288,25 @@ class CourseCard extends StatelessWidget {
                       color: Assets.colors.kellyGreen,
                     ),
                   ),
-                  const SizedBox(height: 8),
-                  rowWidgetText(
-                    Icon(
+                  MegaListTile(
+                    title: isVideo ? '26/09/2020' : '26/09/2020 - 03/10/2020',
+                    leading: Icon(
                       FontAwesomeIcons.calendar,
                       size: 16,
                       color: Assets.colors.brownGrey,
                     ),
-                    isVideo ? '26/09/2020' : '26/09/2020 - 03/10/2020',
-                    textTheme.bodyText1,
+                    style: textTheme.bodyText1,
                   ),
-                  const SizedBox(height: 8),
                   Visibility(
                     visible: !isVideo,
-                    child: rowWidgetText(
-                      Icon(
+                    child: MegaListTile(
+                      title: '14:30hrs',
+                      leading: Icon(
                         FontAwesomeIcons.clock,
                         size: 16,
                         color: Assets.colors.brownGrey,
                       ),
-                      '14:30hrs',
-                      textTheme.bodyText1,
+                      style: textTheme.bodyText1,
                     ),
                   ),
                 ],
@@ -380,16 +377,16 @@ class PropertyCard extends StatelessWidget {
                     padding: const EdgeInsets.all(8),
                     child: Container(
                       alignment: Alignment.center,
-                      child: rowWidgetText(
-                        Icon(
+                      child: MegaListTile(
+                        title: isHouse ? 'Casa' : 'Apartamento',
+                        leading: Icon(
                           isHouse
                               ? FontAwesomeIcons.home
                               : FontAwesomeIcons.solidBuilding,
                           size: 16,
                           color: Assets.colors.brownishGrey,
                         ),
-                        isHouse ? 'Casa' : 'Apartamento',
-                        textTheme.bodyText1?.copyWith(
+                        style: textTheme.bodyText1?.copyWith(
                           color: Assets.colors.brownishGrey,
                         ),
                       ),
@@ -403,60 +400,59 @@ class PropertyCard extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  rowWidgetText(
-                    Icon(
+                  MegaListTile(
+                    title: 'Bela Vista',
+                    leading: Icon(
                       FontAwesomeIcons.mapMarkerAlt,
                       size: 16,
                       color: Assets.colors.brownishGrey,
                     ),
-                    'Bela Vista',
-                    textTheme.bodyText1?.copyWith(
+                    style: textTheme.bodyText1?.copyWith(
                       color: Assets.colors.brownishGrey,
                     ),
                   ),
-                  const SizedBox(height: 16),
                   Row(
                     children: [
-                      rowWidgetText(
-                        Icon(
-                          FontAwesomeIcons.ruler,
-                          size: 16,
-                          color: Assets.colors.brownishGrey,
+                      Expanded(
+                        child: MegaListTile(
+                          title: '120 m²',
+                          leading: Icon(
+                            FontAwesomeIcons.ruler,
+                            size: 16,
+                            color: Assets.colors.brownishGrey,
+                          ),
+                          style: textTheme.bodyText1?.copyWith(
+                            color: Assets.colors.brownishGrey,
+                          ),
                         ),
-                        '120 m²',
-                        textTheme.bodyText1?.copyWith(
-                          color: Assets.colors.brownishGrey,
-                        ),
-                        noFlexible: true,
                       ),
-                      const SizedBox(width: 32),
-                      rowWidgetText(
-                        Icon(
-                          FontAwesomeIcons.bed,
-                          size: 16,
-                          color: Assets.colors.brownishGrey,
+                      Expanded(
+                        child: MegaListTile(
+                          title: '2 quartos',
+                          leading: Icon(
+                            FontAwesomeIcons.bed,
+                            size: 16,
+                            color: Assets.colors.brownishGrey,
+                          ),
+                          style: textTheme.bodyText1?.copyWith(
+                            color: Assets.colors.brownishGrey,
+                          ),
                         ),
-                        '2 quartos',
-                        textTheme.bodyText1?.copyWith(
-                          color: Assets.colors.brownishGrey,
-                        ),
-                        noFlexible: true,
                       ),
                     ],
                   ),
                   const SizedBox(height: 8),
-                  rowWidgetText(
-                    Icon(
+                  MegaListTile(
+                    title: '20 famílias interessadas',
+                    leading: Icon(
                       FontAwesomeIcons.users,
                       size: 16,
                       color: Assets.colors.brownishGrey,
                     ),
-                    '20 famílias interessadas',
-                    textTheme.bodyText1?.copyWith(
+                    style: textTheme.bodyText1?.copyWith(
                       color: Assets.colors.brownishGrey,
                     ),
                   ),
-                  const SizedBox(height: 16),
                 ],
               ),
             ),
@@ -465,20 +461,4 @@ class PropertyCard extends StatelessWidget {
       ),
     );
   }
-}
-
-Widget rowWidgetText(Widget widget, String text, TextStyle? style,
-    {bool? noFlexible}) {
-  return Row(
-    crossAxisAlignment: CrossAxisAlignment.start,
-    children: [
-      widget,
-      const SizedBox(width: 8),
-      Visibility(
-        visible: noFlexible ?? false,
-        child: Text(text, style: style),
-        replacement: Flexible(child: Text(text, style: style)),
-      ),
-    ],
-  );
 }
