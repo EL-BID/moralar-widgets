@@ -10,17 +10,19 @@ class MoralarTextField extends StatelessWidget {
   final int? maxLenght;
   final TextStyle? style;
   final Color? color;
-
-  const MoralarTextField(
-      {this.label,
-      this.hint,
-      this.keyboard,
-      this.formats,
-      this.validators,
-      this.isPassword,
-      this.maxLenght,
-      this.style,
-      this.color});
+  final int? maxLines;
+  const MoralarTextField({
+    this.label,
+    this.hint,
+    this.keyboard,
+    this.formats,
+    this.validators,
+    this.isPassword,
+    this.maxLenght,
+    this.style,
+    this.color,
+    this.maxLines,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -42,6 +44,9 @@ class MoralarTextField extends StatelessWidget {
         hintStyle: style,
         labelStyle: style,
       ),
+      maxLines: maxLines,
+      minLines: 1,
+      textInputAction: TextInputAction.done,
       style: style,
       maxLength: maxLenght,
       keyboardType: keyboard,
@@ -53,10 +58,10 @@ class MoralarTextField extends StatelessWidget {
   }
 }
 
-class WrappedTextField extends StatelessWidget {
+class RowTextField extends StatelessWidget {
   final List<Widget> textFields;
 
-  const WrappedTextField({
+  const RowTextField({
     required this.textFields,
   });
 

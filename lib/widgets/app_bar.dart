@@ -19,20 +19,21 @@ class MoralarAppBar extends StatelessWidget implements PreferredSizeWidget {
 
   @override
   Widget build(BuildContext context) {
+    final textTheme = Theme.of(context).textTheme;
     return AppBar(
       elevation: elevation,
       backgroundColor: backgroundColor,
       centerTitle: true,
       title: Text(
         titleText,
-        style: titleStyle ?? moralarTheme.textTheme.headline1,
+        style: titleStyle ?? textTheme.headline1,
       ),
       leading: leading ??
           IconButton(
             icon: Icon(
               FontAwesomeIcons.angleLeft,
               color:
-                  backgroundColor == Colors.white ? Colors.black : Colors.white,
+              backgroundColor == Colors.white ? Colors.black : Colors.white,
             ),
             onPressed: Get.back,
           ),

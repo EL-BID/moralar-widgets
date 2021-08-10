@@ -16,9 +16,9 @@ class MoralarDrawer extends StatelessWidget {
       appBar: MoralarAppBar(
         backgroundColor: Colors.transparent,
         titleText: 'Menu',
-        titleStyle: moralarTheme.textTheme.headline1!.copyWith(
-          color: Colors.white,
-        ),
+        titleStyle: Theme.of(context).textTheme.headline1!.copyWith(
+              color: Colors.white,
+            ),
         leading: IconButton(
           icon: const Icon(
             Icons.close,

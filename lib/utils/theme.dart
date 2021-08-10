@@ -1,11 +1,12 @@
 part of moralar_widgets;
 
-ThemeData get moralarTheme {
+ThemeData makeAppTheme() {
   const primaryColor = Color(0xFFfb2a47);
   const secondaryColor = Color(0xFF1950ef);
   const textColor = Color(0xFFb2b2b2);
   const secondaryTextColor = Color(0xFF606060);
   const dividerColor = Color(0xFFCCCCCC);
+
   const textTheme = TextTheme(
     headline1: TextStyle(
       fontSize: 18,
@@ -30,6 +31,10 @@ ThemeData get moralarTheme {
       fontSize: 16,
       color: MoralarColors.veryLightPink,
       fontWeight: FontWeight.normal,
+    ),
+    headline6: TextStyle(
+      fontSize: 20,
+      color: MoralarColors.waterBlue,
     ),
     bodyText1: TextStyle(
       fontSize: 14,
