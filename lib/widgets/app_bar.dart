@@ -26,7 +26,11 @@ class MoralarAppBar extends StatelessWidget implements PreferredSizeWidget {
       centerTitle: true,
       title: Text(
         titleText,
-        style: titleStyle ?? textTheme.headline1,
+        style: titleStyle ??
+            textTheme.headline1?.copyWith(
+              color:
+                  backgroundColor == Colors.white ? Colors.black : Colors.white,
+            ),
       ),
       leading: leading ??
           IconButton(
