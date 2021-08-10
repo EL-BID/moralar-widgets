@@ -33,7 +33,7 @@ class MoralarAppBar extends StatelessWidget implements PreferredSizeWidget {
             icon: Icon(
               FontAwesomeIcons.angleLeft,
               color:
-              backgroundColor == Colors.white ? Colors.black : Colors.white,
+                  backgroundColor == Colors.white ? Colors.black : Colors.white,
             ),
             onPressed: Get.back,
           ),

@@ -7,7 +7,7 @@ class MoralarScaffold extends StatelessWidget {
 
   const MoralarScaffold({
     this.body = const SizedBox.shrink(),
-    this.backgroundColor = MoralarColors.veryLightPink,
+    this.backgroundColor = Colors.white,
     this.appBar = const MoralarAppBar(),
   });
 
