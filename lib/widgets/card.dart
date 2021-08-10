@@ -367,7 +367,7 @@ class PropertyCard extends StatelessWidget {
                   ),
                 ),
                 Positioned(
-                  width: isHouse ? 80 : 140,
+                  width: isHouse ? 80 : 132,
                   top: 16,
                   left: 24,
                   child: Container(
@@ -381,7 +381,7 @@ class PropertyCard extends StatelessWidget {
                         ),
                       ],
                     ),
-                    padding: const EdgeInsets.all(8),
+                    padding: const EdgeInsets.symmetric(horizontal: 8),
                     alignment: Alignment.center,
                     child: MegaListTile(
                       title: isHouse ? 'Casa' : 'Apartamento',
