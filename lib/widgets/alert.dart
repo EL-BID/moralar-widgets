@@ -31,7 +31,7 @@ AlertDialog subscribeAlert(TextTheme textTheme) {
     ),
     actions: [
       MoralarButton(
-        function: () {
+        onPressed: () {
           Get.back();
         },
         child: Container(

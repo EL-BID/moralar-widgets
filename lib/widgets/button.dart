@@ -3,14 +3,18 @@ part of moralar_widgets;
 class MoralarButton extends StatelessWidget {
   final Color? color;
   final Widget child;
-  final Function()? function;
+  final VoidCallback onPressed;
 
-  const MoralarButton({required this.child, this.function, this.color});
+  const MoralarButton({
+    required this.child,
+    required this.onPressed,
+    this.color,
+  });
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: function ?? () {},
+      onTap: onPressed,
       child: Container(
         padding: const EdgeInsets.all(8),
         height: 48,

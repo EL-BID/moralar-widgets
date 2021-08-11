@@ -64,7 +64,7 @@ class LoginView extends GetView<LoginController> {
                   Obx(() {
                     final checked = controller.checked.value;
                     return MoralarButton(
-                      function: () {
+                      onPressed: () {
                         if (checked) {
                           if (_cpfFormKey.currentState!.validate()) {
                             print('validado');
@@ -157,7 +157,7 @@ class LoginView extends GetView<LoginController> {
                   ),
                   const SizedBox(height: 128),
                   MoralarButton(
-                    function: () {
+                    onPressed: () {
                       if (_passwordFormKey.currentState!.validate()) {
                         _passwordFormKey.currentState!.save();
                         controller.signIn();
