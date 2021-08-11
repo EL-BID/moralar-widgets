@@ -45,8 +45,24 @@ part 'widgets/text_field.dart';
 part 'widgets/text_span.dart';
 
 class MoralarWidgets {
-  static Future<void> initialize() => MegaFlutter.initialize(
-        baseUrl: 'https://apidev.megaleios.com/ApiMoralarDev/api/v1',
-        authProvider: AuthProvider(),
-      );
+  static late final MoralarWidgets instance;
+
+  /// Indica qual tipo de usuário está usando o app.
+  final UserType userType;
+
+  MoralarWidgets._({
+    required this.userType,
+  });
+
+  static Future<void> initialize({
+    required UserType userType,
+  }) async {
+    await MegaFlutter.initialize(
+      baseUrl: 'https://apidev.megaleios.com/ApiMoralarDev/api/v1',
+      authProvider: AuthProvider(),
+    );
+    instance = MoralarWidgets._(
+      userType: userType,
+    );
+  }
 }

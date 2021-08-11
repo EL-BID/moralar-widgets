@@ -1,17 +1,13 @@
 part of moralar_widgets;
 
 class LoginView extends GetView<LoginController> {
-  final bool isProfissional;
-
-  const LoginView({required this.isProfissional});
-
   @override
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
     final _cpfFormKey = GlobalKey<FormState>();
     final _passwordFormKey = GlobalKey<FormState>();
     final pageController = PageController(
-      initialPage: isProfissional ? 1 : 0,
+      initialPage: MoralarWidgets.instance.userType == UserType.tts ? 1 : 0,
     );
 
     _cpfLogin() {
@@ -101,7 +97,7 @@ class LoginView extends GetView<LoginController> {
       return MoralarScaffold(
         appBar: MoralarAppBar(
           titleText: 'Login',
-          leading: isProfissional
+          leading: MoralarWidgets.instance.userType == UserType.tts
               ? Container()
               : IconButton(
                   icon: const Icon(
@@ -129,7 +125,7 @@ class LoginView extends GetView<LoginController> {
                   ),
                   const SizedBox(height: 128),
                   Visibility(
-                    visible: isProfissional,
+                    visible: MoralarWidgets.instance.userType == UserType.tts,
                     child: MoralarTextField(
                       label: 'CPF',
                       hint: '123.123.123.-12',
@@ -165,9 +161,6 @@ class LoginView extends GetView<LoginController> {
                     function: () {
                       if (_passwordFormKey.currentState!.validate()) {
                         _passwordFormKey.currentState!.save();
-                        if (isProfissional) {
-                          controller.credentials.userType = UserType.tts;
-                        }
                         controller.signIn();
                       }
                     },
@@ -227,7 +220,7 @@ class LoginView extends GetView<LoginController> {
 
   Widget _pageController(bool isFirstPage) {
     return Visibility(
-      visible: !isProfissional,
+      visible: MoralarWidgets.instance.userType == UserType.resident,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [

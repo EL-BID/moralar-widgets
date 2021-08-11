@@ -4,16 +4,20 @@ class AuthProvider extends AuthRemoteProvider {
   @override
   Future<AuthToken> authenticate(Credentials credentials) async {
     credentials as DocumentCredentials;
-    final body = {
-      'cpf': credentials.cpf,
-      'password': credentials.password,
-      'typeProvider': 0,
-    };
-    if (credentials.userType == UserType.tts) {
+    late String endpoint;
+    final body = {'password': credentials.password, 'typeProvider': 0};
+
+    if (MoralarWidgets.instance.userType == UserType.resident) {
+      endpoint = Urls.resident.token;
+      body.addAll({'holderCpf': credentials.cpf});
+    } else if (MoralarWidgets.instance.userType == UserType.tts) {
+      endpoint = Urls.tts.token;
+      body.addAll({'cpf': credentials.cpf});
       body.addAll({'typeUserProfile': 1});
     }
+
     try {
-      final response = await post(Urls.profile.token, body: body);
+      final response = await post(endpoint, body: body);
       return AuthToken.fromResponse(response);
     } on MegaResponseException catch (e) {
       print(e.message);
@@ -23,22 +27,24 @@ class AuthProvider extends AuthRemoteProvider {
 
   @override
   Future<User> findUser(AuthToken token) async {
+    final endpoint = MoralarWidgets.instance.userType == UserType.resident
+        ? Urls.resident.token
+        : Urls.tts.token;
     final response = await get(
-      Urls.profile.getInfo,
-      headers: {
-        'Authorization': 'Bearer ${token.accessToken.toString()}',
-      },
+      endpoint,
+      headers: {'Authorization': 'Bearer ${token.accessToken.toString()}'},
     );
     return MoralarUser.fromJson(response.data)..token = token;
   }
 
   @override
   Future<AuthToken> reauthenticate(AuthToken token) async {
+    final endpoint = MoralarWidgets.instance.userType == UserType.resident
+        ? Urls.resident.token
+        : Urls.tts.token;
     final response = await post(
-      Urls.profile.token,
-      body: {
-        'refreshToken': token.refreshToken.toString(),
-      },
+      endpoint,
+      body: {'refreshToken': token.refreshToken.toString()},
     );
     return AuthToken.fromResponse(response);
   }
