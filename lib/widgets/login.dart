@@ -36,7 +36,7 @@ class LoginView extends GetView<LoginController> {
                   const SizedBox(height: 128),
                   MoralarTextField(
                     label: 'CPF',
-                    hint: '123.123.123.-12',
+                    hint: '123.123.123-12',
                     formats: [Formats.cpfMaskFormatter],
                     keyboard: TextInputType.number,
                     validators: [
@@ -142,7 +142,7 @@ class LoginView extends GetView<LoginController> {
                       onSaved: (cpf) {
                         cpf = cpf!.replaceAll('.', '');
                         cpf = cpf.replaceAll('-', '');
-                        controller.login.cpf = cpf;
+                        controller.credentials.cpf = cpf;
                       },
                     ),
                   ),
@@ -157,7 +157,7 @@ class LoginView extends GetView<LoginController> {
                     ],
                     // isPassword: true,
                     onSaved: (password) {
-                      controller.login.password = password!;
+                      controller.credentials.password = password!;
                     },
                   ),
                   const SizedBox(height: 128),
@@ -165,11 +165,10 @@ class LoginView extends GetView<LoginController> {
                     function: () {
                       if (_passwordFormKey.currentState!.validate()) {
                         _passwordFormKey.currentState!.save();
-                        print(controller.login.cpf);
-                        print(controller.login.password);
+                        if (isProfissional) {
+                          controller.credentials.userType = UserType.tts;
+                        }
                         controller.signIn();
-                      } else {
-                        print('não validado');
                       }
                     },
                     child: Container(
