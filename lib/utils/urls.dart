@@ -1,12 +1,12 @@
 part of moralar_widgets;
 
 class Urls {
-  static _ProfileUrls get resident => _ProfileUrls();
+  static _ResidentUrls get resident => _ResidentUrls();
 
   static _TTSUrls get tts => _TTSUrls();
 }
 
-class _ProfileUrls {
+class _ResidentUrls {
   final token = '/Family/Token';
   final getInfo = '/Family/GetInfo';
 }
