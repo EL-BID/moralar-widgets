@@ -39,6 +39,8 @@ class LoginView extends GetView<LoginController> {
                       Validatorless.cpf('CPF Inválido'),
                       Validatorless.required('Preencha esse campo'),
                     ],
+                    onSaved: (input) =>
+                        controller.credentials.cpf = _unmaskCpf(input!),
                   ),
                   const SizedBox(height: 128),
                   Container(
@@ -128,18 +130,15 @@ class LoginView extends GetView<LoginController> {
                     visible: MoralarWidgets.instance.userType == UserType.tts,
                     child: MoralarTextField(
                       label: 'CPF',
-                      hint: '123.123.123.-12',
+                      hint: '123.123.123-12',
                       formats: [Formats.cpfMaskFormatter],
                       keyboard: TextInputType.number,
                       validators: [
                         Validatorless.cpf('CPF Inválido'),
                         Validatorless.required('Preencha esse campo'),
                       ],
-                      onSaved: (cpf) {
-                        cpf = cpf!.replaceAll('.', '');
-                        cpf = cpf.replaceAll('-', '');
-                        controller.credentials.cpf = cpf;
-                      },
+                      onSaved: (cpf) =>
+                          controller.credentials.cpf = _unmaskCpf(cpf!),
                     ),
                   ),
                   MoralarTextField(
@@ -249,4 +248,7 @@ class LoginView extends GetView<LoginController> {
       ),
     );
   }
+
+  String _unmaskCpf(String cpf) =>
+      cpf.trim().replaceAll('.', '')..replaceFirst('-', '');
 }
