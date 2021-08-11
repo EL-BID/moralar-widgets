@@ -599,3 +599,99 @@ class InformativeCard extends StatelessWidget {
     );
   }
 }
+
+class NotifcationCard extends StatelessWidget {
+  final bool isRead;
+  final Function()? function;
+
+  const NotifcationCard({required this.isRead, this.function});
+
+  @override
+  Widget build(BuildContext context) {
+    final textTheme = Theme.of(context).textTheme;
+
+    return InkWell(
+      onTap: function ?? () {},
+      child: Container(
+        margin: const EdgeInsets.only(bottom: 24),
+        height: 164,
+        width: double.infinity,
+        decoration: BoxDecoration(
+          color: Colors.white,
+          boxShadow: [
+            BoxShadow(
+              color: Colors.grey.withOpacity(0.7),
+              // spreadRadius: 1,
+              blurRadius: 3,
+              offset: const Offset(0, 3),
+            ),
+          ],
+        ),
+        child: Row(
+          children: [
+            Expanded(
+              child: Container(
+                padding: const EdgeInsets.only(right: 16, left: 16, top: 16),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      'Notificação',
+                      style: textTheme.headline1?.copyWith(
+                        color: isRead
+                            ? MoralarColors.brownGrey
+                            : MoralarColors.kellyGreen,
+                      ),
+                    ),
+                    const SizedBox(height: 8),
+                    Expanded(
+                      child: Text(
+                        // ignore: lines_longer_than_80_chars
+                        'Lorem ipsum dolor sit amet, consectetur  adipiscing elit, sed do eiusmod tempor  incididunt ut labore et dolore magna aliqua.',
+                        style: textTheme.bodyText1,
+                      ),
+                    ),
+                    Row(
+                      children: [
+                        Expanded(
+                          flex: 2,
+                          child: MegaListTile(
+                            title: '26/09/2020',
+                            leading: const Icon(
+                              FontAwesomeIcons.calendar,
+                              size: 16,
+                              color: MoralarColors.brownGrey,
+                            ),
+                            style: textTheme.bodyText1,
+                          ),
+                        ),
+                        Expanded(
+                          flex: 3,
+                          child: MegaListTile(
+                            title: '14:30hrs',
+                            leading: const Icon(
+                              FontAwesomeIcons.clock,
+                              size: 16,
+                              color: MoralarColors.brownGrey,
+                            ),
+                            style: textTheme.bodyText1,
+                          ),
+                        ),
+                      ],
+                    ),
+                    const SizedBox(height: 8),
+                  ],
+                ),
+              ),
+            ),
+            Container(
+              color:
+                  isRead ? MoralarColors.brownGrey : MoralarColors.kellyGreen,
+              width: 24,
+            )
+          ],
+        ),
+      ),
+    );
+  }
+}

@@ -139,6 +139,11 @@ class LoginView extends GetView<LoginController> {
                         Validatorless.cpf('CPF Inválido'),
                         Validatorless.required('Preencha esse campo'),
                       ],
+                      onSaved: (cpf) {
+                        cpf = cpf!.replaceAll('.', '');
+                        cpf = cpf.replaceAll('-', '');
+                        controller.login.cpf = cpf;
+                      },
                     ),
                   ),
                   MoralarTextField(
@@ -150,13 +155,19 @@ class LoginView extends GetView<LoginController> {
                           6, 'A senha precisa conter 6 caracteres'),
                       Validatorless.required('Preencha esse campo'),
                     ],
-                    isPassword: true,
+                    // isPassword: true,
+                    onSaved: (password) {
+                      controller.login.password = password!;
+                    },
                   ),
                   const SizedBox(height: 128),
                   MoralarButton(
                     function: () {
                       if (_passwordFormKey.currentState!.validate()) {
-                        print('validado');
+                        _passwordFormKey.currentState!.save();
+                        print(controller.login.cpf);
+                        print(controller.login.password);
+                        controller.signIn();
                       } else {
                         print('não validado');
                       }

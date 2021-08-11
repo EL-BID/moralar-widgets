@@ -14,9 +14,10 @@ dependencies:
   get: 4.3.4
   validatorless: ^1.2.0
   mega_flutter:
-    git:
-      url: git@github.com:megaleios-git/mega-flutter
-      ref: master
+    # git:
+    #   url: git@github.com:megaleios-git/mega-flutter
+    #   ref: master
+    path: '../mega-flutter'
   flutter:
     sdk: flutter
 

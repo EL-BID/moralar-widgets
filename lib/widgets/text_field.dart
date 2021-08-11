@@ -11,6 +11,7 @@ class MoralarTextField extends StatelessWidget {
   final TextStyle? style;
   final Color? color;
   final int? maxLines;
+  final Function(String?)? onSaved;
   const MoralarTextField({
     this.label,
     this.hint,
@@ -22,6 +23,7 @@ class MoralarTextField extends StatelessWidget {
     this.style,
     this.color,
     this.maxLines,
+    this.onSaved,
   });
 
   @override
@@ -54,6 +56,7 @@ class MoralarTextField extends StatelessWidget {
       validator: Validatorless.multiple(validators ?? []),
       obscureText: isPassword ?? false,
       obscuringCharacter: '*',
+      onSaved: onSaved,
     );
   }
 }

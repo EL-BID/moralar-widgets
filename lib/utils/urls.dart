@@ -6,4 +6,5 @@ class Urls {
 
 class _Profile {
   final login = '/api/v1/Profile/Token';
+  final getInfo = '/api/v1/Profile/GetInfo';
 }
