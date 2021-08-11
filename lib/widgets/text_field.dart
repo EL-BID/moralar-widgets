@@ -3,6 +3,7 @@ part of moralar_widgets;
 class MoralarTextField extends StatelessWidget {
   final String? label;
   final String? hint;
+  final TextEditingController? controller;
   final TextInputType? keyboard;
   final List<TextInputFormatter>? formats;
   final List<String? Function(String?)>? validators;
@@ -12,9 +13,11 @@ class MoralarTextField extends StatelessWidget {
   final Color? color;
   final int? maxLines;
   final Function(String?)? onSaved;
+  final bool? readOnly;
   const MoralarTextField({
     this.label,
     this.hint,
+    this.controller,
     this.keyboard,
     this.formats,
     this.validators,
@@ -24,6 +27,7 @@ class MoralarTextField extends StatelessWidget {
     this.color,
     this.maxLines,
     this.onSaved,
+    this.readOnly,
   });
 
   @override
@@ -46,7 +50,9 @@ class MoralarTextField extends StatelessWidget {
         hintStyle: style,
         labelStyle: style,
       ),
+      controller: controller,
       maxLines: maxLines ?? 1,
+      readOnly: readOnly ?? false,
       textInputAction: TextInputAction.done,
       style: style,
       maxLength: maxLenght,
