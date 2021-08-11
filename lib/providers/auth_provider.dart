@@ -1,6 +1,6 @@
 part of moralar_widgets;
 
-class AuthProvider implements AuthRemoteProvider {
+class AuthProvider extends AuthRemoteProvider {
   @override
   Future<AuthToken> authenticate(Credentials credentials) async {
     credentials as DocumentCredentials;
@@ -12,43 +12,34 @@ class AuthProvider implements AuthRemoteProvider {
     if (credentials.userType == UserType.tts) {
       body.addAll({'typeUserProfile': 1});
     }
-    final response = await MegaFlutter.instance.httpClient.post(
-      Urls.profile.token,
-      data: body,
-    );
-    final model = MegaResponse.fromJson(response.data);
-    return AuthToken(
-      accessToken: Jwt(model.data['access_token']),
-      refreshToken: Jwt(model.data['refresh_token']),
-    );
+    try {
+      final response = await post(Urls.profile.token, body: body);
+      return AuthToken.fromResponse(response);
+    } on MegaResponseException catch (e) {
+      print(e.message);
+      rethrow;
+    }
   }
 
   @override
   Future<User> findUser(AuthToken token) async {
-    final response = await MegaFlutter.instance.httpClient.get(
+    final response = await get(
       Urls.profile.getInfo,
-      options: Options(
-        headers: {
-          'Authorization': 'Bearer ${token.accessToken.toString()}',
-        },
-      ),
+      headers: {
+        'Authorization': 'Bearer ${token.accessToken.toString()}',
+      },
     );
-    final model = MegaResponse.fromJson(response.data);
-    return User.fromJson(model.data)..token = token;
+    return User.fromJson(response.data)..token = token;
   }
 
   @override
   Future<AuthToken> reauthenticate(AuthToken token) async {
-    final response = await MegaFlutter.instance.httpClient.post(
+    final response = await post(
       Urls.profile.token,
-      data: {
+      body: {
         'refreshToken': token.refreshToken.toString(),
       },
     );
-    final model = MegaResponse.fromJson(response.data);
-    return AuthToken(
-      accessToken: model.data['access_token'],
-      refreshToken: model.data['refresh_token'],
-    );
+    return AuthToken.fromResponse(response);
   }
 }
