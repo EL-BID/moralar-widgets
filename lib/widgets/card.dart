@@ -695,3 +695,126 @@ class NotifcationCard extends StatelessWidget {
     );
   }
 }
+
+class NotificationDetailsCard extends StatelessWidget {
+  final Function()? function;
+  final bool isRead;
+
+  const NotificationDetailsCard({this.function, required this.isRead});
+
+  @override
+  Widget build(BuildContext context) {
+    final textTheme = Theme.of(context).textTheme;
+
+    return InkWell(
+      onTap: function!,
+      child: Container(
+        margin: const EdgeInsets.only(bottom: 24),
+        width: double.infinity,
+        decoration: BoxDecoration(
+          color: Colors.white,
+          boxShadow: [
+            BoxShadow(
+              color: Colors.grey.withOpacity(0.7),
+              // spreadRadius: 1,
+              blurRadius: 3,
+              offset: const Offset(0, 3),
+            ),
+          ],
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Container(
+              height: 24,
+              width: double.infinity,
+              color:
+                  isRead ? MoralarColors.brownGrey : MoralarColors.kellyGreen,
+            ),
+            Container(
+              padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    'Notificação',
+                    style: textTheme.headline1?.copyWith(
+                      color: isRead
+                          ? MoralarColors.brownGrey
+                          : MoralarColors.kellyGreen,
+                    ),
+                  ),
+                  const SizedBox(height: 16),
+                  Text(
+                    // ignore: lines_longer_than_80_chars
+                    'Lorem ipsum dolor sit amet, consectetur  adipiscingelit, sed do eiusmod tempor  incididunt ut labore etdolore magna aliqua.',
+                    style: textTheme.bodyText1?.copyWith(
+                      color: MoralarColors.brownishGrey,
+                    ),
+                  ),
+                  Text(
+                    // ignore: lines_longer_than_80_chars
+                    'Lorem ipsum dolor sit amet, consectetur  adipiscingelit, sed do eiusmod tempor  incididunt ut labore etdolore magna aliqua.',
+                    style: textTheme.bodyText1?.copyWith(
+                      color: MoralarColors.brownishGrey,
+                    ),
+                  ),
+                  Text(
+                    // ignore: lines_longer_than_80_chars
+                    'Lorem ipsum dolor sit amet, consectetur  adipiscingelit, sed do eiusmod tempor  incididunt ut labore etdolore magna aliqua.',
+                    style: textTheme.bodyText1?.copyWith(
+                      color: MoralarColors.brownishGrey,
+                    ),
+                  ),
+                  const SizedBox(height: 32),
+                  Container(
+                    width: double.infinity,
+                    height: 180,
+                    child: Image.network(
+                      'https://picsum.photos/200',
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                  const SizedBox(height: 8),
+                  Row(
+                    children: [
+                      Expanded(
+                        flex: 2,
+                        child: MegaListTile(
+                          title: '26/09/2020',
+                          leading: const Icon(
+                            FontAwesomeIcons.calendar,
+                            size: 16,
+                            color: MoralarColors.brownishGrey,
+                          ),
+                          style: textTheme.bodyText1!.copyWith(
+                            color: MoralarColors.brownishGrey,
+                          ),
+                        ),
+                      ),
+                      Expanded(
+                        flex: 3,
+                        child: MegaListTile(
+                          title: '14:30hrs',
+                          leading: const Icon(
+                            FontAwesomeIcons.clock,
+                            size: 16,
+                            color: MoralarColors.brownishGrey,
+                          ),
+                          style: textTheme.bodyText1!.copyWith(
+                            color: MoralarColors.brownishGrey,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
