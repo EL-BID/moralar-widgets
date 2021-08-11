@@ -29,7 +29,7 @@ class AuthProvider extends AuthRemoteProvider {
         'Authorization': 'Bearer ${token.accessToken.toString()}',
       },
     );
-    return User.fromJson(response.data)..token = token;
+    return MoralarUser.fromJson(response.data)..token = token;
   }
 
   @override

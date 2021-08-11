@@ -6,7 +6,10 @@ class LoginController extends GetxController {
 
   LoginController() {
     MegaFlutter.instance.auth.userChanges.listen((user) {
+      user as MoralarUser?;
       print('usuário ${user != null ? 'autenticado' : 'não autenticado'}');
+      print(user?.token.refreshToken);
+      print(user?.document);
     });
   }
 
