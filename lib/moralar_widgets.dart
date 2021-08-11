@@ -18,6 +18,7 @@ part 'models/user.dart';
 part 'models/user_type.dart';
 part 'moralar_widgets.g.dart';
 part 'providers/auth_provider.dart';
+part 'service/family.dart';
 part 'service/quiz.dart';
 part 'service/scheduling.dart';
 part 'utils/assets.dart';
