@@ -154,10 +154,12 @@ packages:
   mega_flutter:
     dependency: transitive
     description:
-      path: "../../mega-flutter"
-      relative: true
-    source: path
-    version: "0.0.1"
+      path: "."
+      ref: "v0.1.1"
+      resolved-ref: f16448abdfc6f88567d17331e9f58a85b3a99c15
+      url: "git@github.com:megaleios-git/mega-flutter"
+    source: git
+    version: "0.1.1"
   meta:
     dependency: transitive
     description:
