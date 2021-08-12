@@ -12,12 +12,11 @@ import 'package:mega_flutter/mega_flutter.dart';
 import 'package:validatorless/validatorless.dart';
 
 part 'bindings/change_password_binding.dart';
-
 part 'bindings/login_binding.dart';
-
+part 'bindings/recovery_password_binding.dart';
 part 'controllers/change_password_controller.dart';
-
 part 'controllers/login_controller.dart';
+part 'controllers/recovery_password_controller.dart';
 part 'models/document_credentials.dart';
 part 'models/family_holder.dart';
 part 'models/tts.dart';
@@ -34,12 +33,10 @@ part 'utils/colors.dart';
 part 'utils/formats.dart';
 part 'utils/image.dart';
 part 'utils/theme.dart';
-
 part 'utils/urls.dart';
-
 part 'views/change_password_view.dart';
-
 part 'views/login_view.dart';
+part 'views/recovery_password_view.dart';
 part 'widgets/alert.dart';
 part 'widgets/app_bar.dart';
 part 'widgets/button.dart';
@@ -49,6 +46,7 @@ part 'widgets/drawer.dart';
 part 'widgets/drawer_header.dart';
 part 'widgets/drawer_list_tile.dart';
 part 'widgets/list_tile.dart';
+part 'widgets/page_controller.dart';
 part 'widgets/picker.dart';
 part 'widgets/radio.dart';
 part 'widgets/scaffold.dart';

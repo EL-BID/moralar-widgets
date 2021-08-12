@@ -55,7 +55,7 @@ class LoginView extends GetView<LoginController> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Obx(
-                              () => LoginCheckBox(
+                          () => LoginCheckBox(
                             checked: controller.checked.value,
                             function: () => controller.checked.value =
                                 !controller.checked.value,
@@ -86,7 +86,7 @@ class LoginView extends GetView<LoginController> {
                     );
                   }),
                   const SizedBox(height: 16),
-                  _pageController(true),
+                  const MoralarPageController(isFirstPage: true),
                 ],
               ),
             ),
@@ -210,7 +210,7 @@ class LoginView extends GetView<LoginController> {
                     ),
                   ),
                   const SizedBox(height: 16),
-                  _pageController(false),
+                  const MoralarPageController(isFirstPage: false),
                 ],
               ),
             ),
@@ -220,44 +220,12 @@ class LoginView extends GetView<LoginController> {
     }
 
     return PageView(
-      physics: const NeverScrollableScrollPhysics(),
+      // physics: const NeverScrollableScrollPhysics(),
       controller: pageController,
       children: [
         _cpfLogin(),
         _passwordLogin(),
       ],
-    );
-  }
-
-  Widget _pageController(bool isFirstPage) {
-    return Visibility(
-      visible: MoralarWidgets.instance.userType == UserType.family,
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Container(
-            height: 8,
-            width: 8,
-            decoration: BoxDecoration(
-              shape: BoxShape.circle,
-              color: isFirstPage
-                  ? MoralarColors.darkBlueGrey
-                  : MoralarColors.brownGrey,
-            ),
-          ),
-          const SizedBox(width: 16),
-          Container(
-            height: 8,
-            width: 8,
-            decoration: BoxDecoration(
-              shape: BoxShape.circle,
-              color: isFirstPage
-                  ? MoralarColors.brownGrey
-                  : MoralarColors.darkBlueGrey,
-            ),
-          ),
-        ],
-      ),
     );
   }
 
