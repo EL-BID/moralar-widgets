@@ -9,6 +9,7 @@ class Urls {
 class _FamilyUrls {
   final token = '/Family/Token';
   final getInfo = '/Family/GetUser';
+  final validateHolderCpf = '/Family/ExistCpf';
 }
 
 class _TTSUrls {

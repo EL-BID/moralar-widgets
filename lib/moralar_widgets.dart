@@ -18,22 +18,35 @@ part 'models/document_credentials.dart';
 part 'models/family_holder.dart';
 
 part 'models/tts.dart';
+
 part 'models/user.dart';
+
 part 'models/user_type.dart';
+
 part 'moralar_widgets.g.dart';
+
 part 'providers/auth_provider.dart';
+
+part 'providers/family_provider.dart';
+
 part 'service/family.dart';
+
 part 'service/quiz.dart';
+
 part 'service/scheduling.dart';
+
 part 'utils/assets.dart';
+
 part 'utils/colors.dart';
+
 part 'utils/formats.dart';
+
 part 'utils/image.dart';
+
 part 'utils/theme.dart';
+
 part 'utils/urls.dart';
-
 part 'views/login_view.dart';
-
 part 'widgets/alert.dart';
 part 'widgets/app_bar.dart';
 part 'widgets/button.dart';
