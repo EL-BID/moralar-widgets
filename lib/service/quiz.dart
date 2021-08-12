@@ -96,8 +96,9 @@ class OpenQuestion extends StatelessWidget {
       alignment: Alignment.center,
       child: MoralarTextField(
         color: MoralarColors.waterBlue,
-        style: textTheme.bodyText1,
-        maxLines: 10,
+        style: textTheme.bodyText2,
+        label: 'Responda aqui',
+        maxLines: 3,
       ),
     );
   }
