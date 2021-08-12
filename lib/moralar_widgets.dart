@@ -11,41 +11,34 @@ import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'package:mega_flutter/mega_flutter.dart';
 import 'package:validatorless/validatorless.dart';
 
+part 'bindings/change_password_binding.dart';
+
 part 'bindings/login_binding.dart';
+
+part 'controllers/change_password_controller.dart';
+
 part 'controllers/login_controller.dart';
 part 'models/document_credentials.dart';
-
 part 'models/family_holder.dart';
-
 part 'models/tts.dart';
-
 part 'models/user.dart';
-
 part 'models/user_type.dart';
-
 part 'moralar_widgets.g.dart';
-
 part 'providers/auth_provider.dart';
-
 part 'providers/family_provider.dart';
-
 part 'service/family.dart';
-
 part 'service/quiz.dart';
-
 part 'service/scheduling.dart';
-
 part 'utils/assets.dart';
-
 part 'utils/colors.dart';
-
 part 'utils/formats.dart';
-
 part 'utils/image.dart';
-
 part 'utils/theme.dart';
 
 part 'utils/urls.dart';
+
+part 'views/change_password_view.dart';
+
 part 'views/login_view.dart';
 part 'widgets/alert.dart';
 part 'widgets/app_bar.dart';
