@@ -29,6 +29,9 @@ part 'utils/formats.dart';
 part 'utils/image.dart';
 part 'utils/theme.dart';
 part 'utils/urls.dart';
+
+part 'views/login_view.dart';
+
 part 'widgets/alert.dart';
 part 'widgets/app_bar.dart';
 part 'widgets/button.dart';
@@ -38,7 +41,6 @@ part 'widgets/drawer.dart';
 part 'widgets/drawer_header.dart';
 part 'widgets/drawer_list_tile.dart';
 part 'widgets/list_tile.dart';
-part 'widgets/login.dart';
 part 'widgets/picker.dart';
 part 'widgets/radio.dart';
 part 'widgets/scaffold.dart';
