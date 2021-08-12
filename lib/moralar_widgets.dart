@@ -11,7 +11,9 @@ import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'package:mega_flutter/mega_flutter.dart';
 import 'package:validatorless/validatorless.dart';
 
+part 'bindings/change_password_binding.dart';
 part 'bindings/login_binding.dart';
+part 'controllers/change_password_controller.dart';
 part 'controllers/login_controller.dart';
 part 'models/document_credentials.dart';
 part 'models/resident.dart';
@@ -29,9 +31,8 @@ part 'utils/formats.dart';
 part 'utils/image.dart';
 part 'utils/theme.dart';
 part 'utils/urls.dart';
-
+part 'views/change_password_view.dart';
 part 'views/login_view.dart';
-
 part 'widgets/alert.dart';
 part 'widgets/app_bar.dart';
 part 'widgets/button.dart';
