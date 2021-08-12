@@ -65,15 +65,9 @@ class LoginView extends GetView<LoginController> {
                     final checked = controller.checked.value;
                     return MoralarButton(
                       onPressed: () {
-                        if (checked) {
-                          if (_cpfFormKey.currentState!.validate()) {
-                            print('validado');
-                            pageController.jumpToPage(1);
-                          } else {
-                            print('não validado');
-                          }
-                        } else {
-                          print('Verifique os termos de uso');
+                        if (checked && _cpfFormKey.currentState!.validate()) {
+                          _cpfFormKey.currentState!.save();
+                          pageController.jumpToPage(1);
                         }
                       },
                       child: Container(
@@ -147,10 +141,12 @@ class LoginView extends GetView<LoginController> {
                     keyboard: TextInputType.visiblePassword,
                     validators: [
                       Validatorless.min(
-                          6, 'A senha precisa conter 6 caracteres'),
+                        6,
+                        'A senha precisa conter 6 caracteres',
+                      ),
                       Validatorless.required('Preencha esse campo'),
                     ],
-                    // isPassword: true,
+                    isPassword: true,
                     onSaved: (password) {
                       controller.credentials.password = password!;
                     },
@@ -174,7 +170,6 @@ class LoginView extends GetView<LoginController> {
                   const SizedBox(height: 32),
                   MoralarOutlinedButton(
                     color: Theme.of(context).focusColor,
-                    // function: () => Get.toNamed(Routes.),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
@@ -250,5 +245,5 @@ class LoginView extends GetView<LoginController> {
   }
 
   String _unmaskCpf(String cpf) =>
-      cpf.trim().replaceAll('.', '')..replaceFirst('-', '');
+      cpf.trim().replaceAll('.', '').replaceAll('-', '');
 }
