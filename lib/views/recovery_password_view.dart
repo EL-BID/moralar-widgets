@@ -55,7 +55,7 @@ class RecoveryPasswordView extends GetView<RecoveryPasswordController> {
                     MoralarButton(
                       onPressed: () {
                         if (MoralarWidgets.instance.userType ==
-                            UserType.resident) {
+                            UserType.family) {
                           pageController.jumpToPage(1);
                         }
                       },

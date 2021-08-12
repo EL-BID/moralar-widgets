@@ -8,7 +8,7 @@ class MoralarPageController extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Visibility(
-      visible: MoralarWidgets.instance.userType == UserType.resident,
+      visible: MoralarWidgets.instance.userType == UserType.family,
       child: Container(
         padding: const EdgeInsets.only(bottom: 16),
         child: Row(
