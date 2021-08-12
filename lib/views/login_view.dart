@@ -223,7 +223,7 @@ class LoginView extends GetView<LoginController> {
 
   Widget _pageController(bool isFirstPage) {
     return Visibility(
-      visible: MoralarWidgets.instance.userType == UserType.resident,
+      visible: MoralarWidgets.instance.userType == UserType.family,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [

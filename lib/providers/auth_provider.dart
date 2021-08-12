@@ -7,7 +7,7 @@ class AuthProvider extends AuthRemoteProvider {
     late String endpoint;
     final body = {'password': credentials.password, 'typeProvider': 0};
 
-    if (MoralarWidgets.instance.userType == UserType.resident) {
+    if (MoralarWidgets.instance.userType == UserType.family) {
       endpoint = Urls.family.token;
       body.addAll({'holderCpf': credentials.cpf});
     } else if (MoralarWidgets.instance.userType == UserType.tts) {
@@ -27,7 +27,7 @@ class AuthProvider extends AuthRemoteProvider {
 
   @override
   Future<User> findUser(AuthToken token) async {
-    final endpoint = MoralarWidgets.instance.userType == UserType.resident
+    final endpoint = MoralarWidgets.instance.userType == UserType.family
         ? Urls.family.getInfo
         : Urls.tts.getInfo;
     final response = await get(
@@ -35,7 +35,7 @@ class AuthProvider extends AuthRemoteProvider {
       headers: {'Authorization': 'Bearer ${token.accessToken.toString()}'},
     );
 
-    if (MoralarWidgets.instance.userType == UserType.resident) {
+    if (MoralarWidgets.instance.userType == UserType.family) {
       return FamilyHolder.fromJson(response.data['holder'])..token = token;
     } else {
       return TTS.fromJson(response.data)..token = token;
@@ -44,7 +44,7 @@ class AuthProvider extends AuthRemoteProvider {
 
   @override
   Future<AuthToken> reauthenticate(AuthToken token) async {
-    final endpoint = MoralarWidgets.instance.userType == UserType.resident
+    final endpoint = MoralarWidgets.instance.userType == UserType.family
         ? Urls.family.token
         : Urls.tts.token;
     final response = await post(
