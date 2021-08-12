@@ -8,7 +8,7 @@ class Urls {
 
 class _ResidentUrls {
   final token = '/Family/Token';
-  final getInfo = '/Family/GetInfo';
+  final getInfo = '/Family/GetUser';
 }
 
 class _TTSUrls {

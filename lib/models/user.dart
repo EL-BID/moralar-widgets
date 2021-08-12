@@ -2,14 +2,12 @@ part of moralar_widgets;
 
 @JsonSerializable()
 class MoralarUser extends User {
+  final String cpf;
   final String email;
-
-  @JsonKey(name: 'cpf')
-  final String document;
 
   MoralarUser({
     required String name,
-    required this.document,
+    required this.cpf,
     required this.email,
   }) : super(name: name);
 

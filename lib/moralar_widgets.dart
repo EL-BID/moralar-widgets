@@ -14,6 +14,8 @@ import 'package:validatorless/validatorless.dart';
 part 'bindings/login_binding.dart';
 part 'controllers/login_controller.dart';
 part 'models/document_credentials.dart';
+part 'models/resident.dart';
+part 'models/tts.dart';
 part 'models/user.dart';
 part 'models/user_type.dart';
 part 'moralar_widgets.g.dart';

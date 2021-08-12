@@ -28,13 +28,18 @@ class AuthProvider extends AuthRemoteProvider {
   @override
   Future<User> findUser(AuthToken token) async {
     final endpoint = MoralarWidgets.instance.userType == UserType.resident
-        ? Urls.resident.token
-        : Urls.tts.token;
+        ? Urls.resident.getInfo
+        : Urls.tts.getInfo;
     final response = await get(
       endpoint,
       headers: {'Authorization': 'Bearer ${token.accessToken.toString()}'},
     );
-    return MoralarUser.fromJson(response.data)..token = token;
+
+    if (MoralarWidgets.instance.userType == UserType.resident) {
+      return Resident.fromJson(response.data['holder'])..token = token;
+    } else {
+      return TTS.fromJson(response.data)..token = token;
+    }
   }
 
   @override
