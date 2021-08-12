@@ -42,13 +42,14 @@ class MoralarDrawer extends StatelessWidget {
                     Column(
                       children: options,
                     ),
-                    const Divider(
-                      thickness: 1,
-                      color: Colors.white,
-                    ),
                   ],
                 ),
               ),
+              const Divider(
+                thickness: 1,
+                color: Colors.white,
+              ),
+              const SizedBox(height: 32),
               MoralarDrawerListTile(
                 titleText: 'Sair',
                 icon: FontAwesomeIcons.signOutAlt,
