@@ -51,7 +51,7 @@ class Formats {
       MaskTextInputFormatter(mask: '#####', filter: {"#": RegExp(r'[0-9]')});
 
   static get phoneMaskFormatter => MaskTextInputFormatter(
-      mask: '(##) ####-####', filter: {"#": RegExp(r'[0-9]')});
+      mask: '(##) #####-####', filter: {"#": RegExp(r'[0-9]')});
 
   static get numberStreetFormatter =>
       MaskTextInputFormatter(mask: '########', filter: {"#": RegExp(r'[0-9]')});

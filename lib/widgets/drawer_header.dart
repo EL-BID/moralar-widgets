@@ -18,10 +18,11 @@ class MoralarDrawerHeader extends StatelessWidget {
           child: Icon(
             Icons.person,
             color: MoralarColors.strawberry,
+            size: 32,
           ),
         ),
         const Padding(
-          padding: EdgeInsets.symmetric(horizontal: 8),
+          padding: EdgeInsets.symmetric(horizontal: 12),
         ),
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -32,6 +33,7 @@ class MoralarDrawerHeader extends StatelessWidget {
                     color: Colors.white,
                   ),
             ),
+            const SizedBox(height: 4),
             Text(
               subtitle,
               style: Theme.of(context).textTheme.bodyText1!.copyWith(
