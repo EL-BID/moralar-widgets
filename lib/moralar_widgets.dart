@@ -67,5 +67,6 @@ class MoralarWidgets {
     instance = MoralarWidgets._(
       userType: userType,
     );
+    await MegaFlutter.instance.auth.findCurrentUser();
   }
 }
