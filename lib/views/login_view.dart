@@ -46,7 +46,7 @@ class LoginView extends GetView<LoginController> {
                       Validatorless.required('Preencha esse campo'),
                     ],
                     onSaved: (input) =>
-                    controller.credentials.cpf = _unmaskCpf(input!),
+                        controller.credentials.cpf = _unmaskCpf(input!),
                   ),
                   const SizedBox(height: 128),
                   Container(
@@ -58,7 +58,7 @@ class LoginView extends GetView<LoginController> {
                               () => LoginCheckBox(
                             checked: controller.checked.value,
                             function: () => controller.checked.value =
-                            !controller.checked.value,
+                                !controller.checked.value,
                           ),
                         ),
                         const SizedBox(width: 16),
@@ -102,14 +102,14 @@ class LoginView extends GetView<LoginController> {
           leading: MoralarWidgets.instance.userType == UserType.tts
               ? Container()
               : IconButton(
-            icon: const Icon(
-              FontAwesomeIcons.angleLeft,
-              color: Colors.black,
-            ),
-            onPressed: () {
-              pageController.jumpToPage(0);
-            },
-          ),
+                  icon: const Icon(
+                    FontAwesomeIcons.angleLeft,
+                    color: Colors.black,
+                  ),
+                  onPressed: () {
+                    pageController.jumpToPage(0);
+                  },
+                ),
         ),
         body: SingleChildScrollView(
           child: Form(
@@ -138,7 +138,7 @@ class LoginView extends GetView<LoginController> {
                         Validatorless.required('Preencha esse campo'),
                       ],
                       onSaved: (cpf) =>
-                      controller.credentials.cpf = _unmaskCpf(cpf!),
+                          controller.credentials.cpf = _unmaskCpf(cpf!),
                     ),
                   ),
                   MoralarTextField(
@@ -163,6 +163,14 @@ class LoginView extends GetView<LoginController> {
                       if (_passwordFormKey.currentState!.validate()) {
                         _passwordFormKey.currentState!.save();
                         await controller.signIn();
+                        if (controller.hasError.value) {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(
+                              content: Text(controller.errorMessage.value),
+                              backgroundColor: Colors.red,
+                            ),
+                          );
+                        }
                         if (MegaFlutter.instance.auth.currentUser != null) {
                           onSignedIn();
                         }

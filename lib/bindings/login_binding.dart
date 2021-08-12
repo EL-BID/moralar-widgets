@@ -6,5 +6,8 @@ class LoginBinding extends Bindings {
     Get.lazyPut<LoginController>(
       () => LoginController(),
     );
+    Get.lazyPut<FamilyProvider>(
+      () => FamilyProvider(),
+    );
   }
 }
