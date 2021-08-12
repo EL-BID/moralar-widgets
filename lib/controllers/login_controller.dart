@@ -11,8 +11,7 @@ class LoginController extends GetxController {
   Future<void> signIn() async {
     if (MoralarWidgets.instance.userType == UserType.family) {
       if (await _familyProvider.isValidCpf(credentials.cpf)) {
-        isFirstAccess.value =
-            await _familyProvider.isFirstAccess(credentials.cpf);
+        isFirstAccess.value = _familyProvider.isFirstAccess;
       } else {
         hasError.value = true;
         errorMessage.value = 'CPF não cadastrado';
