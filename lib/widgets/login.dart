@@ -1,6 +1,12 @@
 part of moralar_widgets;
 
 class LoginView extends GetView<LoginController> {
+  final VoidCallback onSignedIn;
+
+  const LoginView({
+    required this.onSignedIn,
+  });
+
   @override
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
@@ -40,7 +46,7 @@ class LoginView extends GetView<LoginController> {
                       Validatorless.required('Preencha esse campo'),
                     ],
                     onSaved: (input) =>
-                        controller.credentials.cpf = _unmaskCpf(input!),
+                    controller.credentials.cpf = _unmaskCpf(input!),
                   ),
                   const SizedBox(height: 128),
                   Container(
@@ -49,10 +55,10 @@ class LoginView extends GetView<LoginController> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Obx(
-                          () => LoginCheckBox(
+                              () => LoginCheckBox(
                             checked: controller.checked.value,
                             function: () => controller.checked.value =
-                                !controller.checked.value,
+                            !controller.checked.value,
                           ),
                         ),
                         const SizedBox(width: 16),
@@ -96,14 +102,14 @@ class LoginView extends GetView<LoginController> {
           leading: MoralarWidgets.instance.userType == UserType.tts
               ? Container()
               : IconButton(
-                  icon: const Icon(
-                    FontAwesomeIcons.angleLeft,
-                    color: Colors.black,
-                  ),
-                  onPressed: () {
-                    pageController.jumpToPage(0);
-                  },
-                ),
+            icon: const Icon(
+              FontAwesomeIcons.angleLeft,
+              color: Colors.black,
+            ),
+            onPressed: () {
+              pageController.jumpToPage(0);
+            },
+          ),
         ),
         body: SingleChildScrollView(
           child: Form(
@@ -132,7 +138,7 @@ class LoginView extends GetView<LoginController> {
                         Validatorless.required('Preencha esse campo'),
                       ],
                       onSaved: (cpf) =>
-                          controller.credentials.cpf = _unmaskCpf(cpf!),
+                      controller.credentials.cpf = _unmaskCpf(cpf!),
                     ),
                   ),
                   MoralarTextField(
@@ -153,10 +159,13 @@ class LoginView extends GetView<LoginController> {
                   ),
                   const SizedBox(height: 128),
                   MoralarButton(
-                    onPressed: () {
+                    onPressed: () async {
                       if (_passwordFormKey.currentState!.validate()) {
                         _passwordFormKey.currentState!.save();
-                        controller.signIn();
+                        await controller.signIn();
+                        if (MegaFlutter.instance.auth.currentUser != null) {
+                          onSignedIn();
+                        }
                       }
                     },
                     child: Container(
