@@ -14,11 +14,8 @@ class MoralarDrawer extends StatelessWidget {
     return MoralarScaffold(
       backgroundColor: MoralarColors.strawberry,
       appBar: MoralarAppBar(
-        backgroundColor: Colors.transparent,
+        backgroundColor: MoralarColors.strawberry,
         titleText: 'Menu',
-        titleStyle: Theme.of(context).textTheme.headline1!.copyWith(
-              color: Colors.white,
-            ),
         leading: IconButton(
           icon: const Icon(
             Icons.close,
@@ -28,37 +25,38 @@ class MoralarDrawer extends StatelessWidget {
         ),
       ),
       body: SingleChildScrollView(
-        child: Column(
-          children: [
-            Padding(
-              padding: const EdgeInsets.all(24),
-              child: Column(
-                children: [
-                  header,
-                  const Padding(
-                    padding: EdgeInsets.symmetric(vertical: 12),
-                  ),
-                  const Divider(
-                    thickness: 1,
-                    color: Colors.white,
-                  ),
-                ],
+        child: Container(
+          padding: const EdgeInsets.all(24),
+          height: MediaQuery.of(context).size.height - 80,
+          child: Column(
+            children: [
+              Expanded(
+                child: Column(
+                  children: [
+                    header,
+                    const SizedBox(height: 16),
+                    const Divider(
+                      thickness: 1,
+                      color: Colors.white,
+                    ),
+                    Column(
+                      children: options,
+                    ),
+                  ],
+                ),
               ),
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 8),
-              child: Column(
-                children: options,
-              ),
-            ),
-            const Padding(
-              padding: EdgeInsets.all(24),
-              child: Divider(
+              const Divider(
                 thickness: 1,
                 color: Colors.white,
               ),
-            ),
-          ],
+              const SizedBox(height: 32),
+              MoralarDrawerListTile(
+                titleText: 'Sair',
+                icon: FontAwesomeIcons.signOutAlt,
+                onTap: Get.back,
+              ),
+            ],
+          ),
         ),
       ),
     );
