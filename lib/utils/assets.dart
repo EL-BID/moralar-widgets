@@ -31,6 +31,8 @@ class _Images {
 
   String get jogos => '$_path/jogos.png';
 
+  String get senha => '$_path/senha.png';
+
   String get videos => '$_path/videos.png';
 
   String get youtube => '$_path/youtube.png';
