@@ -14,6 +14,7 @@ class MoralarTextField extends StatelessWidget {
   final int? maxLines;
   final Function(String?)? onSaved;
   final bool? readOnly;
+  final Widget? prefixIcon;
   const MoralarTextField({
     this.label,
     this.hint,
@@ -28,6 +29,7 @@ class MoralarTextField extends StatelessWidget {
     this.maxLines,
     this.onSaved,
     this.readOnly,
+    this.prefixIcon,
   });
 
   @override
@@ -49,6 +51,7 @@ class MoralarTextField extends StatelessWidget {
         ),
         hintStyle: style,
         labelStyle: style,
+        prefixIcon: prefixIcon,
       ),
       controller: controller,
       maxLines: maxLines ?? 1,

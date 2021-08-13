@@ -818,3 +818,170 @@ class NotificationDetailsCard extends StatelessWidget {
     );
   }
 }
+
+class FamilyCard extends StatelessWidget {
+  final int status;
+  final Function()? function;
+
+  const FamilyCard({required this.status, this.function});
+
+  @override
+  Widget build(BuildContext context) {
+    return InkWell(
+      onTap: function ?? () {},
+      child: Container(
+        margin: const EdgeInsets.only(bottom: 24),
+        height: 148,
+        width: double.infinity,
+        decoration: BoxDecoration(
+          color: Colors.white,
+          boxShadow: [
+            BoxShadow(
+              color: Colors.grey.withOpacity(0.7),
+              // spreadRadius: 1,
+              blurRadius: 3,
+              offset: const Offset(0, 3),
+            ),
+          ],
+        ),
+        child: Row(
+          children: [
+            Expanded(
+              child: Container(
+                padding: const EdgeInsets.only(right: 16, left: 16, top: 16),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const BoldNormal(
+                        title: 'Número de Cadastro', body: '#1231245'),
+                    const SizedBox(height: 8),
+                    const BoldNormal(
+                        title: 'Morador Titular', body: 'Lucas Santos'),
+                    const SizedBox(height: 8),
+                    const BoldNormal(
+                        title: 'CPF do titular', body: '777.777.777-77'),
+                    const SizedBox(height: 16),
+                    MegaListTile(
+                      leading: Container(
+                        height: 8,
+                        width: 8,
+                        decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          color: Family.statusColor(status),
+                        ),
+                      ),
+                      title: Family.statusName(status),
+                    )
+                  ],
+                ),
+              ),
+            ),
+            const Icon(
+              FontAwesomeIcons.angleRight,
+              color: MoralarColors.kellyGreen,
+            ),
+            const SizedBox(width: 24),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class FilterCard extends StatelessWidget {
+  final String filterHint;
+  final List<String> filterStatus;
+  final VoidCallback? onPressed;
+  final Function(String?)? onChanged;
+
+  const FilterCard({
+    required this.filterHint,
+    required this.filterStatus,
+    this.onPressed,
+    this.onChanged,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final textTheme = Theme.of(context).textTheme;
+    return Container(
+        margin: const EdgeInsets.only(bottom: 24),
+        width: double.infinity,
+        decoration: BoxDecoration(
+          color: Colors.white,
+          boxShadow: [
+            BoxShadow(
+              color: Colors.grey.withOpacity(0.7),
+              // spreadRadius: 1,
+              blurRadius: 3,
+              offset: const Offset(0, 3),
+            ),
+          ],
+        ),
+        child: Container(
+          padding: const EdgeInsets.symmetric(horizontal: 24),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              MoralarTextField(
+                label: 'Pesquisa por Família',
+                color: MoralarColors.brownGrey,
+                prefixIcon: Container(
+                  padding: const EdgeInsets.only(top: 15),
+                  child: const Icon(FontAwesomeIcons.search, size: 16),
+                ),
+              ),
+              const SizedBox(height: 12),
+              Text(
+                'Filtro de Status',
+                style: textTheme.bodyText1,
+              ),
+              DropdownButton<String>(
+                hint: Text(
+                  filterHint,
+                  style: textTheme.bodyText2,
+                ),
+                icon: const Icon(
+                  FontAwesomeIcons.angleDown,
+                  color: MoralarColors.brownGrey,
+                ),
+                elevation: 16,
+                style: textTheme.bodyText2,
+                underline: Container(
+                  height: 2,
+                  color: MoralarColors.brownGrey,
+                ),
+                isExpanded: true,
+                onChanged: onChanged!,
+                items: filterStatus.map<DropdownMenuItem<String>>((value) {
+                  return DropdownMenuItem<String>(
+                    value: value,
+                    child: Text(value),
+                  );
+                }).toList(),
+              ),
+              const SizedBox(height: 24),
+              const Divider(
+                color: MoralarColors.brownGrey,
+                height: 2,
+              ),
+              InkWell(
+                onTap: onPressed!,
+                child: Container(
+                  padding: const EdgeInsets.symmetric(vertical: 12),
+                  width: double.infinity,
+                  alignment: Alignment.center,
+                  child: Text(
+                    'Buscar',
+                    style: textTheme.button?.copyWith(
+                      color: MoralarColors.waterBlue,
+                    ),
+                  ),
+                ),
+              )
+            ],
+          ),
+        ));
+  }
+}

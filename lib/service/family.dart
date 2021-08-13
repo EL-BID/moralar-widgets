@@ -182,3 +182,33 @@ String _textFieldType(index) {
     return 'Membro';
   }
 }
+
+class Family {
+  static String statusName(int status) {
+    if (status == 0) {
+      return 'Reunião PGM';
+    } else if (status == 1) {
+      return 'Escolha do Imóvel';
+    } else if (status == 2) {
+      return 'Mudança';
+    } else if (status == 3) {
+      return 'Acompanhamento pós-mudança';
+    } else {
+      return '';
+    }
+  }
+
+  static Color statusColor(int status) {
+    if (status == 0) {
+      return MoralarColors.strawberry;
+    } else if (status == 1) {
+      return MoralarColors.blue;
+    } else if (status == 2) {
+      return MoralarColors.orangeYellow;
+    } else if (status == 3) {
+      return MoralarColors.kellyGreen;
+    } else {
+      return Colors.white;
+    }
+  }
+}
