@@ -89,15 +89,19 @@ class QuizHeader extends StatelessWidget {
 }
 
 class OpenQuestion extends StatelessWidget {
+  final TextEditingController? controller;
+  final String? label;
+  const OpenQuestion({this.controller, this.label = 'Responda aqui'});
   @override
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
     return Container(
       alignment: Alignment.center,
       child: MoralarTextField(
+        controller: controller,
         color: MoralarColors.waterBlue,
         style: textTheme.bodyText2,
-        label: 'Responda aqui',
+        label: label,
         maxLines: 3,
       ),
     );
@@ -143,11 +147,13 @@ class CloseQuestion extends StatelessWidget {
   final int questionIndex;
   final List<String> answers;
   final Function(int?)? onChanged;
+  final Color? activeColor;
 
   const CloseQuestion({
     required this.questionIndex,
     required this.answers,
     this.onChanged,
+    this.activeColor,
   });
 
   @override
@@ -161,6 +167,7 @@ class CloseQuestion extends StatelessWidget {
               childAspectRatio: 2,
               crossAxisSpacing: 20,
             ),
+            physics: const NeverScrollableScrollPhysics(),
             shrinkWrap: true,
             itemCount: answers.length,
             itemBuilder: (context, index) {
@@ -168,6 +175,7 @@ class CloseQuestion extends StatelessWidget {
                 value: index,
                 groupValue: questionIndex,
                 onChanged: onChanged!,
+                activeColor: activeColor,
                 contentPadding: EdgeInsets.zero,
                 title: Text(
                   answers[index],
