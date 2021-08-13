@@ -259,7 +259,7 @@ class CourseCard extends StatelessWidget {
     return InkWell(
       onTap: function ?? () {},
       child: Container(
-        height: 120,
+        height: 124,
         margin: const EdgeInsets.only(bottom: 24),
         decoration: BoxDecoration(
           color: Colors.white,
@@ -276,7 +276,7 @@ class CourseCard extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Container(
-              width: 120,
+              width: 124,
               child: Image.network('https://picsum.photos/200'),
             ),
             const SizedBox(width: 12),
@@ -337,7 +337,7 @@ class PropertyCard extends StatelessWidget {
     final textTheme = Theme.of(context).textTheme;
 
     return InkWell(
-      onTap: function!,
+      onTap: function ?? () {},
       child: Container(
         margin: const EdgeInsets.only(bottom: 24),
         width: double.infinity,
@@ -822,8 +822,13 @@ class NotificationDetailsCard extends StatelessWidget {
 class FamilyCard extends StatelessWidget {
   final int status;
   final Function()? function;
+  final bool isDetail;
 
-  const FamilyCard({required this.status, this.function});
+  const FamilyCard({
+    required this.status,
+    this.function,
+    this.isDetail = false,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -876,9 +881,13 @@ class FamilyCard extends StatelessWidget {
                 ),
               ),
             ),
-            const Icon(
-              FontAwesomeIcons.angleRight,
-              color: MoralarColors.kellyGreen,
+            Visibility(
+              visible: isDetail,
+              child: Container(),
+              replacement: const Icon(
+                FontAwesomeIcons.angleRight,
+                color: MoralarColors.kellyGreen,
+              ),
             ),
             const SizedBox(width: 24),
           ],
@@ -983,5 +992,382 @@ class FilterCard extends StatelessWidget {
             ],
           ),
         ));
+  }
+}
+
+class FamilyInfoCard extends StatelessWidget {
+  final String title;
+  final List<Widget> cards;
+
+  const FamilyInfoCard({
+    required this.title,
+    required this.cards,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final textTheme = Theme.of(context).textTheme;
+    return Container(
+      margin: const EdgeInsets.only(bottom: 24),
+      padding: const EdgeInsets.fromLTRB(24, 24, 24, 0),
+      width: double.infinity,
+      decoration: BoxDecoration(
+        color: Colors.white,
+        boxShadow: [
+          BoxShadow(
+            color: Colors.grey.withOpacity(0.7),
+            // spreadRadius: 1,
+            blurRadius: 3,
+            offset: const Offset(0, 3),
+          ),
+        ],
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Text(
+            title,
+            style: textTheme.headline4?.copyWith(
+              color: MoralarColors.brownishGrey,
+            ),
+          ),
+          const SizedBox(height: 24),
+          Column(
+            children: cards,
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class MoralarTTSCard extends StatelessWidget {
+  final int status;
+  final Function()? function;
+  final bool isCourse;
+
+  const MoralarTTSCard(
+      {required this.status, required this.isCourse, this.function});
+
+  @override
+  Widget build(BuildContext context) {
+    final textTheme = Theme.of(context).textTheme;
+    const brownGrey = Color(0xFFb2b2b2);
+    final currentColor =
+        isCourse ? Course.statusColor(status) : Quiz.statusColor(status);
+    final currentText =
+        isCourse ? Course.statusName(status) : Quiz.statusName(status);
+
+    return InkWell(
+      onTap: function ?? () {},
+      child: Container(
+        margin: const EdgeInsets.only(bottom: 24),
+        height: isCourse ? 164 : 100,
+        width: double.infinity,
+        decoration: BoxDecoration(
+          color: Colors.white,
+          boxShadow: [
+            BoxShadow(
+              color: Colors.grey.withOpacity(0.7),
+              // spreadRadius: 1,
+              blurRadius: 3,
+              offset: const Offset(0, 3),
+            ),
+          ],
+        ),
+        child: Row(
+          children: [
+            Expanded(
+              child: Container(
+                padding: const EdgeInsets.only(right: 16, left: 16, top: 16),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      isCourse ? 'Curso 1' : 'Questionario/Enquete',
+                      style: textTheme.headline1,
+                    ),
+                    const SizedBox(height: 8),
+                    Visibility(
+                      visible: isCourse,
+                      child: MegaListTile(
+                        title: '26/09/2020',
+                        leading: const Icon(
+                          FontAwesomeIcons.calendar,
+                          size: 16,
+                          color: brownGrey,
+                        ),
+                        style: textTheme.bodyText1,
+                      ),
+                    ),
+                    Visibility(
+                      visible: isCourse,
+                      child: Column(
+                        children: [
+                          const SizedBox(height: 8),
+                          MegaListTile(
+                            title: '14:30hrs',
+                            leading: const Icon(
+                              FontAwesomeIcons.clock,
+                              size: 16,
+                              color: brownGrey,
+                            ),
+                            style: textTheme.bodyText1,
+                          ),
+                        ],
+                      ),
+                    ),
+                    const SizedBox(height: 8),
+                    MegaListTile(
+                      title: currentText,
+                      leading: Container(
+                        width: 16,
+                        height: 16,
+                        alignment: Alignment.center,
+                        decoration: BoxDecoration(
+                          color: currentColor,
+                          shape: BoxShape.circle,
+                        ),
+                      ),
+                      style: textTheme.bodyText2,
+                    ),
+                  ],
+                ),
+              ),
+            ),
+            Container(
+              color: currentColor,
+              width: 24,
+            )
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class SchedulingTTSCard extends StatelessWidget {
+  final int status;
+  const SchedulingTTSCard({required this.status});
+  @override
+  Widget build(BuildContext context) {
+    final textTheme = Theme.of(context).textTheme;
+
+    return InkWell(
+      onTap: () {},
+      child: Container(
+        margin: const EdgeInsets.only(bottom: 24),
+        width: double.infinity,
+        decoration: BoxDecoration(
+          color: Colors.white,
+          boxShadow: [
+            BoxShadow(
+              color: Colors.grey.withOpacity(0.7),
+              // spreadRadius: 1,
+              blurRadius: 3,
+              offset: const Offset(0, 3),
+            ),
+          ],
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Container(
+              color: status == 0
+                  ? MoralarColors.brownGrey
+                  : MoralarColors.kellyGreen,
+              width: double.infinity,
+              height: 24,
+            ),
+            Container(
+              padding: const EdgeInsets.all(24),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    // ignore: lines_longer_than_80_chars
+                    'Reunião TTSReunião TTSReunião TTSReunião TTSReunião TTSReunião TTSReunião TTSReunião TTSReunião TTSReunião TTSReunião TTSReunião',
+                    style: textTheme.bodyText1,
+                  ),
+                  const SizedBox(height: 8),
+                  MegaListTile(
+                    title: '26/09/2020 ás 14:35hrs',
+                    leading: const Icon(
+                      FontAwesomeIcons.calendar,
+                      size: 16,
+                      color: MoralarColors.brownGrey,
+                    ),
+                    style: textTheme.bodyText1,
+                  ),
+                  MegaListTile(
+                    title: status == 0 ? 'Finalizado' : 'Confirmado',
+                    leading: Container(
+                      alignment: Alignment.center,
+                      width: 16,
+                      height: 16,
+                      decoration: BoxDecoration(
+                        color: status == 0
+                            ? MoralarColors.brownGrey
+                            : MoralarColors.kellyGreen,
+                        shape: BoxShape.circle,
+                      ),
+                    ),
+                    style: textTheme.bodyText2,
+                  ),
+                  Visibility(
+                    visible: status == 0 || status == 2,
+                    child: Column(
+                      children: [
+                        const SizedBox(height: 16),
+                        MoralarButton(
+                          onPressed: () {},
+                          color: status == 0
+                              ? MoralarColors.brownGrey
+                              : MoralarColors.kellyGreen,
+                          child: Container(
+                            alignment: Alignment.center,
+                            child: Text(
+                              status == 0
+                                  ? 'Ver Detalhes'
+                                  : 'Confirmar Mudança',
+                              style: textTheme.button,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class PropertyTTSCard extends StatelessWidget {
+  final Function()? function;
+  final bool isHouse;
+
+  const PropertyTTSCard({this.function, required this.isHouse});
+
+  @override
+  Widget build(BuildContext context) {
+    final textTheme = Theme.of(context).textTheme;
+
+    return Container(
+      margin: const EdgeInsets.only(bottom: 24),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        boxShadow: [
+          BoxShadow(
+            color: Colors.grey.withOpacity(0.7),
+            // spreadRadius: 1,
+            blurRadius: 3,
+            offset: const Offset(0, 3),
+          ),
+        ],
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Stack(
+            children: [
+              Container(
+                width: double.infinity,
+                height: 164,
+                child: Image.network(
+                  'https://picsum.photos/200',
+                  fit: BoxFit.cover,
+                ),
+              ),
+              Positioned(
+                width: isHouse ? 80 : 132,
+                top: 16,
+                left: 24,
+                child: Container(
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.grey.withOpacity(0.7),
+                        blurRadius: 3,
+                        offset: const Offset(0, 1),
+                      ),
+                    ],
+                  ),
+                  padding: const EdgeInsets.symmetric(horizontal: 8),
+                  alignment: Alignment.center,
+                  child: MegaListTile(
+                    title: isHouse ? 'Casa' : 'Apartamento',
+                    leading: Icon(
+                      isHouse
+                          ? FontAwesomeIcons.home
+                          : FontAwesomeIcons.solidBuilding,
+                      size: 16,
+                      color: MoralarColors.brownishGrey,
+                    ),
+                    style: textTheme.bodyText1?.copyWith(
+                      color: MoralarColors.brownishGrey,
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
+          Container(
+            padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+            child: Row(
+              children: [
+                Expanded(
+                  flex: 2,
+                  child: Column(
+                    children: [
+                      MegaListTile(
+                        title: 'Bela Vista',
+                        leading: const Icon(
+                          FontAwesomeIcons.mapMarkerAlt,
+                          size: 16,
+                          color: MoralarColors.brownishGrey,
+                        ),
+                        style: textTheme.bodyText1?.copyWith(
+                          color: MoralarColors.brownishGrey,
+                        ),
+                      ),
+                      MegaListTile(
+                        title: '120 m²',
+                        leading: const Icon(
+                          FontAwesomeIcons.ruler,
+                          size: 16,
+                          color: MoralarColors.brownishGrey,
+                        ),
+                        style: textTheme.bodyText1?.copyWith(
+                          color: MoralarColors.brownishGrey,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                Expanded(
+                  flex: 3,
+                  child: MoralarButton(
+                    child: Container(
+                      alignment: Alignment.center,
+                      child: Text('Liberar Etapa', style: textTheme.button),
+                    ),
+                    onPressed: function ?? () {},
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
   }
 }
