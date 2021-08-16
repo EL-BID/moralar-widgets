@@ -1,8 +1,6 @@
 part of moralar_widgets;
 
 class ChangePasswordController extends GetxController {
-  //TODO: Implement ChangePasswordController
-
   final count = 0.obs;
 
   // @override
