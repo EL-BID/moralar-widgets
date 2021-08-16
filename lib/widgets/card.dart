@@ -902,12 +902,14 @@ class FilterCard extends StatelessWidget {
   final List<String> filterStatus;
   final VoidCallback? onPressed;
   final Function(String?)? onChanged;
+  final bool isMatch;
 
   const FilterCard({
-    required this.filterHint,
-    required this.filterStatus,
+    this.filterHint = 'Selecionar',
+    this.filterStatus = const ['Selecionar'],
     this.onPressed,
     this.onChanged,
+    this.isMatch = false,
   });
 
   @override
@@ -941,34 +943,51 @@ class FilterCard extends StatelessWidget {
                   child: const Icon(FontAwesomeIcons.search, size: 16),
                 ),
               ),
-              const SizedBox(height: 12),
-              Text(
-                'Filtro de Status',
-                style: textTheme.bodyText1,
-              ),
-              DropdownButton<String>(
-                hint: Text(
-                  filterHint,
-                  style: textTheme.bodyText2,
+              Visibility(
+                visible: !isMatch,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const SizedBox(height: 12),
+                    Text(
+                      'Filtro de Status',
+                      style: textTheme.bodyText1,
+                    ),
+                    DropdownButton<String>(
+                      hint: Text(
+                        filterHint,
+                        style: textTheme.bodyText2,
+                      ),
+                      icon: const Icon(
+                        FontAwesomeIcons.angleDown,
+                        color: MoralarColors.brownGrey,
+                      ),
+                      elevation: 16,
+                      style: textTheme.bodyText2,
+                      underline: Container(
+                        height: 2,
+                        color: MoralarColors.brownGrey,
+                      ),
+                      isExpanded: true,
+                      onChanged: onChanged ?? (s) {},
+                      items:
+                          filterStatus.map<DropdownMenuItem<String>>((value) {
+                        return DropdownMenuItem<String>(
+                          value: value,
+                          child: Text(value),
+                        );
+                      }).toList(),
+                    ),
+                  ],
                 ),
-                icon: const Icon(
-                  FontAwesomeIcons.angleDown,
+                replacement: MoralarTextField(
+                  label: 'Pesquisa por Imóvel',
                   color: MoralarColors.brownGrey,
+                  prefixIcon: Container(
+                    padding: const EdgeInsets.only(top: 15),
+                    child: const Icon(FontAwesomeIcons.search, size: 16),
+                  ),
                 ),
-                elevation: 16,
-                style: textTheme.bodyText2,
-                underline: Container(
-                  height: 2,
-                  color: MoralarColors.brownGrey,
-                ),
-                isExpanded: true,
-                onChanged: onChanged!,
-                items: filterStatus.map<DropdownMenuItem<String>>((value) {
-                  return DropdownMenuItem<String>(
-                    value: value,
-                    child: Text(value),
-                  );
-                }).toList(),
               ),
               const SizedBox(height: 24),
               const Divider(
@@ -976,7 +995,7 @@ class FilterCard extends StatelessWidget {
                 height: 2,
               ),
               InkWell(
-                onTap: onPressed!,
+                onTap: onPressed ?? () {},
                 child: Container(
                   padding: const EdgeInsets.symmetric(vertical: 12),
                   width: double.infinity,
@@ -1366,6 +1385,46 @@ class PropertyTTSCard extends StatelessWidget {
               ],
             ),
           ),
+        ],
+      ),
+    );
+  }
+}
+
+class MatchCard extends StatelessWidget {
+  const MatchCard({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      margin: const EdgeInsets.only(bottom: 24),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        boxShadow: [
+          BoxShadow(
+            color: Colors.grey.withOpacity(0.7),
+            // spreadRadius: 1,
+            blurRadius: 3,
+            offset: const Offset(0, 3),
+          ),
+        ],
+      ),
+      padding: const EdgeInsets.all(24),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        mainAxisSize: MainAxisSize.min,
+        children: const [
+          BoldNormal(title: 'Número do Cadastro', body: '#12345'),
+          SizedBox(height: 4),
+          BoldNormal(title: 'Morador Titular', body: 'Diego Mura'),
+          SizedBox(height: 4),
+          BoldNormal(title: 'CPF do titular', body: '123.123.123-12'),
+          SizedBox(height: 4),
+          BoldNormal(title: 'Código do imóvel', body: '#2012314'),
+          SizedBox(height: 4),
+          BoldNormal(title: 'Endereço', body: 'Avenida Paulista, 2022'),
+          SizedBox(height: 4),
+          BoldNormal(title: 'Número de interessados', body: '22 famílias'),
         ],
       ),
     );

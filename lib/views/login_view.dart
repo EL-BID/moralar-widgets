@@ -2,9 +2,11 @@ part of moralar_widgets;
 
 class LoginView extends GetView<LoginController> {
   final VoidCallback onSignedIn;
+  final VoidCallback recoveryPassword;
 
   const LoginView({
     required this.onSignedIn,
+    required this.recoveryPassword,
   });
 
   @override
@@ -42,17 +44,20 @@ class LoginView extends GetView<LoginController> {
                         const SizedBox(height: 128),
                         MoralarTextField(
                           label: 'CPF',
-                          hint: '123.123.123-12',
+                          controller: TextEditingController(),
                           formats: [Formats.cpfMaskFormatter],
                           keyboard: TextInputType.number,
                           validators: [
                             Validatorless.cpf('CPF Inválido'),
-                            Validatorless.required('Preencha esse campo'),
+                            Validatorless.required('Preencha com seu CPF'),
                           ],
                           onSaved: (input) =>
                               controller.credentials.cpf = _unmaskCpf(input!),
                         ),
                         const SizedBox(height: 128),
+                        // MoralarTextField(
+                        //   label: '',
+                        // ),
                         Container(
                           padding: const EdgeInsets.symmetric(horizontal: 20),
                           child: Row(
@@ -74,11 +79,29 @@ class LoginView extends GetView<LoginController> {
                         Obx(() {
                           final checked = controller.checked.value;
                           return MoralarButton(
-                            onPressed: () {
-                              if (checked &&
-                                  _cpfFormKey.currentState!.validate()) {
-                                _cpfFormKey.currentState!.save();
-                                pageController.jumpToPage(1);
+                            onPressed: () async {
+                              if (checked) {
+                                if (_cpfFormKey.currentState!.validate()) {
+                                  _cpfFormKey.currentState!.save();
+                                  // pageController.jumpToPage(1);
+                                  controller.signIn();
+                                }
+                              } else {
+                                // Get.snackbar(
+                                //   'Leia os termos de uso',
+                                //   'Para avançar, confirme se está de acordo.',
+                                //   colorText: MoralarColors.veryLightPink,
+                                //   backgroundColor: MoralarColors.strawberry,
+                                // );
+                                await controller.signIn();
+                                if (controller.hasError.value) {
+                                  Get.snackbar(
+                                    'Falha!',
+                                    controller.errorMessage.value,
+                                    colorText: MoralarColors.veryLightPink,
+                                    backgroundColor: MoralarColors.strawberry,
+                                  );
+                                }
                               }
                             },
                             child: Container(
@@ -201,6 +224,7 @@ class LoginView extends GetView<LoginController> {
                         ),
                         const SizedBox(height: 32),
                         MoralarOutlinedButton(
+                          function: recoveryPassword,
                           color: Theme.of(context).focusColor,
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.center,
