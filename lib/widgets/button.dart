@@ -4,11 +4,13 @@ class MoralarButton extends StatelessWidget {
   final Color? color;
   final Widget child;
   final VoidCallback onPressed;
+  final bool isLoading;
 
   const MoralarButton({
     required this.child,
     required this.onPressed,
     this.color,
+    this.isLoading = false,
   });
 
   @override
@@ -20,7 +22,17 @@ class MoralarButton extends StatelessWidget {
         height: 48,
         width: double.infinity,
         color: color ?? Theme.of(context).primaryColor,
-        child: child,
+        child: isLoading
+            ? Container(
+                padding: const EdgeInsets.symmetric(vertical: 4),
+                alignment: Alignment.center,
+                child: const CircularProgressIndicator(
+                  valueColor: AlwaysStoppedAnimation<Color>(
+                      MoralarColors.veryLightPink),
+                  strokeWidth: 3,
+                ),
+              )
+            : child,
       ),
     );
   }

@@ -1,22 +1,9 @@
 part of moralar_widgets;
 
 class LoginView extends GetView<LoginController> {
-  final VoidCallback onSignedIn;
-  final VoidCallback recoveryPassword;
-
-  const LoginView({
-    required this.onSignedIn,
-    required this.recoveryPassword,
-  });
-
   @override
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
-    final _cpfFormKey = GlobalKey<FormState>();
-    final _passwordFormKey = GlobalKey<FormState>();
-    final pageController = PageController(
-      initialPage: MoralarWidgets.instance.userType == UserType.tts ? 1 : 0,
-    );
 
     _cpfLogin() {
       return MoralarScaffold(
@@ -25,7 +12,7 @@ class LoginView extends GetView<LoginController> {
         ),
         body: SingleChildScrollView(
           child: Form(
-            key: _cpfFormKey,
+            key: controller.cpfFormKey,
             child: Container(
               height: MediaQuery.of(context).size.height - 100,
               padding: const EdgeInsets.symmetric(horizontal: 24),
@@ -34,6 +21,8 @@ class LoginView extends GetView<LoginController> {
                 children: [
                   Expanded(
                     child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
+                      mainAxisSize: MainAxisSize.min,
                       children: [
                         const SizedBox(height: 128),
                         Container(
@@ -44,7 +33,6 @@ class LoginView extends GetView<LoginController> {
                         const SizedBox(height: 128),
                         MoralarTextField(
                           label: 'CPF',
-                          controller: TextEditingController(),
                           formats: [Formats.cpfMaskFormatter],
                           keyboard: TextInputType.number,
                           validators: [
@@ -55,9 +43,6 @@ class LoginView extends GetView<LoginController> {
                               controller.credentials.cpf = _unmaskCpf(input!),
                         ),
                         const SizedBox(height: 128),
-                        // MoralarTextField(
-                        //   label: '',
-                        // ),
                         Container(
                           padding: const EdgeInsets.symmetric(horizontal: 20),
                           child: Row(
@@ -77,33 +62,10 @@ class LoginView extends GetView<LoginController> {
                         ),
                         const SizedBox(height: 32),
                         Obx(() {
-                          final checked = controller.checked.value;
                           return MoralarButton(
-                            onPressed: () async {
-                              if (checked) {
-                                if (_cpfFormKey.currentState!.validate()) {
-                                  _cpfFormKey.currentState!.save();
-                                  // pageController.jumpToPage(1);
-                                  controller.signIn();
-                                }
-                              } else {
-                                // Get.snackbar(
-                                //   'Leia os termos de uso',
-                                //   'Para avançar, confirme se está de acordo.',
-                                //   colorText: MoralarColors.veryLightPink,
-                                //   backgroundColor: MoralarColors.strawberry,
-                                // );
-                                await controller.signIn();
-                                if (controller.hasError.value) {
-                                  Get.snackbar(
-                                    'Falha!',
-                                    controller.errorMessage.value,
-                                    colorText: MoralarColors.veryLightPink,
-                                    backgroundColor: MoralarColors.strawberry,
-                                  );
-                                }
-                              }
-                            },
+                            isLoading: controller.isLoading.value,
+                            onPressed: () async =>
+                                await controller.validateCPF(),
                             child: Container(
                               alignment: Alignment.center,
                               child: Text(
@@ -138,13 +100,13 @@ class LoginView extends GetView<LoginController> {
                     color: Colors.black,
                   ),
                   onPressed: () {
-                    pageController.jumpToPage(0);
+                    controller.pageController.jumpToPage(0);
                   },
                 ),
         ),
         body: SingleChildScrollView(
           child: Form(
-            key: _passwordFormKey,
+            key: controller.passwordFormKey,
             child: Container(
               height: MediaQuery.of(context).size.height - 100,
               padding: const EdgeInsets.symmetric(horizontal: 24),
@@ -186,7 +148,7 @@ class LoginView extends GetView<LoginController> {
                               6,
                               'A senha precisa conter 6 caracteres',
                             ),
-                            Validatorless.required('Preencha esse campo'),
+                            Validatorless.required('Digite sua senha'),
                           ],
                           isPassword: true,
                           onSaved: (password) {
@@ -194,37 +156,22 @@ class LoginView extends GetView<LoginController> {
                           },
                         ),
                         const SizedBox(height: 128),
-                        MoralarButton(
-                          onPressed: () async {
-                            if (_passwordFormKey.currentState!.validate()) {
-                              _passwordFormKey.currentState!.save();
-                              await controller.signIn();
-                              if (controller.hasError.value) {
-                                ScaffoldMessenger.of(context).showSnackBar(
-                                  SnackBar(
-                                    content:
-                                        Text(controller.errorMessage.value),
-                                    backgroundColor: Colors.red,
-                                  ),
-                                );
-                              }
-                              if (MegaFlutter.instance.auth.currentUser !=
-                                  null) {
-                                onSignedIn();
-                              }
-                            }
-                          },
-                          child: Container(
-                            alignment: Alignment.center,
-                            child: Text(
-                              'Continuar',
-                              style: textTheme.button,
+                        Obx(() {
+                          return MoralarButton(
+                            onPressed: () async => controller.signIn(),
+                            isLoading: controller.isLoading.value,
+                            child: Container(
+                              alignment: Alignment.center,
+                              child: Text(
+                                'Continuar',
+                                style: textTheme.button,
+                              ),
                             ),
-                          ),
-                        ),
+                          );
+                        }),
                         const SizedBox(height: 32),
                         MoralarOutlinedButton(
-                          function: recoveryPassword,
+                          function: controller.recoveryPassword,
                           color: Theme.of(context).focusColor,
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.center,
@@ -263,8 +210,9 @@ class LoginView extends GetView<LoginController> {
 
     return PageView(
       physics: const NeverScrollableScrollPhysics(),
-      controller: pageController,
+      controller: controller.pageController,
       children: [
+        // _teste(),
         _cpfLogin(),
         _passwordLogin(),
       ],

@@ -1,9 +1,9 @@
 part of moralar_widgets;
 
 class FamilyProvider extends RemoteProvider {
-  late final bool _isFirstAccess;
+  bool? _isFirstAccess;
 
-  bool get isFirstAccess => _isFirstAccess;
+  bool get isFirstAccess => _isFirstAccess!;
 
   Future<bool> isValidCpf(String holderCpf) async {
     try {
