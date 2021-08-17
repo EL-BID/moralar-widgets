@@ -10,6 +10,7 @@ class _FamilyUrls {
   final token = '/Family/Token';
   final getInfo = '/Family/GetUser';
   final validateHolderCpf = '/Family/ExistCpf';
+  final tokenByBirthday = '/Family/TokenByBirthday';
 }
 
 class _TTSUrls {

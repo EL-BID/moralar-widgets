@@ -3,7 +3,7 @@ part of moralar_widgets;
 class LoginBinding extends Bindings {
   final VoidCallback onSignedIn;
   final VoidCallback recoveryPassword;
-  final VoidCallback? firstAccess;
+  final String? firstAccess;
 
   LoginBinding({
     required this.onSignedIn,

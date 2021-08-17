@@ -1,6 +1,7 @@
 part of moralar_widgets;
 
 class DocumentCredentials extends Credentials {
-  late String cpf;
-  late String password;
+  String cpf='';
+  String password='';
+  int birthday = 0;
 }

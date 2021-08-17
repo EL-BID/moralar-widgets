@@ -3,12 +3,12 @@ part of moralar_widgets;
 class LoginController extends GetxController {
   final VoidCallback onSignedIn;
   final VoidCallback recoveryPassword;
-  final VoidCallback? firstAccess;
+  final String firstAccess;
 
   LoginController({
     required this.onSignedIn,
     required this.recoveryPassword,
-    this.firstAccess,
+    required this.firstAccess,
   });
 
   final isLoading = false.obs;
@@ -33,7 +33,7 @@ class LoginController extends GetxController {
           isFirstAccess.value = _familyProvider.isFirstAccess;
           isLoading.value = false;
           if (isFirstAccess.value) {
-            firstAccess!;
+            Get.toNamed(firstAccess, arguments: credentials.cpf);
           } else {
             pageController.jumpToPage(1);
           }

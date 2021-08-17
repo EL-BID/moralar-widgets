@@ -5,15 +5,24 @@ class AuthProvider extends AuthRemoteProvider {
   Future<AuthToken> authenticate(Credentials credentials) async {
     credentials as DocumentCredentials;
     late String endpoint;
-    final body = {'password': credentials.password, 'typeProvider': 0};
+    late dynamic body;
 
-    if (MoralarWidgets.instance.userType == UserType.family) {
-      endpoint = Urls.family.token;
-      body.addAll({'holderCpf': credentials.cpf});
-    } else if (MoralarWidgets.instance.userType == UserType.tts) {
-      endpoint = Urls.tts.token;
-      body.addAll({'cpf': credentials.cpf});
-      body.addAll({'typeUserProfile': 1});
+    if (credentials.birthday != 0) {
+      body = {
+        'holderCpf': credentials.cpf,
+        'holderBirthday': credentials.birthday,
+      };
+      endpoint = Urls.family.tokenByBirthday;
+    } else {
+      body = {'password': credentials.password, 'typeProvider': 0};
+      if (MoralarWidgets.instance.userType == UserType.family) {
+        endpoint = Urls.family.token;
+        body.addAll({'holderCpf': credentials.cpf});
+      } else if (MoralarWidgets.instance.userType == UserType.tts) {
+        endpoint = Urls.tts.token;
+        body.addAll({'cpf': credentials.cpf});
+        body.addAll({'typeUserProfile': 1});
+      }
     }
 
     try {
