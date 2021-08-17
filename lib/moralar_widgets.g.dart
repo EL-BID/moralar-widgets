@@ -11,6 +11,11 @@ FamilyHolder _$FamilyHolderFromJson(Map<String, dynamic> json) {
     cpf: json['cpf'] as String,
     email: json['email'] as String,
     name: json['name'] as String,
+    number: json['number'] as String?,
+    birthday: json['birthday'] as int?,
+    genre: json['genre'] as int?,
+    phone: json['phone'] as String?,
+    scholarity: json['scholarity'] as int?,
   );
 }
 
@@ -19,6 +24,11 @@ Map<String, dynamic> _$FamilyHolderToJson(FamilyHolder instance) =>
       'name': instance.name,
       'cpf': instance.cpf,
       'email': instance.email,
+      'number': instance.number,
+      'birthday': instance.birthday,
+      'genre': instance.genre,
+      'phone': instance.phone,
+      'scholarity': instance.scholarity,
     };
 
 TTS _$TTSFromJson(Map<String, dynamic> json) {

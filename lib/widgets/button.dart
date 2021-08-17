@@ -16,7 +16,7 @@ class MoralarButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: onPressed,
+      onTap: isLoading ? () {} : onPressed,
       child: Container(
         padding: const EdgeInsets.all(8),
         height: 48,
