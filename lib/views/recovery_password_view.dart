@@ -48,7 +48,9 @@ class RecoveryPasswordView extends GetView<RecoveryPasswordController> {
                       ],
                       keyboard: TextInputType.number,
                       color: MoralarColors.waterBlue,
-                      style: textTheme.bodyText1?.copyWith(
+                      hintStyle: textTheme.bodyText1?.copyWith(
+                          color: MoralarColors.waterBlue, fontSize: 16),
+                      labelStyle: textTheme.bodyText1?.copyWith(
                           color: MoralarColors.waterBlue, fontSize: 16),
                     ),
                     const SizedBox(height: 80),
@@ -112,7 +114,7 @@ class RecoveryPasswordView extends GetView<RecoveryPasswordController> {
                         Validatorless.required('Preencha esse campo'),
                       ],
                       color: MoralarColors.waterBlue,
-                      style: textTheme.bodyText1?.copyWith(
+                      labelStyle: textTheme.bodyText1?.copyWith(
                           color: MoralarColors.waterBlue, fontSize: 16),
                     ),
                     const SizedBox(height: 24),
@@ -122,7 +124,7 @@ class RecoveryPasswordView extends GetView<RecoveryPasswordController> {
                         Validatorless.required('Preencha esse campo'),
                       ],
                       color: MoralarColors.waterBlue,
-                      style: textTheme.bodyText1?.copyWith(
+                      labelStyle: textTheme.bodyText1?.copyWith(
                           color: MoralarColors.waterBlue, fontSize: 16),
                     ),
                     const SizedBox(height: 64),

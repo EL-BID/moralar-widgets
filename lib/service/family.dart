@@ -41,7 +41,7 @@ class FamilyForm extends StatelessWidget {
           color: MoralarColors.waterBlue,
           controller: TextEditingController(text: 'Membro da Familia'),
           readOnly: true,
-          style: textTheme.bodyText1
+          labelStyle: textTheme.bodyText1
               ?.copyWith(color: MoralarColors.waterBlue, fontSize: 16),
         ),
         const SizedBox(height: 16),
@@ -50,7 +50,7 @@ class FamilyForm extends StatelessWidget {
           controller: TextEditingController(text: 'DD/MM/AAAA'),
           readOnly: true,
           color: MoralarColors.waterBlue,
-          style: textTheme.bodyText1
+          labelStyle: textTheme.bodyText1
               ?.copyWith(color: MoralarColors.waterBlue, fontSize: 16),
         ),
         const SizedBox(height: 32),

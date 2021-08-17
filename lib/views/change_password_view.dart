@@ -39,7 +39,7 @@ class ChangePasswordView extends GetView<ChangePasswordController> {
                 label: 'Senha Atual',
                 isPassword: true,
                 color: MoralarColors.waterBlue,
-                style: textTheme.bodyText1
+                labelStyle: textTheme.bodyText1
                     ?.copyWith(color: MoralarColors.waterBlue, fontSize: 16),
               ),
               const SizedBox(height: 24),
@@ -47,7 +47,7 @@ class ChangePasswordView extends GetView<ChangePasswordController> {
                 label: 'Nova senha',
                 isPassword: true,
                 color: MoralarColors.waterBlue,
-                style: textTheme.bodyText1
+                labelStyle: textTheme.bodyText1
                     ?.copyWith(color: MoralarColors.waterBlue, fontSize: 16),
               ),
               const SizedBox(height: 24),
@@ -55,7 +55,7 @@ class ChangePasswordView extends GetView<ChangePasswordController> {
                 label: 'Confirmar nova senha',
                 isPassword: true,
                 color: MoralarColors.waterBlue,
-                style: textTheme.bodyText1
+                labelStyle: textTheme.bodyText1
                     ?.copyWith(color: MoralarColors.waterBlue, fontSize: 16),
               ),
               const SizedBox(height: 48),

@@ -100,7 +100,7 @@ class OpenQuestion extends StatelessWidget {
       child: MoralarTextField(
         controller: controller,
         color: MoralarColors.waterBlue,
-        style: textTheme.bodyText2,
+        labelStyle: textTheme.bodyText2,
         label: label,
         maxLines: 3,
       ),

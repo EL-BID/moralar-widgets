@@ -9,7 +9,8 @@ class MoralarTextField extends StatelessWidget {
   final List<String? Function(String?)>? validators;
   final bool? isPassword;
   final int? maxLenght;
-  final TextStyle? style;
+  final TextStyle? labelStyle;
+  final TextStyle? hintStyle;
   final Color? color;
   final int? maxLines;
   final Function(String?)? onSaved;
@@ -24,7 +25,8 @@ class MoralarTextField extends StatelessWidget {
     this.validators,
     this.isPassword,
     this.maxLenght,
-    this.style,
+    this.labelStyle,
+    this.hintStyle,
     this.color,
     this.maxLines,
     this.onSaved,
@@ -49,15 +51,14 @@ class MoralarTextField extends StatelessWidget {
             color: color ?? const Color(4278190080),
           ),
         ),
-        hintStyle: style,
-        labelStyle: style,
+        hintStyle: hintStyle,
+        labelStyle: labelStyle,
         prefixIcon: prefixIcon,
       ),
       controller: controller,
       maxLines: maxLines ?? 1,
       readOnly: readOnly ?? false,
       textInputAction: TextInputAction.done,
-      style: style,
       maxLength: maxLenght,
       keyboardType: keyboard,
       inputFormatters: formats ?? [],
