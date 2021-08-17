@@ -7,6 +7,12 @@ class MoralarDate {
     return seconds;
   }
 
+  static String secondsForDate(int seconds) {
+    final date = DateTime.fromMillisecondsSinceEpoch(seconds * 1000);
+    final formatDate = DateFormat('dd/MM/yyyy').format(date);
+    return formatDate;
+  }
+
   static bool validateDate(int dateSeconds) {
     final now = (DateTime.now().millisecondsSinceEpoch / 1000).round();
 

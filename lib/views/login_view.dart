@@ -32,6 +32,7 @@ class LoginView extends GetView<LoginController> {
                         ),
                         const SizedBox(height: 128),
                         MoralarTextField(
+                          controller: controller.cpf,
                           label: 'CPF',
                           formats: [Formats.cpfMaskFormatter],
                           keyboard: TextInputType.number,
@@ -39,8 +40,6 @@ class LoginView extends GetView<LoginController> {
                             Validatorless.cpf('CPF Inválido'),
                             Validatorless.required('Preencha com seu CPF'),
                           ],
-                          onSaved: (input) =>
-                              controller.credentials.cpf = _unmaskCpf(input!),
                         ),
                         const SizedBox(height: 128),
                         Container(
@@ -127,6 +126,7 @@ class LoginView extends GetView<LoginController> {
                           visible:
                               MoralarWidgets.instance.userType == UserType.tts,
                           child: MoralarTextField(
+                            controller: controller.cpf,
                             label: 'CPF',
                             hint: '123.123.123-12',
                             formats: [Formats.cpfMaskFormatter],
@@ -135,11 +135,10 @@ class LoginView extends GetView<LoginController> {
                               Validatorless.cpf('CPF Inválido'),
                               Validatorless.required('Preencha esse campo'),
                             ],
-                            onSaved: (cpf) =>
-                                controller.credentials.cpf = _unmaskCpf(cpf!),
                           ),
                         ),
                         MoralarTextField(
+                          controller: controller.password,
                           label: 'Senha',
                           hint: 'Escreva uma senha',
                           keyboard: TextInputType.visiblePassword,
@@ -151,9 +150,6 @@ class LoginView extends GetView<LoginController> {
                             Validatorless.required('Digite sua senha'),
                           ],
                           isPassword: true,
-                          onSaved: (password) {
-                            controller.credentials.password = password!;
-                          },
                         ),
                         const SizedBox(height: 128),
                         Obx(() {
@@ -218,7 +214,4 @@ class LoginView extends GetView<LoginController> {
       ],
     );
   }
-
-  String _unmaskCpf(String cpf) =>
-      cpf.trim().replaceAll('.', '').replaceAll('-', '');
 }

@@ -15,6 +15,8 @@ class LoginController extends GetxController {
   final checked = false.obs;
   final isFirstAccess = false.obs;
   final credentials = DocumentCredentials();
+  TextEditingController password = TextEditingController();
+  TextEditingController cpf = TextEditingController();
   final errorMessage = ''.obs;
   final hasError = false.obs;
   final _familyProvider = Get.find<FamilyProvider>();
@@ -28,6 +30,7 @@ class LoginController extends GetxController {
     if (checked.value) {
       if (cpfFormKey.currentState!.validate()) {
         cpfFormKey.currentState!.save();
+        credentials.cpf = Formats.unmaskCpf(cpf.text);
         isLoading.value = true;
         if (await _familyProvider.isValidCpf(credentials.cpf)) {
           isFirstAccess.value = _familyProvider.isFirstAccess;
@@ -61,6 +64,8 @@ class LoginController extends GetxController {
   Future<void> signIn() async {
     if (passwordFormKey.currentState!.validate()) {
       passwordFormKey.currentState!.save();
+      credentials.cpf = Formats.unmaskCpf(cpf.text);
+      credentials.password = password.text;
       try {
         isLoading.value = true;
         await MegaFlutter.instance.auth.signIn(credentials);

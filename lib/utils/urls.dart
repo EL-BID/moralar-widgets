@@ -12,6 +12,7 @@ class _FamilyUrls {
   final validateHolderCpf = '/Family/ExistCpf';
   final tokenByBirthday = '/Family/TokenByBirthday';
   final firstAccess = '/Family/FirstAccess';
+  final edit = '/Family/Edit';
 }
 
 class _TTSUrls {

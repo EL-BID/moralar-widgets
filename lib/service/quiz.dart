@@ -98,7 +98,7 @@ class OpenQuestion extends StatelessWidget {
     return Container(
       alignment: Alignment.center,
       child: MoralarTextField(
-        controller: controller,
+        controller: controller!,
         color: MoralarColors.waterBlue,
         labelStyle: textTheme.bodyText2,
         label: label,

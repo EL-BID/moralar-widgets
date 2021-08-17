@@ -1,9 +1,10 @@
 part of moralar_widgets;
 
 class MoralarTextField extends StatelessWidget {
+  final TextEditingController controller;
   final String? label;
   final String? hint;
-  final TextEditingController? controller;
+  final String? initialValue;
   final TextInputType? keyboard;
   final List<TextInputFormatter>? formats;
   final List<String? Function(String?)>? validators;
@@ -13,13 +14,13 @@ class MoralarTextField extends StatelessWidget {
   final TextStyle? hintStyle;
   final Color? color;
   final int? maxLines;
-  final Function(String?)? onSaved;
   final bool? readOnly;
   final Widget? prefixIcon;
   const MoralarTextField({
+    required this.controller,
     this.label,
     this.hint,
-    this.controller,
+    this.initialValue,
     this.keyboard,
     this.formats,
     this.validators,
@@ -29,7 +30,6 @@ class MoralarTextField extends StatelessWidget {
     this.hintStyle,
     this.color,
     this.maxLines,
-    this.onSaved,
     this.readOnly,
     this.prefixIcon,
   });
@@ -37,6 +37,7 @@ class MoralarTextField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      initialValue: initialValue,
       decoration: InputDecoration(
         labelText: label ?? '',
         hintText: hint ?? '',
@@ -65,7 +66,9 @@ class MoralarTextField extends StatelessWidget {
       validator: Validatorless.multiple(validators ?? []),
       obscureText: isPassword ?? false,
       obscuringCharacter: '*',
-      onSaved: onSaved,
+      onSaved: (s) {
+        controller.text = s!;
+      },
     );
   }
 }

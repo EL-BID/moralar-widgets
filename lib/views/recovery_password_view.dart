@@ -40,6 +40,7 @@ class RecoveryPasswordView extends GetView<RecoveryPasswordController> {
                     ),
                     const SizedBox(height: 32),
                     MoralarTextField(
+                      controller: TextEditingController(),
                       label: 'CPF',
                       formats: [Formats.cpfMaskFormatter],
                       validators: [
@@ -109,6 +110,7 @@ class RecoveryPasswordView extends GetView<RecoveryPasswordController> {
                       ),
                     ),
                     MoralarTextField(
+                      controller: TextEditingController(),
                       label: 'Primeiro nome da sua mãe',
                       validators: [
                         Validatorless.required('Preencha esse campo'),
@@ -119,6 +121,7 @@ class RecoveryPasswordView extends GetView<RecoveryPasswordController> {
                     ),
                     const SizedBox(height: 24),
                     MoralarTextField(
+                      controller: TextEditingController(),
                       label: 'Cidade onde nasceu',
                       validators: [
                         Validatorless.required('Preencha esse campo'),

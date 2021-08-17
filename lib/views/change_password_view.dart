@@ -36,6 +36,7 @@ class ChangePasswordView extends GetView<ChangePasswordController> {
                 ),
               ),
               MoralarTextField(
+                controller: TextEditingController(),
                 label: 'Senha Atual',
                 isPassword: true,
                 color: MoralarColors.waterBlue,
@@ -44,6 +45,7 @@ class ChangePasswordView extends GetView<ChangePasswordController> {
               ),
               const SizedBox(height: 24),
               MoralarTextField(
+                controller: TextEditingController(),
                 label: 'Nova senha',
                 isPassword: true,
                 color: MoralarColors.waterBlue,
@@ -52,6 +54,7 @@ class ChangePasswordView extends GetView<ChangePasswordController> {
               ),
               const SizedBox(height: 24),
               MoralarTextField(
+                controller: TextEditingController(),
                 label: 'Confirmar nova senha',
                 isPassword: true,
                 color: MoralarColors.waterBlue,

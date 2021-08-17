@@ -936,6 +936,7 @@ class FilterCard extends StatelessWidget {
             mainAxisSize: MainAxisSize.min,
             children: [
               MoralarTextField(
+                controller: TextEditingController(),
                 label: 'Pesquisa por Família',
                 color: MoralarColors.brownGrey,
                 prefixIcon: Container(
@@ -981,6 +982,7 @@ class FilterCard extends StatelessWidget {
                   ],
                 ),
                 replacement: MoralarTextField(
+                  controller: TextEditingController(),
                   label: 'Pesquisa por Imóvel',
                   color: MoralarColors.brownGrey,
                   prefixIcon: Container(

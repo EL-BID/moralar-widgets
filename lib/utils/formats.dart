@@ -56,6 +56,16 @@ class Formats {
   static get numberStreetFormatter =>
       MaskTextInputFormatter(mask: '########', filter: {"#": RegExp(r'[0-9]')});
 
+  static String unmaskCpf(String cpf) =>
+      cpf.trim().replaceAll('.', '').replaceAll('-', '');
+
+  static String unmaskTel(String tel) => tel
+      .trim()
+      .replaceAll('(', '')
+      .replaceAll(')', '')
+      .replaceAll(' ', '')
+      .replaceAll('-', '');
+
   // //DATE
   // static DateFormat get dateFormat => DateFormat('dd/MM/yyyy');
 
