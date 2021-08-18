@@ -3,7 +3,7 @@ part of moralar_widgets;
 @JsonSerializable()
 class MoralarUser extends User {
   final String cpf;
-  final String email;
+  String email;
 
   MoralarUser({
     required String name,

@@ -16,6 +16,10 @@ class MoralarTextField extends StatelessWidget {
   final int? maxLines;
   final bool? readOnly;
   final Widget? prefixIcon;
+  final Widget? sufixIcon;
+  final Function(String?)? onSaved;
+  final Function(String?)? onFieldSubmitted;
+  final Function(String?)? onChanged;
   const MoralarTextField({
     required this.controller,
     this.label,
@@ -32,6 +36,10 @@ class MoralarTextField extends StatelessWidget {
     this.maxLines,
     this.readOnly,
     this.prefixIcon,
+    this.sufixIcon,
+    this.onSaved,
+    this.onFieldSubmitted,
+    this.onChanged,
   });
 
   @override
@@ -55,6 +63,7 @@ class MoralarTextField extends StatelessWidget {
         hintStyle: hintStyle,
         labelStyle: labelStyle,
         prefixIcon: prefixIcon,
+        suffixIcon: sufixIcon,
       ),
       controller: controller,
       maxLines: maxLines ?? 1,
@@ -66,9 +75,12 @@ class MoralarTextField extends StatelessWidget {
       validator: Validatorless.multiple(validators ?? []),
       obscureText: isPassword ?? false,
       obscuringCharacter: '*',
-      onSaved: (s) {
-        controller.text = s!;
-      },
+      onSaved: onSaved ??
+          (s) {
+            controller.text = s!;
+          },
+      onFieldSubmitted: onFieldSubmitted,
+      onChanged: onChanged,
     );
   }
 }

@@ -11,10 +11,10 @@ FamilyHolder _$FamilyHolderFromJson(Map<String, dynamic> json) {
     cpf: json['cpf'] as String,
     email: json['email'] as String,
     name: json['name'] as String,
-    number: json['number'] as String?,
-    birthday: json['birthday'] as int?,
+    number: json['number'] as String,
+    birthday: json['birthday'] as int,
     genre: json['genre'] as int?,
-    phone: json['phone'] as String?,
+    phone: json['phone'] as String,
     scholarity: json['scholarity'] as int?,
   );
 }
@@ -28,6 +28,64 @@ Map<String, dynamic> _$FamilyHolderToJson(FamilyHolder instance) =>
       'birthday': instance.birthday,
       'genre': instance.genre,
       'phone': instance.phone,
+      'scholarity': instance.scholarity,
+    };
+
+FamilyMember _$FamilyMemberFromJson(Map<String, dynamic> json) {
+  return FamilyMember(
+    name: json['name'] as String,
+    birthday: json['birthday'] as int,
+    genre: json['genre'] as int?,
+    kinShip: json['kinShip'] as int,
+    scholarity: json['scholarity'] as int?,
+  );
+}
+
+Map<String, dynamic> _$FamilyMemberToJson(FamilyMember instance) =>
+    <String, dynamic>{
+      'name': instance.name,
+      'birthday': instance.birthday,
+      'genre': instance.genre,
+      'kinShip': instance.kinShip,
+      'scholarity': instance.scholarity,
+    };
+
+FamilyUser _$FamilyUserFromJson(Map<String, dynamic> json) {
+  return FamilyUser(
+    holder: FamilyHolder.fromJson(json['holder'] as Map<String, dynamic>),
+    spouse: Spouse.fromJson(json['spouse'] as Map<String, dynamic>),
+    members: (json['members'] as List<dynamic>)
+        .map((e) => FamilyMember.fromJson(e as Map<String, dynamic>))
+        .toList(),
+    motherName: json['motherName'] as String,
+    motherCityBorned: json['motherCityBorned'] as String,
+    id: json['id'] as String,
+  );
+}
+
+Map<String, dynamic> _$FamilyUserToJson(FamilyUser instance) =>
+    <String, dynamic>{
+      'holder': instance.holder,
+      'spouse': instance.spouse,
+      'members': instance.members,
+      'motherName': instance.motherName,
+      'motherCityBorned': instance.motherCityBorned,
+      'id': instance.id,
+    };
+
+Spouse _$SpouseFromJson(Map<String, dynamic> json) {
+  return Spouse(
+    name: json['name'] as String,
+    birthday: json['birthday'] as int,
+    genre: json['genre'] as int?,
+    scholarity: json['scholarity'] as int?,
+  );
+}
+
+Map<String, dynamic> _$SpouseToJson(Spouse instance) => <String, dynamic>{
+      'name': instance.name,
+      'birthday': instance.birthday,
+      'genre': instance.genre,
       'scholarity': instance.scholarity,
     };
 

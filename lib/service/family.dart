@@ -1,19 +1,19 @@
 part of moralar_widgets;
 
-class FamilyForm extends StatelessWidget {
-  final int index;
-  final int genderFamily;
-  final Function(int?)? onChangedRadio;
-  final String schoolFamily;
+class SpouseForm extends StatelessWidget {
+  final Spouse spouse;
+  final int radio;
+  final Function(int?) onChangedRadio;
+  final String schoolSpouse;
   final Function(String?)? onChangedSchool;
   final List<String> schoolTypes;
 
-  const FamilyForm({
-    required this.index,
-    required this.genderFamily,
-    this.onChangedRadio,
-    required this.schoolFamily,
-    this.onChangedSchool,
+  const SpouseForm({
+    required this.spouse,
+    required this.radio,
+    required this.onChangedRadio,
+    required this.schoolSpouse,
+    required this.onChangedSchool,
     required this.schoolTypes,
   });
 
@@ -23,7 +23,7 @@ class FamilyForm extends StatelessWidget {
     return Column(
       children: [
         Text(
-          'Dados do ${_titleType(index)}',
+          'Dados do Cônjuge',
           style: textTheme.headline2?.copyWith(
             fontSize: 24,
           ),
@@ -37,9 +37,9 @@ class FamilyForm extends StatelessWidget {
         ),
         const SizedBox(height: 16),
         MoralarTextField(
-          label: 'Nome do ${_textFieldType(index)}',
+          label: 'Nome do Cônjuge',
           color: MoralarColors.waterBlue,
-          controller: TextEditingController(text: 'Membro da Familia'),
+          controller: TextEditingController(text: spouse.name),
           readOnly: true,
           labelStyle: textTheme.bodyText1
               ?.copyWith(color: MoralarColors.waterBlue, fontSize: 16),
@@ -47,7 +47,9 @@ class FamilyForm extends StatelessWidget {
         const SizedBox(height: 16),
         MoralarTextField(
           label: 'Data de Nascimento',
-          controller: TextEditingController(text: 'DD/MM/AAAA'),
+          controller: TextEditingController(
+            text: MoralarDate.secondsForDate(spouse.birthday),
+          ),
           readOnly: true,
           color: MoralarColors.waterBlue,
           labelStyle: textTheme.bodyText1
@@ -66,71 +68,29 @@ class FamilyForm extends StatelessWidget {
         Column(
           children: [
             RadioListTile(
-              value: 1,
-              groupValue: genderFamily,
-              onChanged: onChangedRadio!,
+              value: 0,
+              groupValue: radio,
+              onChanged: onChangedRadio,
               contentPadding: EdgeInsets.zero,
               title: Text('Masculino', style: textTheme.bodyText2),
             ),
             RadioListTile(
-              value: 2,
-              groupValue: genderFamily,
-              onChanged: onChangedRadio!,
+              value: 1,
+              groupValue: radio,
+              onChanged: onChangedRadio,
               contentPadding: EdgeInsets.zero,
               title: Text('Feminino', style: textTheme.bodyText2),
             ),
             RadioListTile(
-              value: 3,
-              groupValue: genderFamily,
-              onChanged: onChangedRadio!,
+              value: 2,
+              groupValue: radio,
+              onChanged: onChangedRadio,
               contentPadding: EdgeInsets.zero,
               title: Text('Outro', style: textTheme.bodyText2),
             ),
           ],
         ),
         const SizedBox(height: 32),
-        Visibility(
-          visible: index > 0,
-          child: Column(
-            children: [
-              Container(
-                alignment: Alignment.topLeft,
-                child: Text(
-                  'Parentesco',
-                  style: textTheme.headline3?.copyWith(
-                    color: MoralarColors.brownishGrey,
-                  ),
-                ),
-              ),
-              DropdownButton<String>(
-                hint: Text(
-                  'Filho',
-                  style: textTheme.bodyText2,
-                ),
-                icon: const Icon(FontAwesomeIcons.angleDown),
-                elevation: 16,
-                style: textTheme.bodyText2,
-                underline: Container(
-                  height: 2,
-                  color: MoralarColors.brownishGrey,
-                ),
-                isExpanded: true,
-                // onChanged: (s) {
-                //   controller.schoolHint.value = s!;
-                // },
-                items: const [],
-                // items: controller.schoolTypes
-                //     .map<DropdownMenuItem<String>>((value) {
-                //   return DropdownMenuItem<String>(
-                //     value: value,
-                //     child: Text(value),
-                //   );
-                // }).toList(),
-              ),
-              const SizedBox(height: 32),
-            ],
-          ),
-        ),
         Container(
           alignment: Alignment.topLeft,
           child: Text(
@@ -142,7 +102,7 @@ class FamilyForm extends StatelessWidget {
         ),
         DropdownButton<String>(
           hint: Text(
-            schoolFamily,
+            schoolSpouse,
             style: textTheme.bodyText2,
           ),
           icon: const Icon(FontAwesomeIcons.angleDown),
@@ -167,19 +127,177 @@ class FamilyForm extends StatelessWidget {
   }
 }
 
-String _titleType(index) {
-  if (index == 0) {
-    return 'Cônjuge';
-  } else {
-    return 'Familiar';
-  }
-}
+class MemberForm extends StatelessWidget {
+  final FamilyMember member;
+  final int radio;
+  final Function(int?) onChangedRadio;
+  final String school;
+  final Function(String?)? onChangedSchool;
+  final List<String> schoolTypes;
+  final String kinship;
+  final Function(String?)? onChangedKinship;
+  final List<String> kinships;
+  final bool readOnly;
 
-String _textFieldType(index) {
-  if (index == 0) {
-    return 'Cônjuge';
-  } else {
-    return 'Membro';
+  const MemberForm({
+    required this.member,
+    required this.radio,
+    required this.onChangedRadio,
+    required this.school,
+    required this.onChangedSchool,
+    required this.schoolTypes,
+    required this.kinship,
+    required this.onChangedKinship,
+    required this.kinships,
+    required this.readOnly,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final textTheme = Theme.of(context).textTheme;
+    final _birthdayController = TextEditingController(
+      text: MoralarDate.secondsForDate(member.birthday),
+    );
+    return Column(
+      children: [
+        MoralarTextField(
+          label: 'Nome do Familiar',
+          color: MoralarColors.waterBlue,
+          controller: TextEditingController(text: member.name),
+          readOnly: readOnly,
+          labelStyle: textTheme.bodyText1
+              ?.copyWith(color: MoralarColors.waterBlue, fontSize: 16),
+          onChanged: (s) {
+            member.name = s!;
+          },
+        ),
+        const SizedBox(height: 16),
+        MoralarTextField(
+          label: 'Data de Nascimento',
+          controller: _birthdayController,
+          readOnly: readOnly,
+          formats: [Formats.dateMaskFormatter],
+          keyboard: TextInputType.number,
+          color: MoralarColors.waterBlue,
+          labelStyle: textTheme.bodyText1
+              ?.copyWith(color: MoralarColors.waterBlue, fontSize: 16),
+          onFieldSubmitted: (s) {
+            if (MoralarDate.verifyDayMonth(s!)) {
+              member.birthday = MoralarDate.dateForSeconds(s);
+            } else {
+              member.birthday = MoralarDate.dateForSeconds('');
+              Get.snackbar(
+                'Algo deu errado!',
+                'Verifique se a data está digitada da forma correta: dd/MM/yyyy',
+                colorText: MoralarColors.veryLightPink,
+                backgroundColor: MoralarColors.strawberry,
+              );
+            }
+          },
+          onChanged: (s) {
+            member.birthday = MoralarDate.dateForSeconds(s!);
+          },
+        ),
+        const SizedBox(height: 32),
+        Container(
+          alignment: Alignment.topLeft,
+          child: Text(
+            'Gênero',
+            style: textTheme.headline3?.copyWith(
+              color: MoralarColors.brownishGrey,
+            ),
+          ),
+        ),
+        Column(
+          children: [
+            RadioListTile(
+              value: 0,
+              groupValue: radio,
+              onChanged: onChangedRadio,
+              contentPadding: EdgeInsets.zero,
+              title: Text('Masculino', style: textTheme.bodyText2),
+            ),
+            RadioListTile(
+              value: 1,
+              groupValue: radio,
+              onChanged: onChangedRadio,
+              contentPadding: EdgeInsets.zero,
+              title: Text('Feminino', style: textTheme.bodyText2),
+            ),
+            RadioListTile(
+              value: 2,
+              groupValue: radio,
+              onChanged: onChangedRadio,
+              contentPadding: EdgeInsets.zero,
+              title: Text('Outro', style: textTheme.bodyText2),
+            ),
+          ],
+        ),
+        const SizedBox(height: 32),
+        Container(
+          alignment: Alignment.topLeft,
+          child: Text(
+            'Parentesco',
+            style: textTheme.headline3?.copyWith(
+              color: MoralarColors.brownishGrey,
+            ),
+          ),
+        ),
+        DropdownButton<String>(
+          hint: Text(
+            kinship,
+            style: textTheme.bodyText2,
+          ),
+          icon: const Icon(FontAwesomeIcons.angleDown),
+          elevation: 16,
+          style: textTheme.bodyText2,
+          underline: Container(
+            height: 2,
+            color: MoralarColors.brownishGrey,
+          ),
+          isExpanded: true,
+          onChanged: readOnly ? null : onChangedKinship,
+          items: kinships.map<DropdownMenuItem<String>>((value) {
+            return DropdownMenuItem<String>(
+              value: value,
+              child: Text(value),
+            );
+          }).toList(),
+        ),
+        const SizedBox(height: 32),
+        Container(
+          alignment: Alignment.topLeft,
+          child: Text(
+            'Escolaridade',
+            style: textTheme.headline3?.copyWith(
+              color: MoralarColors.brownishGrey,
+            ),
+          ),
+        ),
+        DropdownButton<String>(
+          hint: Text(
+            school,
+            style: textTheme.bodyText2,
+          ),
+          icon: const Icon(FontAwesomeIcons.angleDown),
+          elevation: 16,
+          style: textTheme.bodyText2,
+          underline: Container(
+            height: 2,
+            color: MoralarColors.brownishGrey,
+          ),
+          isExpanded: true,
+          onChanged: onChangedSchool,
+          items: schoolTypes.map<DropdownMenuItem<String>>((value) {
+            return DropdownMenuItem<String>(
+              value: value,
+              child: Text(value),
+            );
+          }).toList(),
+        ),
+        const SizedBox(height: 32),
+      ],
+    );
   }
 }
 
