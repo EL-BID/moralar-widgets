@@ -6,5 +6,8 @@ class RecoveryPasswordBinding extends Bindings {
     Get.lazyPut<RecoveryPasswordController>(
       () => RecoveryPasswordController(),
     );
+    Get.lazyPut<PasswordProvider>(
+      () => PasswordProvider(),
+    );
   }
 }

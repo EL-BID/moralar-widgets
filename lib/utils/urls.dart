@@ -13,6 +13,7 @@ class _FamilyUrls {
   final tokenByBirthday = '/Family/TokenByBirthday';
   final firstAccess = '/Family/FirstAccess';
   final edit = '/Family/Edit';
+  final forgotPassword = '/Family/ForgotPassword';
 }
 
 class _TTSUrls {

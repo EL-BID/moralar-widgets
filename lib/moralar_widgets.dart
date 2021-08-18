@@ -29,6 +29,7 @@ part 'models/user_type.dart';
 part 'moralar_widgets.g.dart';
 part 'providers/auth_provider.dart';
 part 'providers/family_provider.dart';
+part 'providers/password_provider.dart';
 part 'service/course.dart';
 part 'service/family.dart';
 part 'service/quiz.dart';
