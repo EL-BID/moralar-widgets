@@ -37,21 +37,19 @@ class ActivityCard extends StatelessWidget {
 }
 
 class MoralarCard extends StatelessWidget {
-  final int status;
+  final ScheduleHistory? schedule;
   final Function()? function;
   final bool isQuiz;
 
-  const MoralarCard(
-      {required this.status, required this.isQuiz, this.function});
+  const MoralarCard({this.schedule, required this.isQuiz, this.function});
 
   @override
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
     const brownGrey = Color(0xFFb2b2b2);
     final currentColor =
-        isQuiz ? Quiz.statusColor(status) : Scheduling.statusColor(status);
-    final currentText =
-        isQuiz ? Quiz.statusName(status) : Scheduling.statusName(status);
+        isQuiz ? Quiz.statusColor(0) : Scheduling.statusColor(0);
+    final currentText = isQuiz ? Quiz.statusName(0) : Scheduling.statusName(0);
 
     return InkWell(
       onTap: function ?? () {},
@@ -110,6 +108,104 @@ class MoralarCard extends StatelessWidget {
                           ),
                         ],
                       ),
+                    ),
+                    const SizedBox(height: 8),
+                    MegaListTile(
+                      title: currentText,
+                      leading: Container(
+                        width: 16,
+                        height: 16,
+                        alignment: Alignment.center,
+                        decoration: BoxDecoration(
+                          color: currentColor,
+                          shape: BoxShape.circle,
+                        ),
+                      ),
+                      style: textTheme.bodyText2,
+                    ),
+                  ],
+                ),
+              ),
+            ),
+            Container(
+              color: currentColor,
+              width: 24,
+            )
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class ScheduleCard extends StatelessWidget {
+  final ScheduleHistory schedule;
+  final Function()? function;
+
+  const ScheduleCard({required this.schedule, this.function});
+
+  @override
+  Widget build(BuildContext context) {
+    final textTheme = Theme.of(context).textTheme;
+    final currentColor = Scheduling.statusColor(schedule.typeScheduleStatus!);
+    final currentText = Scheduling.statusName(schedule.typeScheduleStatus!);
+
+    final date =
+        MoralarDate.secondsForDateHours(schedule.date!).substring(0, 10);
+    final hour =
+        MoralarDate.secondsForDateHours(schedule.date!).substring(11, 16);
+
+    return InkWell(
+      onTap: function ?? () {},
+      child: Container(
+        margin: const EdgeInsets.only(bottom: 24),
+        height: 164,
+        width: double.infinity,
+        decoration: BoxDecoration(
+          color: Colors.white,
+          boxShadow: [
+            BoxShadow(
+              color: Colors.grey.withOpacity(0.7),
+              // spreadRadius: 1,
+              blurRadius: 3,
+              offset: const Offset(0, 3),
+            ),
+          ],
+        ),
+        child: Row(
+          children: [
+            Expanded(
+              child: Container(
+                padding: const EdgeInsets.only(right: 16, left: 16, top: 16),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      'Reunião TTS',
+                      style: textTheme.headline1?.copyWith(
+                        color: currentColor,
+                      ),
+                    ),
+                    const SizedBox(height: 8),
+                    MegaListTile(
+                      title: date,
+                      leading: const Icon(
+                        FontAwesomeIcons.calendar,
+                        size: 16,
+                        color: MoralarColors.brownGrey,
+                      ),
+                      style: textTheme.bodyText1,
+                    ),
+                    Column(
+                      children: [
+                        const SizedBox(height: 8),
+                        MegaListTile(
+                          title: '${hour}hrs',
+                          leading: const Icon(FontAwesomeIcons.clock,
+                              size: 16, color: MoralarColors.brownGrey),
+                          style: textTheme.bodyText1,
+                        ),
+                      ],
                     ),
                     const SizedBox(height: 8),
                     MegaListTile(

@@ -5,16 +5,16 @@ class FamilyUser {
   FamilyHolder holder;
   Spouse spouse;
   List<FamilyMember> members;
-  String motherName;
-  String motherCityBorned;
+  String? motherName;
+  String? motherCityBorned;
   String id;
 
   FamilyUser({
     required this.holder,
     required this.spouse,
     required this.members,
-    this.motherName = '',
-    this.motherCityBorned = '',
+    this.motherName,
+    this.motherCityBorned,
     required this.id,
   });
 

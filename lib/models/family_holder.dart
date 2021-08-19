@@ -7,6 +7,7 @@ class FamilyHolder extends MoralarUser {
   int? genre;
   String phone;
   int? scholarity;
+  String? id;
   FamilyHolder({
     required String cpf,
     required String email,
@@ -16,6 +17,7 @@ class FamilyHolder extends MoralarUser {
     this.genre = -1,
     this.phone = '',
     this.scholarity = -1,
+    this.id = '',
   }) : super(
           name: name,
           email: email,

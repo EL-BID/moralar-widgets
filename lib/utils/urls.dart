@@ -14,6 +14,7 @@ class _FamilyUrls {
   final firstAccess = '/Family/FirstAccess';
   final edit = '/Family/Edit';
   final forgotPassword = '/Family/ForgotPassword';
+  final scheduling = '/Schedule/GetHistoryByFamily';
 }
 
 class _TTSUrls {

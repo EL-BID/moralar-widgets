@@ -20,6 +20,16 @@ class MoralarDate {
     }
   }
 
+  static String secondsForDateHours(int seconds) {
+    if (seconds > 0) {
+      final date = DateTime.fromMillisecondsSinceEpoch(seconds * 1000);
+      final formatDate = DateFormat('dd/MM/yyyy HH:mm').format(date);
+      return formatDate;
+    } else {
+      return '';
+    }
+  }
+
   static bool validateDate(int dateSeconds) {
     final now = (DateTime.now().millisecondsSinceEpoch / 1000).round();
     if (dateSeconds > now || dateSeconds == 0) {
