@@ -4,6 +4,7 @@ part of moralar_widgets;
 class ScheduleHistory {
   int? date;
   String scheduleId;
+  int? typeSubject;
   int? typeScheduleStatus;
   String id;
 
@@ -11,6 +12,7 @@ class ScheduleHistory {
     this.date,
     required this.scheduleId,
     this.typeScheduleStatus,
+    this.typeSubject,
     required this.id,
   });
 

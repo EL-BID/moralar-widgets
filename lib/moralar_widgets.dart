@@ -24,6 +24,7 @@ part 'models/family_member.dart';
 part 'models/family_user.dart';
 part 'models/schedule_history.dart';
 part 'models/spouse.dart';
+part 'models/timeline.dart';
 part 'models/tts.dart';
 part 'models/user.dart';
 part 'models/user_type.dart';

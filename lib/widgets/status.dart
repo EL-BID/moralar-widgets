@@ -1,70 +1,57 @@
 part of moralar_widgets;
 
 class StatusResettlement extends StatelessWidget {
-  final int status;
-  final List<String> titles;
-  final List<String>? descriptions;
+  final ScheduleHistory schedule;
+  final bool isFirst;
 
-  const StatusResettlement(
-      {required this.status, required this.titles, this.descriptions});
+  const StatusResettlement({
+    required this.schedule,
+    required this.isFirst,
+  });
 
   @override
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
-
-    return Column(
-      children: checkboxList(textTheme),
-    );
-  }
-
-  List<Widget> checkboxList(TextTheme textTheme) {
-    final length = titles.length;
-    final list = <Widget>[];
-    for (var i = 1; i <= length; i++) {
-      list.add(
-        checkboxResettlement(
-            i <= status, i + 1 <= 1, i == length, i - 1, textTheme),
-      );
-    }
-    return list;
-  }
-
-  Widget checkboxResettlement(
-    bool isChecked,
-    bool isNextChecked,
-    bool isFinal,
-    int index,
-    TextTheme textTheme,
-  ) {
-    const kellyGreen = Color(0xFF06b12e);
-    const brownGrey = Color(0xFFb2b2b2);
     return Row(
-      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Column(
           children: [
+            Visibility(
+              visible: !isFirst,
+              child: Column(
+                children: [
+                  const SizedBox(height: 8),
+                  Container(
+                    height: 25,
+                    width: 2,
+                    color: schedule.typeScheduleStatus == 1
+                        ? MoralarColors.kellyGreen
+                        : MoralarColors.brownGrey,
+                  ),
+                  const SizedBox(height: 8),
+                ],
+              ),
+            ),
             Container(
               height: 30,
               width: 30,
-              decoration: isChecked
+              decoration: schedule.typeScheduleStatus == 1
                   ? const BoxDecoration(
-                      color: kellyGreen,
+                      color: MoralarColors.kellyGreen,
                       borderRadius: BorderRadius.all(
                         Radius.circular(10),
                       ),
                     )
                   : BoxDecoration(
                       color: Colors.white,
-                      border: Border.all(
-                        width: 2,
-                        color: brownGrey,
-                      ),
+                      border:
+                          Border.all(width: 2, color: MoralarColors.brownGrey),
                       borderRadius: const BorderRadius.all(
                         Radius.circular(10),
                       ),
                     ),
               child: Visibility(
-                visible: isChecked,
+                visible: schedule.typeScheduleStatus == 1,
                 child: Container(
                   alignment: Alignment.center,
                   child: const FaIcon(FontAwesomeIcons.check,
@@ -72,33 +59,19 @@ class StatusResettlement extends StatelessWidget {
                 ),
               ),
             ),
-            const SizedBox(height: 8),
-            Visibility(
-              visible: !isFinal,
-              child: Container(
-                height: 25,
-                width: 2,
-                color: isNextChecked ? kellyGreen : brownGrey,
-              ),
-            ),
-            const SizedBox(height: 8),
           ],
         ),
-        const SizedBox(width: 20),
-        Expanded(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                titles[index],
-                style: isChecked
-                    ? textTheme.headline1?.copyWith(color: kellyGreen)
-                    : textTheme.headline1?.copyWith(color: brownGrey),
-              ),
-              Text(descriptions?[index] ?? ''),
-            ],
+        Container(
+          padding: EdgeInsets.fromLTRB(16, isFirst ? 0 : 36, 16, 0),
+          child: Text(
+            Scheduling.statusSubject(schedule.typeSubject!),
+            style: textTheme.headline1!.copyWith(
+              color: schedule.typeScheduleStatus == 1
+                  ? MoralarColors.kellyGreen
+                  : MoralarColors.brownGrey,
+            ),
           ),
-        )
+        ),
       ],
     );
   }

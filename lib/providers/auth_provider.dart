@@ -48,6 +48,7 @@ class AuthProvider extends AuthRemoteProvider {
       final user = FamilyHolder.fromJson(response.data['holder'])
         ..token = token;
       user.isFirstAcess = response.data['isFirstAcess'];
+      user.id = response.data['id'];
       return user;
     } else {
       return TTS.fromJson(response.data)..token = token;
