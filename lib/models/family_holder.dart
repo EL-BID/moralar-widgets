@@ -8,6 +8,8 @@ class FamilyHolder extends MoralarUser {
   String phone;
   int? scholarity;
   String? id;
+  bool? isFirstAcess;
+
   FamilyHolder({
     required String cpf,
     required String email,
@@ -18,6 +20,7 @@ class FamilyHolder extends MoralarUser {
     this.phone = '',
     this.scholarity = -1,
     this.id = '',
+    this.isFirstAcess = true,
   }) : super(
           name: name,
           email: email,

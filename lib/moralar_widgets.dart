@@ -63,6 +63,11 @@ part 'widgets/status.dart';
 part 'widgets/text_field.dart';
 part 'widgets/text_span.dart';
 
+/*
+Comandos
+  flutter pub run build_runner build --delete-conflicting-outputs
+*/
+
 class MoralarWidgets {
   static late final MoralarWidgets instance;
 

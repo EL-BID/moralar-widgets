@@ -17,6 +17,7 @@ FamilyHolder _$FamilyHolderFromJson(Map<String, dynamic> json) {
     phone: json['phone'] as String,
     scholarity: json['scholarity'] as int?,
     id: json['id'] as String?,
+    isFirstAcess: json['isFirstAcess'] as bool?,
   );
 }
 
@@ -31,6 +32,7 @@ Map<String, dynamic> _$FamilyHolderToJson(FamilyHolder instance) =>
       'phone': instance.phone,
       'scholarity': instance.scholarity,
       'id': instance.id,
+      'isFirstAcess': instance.isFirstAcess,
     };
 
 FamilyMember _$FamilyMemberFromJson(Map<String, dynamic> json) {
@@ -62,6 +64,7 @@ FamilyUser _$FamilyUserFromJson(Map<String, dynamic> json) {
     motherName: json['motherName'] as String?,
     motherCityBorned: json['motherCityBorned'] as String?,
     id: json['id'] as String,
+    isFirstAcess: json['isFirstAcess'] as bool?,
   );
 }
 
@@ -73,6 +76,7 @@ Map<String, dynamic> _$FamilyUserToJson(FamilyUser instance) =>
       'motherName': instance.motherName,
       'motherCityBorned': instance.motherCityBorned,
       'id': instance.id,
+      'isFirstAcess': instance.isFirstAcess,
     };
 
 ScheduleHistory _$ScheduleHistoryFromJson(Map<String, dynamic> json) {

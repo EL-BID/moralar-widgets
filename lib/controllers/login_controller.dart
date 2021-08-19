@@ -35,7 +35,7 @@ class LoginController extends GetxController {
         if (await _familyProvider.isValidCpf(credentials.cpf)) {
           isFirstAccess.value = _familyProvider.isFirstAccess;
           isLoading.value = false;
-          if (!isFirstAccess.value) {
+          if (isFirstAccess.value) {
             Get.toNamed(firstAccess, arguments: credentials.cpf);
           } else {
             pageController.jumpToPage(1);

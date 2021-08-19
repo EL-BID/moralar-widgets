@@ -45,7 +45,10 @@ class AuthProvider extends AuthRemoteProvider {
     );
 
     if (MoralarWidgets.instance.userType == UserType.family) {
-      return FamilyHolder.fromJson(response.data['holder'])..token = token;
+      final user = FamilyHolder.fromJson(response.data['holder'])
+        ..token = token;
+      user.isFirstAcess = response.data['isFirstAcess'];
+      return user;
     } else {
       return TTS.fromJson(response.data)..token = token;
     }

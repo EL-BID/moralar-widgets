@@ -8,6 +8,7 @@ class FamilyUser {
   String? motherName;
   String? motherCityBorned;
   String id;
+  bool? isFirstAcess;
 
   FamilyUser({
     required this.holder,
@@ -16,6 +17,7 @@ class FamilyUser {
     this.motherName,
     this.motherCityBorned,
     required this.id,
+    this.isFirstAcess,
   });
 
   factory FamilyUser.fromJson(Map<String, dynamic> json) {
