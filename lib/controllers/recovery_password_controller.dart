@@ -27,20 +27,21 @@ class RecoveryPasswordController extends GetxController {
       passwordFormKey.currentState!.save();
       try {
         isLoading.value = true;
-        debugPrint(
-            '${MegaFlutter.instance.auth.currentUser!.token.accessToken}');
         final response = await _passwordProvider.recoveryPassword(
           motherName.text,
           cityName.text,
           Formats.unmaskCpf(cpf.text),
         );
         if (response) {
+          Get.back();
           Get.snackbar(
             'Senha alterada com sucesso!',
             'Conferir em seu e-mail a sua nova senha.',
             colorText: MoralarColors.veryLightPink,
             backgroundColor: MoralarColors.strawberry,
+            duration: const Duration(seconds: 5),
           );
+          isLoading.value = false;
         }
       } on MegaResponseException catch (e) {
         Get.snackbar(
