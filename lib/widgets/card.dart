@@ -139,24 +139,44 @@ class MoralarCard extends StatelessWidget {
 }
 
 class ScheduleCard extends StatelessWidget {
-  final ScheduleHistory schedule;
-  final Function()? function;
+  final ScheduleHistory? schedule;
+  final ScheduleDetails? scheduleDetails;
+  final Function() function;
 
-  const ScheduleCard({required this.schedule, this.function});
+  const ScheduleCard({
+    this.schedule,
+    this.scheduleDetails,
+    required this.function,
+  });
 
   @override
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
-    final currentColor = Scheduling.statusColor(schedule.typeScheduleStatus!);
-    final currentText = Scheduling.statusName(schedule.typeScheduleStatus!);
+    Color currentColor;
+    String currentText;
+    String currentTitle;
+    String date;
+    String hour;
 
-    final date =
-        MoralarDate.secondsForDateHours(schedule.date!).substring(0, 10);
-    final hour =
-        MoralarDate.secondsForDateHours(schedule.date!).substring(11, 16);
+    if (schedule != null) {
+      currentColor = Scheduling.statusColor(schedule!.typeScheduleStatus!);
+      currentTitle = Scheduling.statusSubject(schedule!.typeSubject!);
+      currentText = Scheduling.statusName(schedule!.typeScheduleStatus!);
+      date = MoralarDate.secondsForDateHours(schedule!.date!).substring(0, 10);
+      hour = MoralarDate.secondsForDateHours(schedule!.date!).substring(11, 16);
+    } else {
+      currentColor =
+          Scheduling.statusColor(scheduleDetails!.typeScheduleStatus!);
+      currentTitle = Scheduling.statusSubject(scheduleDetails!.typeSubject!);
+      currentText = Scheduling.statusName(scheduleDetails!.typeScheduleStatus!);
+      date = MoralarDate.secondsForDateHours(scheduleDetails!.date!)
+          .substring(0, 10);
+      hour = MoralarDate.secondsForDateHours(scheduleDetails!.date!)
+          .substring(11, 16);
+    }
 
     return InkWell(
-      onTap: function ?? () {},
+      onTap: function,
       child: Container(
         margin: const EdgeInsets.only(bottom: 24),
         height: 164,
@@ -181,7 +201,7 @@ class ScheduleCard extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      'Reunião TTS',
+                      currentTitle,
                       style: textTheme.headline1?.copyWith(
                         color: currentColor,
                       ),

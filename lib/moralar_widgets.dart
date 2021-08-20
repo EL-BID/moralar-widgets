@@ -22,6 +22,7 @@ part 'models/document_credentials.dart';
 part 'models/family_holder.dart';
 part 'models/family_member.dart';
 part 'models/family_user.dart';
+part 'models/schedule_details.dart';
 part 'models/schedule_history.dart';
 part 'models/spouse.dart';
 part 'models/timeline.dart';

@@ -15,6 +15,7 @@ class _FamilyUrls {
   final edit = '/Family/Edit';
   final forgotPassword = '/Family/ForgotPassword';
   final scheduling = '/Schedule/GetHistoryByFamily';
+  final schedulingDetails = '/Schedule/Detail';
   final timeline = '/Family/TimeLineProcessMandatory';
 }
 

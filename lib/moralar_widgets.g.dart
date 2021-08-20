@@ -79,6 +79,33 @@ Map<String, dynamic> _$FamilyUserToJson(FamilyUser instance) =>
       'isFirstAcess': instance.isFirstAcess,
     };
 
+ScheduleDetails _$ScheduleDetailsFromJson(Map<String, dynamic> json) {
+  return ScheduleDetails(
+    date: json['date'] as int?,
+    place: json['place'] as String?,
+    description: json['description'] as String?,
+    familyId: json['familyId'] as String,
+    holderNumber: json['holderNumber'] as String?,
+    holderCpf: json['holderCpf'] as String?,
+    typeScheduleStatus: json['typeScheduleStatus'] as int?,
+    typeSubject: json['typeSubject'] as int?,
+    id: json['id'] as String,
+  );
+}
+
+Map<String, dynamic> _$ScheduleDetailsToJson(ScheduleDetails instance) =>
+    <String, dynamic>{
+      'date': instance.date,
+      'place': instance.place,
+      'description': instance.description,
+      'familyId': instance.familyId,
+      'holderNumber': instance.holderNumber,
+      'holderCpf': instance.holderCpf,
+      'typeSubject': instance.typeSubject,
+      'typeScheduleStatus': instance.typeScheduleStatus,
+      'id': instance.id,
+    };
+
 ScheduleHistory _$ScheduleHistoryFromJson(Map<String, dynamic> json) {
   return ScheduleHistory(
     date: json['date'] as int?,
