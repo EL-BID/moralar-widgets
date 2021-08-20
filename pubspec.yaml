@@ -9,7 +9,7 @@ environment:
 
 dependencies:
   json_annotation: ^4.0.1
-  flutter_svg: ^0.22.0
+  flutter_carousel_slider: ^1.0.8
   font_awesome_flutter: ^9.1.0
   mask_text_input_formatter: ^2.0.0
   get: 4.3.4

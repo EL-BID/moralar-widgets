@@ -444,14 +444,16 @@ class CourseCard extends StatelessWidget {
 
 class PropertyCard extends StatelessWidget {
   final Function()? function;
-  final bool isHouse;
+  final Property property;
 
-  const PropertyCard({this.function, required this.isHouse});
+  const PropertyCard({this.function, required this.property});
 
   @override
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
-
+    final features = property.residencialPropertyFeatures;
+    final address = property.residencialPropertyAdress;
+    final bool isHouse = features.typeProperty! == 0;
     return InkWell(
       onTap: function ?? () {},
       child: Container(
@@ -474,12 +476,40 @@ class PropertyCard extends StatelessWidget {
           children: [
             Stack(
               children: [
+                // CarouselSlider(
+                //   items: property.photo!
+                //       .map((e) => Container(
+                //           width: double.infinity,
+                //           child: Image.network(e, fit: BoxFit.cover)))
+                //       .toList(),
+                //   options: CarouselOptions(
+                //     autoPlay: true,
+                //     aspectRatio: 2.0,
+                //     viewportFraction: 1,
+                //   ),
+                // ),
                 Container(
-                  width: double.infinity,
-                  height: 164,
-                  child: Image.network(
-                    'https://picsum.photos/200',
-                    fit: BoxFit.cover,
+                  height: 196,
+                  child: CarouselSlider.builder(
+                    slideBuilder: (index) {
+                      return Container(
+                        width: double.infinity,
+                        child: Image.network(
+                          property.photo![index],
+                          fit: BoxFit.cover,
+                        ),
+                      );
+                    },
+                    slideIndicator: CircularSlideIndicator(
+                      indicatorBackgroundColor: MoralarColors.veryLightPink,
+                      currentIndicatorColor: MoralarColors.strawberry,
+                      padding: const EdgeInsets.only(bottom: 8),
+                    ),
+                    itemCount: property.photo!.length,
+                    autoSliderTransitionCurve: Curves.easeIn,
+                    autoSliderTransitionTime: const Duration(milliseconds: 800),
+                    enableAutoSlider: true,
+                    unlimitedMode: true,
                   ),
                 ),
                 Positioned(
@@ -522,7 +552,7 @@ class PropertyCard extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   MegaListTile(
-                    title: 'Bela Vista',
+                    title: address.streetAddress!,
                     leading: const Icon(
                       FontAwesomeIcons.mapMarkerAlt,
                       size: 16,
@@ -536,7 +566,7 @@ class PropertyCard extends StatelessWidget {
                     children: [
                       Expanded(
                         child: MegaListTile(
-                          title: '120 m²',
+                          title: '${features.squareFootage!.toInt()} m²',
                           leading: const Icon(
                             FontAwesomeIcons.ruler,
                             size: 16,
@@ -549,7 +579,7 @@ class PropertyCard extends StatelessWidget {
                       ),
                       Expanded(
                         child: MegaListTile(
-                          title: '2 quartos',
+                          title: '${features.numberOfBedrooms} quartos',
                           leading: const Icon(
                             FontAwesomeIcons.bed,
                             size: 16,
@@ -564,7 +594,7 @@ class PropertyCard extends StatelessWidget {
                   ),
                   const SizedBox(height: 8),
                   MegaListTile(
-                    title: '20 famílias interessadas',
+                    title: 'XX famílias interessadas',
                     leading: const Icon(
                       FontAwesomeIcons.users,
                       size: 16,
