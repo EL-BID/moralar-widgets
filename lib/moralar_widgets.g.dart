@@ -6,6 +6,36 @@ part of moralar_widgets;
 // JsonSerializableGenerator
 // **************************************************************************
 
+Address _$AddressFromJson(Map<String, dynamic> json) {
+  return Address(
+    streetAddress: json['streetAddress'] as String?,
+    number: json['number'] as String?,
+    cityName: json['cityName'] as String?,
+    cityId: json['cityId'] as String?,
+    stateName: json['stateName'] as String?,
+    stateUf: json['stateUf'] as String?,
+    stateId: json['stateId'] as String?,
+    neighborhood: json['neighborhood'] as String?,
+    complement: json['complement'] as String?,
+    location: json['location'] as String?,
+    cep: json['cep'] as String?,
+  );
+}
+
+Map<String, dynamic> _$AddressToJson(Address instance) => <String, dynamic>{
+      'streetAddress': instance.streetAddress,
+      'number': instance.number,
+      'cityName': instance.cityName,
+      'cityId': instance.cityId,
+      'stateName': instance.stateName,
+      'stateUf': instance.stateUf,
+      'stateId': instance.stateId,
+      'neighborhood': instance.neighborhood,
+      'complement': instance.complement,
+      'location': instance.location,
+      'cep': instance.cep,
+    };
+
 FamilyHolder _$FamilyHolderFromJson(Map<String, dynamic> json) {
   return FamilyHolder(
     cpf: json['cpf'] as String,
@@ -77,6 +107,81 @@ Map<String, dynamic> _$FamilyUserToJson(FamilyUser instance) =>
       'motherCityBorned': instance.motherCityBorned,
       'id': instance.id,
       'isFirstAcess': instance.isFirstAcess,
+    };
+
+Property _$PropertyFromJson(Map<String, dynamic> json) {
+  return Property(
+    code: json['code'] as String?,
+    photo: (json['photo'] as List<dynamic>?)?.map((e) => e as String).toList(),
+    project: json['project'] as String?,
+    blocked: json['blocked'] as bool?,
+    residencialPropertyAdress: Address.fromJson(
+        json['residencialPropertyAdress'] as Map<String, dynamic>),
+    residencialPropertyFeatures: PropertyFeatures.fromJson(
+        json['residencialPropertyFeatures'] as Map<String, dynamic>),
+    id: json['id'] as String,
+  );
+}
+
+Map<String, dynamic> _$PropertyToJson(Property instance) => <String, dynamic>{
+      'code': instance.code,
+      'photo': instance.photo,
+      'project': instance.project,
+      'blocked': instance.blocked,
+      'residencialPropertyAdress': instance.residencialPropertyAdress,
+      'residencialPropertyFeatures': instance.residencialPropertyFeatures,
+      'id': instance.id,
+    };
+
+PropertyFeatures _$PropertyFeaturesFromJson(Map<String, dynamic> json) {
+  return PropertyFeatures(
+    propertyValue: (json['propertyValue'] as num?)?.toDouble(),
+    typeProperty: json['typeProperty'] as int?,
+    squareFootage: (json['squareFootage'] as num?)?.toDouble(),
+    condominiumValue: (json['condominiumValue'] as num?)?.toDouble(),
+    iptuValue: (json['iptuValue'] as num?)?.toDouble(),
+    neighborhood: json['neighborhood'] as String?,
+    numberFloors: json['numberFloors'] as int?,
+    floorLocation: json['floorLocation'] as int?,
+    hasElevator: json['hasElevator'] as bool?,
+    numberOfBedrooms: json['numberOfBedrooms'] as int?,
+    numberOfBathrooms: json['numberOfBathrooms'] as int?,
+    hasServiceArea: json['hasServiceArea'] as bool?,
+    hasGarage: json['hasGarage'] as bool?,
+    hasYard: json['hasYard'] as bool?,
+    hasCistern: json['hasCistern'] as bool?,
+    hasWall: json['hasWall'] as bool?,
+    hasAccessLadder: json['hasAccessLadder'] as bool?,
+    hasAccessRamp: json['hasAccessRamp'] as bool?,
+    hasAdaptedToPcd: json['hasAdaptedToPcd'] as bool?,
+    propertyRegularization: json['propertyRegularization'] as int?,
+    typeGasInstallation: json['typeGasInstallation'] as int?,
+  );
+}
+
+Map<String, dynamic> _$PropertyFeaturesToJson(PropertyFeatures instance) =>
+    <String, dynamic>{
+      'propertyValue': instance.propertyValue,
+      'typeProperty': instance.typeProperty,
+      'squareFootage': instance.squareFootage,
+      'condominiumValue': instance.condominiumValue,
+      'iptuValue': instance.iptuValue,
+      'neighborhood': instance.neighborhood,
+      'numberFloors': instance.numberFloors,
+      'floorLocation': instance.floorLocation,
+      'hasElevator': instance.hasElevator,
+      'numberOfBedrooms': instance.numberOfBedrooms,
+      'numberOfBathrooms': instance.numberOfBathrooms,
+      'hasServiceArea': instance.hasServiceArea,
+      'hasGarage': instance.hasGarage,
+      'hasYard': instance.hasYard,
+      'hasCistern': instance.hasCistern,
+      'hasWall': instance.hasWall,
+      'hasAccessLadder': instance.hasAccessLadder,
+      'hasAccessRamp': instance.hasAccessRamp,
+      'hasAdaptedToPcd': instance.hasAdaptedToPcd,
+      'propertyRegularization': instance.propertyRegularization,
+      'typeGasInstallation': instance.typeGasInstallation,
     };
 
 ScheduleDetails _$ScheduleDetailsFromJson(Map<String, dynamic> json) {

@@ -17,6 +17,8 @@ class _FamilyUrls {
   final scheduling = '/Schedule/GetHistoryByFamily';
   final schedulingDetails = '/Schedule/Detail';
   final timeline = '/Family/TimeLineProcessMandatory';
+  final properties =
+      '/ResidencialProperty/GetResidencialByFilter?HasGarage=true&HasAccessLadder=false&HasAccessRamp=false&HasAdaptedToPcd=false';
 }
 
 class _TTSUrls {
