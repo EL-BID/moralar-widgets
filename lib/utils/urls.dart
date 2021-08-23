@@ -16,6 +16,7 @@ class _FamilyUrls {
   final forgotPassword = '/Family/ForgotPassword';
   final scheduling = '/Schedule/GetScheduleByFamily';
   final schedulingDetails = '/Schedule/Detail';
+  final changeStatusSchedule = '/Schedule/ChangeStatus';
   final timeline = '/Family/TimeLineProcessMandatory';
   final properties =
       '/ResidencialProperty/GetResidencialByFilter?HasGarage=true&HasAccessLadder=false&HasAccessRamp=false&HasAdaptedToPcd=false';

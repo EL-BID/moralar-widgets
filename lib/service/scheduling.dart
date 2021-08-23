@@ -9,6 +9,8 @@ class Scheduling {
     } else if (status == 2) {
       return 'Aguardando Reagendamento';
     } else if (status == 3) {
+      return 'Reagendado';
+    } else if (status == 4) {
       return 'Finalizado';
     } else {
       return '';
@@ -46,7 +48,7 @@ class Scheduling {
       return MoralarColors.orangeYellow;
     } else if (status == 2) {
       return MoralarColors.strawberry;
-    } else if (status == 3) {
+    } else if (status == 3 || status == 4) {
       return MoralarColors.brownGrey;
     } else {
       return Colors.white;
