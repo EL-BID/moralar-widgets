@@ -21,6 +21,7 @@ part 'controllers/change_password_controller.dart';
 part 'controllers/login_controller.dart';
 part 'controllers/recovery_password_controller.dart';
 part 'models/address.dart';
+part 'models/course.dart';
 part 'models/document_credentials.dart';
 part 'models/family_holder.dart';
 part 'models/family_member.dart';

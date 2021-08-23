@@ -363,17 +363,22 @@ class FinalizedCard extends StatelessWidget {
 }
 
 class CourseCard extends StatelessWidget {
-  final Function()? function;
-  final bool isVideo;
+  final Function() function;
+  final Course course;
 
-  const CourseCard({this.function, required this.isVideo});
+  const CourseCard({
+    required this.function,
+    required this.course,
+  });
 
   @override
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
+    final String startDate = MoralarDate.secondsForDate(course.startDate);
+    final String endDate = MoralarDate.secondsForDate(course.endDate);
 
     return InkWell(
-      onTap: function ?? () {},
+      onTap: function,
       child: Container(
         height: 124,
         margin: const EdgeInsets.only(bottom: 24),
@@ -393,7 +398,11 @@ class CourseCard extends StatelessWidget {
           children: [
             Container(
               width: 124,
-              child: Image.network('https://picsum.photos/200'),
+              height: 124,
+              child: Image.network(
+                course.img ?? 'https://picsum.photos/200',
+                fit: BoxFit.fill,
+              ),
             ),
             const SizedBox(width: 12),
             Expanded(
@@ -402,31 +411,28 @@ class CourseCard extends StatelessWidget {
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   Text(
-                    isVideo ? 'Vídeo Explicativo' : 'Curso Lorem Ipsum',
+                    course.title,
                     style: textTheme.headline1?.copyWith(
                       color: MoralarColors.kellyGreen,
                     ),
                   ),
                   MegaListTile(
-                    title: isVideo ? '26/09/2020' : '26/09/2020 - 03/10/2020',
+                    title: '$startDate - $endDate',
                     leading: const Icon(
                       FontAwesomeIcons.calendar,
+                      size: 14,
+                      color: MoralarColors.brownGrey,
+                    ),
+                    style: textTheme.bodyText1?.copyWith(fontSize: 12),
+                  ),
+                  MegaListTile(
+                    title: course.schedule,
+                    leading: const Icon(
+                      FontAwesomeIcons.clock,
                       size: 16,
                       color: MoralarColors.brownGrey,
                     ),
                     style: textTheme.bodyText1,
-                  ),
-                  Visibility(
-                    visible: !isVideo,
-                    child: MegaListTile(
-                      title: '14:30hrs',
-                      leading: const Icon(
-                        FontAwesomeIcons.clock,
-                        size: 16,
-                        color: MoralarColors.brownGrey,
-                      ),
-                      style: textTheme.bodyText1,
-                    ),
                   ),
                 ],
               ),
@@ -1210,9 +1216,9 @@ class MoralarTTSCard extends StatelessWidget {
     final textTheme = Theme.of(context).textTheme;
     const brownGrey = Color(0xFFb2b2b2);
     final currentColor =
-        isCourse ? Course.statusColor(status) : Quiz.statusColor(status);
+        isCourse ? CourseService.statusColor(status) : Quiz.statusColor(status);
     final currentText =
-        isCourse ? Course.statusName(status) : Quiz.statusName(status);
+        isCourse ? CourseService.statusName(status) : Quiz.statusName(status);
 
     return InkWell(
       onTap: function ?? () {},

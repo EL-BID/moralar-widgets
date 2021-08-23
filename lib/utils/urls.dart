@@ -19,6 +19,7 @@ class _FamilyUrls {
   final timeline = '/Family/TimeLineProcessMandatory';
   final properties =
       '/ResidencialProperty/GetResidencialByFilter?HasGarage=true&HasAccessLadder=false&HasAccessRamp=false&HasAdaptedToPcd=false';
+  final courses = '/Course/GetAll';
 }
 
 class _TTSUrls {

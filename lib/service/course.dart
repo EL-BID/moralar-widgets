@@ -1,6 +1,6 @@
 part of moralar_widgets;
 
-class Course {
+class CourseService {
   static String statusName(int status) {
     if (status == 0) {
       return 'Inscrito';

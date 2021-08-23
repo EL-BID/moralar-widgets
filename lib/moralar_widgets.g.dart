@@ -36,6 +36,40 @@ Map<String, dynamic> _$AddressToJson(Address instance) => <String, dynamic>{
       'cep': instance.cep,
     };
 
+Course _$CourseFromJson(Map<String, dynamic> json) {
+  return Course(
+    title: json['title'] as String,
+    img: json['img'] as String?,
+    startDate: json['startDate'] as int,
+    endDate: json['endDate'] as int,
+    schedule: json['schedule'] as String,
+    place: json['place'] as String?,
+    workLoad: json['workLoad'] as String?,
+    description: json['description'] as String?,
+    startTargetAudienceAge: json['startTargetAudienceAge'] as int,
+    endTargetAudienceAge: json['endTargetAudienceAge'] as int,
+    typeGenre: json['typeGenre'] as int?,
+    numberOfVacancies: json['numberOfVacancies'] as int?,
+    id: json['id'] as String,
+  );
+}
+
+Map<String, dynamic> _$CourseToJson(Course instance) => <String, dynamic>{
+      'title': instance.title,
+      'img': instance.img,
+      'startDate': instance.startDate,
+      'endDate': instance.endDate,
+      'schedule': instance.schedule,
+      'place': instance.place,
+      'workLoad': instance.workLoad,
+      'description': instance.description,
+      'startTargetAudienceAge': instance.startTargetAudienceAge,
+      'endTargetAudienceAge': instance.endTargetAudienceAge,
+      'typeGenre': instance.typeGenre,
+      'numberOfVacancies': instance.numberOfVacancies,
+      'id': instance.id,
+    };
+
 FamilyHolder _$FamilyHolderFromJson(Map<String, dynamic> json) {
   return FamilyHolder(
     cpf: json['cpf'] as String,
