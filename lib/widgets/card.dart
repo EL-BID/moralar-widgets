@@ -257,12 +257,17 @@ class ScheduleCard extends StatelessWidget {
 }
 
 class FinalizedCard extends StatelessWidget {
+  final ScheduleDetails schedule;
+  const FinalizedCard({required this.schedule});
   @override
   Widget build(BuildContext context) {
-    const status = 3;
     final textTheme = Theme.of(context).textTheme;
-    final currentColor = Scheduling.statusColor(status);
-    final currentText = Scheduling.statusName(status);
+    final currentColor = Scheduling.statusColor(schedule.typeScheduleStatus!);
+    final currentText = Scheduling.statusName(schedule.typeScheduleStatus!);
+    final String date =
+        MoralarDate.secondsForDateHours(schedule.date!).substring(0, 10);
+    final String hour =
+        MoralarDate.secondsForDateHours(schedule.date!).substring(11, 16);
 
     return InkWell(
       onTap: () {},
@@ -295,14 +300,14 @@ class FinalizedCard extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    'Reunião TTS',
+                    Scheduling.statusSubject(schedule.typeSubject!),
                     style: textTheme.headline1?.copyWith(
                       color: currentColor,
                     ),
                   ),
                   const SizedBox(height: 8),
                   MegaListTile(
-                    title: '26/09/2020',
+                    title: '$date',
                     leading: const Icon(
                       FontAwesomeIcons.calendar,
                       size: 16,
@@ -311,7 +316,7 @@ class FinalizedCard extends StatelessWidget {
                     style: textTheme.bodyText1,
                   ),
                   MegaListTile(
-                    title: '14:30hrs',
+                    title: '$hour hrs',
                     leading: const Icon(
                       FontAwesomeIcons.clock,
                       size: 16,
@@ -347,7 +352,7 @@ class FinalizedCard extends StatelessWidget {
                   Container(
                     alignment: Alignment.center,
                     child: Text(
-                      'TextoTextoTextoTextoTextoTextoTextoTextoTextoTextoTexto',
+                      '${schedule.description}',
                       style: textTheme.bodyText1,
                       textAlign: TextAlign.center,
                     ),
