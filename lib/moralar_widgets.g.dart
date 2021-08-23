@@ -322,3 +322,23 @@ Map<String, dynamic> _$MoralarUserToJson(MoralarUser instance) =>
       'cpf': instance.cpf,
       'email': instance.email,
     };
+
+Video _$VideoFromJson(Map<String, dynamic> json) {
+  return Video(
+    created: json['created'] as int,
+    thumbnail: json['thumbnail'] as String,
+    title: json['title'] as String,
+    url: json['url'] as String,
+    blocked: json['blocked'] as bool?,
+    id: json['id'] as String,
+  );
+}
+
+Map<String, dynamic> _$VideoToJson(Video instance) => <String, dynamic>{
+      'created': instance.created,
+      'thumbnail': instance.thumbnail,
+      'title': instance.title,
+      'url': instance.url,
+      'blocked': instance.blocked,
+      'id': instance.id,
+    };

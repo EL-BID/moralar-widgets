@@ -453,6 +453,81 @@ class CourseCard extends StatelessWidget {
   }
 }
 
+class VideoCard extends StatelessWidget {
+  final Function() function;
+  final Video video;
+
+  const VideoCard({
+    required this.function,
+    required this.video,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final textTheme = Theme.of(context).textTheme;
+
+    return InkWell(
+      onTap: function,
+      child: Container(
+        height: 124,
+        margin: const EdgeInsets.only(bottom: 24),
+        decoration: BoxDecoration(
+          color: Colors.white,
+          boxShadow: [
+            BoxShadow(
+              color: Colors.grey.withOpacity(0.7),
+              // spreadRadius: 1,
+              blurRadius: 3,
+              offset: const Offset(0, 3),
+            ),
+          ],
+        ),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Container(
+              width: 124,
+              height: 124,
+              child: Image.network(
+                '${video.thumbnail}',
+                fit: BoxFit.fill,
+              ),
+            ),
+            const SizedBox(width: 12),
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Text(
+                    video.title,
+                    style: textTheme.headline1?.copyWith(
+                      color: MoralarColors.kellyGreen,
+                    ),
+                  ),
+                  MegaListTile(
+                    title: '${MoralarDate.secondsForDate(video.created)}',
+                    leading: const Icon(
+                      FontAwesomeIcons.calendar,
+                      size: 14,
+                      color: MoralarColors.brownGrey,
+                    ),
+                    style: textTheme.bodyText1?.copyWith(fontSize: 12),
+                  ),
+                ],
+              ),
+            ),
+            const Icon(
+              FontAwesomeIcons.angleRight,
+              color: MoralarColors.kellyGreen,
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
 class PropertyCard extends StatelessWidget {
   final Function()? function;
   final Property property;

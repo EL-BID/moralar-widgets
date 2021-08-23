@@ -21,6 +21,7 @@ class _FamilyUrls {
   final properties =
       '/ResidencialProperty/GetResidencialByFilter?HasGarage=true&HasAccessLadder=false&HasAccessRamp=false&HasAdaptedToPcd=false';
   final courses = '/Course/GetAll';
+  final videos = '/Video/GetAll';
 }
 
 class _TTSUrls {

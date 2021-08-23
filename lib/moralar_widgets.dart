@@ -35,6 +35,7 @@ part 'models/timeline.dart';
 part 'models/tts.dart';
 part 'models/user.dart';
 part 'models/user_type.dart';
+part 'models/video.dart';
 part 'moralar_widgets.g.dart';
 part 'providers/auth_provider.dart';
 part 'providers/family_provider.dart';
