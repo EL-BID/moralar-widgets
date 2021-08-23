@@ -8,6 +8,7 @@ class Property {
   bool? blocked;
   Address residencialPropertyAdress;
   PropertyFeatures residencialPropertyFeatures;
+  int interestedFamilies;
   String id;
 
   Property({
@@ -17,6 +18,7 @@ class Property {
     this.blocked,
     required this.residencialPropertyAdress,
     required this.residencialPropertyFeatures,
+    required this.interestedFamilies,
     required this.id,
   });
 

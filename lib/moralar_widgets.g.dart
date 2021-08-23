@@ -153,6 +153,7 @@ Property _$PropertyFromJson(Map<String, dynamic> json) {
         json['residencialPropertyAdress'] as Map<String, dynamic>),
     residencialPropertyFeatures: PropertyFeatures.fromJson(
         json['residencialPropertyFeatures'] as Map<String, dynamic>),
+    interestedFamilies: json['interestedFamilies'] as int,
     id: json['id'] as String,
   );
 }
@@ -164,6 +165,7 @@ Map<String, dynamic> _$PropertyToJson(Property instance) => <String, dynamic>{
       'blocked': instance.blocked,
       'residencialPropertyAdress': instance.residencialPropertyAdress,
       'residencialPropertyFeatures': instance.residencialPropertyFeatures,
+      'interestedFamilies': instance.interestedFamilies,
       'id': instance.id,
     };
 

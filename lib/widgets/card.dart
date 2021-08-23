@@ -460,6 +460,7 @@ class PropertyCard extends StatelessWidget {
     final features = property.residencialPropertyFeatures;
     final address = property.residencialPropertyAdress;
     final bool isHouse = features.typeProperty! == 0;
+
     return InkWell(
       onTap: function ?? () {},
       child: Container(
@@ -588,7 +589,8 @@ class PropertyCard extends StatelessWidget {
                   ),
                   const SizedBox(height: 8),
                   MegaListTile(
-                    title: 'XX famílias interessadas',
+                    title:
+                        '${property.interestedFamilies} famílias interessadas',
                     leading: const Icon(
                       FontAwesomeIcons.users,
                       size: 16,
