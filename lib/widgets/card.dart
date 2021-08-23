@@ -476,18 +476,6 @@ class PropertyCard extends StatelessWidget {
           children: [
             Stack(
               children: [
-                // CarouselSlider(
-                //   items: property.photo!
-                //       .map((e) => Container(
-                //           width: double.infinity,
-                //           child: Image.network(e, fit: BoxFit.cover)))
-                //       .toList(),
-                //   options: CarouselOptions(
-                //     autoPlay: true,
-                //     aspectRatio: 2.0,
-                //     viewportFraction: 1,
-                //   ),
-                // ),
                 Container(
                   height: 196,
                   child: CarouselSlider.builder(
