@@ -192,6 +192,7 @@ PropertyFeatures _$PropertyFeaturesFromJson(Map<String, dynamic> json) {
     hasAdaptedToPcd: json['hasAdaptedToPcd'] as bool?,
     propertyRegularization: json['propertyRegularization'] as int?,
     typeGasInstallation: json['typeGasInstallation'] as int?,
+    isInterested: json['isInterested'] as bool?,
   );
 }
 
@@ -218,6 +219,7 @@ Map<String, dynamic> _$PropertyFeaturesToJson(PropertyFeatures instance) =>
       'hasAdaptedToPcd': instance.hasAdaptedToPcd,
       'propertyRegularization': instance.propertyRegularization,
       'typeGasInstallation': instance.typeGasInstallation,
+      'isInterested': instance.isInterested,
     };
 
 PropertyFilter _$PropertyFilterFromJson(Map<String, dynamic> json) {

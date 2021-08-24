@@ -23,6 +23,7 @@ class PropertyFeatures {
   bool? hasAdaptedToPcd;
   int? propertyRegularization;
   int? typeGasInstallation;
+  bool? isInterested;
 
   PropertyFeatures({
     this.propertyValue,
@@ -46,6 +47,7 @@ class PropertyFeatures {
     this.hasAdaptedToPcd,
     this.propertyRegularization,
     this.typeGasInstallation,
+    this.isInterested,
   });
 
   factory PropertyFeatures.fromJson(Map<String, dynamic> json) {

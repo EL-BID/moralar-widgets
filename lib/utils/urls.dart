@@ -19,6 +19,7 @@ class _FamilyUrls {
   final changeStatusSchedule = '/Schedule/ChangeStatus';
   final timeline = '/Family/TimeLineProcessMandatory';
   final properties = '/ResidencialProperty/GetResidencialByFilter';
+  final interestProperty = '/PropertiesInterest/Register';
   final matchs = '/PropertiesInterest/DetailFamilyMatch';
   final courses = '/Course/GetAll';
   final videos = '/Video/GetAll';

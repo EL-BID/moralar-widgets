@@ -33,6 +33,7 @@ AlertDialog subscribeAlert(TextTheme textTheme) {
       MoralarButton(
         onPressed: () {
           Get.back();
+          Get.back();
         },
         child: Container(
           alignment: Alignment.center,
