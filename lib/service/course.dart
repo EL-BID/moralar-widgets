@@ -20,4 +20,16 @@ class CourseService {
       return Colors.white;
     }
   }
+
+  static String courseGenre(int status) {
+    if (status == 0) {
+      return 'Feminino';
+    } else if (status == 1) {
+      return 'Masculino';
+    } else if (status == 2) {
+      return 'Outros';
+    } else {
+      return 'Todos';
+    }
+  }
 }
