@@ -65,6 +65,7 @@ class MoralarTextField extends StatelessWidget {
         prefixIcon: prefixIcon,
         suffixIcon: sufixIcon,
       ),
+      style: hintStyle,
       controller: controller,
       maxLines: maxLines ?? 1,
       readOnly: readOnly ?? false,

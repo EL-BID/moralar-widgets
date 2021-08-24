@@ -18,8 +18,7 @@ class _FamilyUrls {
   final schedulingDetails = '/Schedule/Detail';
   final changeStatusSchedule = '/Schedule/ChangeStatus';
   final timeline = '/Family/TimeLineProcessMandatory';
-  final properties =
-      '/ResidencialProperty/GetResidencialByFilter?HasGarage=true&HasAccessLadder=false&HasAccessRamp=false&HasAdaptedToPcd=false';
+  final properties = '/ResidencialProperty/GetResidencialByFilter';
   final courses = '/Course/GetAll';
   final videos = '/Video/GetAll';
 }

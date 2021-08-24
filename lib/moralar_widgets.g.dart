@@ -220,6 +220,43 @@ Map<String, dynamic> _$PropertyFeaturesToJson(PropertyFeatures instance) =>
       'typeGasInstallation': instance.typeGasInstallation,
     };
 
+PropertyFilter _$PropertyFilterFromJson(Map<String, dynamic> json) {
+  return PropertyFilter(
+    typeProperty: json['typeProperty'] as String?,
+    startSquareFootage: (json['startSquareFootage'] as num?)?.toDouble(),
+    endSquareFootage: (json['endSquareFootage'] as num?)?.toDouble(),
+    startCondominiumValue: (json['startCondominiumValue'] as num?)?.toDouble(),
+    endCondominiumValue: (json['endCondominiumValue'] as num?)?.toDouble(),
+    startIptuValue: (json['startIptuValue'] as num?)?.toDouble(),
+    endIptuValue: (json['endIptuValue'] as num?)?.toDouble(),
+    neighborhood: json['neighborhood'] as String?,
+    startNumberOfBedrooms: json['startNumberOfBedrooms'] as int?,
+    endNumberOfBedrooms: json['endNumberOfBedrooms'] as int?,
+    hasGarage: json['hasGarage'] as bool?,
+    hasAccessLadder: json['hasAccessLadder'] as bool?,
+    hasAccessRamp: json['hasAccessRamp'] as bool?,
+    hasAdaptedToPcd: json['hasAdaptedToPcd'] as bool?,
+  );
+}
+
+Map<String, dynamic> _$PropertyFilterToJson(PropertyFilter instance) =>
+    <String, dynamic>{
+      'typeProperty': instance.typeProperty,
+      'startSquareFootage': instance.startSquareFootage,
+      'endSquareFootage': instance.endSquareFootage,
+      'startCondominiumValue': instance.startCondominiumValue,
+      'endCondominiumValue': instance.endCondominiumValue,
+      'startIptuValue': instance.startIptuValue,
+      'endIptuValue': instance.endIptuValue,
+      'neighborhood': instance.neighborhood,
+      'startNumberOfBedrooms': instance.startNumberOfBedrooms,
+      'endNumberOfBedrooms': instance.endNumberOfBedrooms,
+      'hasGarage': instance.hasGarage,
+      'hasAccessLadder': instance.hasAccessLadder,
+      'hasAccessRamp': instance.hasAccessRamp,
+      'hasAdaptedToPcd': instance.hasAdaptedToPcd,
+    };
+
 ScheduleDetails _$ScheduleDetailsFromJson(Map<String, dynamic> json) {
   return ScheduleDetails(
     date: json['date'] as int?,

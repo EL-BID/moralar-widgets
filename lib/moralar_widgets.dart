@@ -28,6 +28,7 @@ part 'models/family_member.dart';
 part 'models/family_user.dart';
 part 'models/property.dart';
 part 'models/property_features.dart';
+part 'models/property_filter.dart';
 part 'models/schedule_details.dart';
 part 'models/schedule_history.dart';
 part 'models/spouse.dart';
