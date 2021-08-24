@@ -690,6 +690,464 @@ class PropertyCard extends StatelessWidget {
   }
 }
 
+class PropertyFilterCard extends StatelessWidget {
+  final PropertyFilter filter;
+  final int imovel;
+  final Function(int?) changeImovel;
+  final TextEditingController startSquareFootage;
+  final TextEditingController endSquareFootage;
+  final TextEditingController startCondominiumValue;
+  final TextEditingController endCondominiumValue;
+  final TextEditingController startIptuValue;
+  final TextEditingController endIptuValue;
+  final TextEditingController startNumberOfBedrooms;
+  final TextEditingController endNumberOfBedrooms;
+  final TextEditingController neighborhood;
+  final int hasGarage;
+  final Function(int?) changeGarage;
+  final int hasLadder;
+  final Function(int?) changeLadder;
+  final int hasRamp;
+  final Function(int?) changeRamp;
+  final int hasPCD;
+  final Function(int?) changePCD;
+  final VoidCallback apply;
+  final VoidCallback remove;
+
+  const PropertyFilterCard({
+    required this.filter,
+    required this.imovel,
+    required this.changeImovel,
+    required this.startSquareFootage,
+    required this.endSquareFootage,
+    required this.startCondominiumValue,
+    required this.endCondominiumValue,
+    required this.startIptuValue,
+    required this.endIptuValue,
+    required this.startNumberOfBedrooms,
+    required this.endNumberOfBedrooms,
+    required this.neighborhood,
+    required this.hasGarage,
+    required this.changeGarage,
+    required this.hasLadder,
+    required this.changeLadder,
+    required this.hasRamp,
+    required this.changeRamp,
+    required this.hasPCD,
+    required this.changePCD,
+    required this.apply,
+    required this.remove,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final textTheme = Theme.of(context).textTheme;
+
+    return Container(
+      margin: const EdgeInsets.only(bottom: 24),
+      width: double.infinity,
+      decoration: BoxDecoration(
+        color: Colors.white,
+        boxShadow: [
+          BoxShadow(
+            color: Colors.grey.withOpacity(0.7),
+            blurRadius: 3,
+            offset: const Offset(0, 3),
+          ),
+        ],
+      ),
+      child: Column(
+        children: [
+          Container(
+            padding: const EdgeInsets.all(24),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Row(
+                  children: [
+                    Text(
+                      'Imovel',
+                      style: textTheme.bodyText2,
+                    ),
+                    Radio(
+                      activeColor: MoralarColors.strawberry,
+                      value: 0,
+                      groupValue: imovel,
+                      onChanged: changeImovel,
+                    ),
+                    Text(
+                      'Todos',
+                      style: textTheme.bodyText2,
+                    ),
+                    Radio(
+                      activeColor: MoralarColors.strawberry,
+                      value: 1,
+                      groupValue: imovel,
+                      onChanged: changeImovel,
+                    ),
+                    Text(
+                      'Casa',
+                      style: textTheme.bodyText2,
+                    ),
+                    Radio(
+                      activeColor: MoralarColors.strawberry,
+                      value: 2,
+                      groupValue: imovel,
+                      onChanged: changeImovel,
+                    ),
+                    Text(
+                      'Apt.',
+                      style: textTheme.bodyText2,
+                    ),
+                  ],
+                ),
+                Visibility(
+                  visible: filter.startSquareFootage != null ||
+                      filter.endSquareFootage != null,
+                  child: Row(
+                    children: [
+                      Container(
+                        padding: const EdgeInsets.only(top: 24),
+                        width: 64,
+                        child: Text(
+                          'M²',
+                          style: textTheme.bodyText2,
+                        ),
+                      ),
+                      Flexible(
+                        child: RowTextField(
+                          textFields: [
+                            MoralarTextField(
+                              controller: startSquareFootage,
+                              label: 'De:',
+                              keyboard: TextInputType.number,
+                              labelStyle: textTheme.bodyText2,
+                              hintStyle: textTheme.bodyText2,
+                            ),
+                            MoralarTextField(
+                              controller: endSquareFootage,
+                              label: 'Até:',
+                              keyboard: TextInputType.number,
+                              labelStyle: textTheme.bodyText2,
+                              hintStyle: textTheme.bodyText2,
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                Visibility(
+                  visible: filter.startCondominiumValue != null ||
+                      filter.endCondominiumValue != null,
+                  child: Row(
+                    children: [
+                      Container(
+                        padding: const EdgeInsets.only(top: 24),
+                        width: 64,
+                        child: Text(
+                          'Cond.',
+                          style: textTheme.bodyText2,
+                        ),
+                      ),
+                      Flexible(
+                        child: RowTextField(
+                          textFields: [
+                            MoralarTextField(
+                              controller: startCondominiumValue,
+                              label: 'De:',
+                              keyboard: TextInputType.number,
+                              labelStyle: textTheme.bodyText2,
+                              hintStyle: textTheme.bodyText2,
+                            ),
+                            MoralarTextField(
+                              controller: endCondominiumValue,
+                              label: 'Até:',
+                              keyboard: TextInputType.number,
+                              labelStyle: textTheme.bodyText2,
+                              hintStyle: textTheme.bodyText2,
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                Visibility(
+                  visible: filter.startIptuValue != null ||
+                      filter.endIptuValue != null,
+                  child: Row(
+                    children: [
+                      Container(
+                        padding: const EdgeInsets.only(top: 24),
+                        width: 64,
+                        child: Text(
+                          'IPTU',
+                          style: textTheme.bodyText2,
+                        ),
+                      ),
+                      Flexible(
+                        child: RowTextField(
+                          textFields: [
+                            MoralarTextField(
+                              controller: startIptuValue,
+                              label: 'De:',
+                              keyboard: TextInputType.number,
+                              labelStyle: textTheme.bodyText2,
+                              hintStyle: textTheme.bodyText2,
+                            ),
+                            MoralarTextField(
+                              controller: endIptuValue,
+                              label: 'Até:',
+                              keyboard: TextInputType.number,
+                              labelStyle: textTheme.bodyText2,
+                              hintStyle: textTheme.bodyText2,
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                Visibility(
+                  visible: filter.startNumberOfBedrooms != null ||
+                      filter.endNumberOfBedrooms != null,
+                  child: Row(
+                    children: [
+                      Container(
+                        padding: const EdgeInsets.only(top: 24),
+                        width: 64,
+                        child: Text(
+                          'Quartos',
+                          style: textTheme.bodyText2,
+                        ),
+                      ),
+                      Flexible(
+                        child: RowTextField(
+                          textFields: [
+                            MoralarTextField(
+                              controller: startNumberOfBedrooms,
+                              label: 'De:',
+                              keyboard: TextInputType.number,
+                              labelStyle: textTheme.bodyText2,
+                              hintStyle: textTheme.bodyText2,
+                            ),
+                            MoralarTextField(
+                              controller: endNumberOfBedrooms,
+                              label: 'Até:',
+                              keyboard: TextInputType.number,
+                              labelStyle: textTheme.bodyText2,
+                              hintStyle: textTheme.bodyText2,
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                Visibility(
+                  visible: filter.neighborhood != null,
+                  child: Row(
+                    children: [
+                      Container(
+                        padding: const EdgeInsets.only(top: 24),
+                        width: 64,
+                        child: Text(
+                          'Bairro',
+                          style: textTheme.bodyText2,
+                        ),
+                      ),
+                      Flexible(
+                        child: MoralarTextField(
+                          controller: neighborhood,
+                          label: 'Nome do bairro',
+                          keyboard: TextInputType.number,
+                          labelStyle: textTheme.bodyText2,
+                          hintStyle: textTheme.bodyText2,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                const SizedBox(height: 24),
+                Visibility(
+                  visible: filter.hasGarage != null,
+                  child: Row(
+                    children: [
+                      Container(
+                        width: 64,
+                        child: Text(
+                          'Garagem',
+                          style: textTheme.bodyText2,
+                        ),
+                      ),
+                      Radio(
+                        activeColor: MoralarColors.strawberry,
+                        value: 0,
+                        groupValue: hasGarage,
+                        onChanged: changeGarage,
+                      ),
+                      Text(
+                        'Sim',
+                        style: textTheme.bodyText2,
+                      ),
+                      Radio(
+                        activeColor: MoralarColors.strawberry,
+                        value: 1,
+                        groupValue: hasGarage,
+                        onChanged: changeGarage,
+                      ),
+                      Text(
+                        'Não',
+                        style: textTheme.bodyText2,
+                      ),
+                    ],
+                  ),
+                ),
+                Visibility(
+                  visible: filter.hasAccessLadder != null,
+                  child: Row(
+                    children: [
+                      Container(
+                        width: 64,
+                        child: Text(
+                          'Escada',
+                          style: textTheme.bodyText2,
+                        ),
+                      ),
+                      Radio(
+                        activeColor: MoralarColors.strawberry,
+                        value: 0,
+                        groupValue: hasLadder,
+                        onChanged: changeLadder,
+                      ),
+                      Text(
+                        'Sim',
+                        style: textTheme.bodyText2,
+                      ),
+                      Radio(
+                        activeColor: MoralarColors.strawberry,
+                        value: 1,
+                        groupValue: hasLadder,
+                        onChanged: changeLadder,
+                      ),
+                      Text(
+                        'Não',
+                        style: textTheme.bodyText2,
+                      ),
+                    ],
+                  ),
+                ),
+                Visibility(
+                  visible: filter.hasAccessRamp != null,
+                  child: Row(
+                    children: [
+                      Container(
+                        width: 64,
+                        child: Text(
+                          'Rampa',
+                          style: textTheme.bodyText2,
+                        ),
+                      ),
+                      Radio(
+                        activeColor: MoralarColors.strawberry,
+                        value: 0,
+                        groupValue: hasRamp,
+                        onChanged: changeRamp,
+                      ),
+                      Text(
+                        'Sim',
+                        style: textTheme.bodyText2,
+                      ),
+                      Radio(
+                        activeColor: MoralarColors.strawberry,
+                        value: 1,
+                        groupValue: hasRamp,
+                        onChanged: changeRamp,
+                      ),
+                      Text(
+                        'Não',
+                        style: textTheme.bodyText2,
+                      ),
+                    ],
+                  ),
+                ),
+                Visibility(
+                  visible: filter.hasAdaptedToPcd != null,
+                  child: Row(
+                    children: [
+                      Container(
+                        width: 64,
+                        child: Text(
+                          'PCD',
+                          style: textTheme.bodyText2,
+                        ),
+                      ),
+                      Radio(
+                        activeColor: MoralarColors.strawberry,
+                        value: 0,
+                        groupValue: hasPCD,
+                        onChanged: changePCD,
+                      ),
+                      Text(
+                        'Sim',
+                        style: textTheme.bodyText2,
+                      ),
+                      Radio(
+                        activeColor: MoralarColors.strawberry,
+                        value: 1,
+                        groupValue: hasPCD,
+                        onChanged: changePCD,
+                      ),
+                      Text(
+                        'Não',
+                        style: textTheme.bodyText2,
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          ),
+          Container(height: 1, color: MoralarColors.brownGrey),
+          Row(
+            children: [
+              Flexible(
+                child: MoralarButton(
+                  color: Colors.white,
+                  child: Container(
+                    alignment: Alignment.center,
+                    child: const Text(
+                      'Remover Filtro',
+                      style: TextStyle(color: MoralarColors.strawberry),
+                    ),
+                  ),
+                  onPressed: remove,
+                ),
+              ),
+              Container(width: 1, height: 48, color: MoralarColors.brownGrey),
+              Flexible(
+                child: MoralarButton(
+                  color: Colors.white,
+                  child: Container(
+                    alignment: Alignment.center,
+                    child: const Text(
+                      'Aplicar',
+                      style: TextStyle(color: MoralarColors.waterBlue),
+                    ),
+                  ),
+                  onPressed: apply,
+                ),
+              ),
+            ],
+          ),
+        ],
+      ),
+    );
+  }
+}
+
 class InformativeCard extends StatelessWidget {
   final Function()? function;
   final bool checkbox;
