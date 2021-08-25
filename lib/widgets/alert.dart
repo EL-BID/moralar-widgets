@@ -43,3 +43,38 @@ AlertDialog subscribeAlert(TextTheme textTheme) {
     ],
   );
 }
+
+class ConfirmSubscription extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    final textTheme = Theme.of(context).textTheme;
+    return Column(
+      children: [
+        Container(
+          height: 120,
+          width: 120,
+          padding: const EdgeInsets.only(bottom: 24),
+          child: MoralarImage.asset(
+            Assets.images.confirmado,
+          ),
+        ),
+        Text(
+          'Inscrição Confirmada',
+          style: textTheme.headline1?.copyWith(
+            color: MoralarColors.kellyGreen,
+          ),
+        ),
+        const SizedBox(height: 16),
+        Container(
+          alignment: Alignment.center,
+          child: Text(
+            // ignore: lines_longer_than_80_chars
+            'Certifique-se que o máximo de imóveis que é possivel ter interesse são três.',
+            textAlign: TextAlign.center,
+            style: textTheme.bodyText2,
+          ),
+        ),
+      ],
+    );
+  }
+}

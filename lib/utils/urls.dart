@@ -20,6 +20,7 @@ class _FamilyUrls {
   final timeline = '/Family/TimeLineProcessMandatory';
   final properties = '/ResidencialProperty/GetResidencialByFilter';
   final interestProperty = '/PropertiesInterest/Register';
+  final desinterestProperty = '/PropertiesInterest/InterestCancel';
   final matchs = '/PropertiesInterest/DetailFamilyMatch';
   final courses = '/Course/GetAll';
   final videos = '/Video/GetAll';
