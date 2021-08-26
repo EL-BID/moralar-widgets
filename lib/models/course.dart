@@ -14,6 +14,7 @@ class Course {
   int endTargetAudienceAge;
   int? typeGenre;
   int? numberOfVacancies;
+  bool isSubscribed;
   String id;
   Course({
     required this.title,
@@ -28,6 +29,7 @@ class Course {
     required this.endTargetAudienceAge,
     this.typeGenre,
     this.numberOfVacancies,
+    required this.isSubscribed,
     required this.id,
   });
 

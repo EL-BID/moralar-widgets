@@ -23,7 +23,9 @@ class _FamilyUrls {
   final desinterestProperty = '/PropertiesInterest/InterestCancel';
   final matchs = '/PropertiesInterest/DetailFamilyMatch';
   final courses = '/Course/GetAll';
+  final courseDetails = '/Course/Detail';
   final interestCourse = '/Course/RegisterFamilyToTrainning';
+  final desinterestCourse = '/Course/CancelFamilyToTrainning';
   final videos = '/Video/GetAll';
 }
 

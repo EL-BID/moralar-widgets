@@ -50,6 +50,7 @@ Course _$CourseFromJson(Map<String, dynamic> json) {
     endTargetAudienceAge: json['endTargetAudienceAge'] as int,
     typeGenre: json['typeGenre'] as int?,
     numberOfVacancies: json['numberOfVacancies'] as int?,
+    isSubscribed: json['isSubscribed'] as bool,
     id: json['id'] as String,
   );
 }
@@ -67,6 +68,7 @@ Map<String, dynamic> _$CourseToJson(Course instance) => <String, dynamic>{
       'endTargetAudienceAge': instance.endTargetAudienceAge,
       'typeGenre': instance.typeGenre,
       'numberOfVacancies': instance.numberOfVacancies,
+      'isSubscribed': instance.isSubscribed,
       'id': instance.id,
     };
 
