@@ -1,6 +1,6 @@
 part of moralar_widgets;
 
-class Quiz {
+class QuizService {
   static String statusName(int status) {
     if (status == 0) {
       return 'Respondido';

@@ -261,6 +261,22 @@ Map<String, dynamic> _$PropertyFilterToJson(PropertyFilter instance) =>
       'hasAdaptedToPcd': instance.hasAdaptedToPcd,
     };
 
+Quiz _$QuizFromJson(Map<String, dynamic> json) {
+  return Quiz(
+    title: json['title'] as String,
+    typeQuiz: json['typeQuiz'] as int,
+    questionRegister: json['questionRegister'] as bool?,
+    id: json['id'] as String,
+  );
+}
+
+Map<String, dynamic> _$QuizToJson(Quiz instance) => <String, dynamic>{
+      'title': instance.title,
+      'typeQuiz': instance.typeQuiz,
+      'questionRegister': instance.questionRegister,
+      'id': instance.id,
+    };
+
 ScheduleDetails _$ScheduleDetailsFromJson(Map<String, dynamic> json) {
   return ScheduleDetails(
     date: json['date'] as int?,

@@ -36,26 +36,24 @@ class ActivityCard extends StatelessWidget {
   }
 }
 
-class MoralarCard extends StatelessWidget {
-  final ScheduleHistory? schedule;
-  final Function()? function;
-  final bool isQuiz;
+class QuizCard extends StatelessWidget {
+  final Quiz quiz;
+  final VoidCallback function;
 
-  const MoralarCard({this.schedule, required this.isQuiz, this.function});
+  const QuizCard({required this.quiz, required this.function});
 
   @override
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
     const brownGrey = Color(0xFFb2b2b2);
-    final currentColor =
-        isQuiz ? Quiz.statusColor(0) : Scheduling.statusColor(0);
-    final currentText = isQuiz ? Quiz.statusName(0) : Scheduling.statusName(0);
+    final currentColor = QuizService.statusColor(0);
+    final currentText = QuizService.statusName(0);
 
     return InkWell(
-      onTap: function ?? () {},
+      onTap: function,
       child: Container(
         margin: const EdgeInsets.only(bottom: 24),
-        height: isQuiz ? 124 : 164,
+        height: 124,
         width: double.infinity,
         decoration: BoxDecoration(
           color: Colors.white,
@@ -77,7 +75,7 @@ class MoralarCard extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      'Reunião TTS',
+                      quiz.title,
                       style: textTheme.headline1?.copyWith(
                         color: currentColor,
                       ),
@@ -91,23 +89,6 @@ class MoralarCard extends StatelessWidget {
                         color: brownGrey,
                       ),
                       style: textTheme.bodyText1,
-                    ),
-                    Visibility(
-                      visible: !isQuiz,
-                      child: Column(
-                        children: [
-                          const SizedBox(height: 8),
-                          MegaListTile(
-                            title: '14:30hrs',
-                            leading: const Icon(
-                              FontAwesomeIcons.clock,
-                              size: 16,
-                              color: brownGrey,
-                            ),
-                            style: textTheme.bodyText1,
-                          ),
-                        ],
-                      ),
                     ),
                     const SizedBox(height: 8),
                     MegaListTile(
@@ -1755,10 +1736,12 @@ class MoralarTTSCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
     const brownGrey = Color(0xFFb2b2b2);
-    final currentColor =
-        isCourse ? CourseService.statusColor(status) : Quiz.statusColor(status);
-    final currentText =
-        isCourse ? CourseService.statusName(status) : Quiz.statusName(status);
+    final currentColor = isCourse
+        ? CourseService.statusColor(status)
+        : QuizService.statusColor(status);
+    final currentText = isCourse
+        ? CourseService.statusName(status)
+        : QuizService.statusName(status);
 
     return InkWell(
       onTap: function ?? () {},
