@@ -45,6 +45,8 @@ AlertDialog subscribeAlert(TextTheme textTheme) {
 }
 
 class ConfirmSubscription extends StatelessWidget {
+  final String description;
+  const ConfirmSubscription({required this.description});
   @override
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
@@ -68,8 +70,7 @@ class ConfirmSubscription extends StatelessWidget {
         Container(
           alignment: Alignment.center,
           child: Text(
-            // ignore: lines_longer_than_80_chars
-            'Certifique-se que o máximo de imóveis que é possivel ter interesse são três.',
+            description,
             textAlign: TextAlign.center,
             style: textTheme.bodyText2,
           ),
