@@ -21,4 +21,24 @@ class PasswordProvider extends RemoteProvider {
       rethrow;
     }
   }
+
+  Future<bool> changePassword(
+      String newPassword, String currentPassword) async {
+    final String endpoint = MoralarWidgets.instance.userType == UserType.tts
+        ? ''
+        : Urls.family.changePassword;
+    try {
+      final response = await post(
+        endpoint,
+        body: {
+          'currentPassword': newPassword,
+          'newPassword': currentPassword,
+        },
+      );
+      debugPrint('${response.toJson()}');
+      return true;
+    } on MegaResponseException {
+      rethrow;
+    }
+  }
 }

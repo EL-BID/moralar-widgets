@@ -19,6 +19,7 @@ dependencies:
     git:
       url: git@github.com:megaleios-git/mega-flutter
       ref: v0.1.4
+    # path: '../mega-flutter'
   flutter:
     sdk: flutter
 

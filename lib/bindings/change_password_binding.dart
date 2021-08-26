@@ -6,5 +6,8 @@ class ChangePasswordBinding extends Bindings {
     Get.lazyPut<ChangePasswordController>(
       () => ChangePasswordController(),
     );
+    Get.lazyPut<PasswordProvider>(
+      () => PasswordProvider(),
+    );
   }
 }
