@@ -13,6 +13,8 @@ class Address {
   String? complement;
   String? location;
   String? cep;
+  double? latitude;
+  double? longitude;
 
   Address({
     this.streetAddress,
@@ -26,6 +28,8 @@ class Address {
     this.complement,
     this.location,
     this.cep,
+    this.latitude,
+    this.longitude,
   });
 
   factory Address.fromJson(Map<String, dynamic> json) {

@@ -19,6 +19,8 @@ Address _$AddressFromJson(Map<String, dynamic> json) {
     complement: json['complement'] as String?,
     location: json['location'] as String?,
     cep: json['cep'] as String?,
+    latitude: (json['latitude'] as num?)?.toDouble(),
+    longitude: (json['longitude'] as num?)?.toDouble(),
   );
 }
 
@@ -34,6 +36,8 @@ Map<String, dynamic> _$AddressToJson(Address instance) => <String, dynamic>{
       'complement': instance.complement,
       'location': instance.location,
       'cep': instance.cep,
+      'latitude': instance.latitude,
+      'longitude': instance.longitude,
     };
 
 Course _$CourseFromJson(Map<String, dynamic> json) {
