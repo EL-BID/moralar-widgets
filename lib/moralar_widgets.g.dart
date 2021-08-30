@@ -270,6 +270,8 @@ Quiz _$QuizFromJson(Map<String, dynamic> json) {
     title: json['title'] as String,
     typeQuiz: json['typeQuiz'] as int,
     questionRegister: json['questionRegister'] as bool?,
+    created: json['created'] as int,
+    typeStatus: json['typeStatus'] as int,
     id: json['id'] as String,
   );
 }
@@ -278,6 +280,8 @@ Map<String, dynamic> _$QuizToJson(Quiz instance) => <String, dynamic>{
       'title': instance.title,
       'typeQuiz': instance.typeQuiz,
       'questionRegister': instance.questionRegister,
+      'created': instance.created,
+      'typeStatus': instance.typeStatus,
       'id': instance.id,
     };
 

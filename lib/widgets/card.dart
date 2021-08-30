@@ -46,8 +46,8 @@ class QuizCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
     const brownGrey = Color(0xFFb2b2b2);
-    final currentColor = QuizService.statusColor(0);
-    final currentText = QuizService.statusName(0);
+    final currentColor = QuizService.statusColor(quiz.typeStatus);
+    final currentText = QuizService.statusName(quiz.typeStatus);
 
     return InkWell(
       onTap: function,
@@ -82,7 +82,7 @@ class QuizCard extends StatelessWidget {
                     ),
                     const SizedBox(height: 8),
                     MegaListTile(
-                      title: '26/09/2020',
+                      title: MoralarDate.secondsForDate(quiz.created),
                       leading: const Icon(
                         FontAwesomeIcons.calendar,
                         size: 16,
