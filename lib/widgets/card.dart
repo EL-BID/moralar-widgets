@@ -53,7 +53,7 @@ class QuizCard extends StatelessWidget {
       onTap: function,
       child: Container(
         margin: const EdgeInsets.only(bottom: 24),
-        height: 124,
+        height: 180,
         width: double.infinity,
         decoration: BoxDecoration(
           color: Colors.white,
@@ -73,6 +73,7 @@ class QuizCard extends StatelessWidget {
                 padding: const EdgeInsets.only(right: 16, left: 16, top: 16),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
                       quiz.title,

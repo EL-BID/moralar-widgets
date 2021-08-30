@@ -40,6 +40,28 @@ Map<String, dynamic> _$AddressToJson(Address instance) => <String, dynamic>{
       'longitude': instance.longitude,
     };
 
+Answer _$AnswerFromJson(Map<String, dynamic> json) {
+  return Answer(
+    questionDescriptionId: (json['questionDescriptionId'] as List<dynamic>?)
+        ?.map((e) => e as String)
+        .toList(),
+    questionId: json['questionId'] as String?,
+    answerDescription: json['answerDescription'] as String?,
+    familyId: json['familyId'] as String?,
+    responsibleForResponsesId: json['responsibleForResponsesId'] as String?,
+    id: json['id'] as String?,
+  );
+}
+
+Map<String, dynamic> _$AnswerToJson(Answer instance) => <String, dynamic>{
+      'questionDescriptionId': instance.questionDescriptionId,
+      'questionId': instance.questionId,
+      'answerDescription': instance.answerDescription,
+      'familyId': instance.familyId,
+      'responsibleForResponsesId': instance.responsibleForResponsesId,
+      'id': instance.id,
+    };
+
 Course _$CourseFromJson(Map<String, dynamic> json) {
   return Course(
     title: json['title'] as String,
@@ -73,6 +95,19 @@ Map<String, dynamic> _$CourseToJson(Course instance) => <String, dynamic>{
       'typeGenre': instance.typeGenre,
       'numberOfVacancies': instance.numberOfVacancies,
       'isSubscribed': instance.isSubscribed,
+      'id': instance.id,
+    };
+
+Description _$DescriptionFromJson(Map<String, dynamic> json) {
+  return Description(
+    description: json['description'] as String,
+    id: json['id'] as String,
+  );
+}
+
+Map<String, dynamic> _$DescriptionToJson(Description instance) =>
+    <String, dynamic>{
+      'description': instance.description,
       'id': instance.id,
     };
 
@@ -265,6 +300,25 @@ Map<String, dynamic> _$PropertyFilterToJson(PropertyFilter instance) =>
       'hasAdaptedToPcd': instance.hasAdaptedToPcd,
     };
 
+QuestionResponse _$QuestionResponseFromJson(Map<String, dynamic> json) {
+  return QuestionResponse(
+    nameQuestion: json['nameQuestion'] as String,
+    typeResponse: json['typeResponse'] as int,
+    description: (json['description'] as List<dynamic>)
+        .map((e) => Description.fromJson(e as Map<String, dynamic>))
+        .toList(),
+    id: json['id'] as String,
+  );
+}
+
+Map<String, dynamic> _$QuestionResponseToJson(QuestionResponse instance) =>
+    <String, dynamic>{
+      'nameQuestion': instance.nameQuestion,
+      'typeResponse': instance.typeResponse,
+      'description': instance.description,
+      'id': instance.id,
+    };
+
 Quiz _$QuizFromJson(Map<String, dynamic> json) {
   return Quiz(
     title: json['title'] as String,
@@ -282,6 +336,25 @@ Map<String, dynamic> _$QuizToJson(Quiz instance) => <String, dynamic>{
       'questionRegister': instance.questionRegister,
       'created': instance.created,
       'typeStatus': instance.typeStatus,
+      'id': instance.id,
+    };
+
+QuizDetails _$QuizDetailsFromJson(Map<String, dynamic> json) {
+  return QuizDetails(
+    title: json['title'] as String,
+    typeQuiz: json['typeQuiz'] as int,
+    questionViewModel: (json['questionViewModel'] as List<dynamic>)
+        .map((e) => QuestionResponse.fromJson(e as Map<String, dynamic>))
+        .toList(),
+    id: json['id'] as String,
+  );
+}
+
+Map<String, dynamic> _$QuizDetailsToJson(QuizDetails instance) =>
+    <String, dynamic>{
+      'title': instance.title,
+      'typeQuiz': instance.typeQuiz,
+      'questionViewModel': instance.questionViewModel,
       'id': instance.id,
     };
 

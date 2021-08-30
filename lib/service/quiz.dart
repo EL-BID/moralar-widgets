@@ -25,12 +25,12 @@ class QuizService {
 class QuizHeader extends StatelessWidget {
   final int quizLength;
   final int number;
-  final bool onlyAnswer;
+  final String nameQuestion;
 
   const QuizHeader({
     required this.quizLength,
     required this.number,
-    this.onlyAnswer = false,
+    required this.nameQuestion,
   });
 
   @override
@@ -62,47 +62,31 @@ class QuizHeader extends StatelessWidget {
         ),
         const SizedBox(height: 64),
         Text(
-          'TEXTONTEXTONTEXTONT EXTOTEXTONTEXTON TEXTONTEXTOTEXT ONTETONTEXTOTEX'
-          'TONT EXTONTEXTON TEXTOTEXTONTEXTONTEXTONTEXTOTEXTONTEXTONTEXTONTE'
-          'XTO',
+          nameQuestion,
           style: textTheme.headline6,
         ),
-        Visibility(
-          visible: onlyAnswer,
-          child: Column(
-            children: [
-              const SizedBox(height: 32),
-              Text(
-                '* Escolha apenas uma alternativa',
-                style: textTheme.headline6?.copyWith(
-                  color: MoralarColors.brownishGrey,
-                  fontSize: 18,
-                ),
-              )
-            ],
-          ),
-        ),
-        const SizedBox(height: 64),
+        const SizedBox(height: 32),
       ],
     );
   }
 }
 
 class OpenQuestion extends StatelessWidget {
-  final TextEditingController? controller;
-  final String? label;
-  const OpenQuestion({this.controller, this.label = 'Responda aqui'});
+  final TextEditingController controller;
+  final Function(String?)? onChanged;
+  const OpenQuestion({required this.controller, this.onChanged});
   @override
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
     return Container(
       alignment: Alignment.center,
       child: MoralarTextField(
-        controller: controller!,
+        controller: controller,
         color: MoralarColors.waterBlue,
-        labelStyle: textTheme.bodyText2,
-        label: label,
         maxLines: 3,
+        label: 'Responda a questão acima',
+        labelStyle: textTheme.headline6,
+        onChanged: onChanged,
       ),
     );
   }

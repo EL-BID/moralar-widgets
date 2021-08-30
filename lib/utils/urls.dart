@@ -29,6 +29,7 @@ class _FamilyUrls {
   final desinterestCourse = '/Course/CancelFamilyToTrainning';
   final videos = '/Video/GetAll';
   final quiz = '/Quiz/GetQuizByFamily';
+  final quizDetails = '/Quiz/Detail';
 }
 
 class _TTSUrls {
