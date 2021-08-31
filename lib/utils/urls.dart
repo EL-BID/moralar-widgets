@@ -30,6 +30,7 @@ class _FamilyUrls {
   final videos = '/Video/GetAll';
   final quiz = '/Quiz/GetQuizByFamily';
   final quizDetails = '/Quiz/Detail';
+  final informative = '/Informative/GetAllInformativeByFamily';
 }
 
 class _TTSUrls {

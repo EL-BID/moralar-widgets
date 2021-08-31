@@ -184,6 +184,27 @@ Map<String, dynamic> _$FamilyUserToJson(FamilyUser instance) =>
       'isFirstAcess': instance.isFirstAcess,
     };
 
+Informative _$InformativeFromJson(Map<String, dynamic> json) {
+  return Informative(
+    informativeId: json['informativeId'] as String,
+    datePublish: json['datePublish'] as String,
+    image: json['image'] as String,
+    description: json['description'] as String,
+    dateViewed: json['dateViewed'] as int,
+    id: json['id'] as String,
+  );
+}
+
+Map<String, dynamic> _$InformativeToJson(Informative instance) =>
+    <String, dynamic>{
+      'informativeId': instance.informativeId,
+      'datePublish': instance.datePublish,
+      'image': instance.image,
+      'description': instance.description,
+      'dateViewed': instance.dateViewed,
+      'id': instance.id,
+    };
+
 Property _$PropertyFromJson(Map<String, dynamic> json) {
   return Property(
     code: json['code'] as String?,

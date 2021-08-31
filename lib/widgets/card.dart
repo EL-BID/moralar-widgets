@@ -1131,132 +1131,127 @@ class PropertyFilterCard extends StatelessWidget {
 }
 
 class InformativeCard extends StatelessWidget {
-  final Function()? function;
-  final bool checkbox;
-
-  const InformativeCard({this.function, required this.checkbox});
+  final Informative info;
+  const InformativeCard({required this.info});
 
   @override
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
 
-    return InkWell(
-      onTap: function!,
-      child: Container(
-        margin: const EdgeInsets.only(bottom: 24),
-        width: double.infinity,
-        decoration: BoxDecoration(
-          color: Colors.white,
-          boxShadow: [
-            BoxShadow(
-              color: Colors.grey.withOpacity(0.7),
-              // spreadRadius: 1,
-              blurRadius: 3,
-              offset: const Offset(0, 3),
-            ),
-          ],
-        ),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Stack(
+    return Container(
+      margin: const EdgeInsets.only(bottom: 24),
+      width: double.infinity,
+      decoration: BoxDecoration(
+        color: Colors.white,
+        boxShadow: [
+          BoxShadow(
+            color: Colors.grey.withOpacity(0.7),
+            // spreadRadius: 1,
+            blurRadius: 3,
+            offset: const Offset(0, 3),
+          ),
+        ],
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Stack(
+            children: [
+              Container(),
+              Container(
+                width: double.infinity,
+                height: 200,
+                child: Image.network(
+                  info.image,
+                  fit: BoxFit.cover,
+                ),
+              ),
+              // Positioned(
+              //   width: 128,
+              //   top: 16,
+              //   left: 24,
+              //   child: Container(
+              //     decoration: BoxDecoration(
+              //       color: Colors.white,
+              //       boxShadow: [
+              //         BoxShadow(
+              //           color: Colors.grey.withOpacity(0.7),
+              //           blurRadius: 3,
+              //           offset: const Offset(0, 1),
+              //         ),
+              //       ],
+              //     ),
+              //     padding: const EdgeInsets.symmetric(horizontal: 8),
+              //     alignment: Alignment.center,
+              //     child: MegaListTile(
+              //       title: 'Estou ciente',
+              //       leading: Container(
+              //         height: 16,
+              //         width: 16,
+              //         alignment: Alignment.center,
+              //         decoration: BoxDecoration(
+              //           border: Border.all(
+              //             color: checkbox
+              //                 ? MoralarColors.algaeGreen
+              //                 : MoralarColors.brownishGrey,
+              //             width: 2,
+              //           ),
+              //           color: checkbox
+              //               ? MoralarColors.algaeGreen
+              //               : Colors.white,
+              //           shape: BoxShape.circle,
+              //         ),
+              //         child: Container(
+              //           height: 12,
+              //           width: 12,
+              //           decoration: BoxDecoration(
+              //             border: Border.all(
+              //               color: Colors.white,
+              //               width: 2,
+              //             ),
+              //             color: checkbox
+              //                 ? MoralarColors.algaeGreen
+              //                 : Colors.white,
+              //             shape: BoxShape.circle,
+              //           ),
+              //         ),
+              //       ),
+              //       style: textTheme.bodyText1?.copyWith(
+              //         color: MoralarColors.brownishGrey,
+              //       ),
+              //     ),
+              //   ),
+              // ),
+            ],
+          ),
+          Container(
+            padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Container(
-                  width: double.infinity,
-                  height: 200,
-                  child: Image.network(
-                    'https://picsum.photos/200',
-                    fit: BoxFit.cover,
+                Text(
+                  info.description,
+                  style: textTheme.bodyText1?.copyWith(
+                    color: MoralarColors.brownishGrey,
                   ),
                 ),
-                Positioned(
-                  width: 128,
-                  top: 16,
-                  left: 24,
-                  child: Container(
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.grey.withOpacity(0.7),
-                          blurRadius: 3,
-                          offset: const Offset(0, 1),
-                        ),
-                      ],
-                    ),
-                    padding: const EdgeInsets.symmetric(horizontal: 8),
-                    alignment: Alignment.center,
-                    child: MegaListTile(
-                      title: 'Estou ciente',
-                      leading: Container(
-                        height: 16,
-                        width: 16,
-                        alignment: Alignment.center,
-                        decoration: BoxDecoration(
-                          border: Border.all(
-                            color: checkbox
-                                ? MoralarColors.algaeGreen
-                                : MoralarColors.brownishGrey,
-                            width: 2,
-                          ),
-                          color: checkbox
-                              ? MoralarColors.algaeGreen
-                              : Colors.white,
-                          shape: BoxShape.circle,
-                        ),
-                        child: Container(
-                          height: 12,
-                          width: 12,
-                          decoration: BoxDecoration(
-                            border: Border.all(
-                              color: Colors.white,
-                              width: 2,
-                            ),
-                            color: checkbox
-                                ? MoralarColors.algaeGreen
-                                : Colors.white,
-                            shape: BoxShape.circle,
-                          ),
-                        ),
-                      ),
-                      style: textTheme.bodyText1?.copyWith(
-                        color: MoralarColors.brownishGrey,
-                      ),
-                    ),
+                const SizedBox(height: 8),
+                MegaListTile(
+                  title: info.datePublish,
+                  leading: const Icon(
+                    FontAwesomeIcons.calendar,
+                    size: 16,
+                    color: MoralarColors.brownishGrey,
+                  ),
+                  style: textTheme.bodyText1?.copyWith(
+                    color: MoralarColors.brownishGrey,
                   ),
                 ),
               ],
             ),
-            Container(
-              padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    // ignore: lines_longer_than_80_chars
-                    'Lorem ipsum dolor sit amet, consectetur  adipiscingelit, sed do eiusmod tempor  incididunt ut labore etdolore magna aliqua.',
-                    style: textTheme.bodyText1?.copyWith(
-                      color: MoralarColors.brownishGrey,
-                    ),
-                  ),
-                  const SizedBox(height: 8),
-                  MegaListTile(
-                    title: '26/09/2020',
-                    leading: const Icon(
-                      FontAwesomeIcons.calendar,
-                      size: 16,
-                      color: MoralarColors.brownishGrey,
-                    ),
-                    style: textTheme.bodyText1?.copyWith(
-                      color: MoralarColors.brownishGrey,
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }
