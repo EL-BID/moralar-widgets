@@ -171,3 +171,49 @@ class CloseQuestion extends StatelessWidget {
     );
   }
 }
+
+class MultiplyQuestion extends StatelessWidget {
+  final List<bool> questionValue;
+  final List<String> answers;
+  final Function(int?) onChanged;
+  final Color? activeColor;
+
+  const MultiplyQuestion({
+    required this.questionValue,
+    required this.answers,
+    required this.onChanged,
+    this.activeColor,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final textTheme = Theme.of(context).textTheme;
+    return Column(
+      children: [
+        GridView.builder(
+            gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
+              maxCrossAxisExtent: 200,
+              childAspectRatio: 2,
+              crossAxisSpacing: 20,
+            ),
+            physics: const NeverScrollableScrollPhysics(),
+            shrinkWrap: true,
+            itemCount: answers.length,
+            itemBuilder: (context, index) {
+              return CheckboxListTile(
+                value: questionValue[index],
+                onChanged: (s) {
+                  onChanged(index);
+                },
+                activeColor: activeColor,
+                contentPadding: EdgeInsets.zero,
+                title: Text(
+                  answers[index],
+                  style: textTheme.bodyText2,
+                ),
+              );
+            }),
+      ],
+    );
+  }
+}

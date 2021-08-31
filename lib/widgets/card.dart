@@ -83,7 +83,7 @@ class QuizCard extends StatelessWidget {
                     ),
                     const SizedBox(height: 8),
                     MegaListTile(
-                      title: MoralarDate.secondsForDate(quiz.created),
+                      title: MoralarDate.secondsForDate(quiz.created ?? 0),
                       leading: const Icon(
                         FontAwesomeIcons.calendar,
                         size: 16,

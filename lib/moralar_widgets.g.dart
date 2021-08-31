@@ -324,7 +324,7 @@ Quiz _$QuizFromJson(Map<String, dynamic> json) {
     title: json['title'] as String,
     typeQuiz: json['typeQuiz'] as int,
     questionRegister: json['questionRegister'] as bool?,
-    created: json['created'] as int,
+    created: json['created'] as int?,
     typeStatus: json['typeStatus'] as int,
     id: json['id'] as String,
   );
