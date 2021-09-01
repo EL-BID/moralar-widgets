@@ -201,6 +201,28 @@ Map<String, dynamic> _$InformativeToJson(Informative instance) =>
       'id': instance.id,
     };
 
+MoralarNotification _$MoralarNotificationFromJson(Map<String, dynamic> json) {
+  return MoralarNotification(
+    status: json['status'] as bool,
+    created: json['created'] as int,
+    title: json['title'] as String,
+    description: json['description'] as String,
+    image: json['image'] as String?,
+    id: json['id'] as String,
+  );
+}
+
+Map<String, dynamic> _$MoralarNotificationToJson(
+        MoralarNotification instance) =>
+    <String, dynamic>{
+      'status': instance.status,
+      'created': instance.created,
+      'title': instance.title,
+      'description': instance.description,
+      'image': instance.image,
+      'id': instance.id,
+    };
+
 Property _$PropertyFromJson(Map<String, dynamic> json) {
   return Property(
     code: json['code'] as String?,

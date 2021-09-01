@@ -1253,14 +1253,22 @@ class InformativeCard extends StatelessWidget {
 }
 
 class NotifcationCard extends StatelessWidget {
-  final bool isRead;
+  final MoralarNotification notification;
   final Function()? function;
 
-  const NotifcationCard({required this.isRead, this.function});
+  const NotifcationCard({
+    required this.notification,
+    this.function,
+  });
 
   @override
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
+    final bool isRead = notification.status;
+    final String date =
+        MoralarDate.secondsForDateHours(notification.created).substring(0, 10);
+    final String hour =
+        MoralarDate.secondsForDateHours(notification.created).substring(11, 16);
 
     return InkWell(
       onTap: function ?? () {},
@@ -1288,7 +1296,7 @@ class NotifcationCard extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      'Notificação',
+                      notification.title,
                       style: textTheme.headline1?.copyWith(
                         color: isRead
                             ? MoralarColors.brownGrey
@@ -1298,8 +1306,7 @@ class NotifcationCard extends StatelessWidget {
                     const SizedBox(height: 8),
                     Expanded(
                       child: Text(
-                        // ignore: lines_longer_than_80_chars
-                        'Lorem ipsum dolor sit amet, consectetur  adipiscing elit, sed do eiusmod tempor  incididunt ut labore et dolore magna aliqua.',
+                        notification.description,
                         style: textTheme.bodyText1,
                       ),
                     ),
@@ -1308,7 +1315,7 @@ class NotifcationCard extends StatelessWidget {
                         Expanded(
                           flex: 2,
                           child: MegaListTile(
-                            title: '26/09/2020',
+                            title: date,
                             leading: const Icon(
                               FontAwesomeIcons.calendar,
                               size: 16,
@@ -1320,7 +1327,7 @@ class NotifcationCard extends StatelessWidget {
                         Expanded(
                           flex: 3,
                           child: MegaListTile(
-                            title: '14:30hrs',
+                            title: '${hour}hrs',
                             leading: const Icon(
                               FontAwesomeIcons.clock,
                               size: 16,
@@ -1349,14 +1356,22 @@ class NotifcationCard extends StatelessWidget {
 }
 
 class NotificationDetailsCard extends StatelessWidget {
+  final MoralarNotification notification;
   final Function()? function;
-  final bool isRead;
 
-  const NotificationDetailsCard({this.function, required this.isRead});
+  const NotificationDetailsCard({
+    required this.notification,
+    this.function,
+  });
 
   @override
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
+    final String date =
+        MoralarDate.secondsForDateHours(notification.created).substring(0, 10);
+    final String hour =
+        MoralarDate.secondsForDateHours(notification.created).substring(11, 16);
+    final bool isRead = notification.status;
 
     return InkWell(
       onTap: function!,
@@ -1390,7 +1405,7 @@ class NotificationDetailsCard extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    'Notificação',
+                    notification.title,
                     style: textTheme.headline1?.copyWith(
                       color: isRead
                           ? MoralarColors.brownGrey
@@ -1399,33 +1414,21 @@ class NotificationDetailsCard extends StatelessWidget {
                   ),
                   const SizedBox(height: 16),
                   Text(
-                    // ignore: lines_longer_than_80_chars
-                    'Lorem ipsum dolor sit amet, consectetur  adipiscingelit, sed do eiusmod tempor  incididunt ut labore etdolore magna aliqua.',
-                    style: textTheme.bodyText1?.copyWith(
-                      color: MoralarColors.brownishGrey,
-                    ),
-                  ),
-                  Text(
-                    // ignore: lines_longer_than_80_chars
-                    'Lorem ipsum dolor sit amet, consectetur  adipiscingelit, sed do eiusmod tempor  incididunt ut labore etdolore magna aliqua.',
-                    style: textTheme.bodyText1?.copyWith(
-                      color: MoralarColors.brownishGrey,
-                    ),
-                  ),
-                  Text(
-                    // ignore: lines_longer_than_80_chars
-                    'Lorem ipsum dolor sit amet, consectetur  adipiscingelit, sed do eiusmod tempor  incididunt ut labore etdolore magna aliqua.',
+                    '${notification.description}',
                     style: textTheme.bodyText1?.copyWith(
                       color: MoralarColors.brownishGrey,
                     ),
                   ),
                   const SizedBox(height: 32),
-                  Container(
-                    width: double.infinity,
-                    height: 180,
-                    child: Image.network(
-                      'https://picsum.photos/200',
-                      fit: BoxFit.cover,
+                  Visibility(
+                    visible: notification.image != null,
+                    child: Container(
+                      width: double.infinity,
+                      height: 180,
+                      child: Image.network(
+                        notification.image!,
+                        fit: BoxFit.cover,
+                      ),
                     ),
                   ),
                   const SizedBox(height: 8),
@@ -1434,7 +1437,7 @@ class NotificationDetailsCard extends StatelessWidget {
                       Expanded(
                         flex: 2,
                         child: MegaListTile(
-                          title: '26/09/2020',
+                          title: date,
                           leading: const Icon(
                             FontAwesomeIcons.calendar,
                             size: 16,
@@ -1448,7 +1451,7 @@ class NotificationDetailsCard extends StatelessWidget {
                       Expanded(
                         flex: 3,
                         child: MegaListTile(
-                          title: '14:30hrs',
+                          title: '${hour}hrs',
                           leading: const Icon(
                             FontAwesomeIcons.clock,
                             size: 16,

@@ -29,6 +29,7 @@ part 'models/family_holder.dart';
 part 'models/family_member.dart';
 part 'models/family_user.dart';
 part 'models/informative.dart';
+part 'models/notification.dart';
 part 'models/property.dart';
 part 'models/property_features.dart';
 part 'models/property_filter.dart';

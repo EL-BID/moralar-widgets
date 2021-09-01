@@ -33,6 +33,7 @@ class _FamilyUrls {
   final registerQuiz = '/QuestionAnswer/Register';
   final informative = '/Informative/GetAllInformativeByFamily';
   final changeInformative = '/Informative/ChangeStatusViewed';
+  final notificaitons = '/Notification/GetAllNotification';
 }
 
 class _TTSUrls {
