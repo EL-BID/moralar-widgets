@@ -31,3 +31,40 @@ class LoginCheckBox extends StatelessWidget {
     );
   }
 }
+
+class InformativeCheckBox extends StatelessWidget {
+  final bool checked;
+  const InformativeCheckBox({
+    required this.checked,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: 16,
+      width: 16,
+      alignment: Alignment.center,
+      decoration: BoxDecoration(
+        border: Border.all(
+          color:
+              checked ? MoralarColors.algaeGreen : MoralarColors.brownishGrey,
+          width: 2,
+        ),
+        color: checked ? MoralarColors.algaeGreen : Colors.white,
+        shape: BoxShape.circle,
+      ),
+      child: Container(
+        height: 12,
+        width: 12,
+        decoration: BoxDecoration(
+          border: Border.all(
+            color: Colors.white,
+            width: 2,
+          ),
+          color: checked ? MoralarColors.algaeGreen : Colors.white,
+          shape: BoxShape.circle,
+        ),
+      ),
+    );
+  }
+}

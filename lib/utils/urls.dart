@@ -31,6 +31,7 @@ class _FamilyUrls {
   final quiz = '/Quiz/GetQuizByFamily';
   final quizDetails = '/Quiz/Detail';
   final informative = '/Informative/GetAllInformativeByFamily';
+  final changeInformative = '/Informative/ChangeStatusViewed';
 }
 
 class _TTSUrls {

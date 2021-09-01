@@ -1132,7 +1132,15 @@ class PropertyFilterCard extends StatelessWidget {
 
 class InformativeCard extends StatelessWidget {
   final Informative info;
-  const InformativeCard({required this.info});
+  final bool checked;
+  final bool isLoading;
+  final Function()? function;
+  const InformativeCard({
+    required this.info,
+    required this.checked,
+    required this.isLoading,
+    required this.function,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -1158,7 +1166,6 @@ class InformativeCard extends StatelessWidget {
         children: [
           Stack(
             children: [
-              Container(),
               Container(
                 width: double.infinity,
                 height: 200,
@@ -1167,62 +1174,50 @@ class InformativeCard extends StatelessWidget {
                   fit: BoxFit.cover,
                 ),
               ),
-              // Positioned(
-              //   width: 128,
-              //   top: 16,
-              //   left: 24,
-              //   child: Container(
-              //     decoration: BoxDecoration(
-              //       color: Colors.white,
-              //       boxShadow: [
-              //         BoxShadow(
-              //           color: Colors.grey.withOpacity(0.7),
-              //           blurRadius: 3,
-              //           offset: const Offset(0, 1),
-              //         ),
-              //       ],
-              //     ),
-              //     padding: const EdgeInsets.symmetric(horizontal: 8),
-              //     alignment: Alignment.center,
-              //     child: MegaListTile(
-              //       title: 'Estou ciente',
-              //       leading: Container(
-              //         height: 16,
-              //         width: 16,
-              //         alignment: Alignment.center,
-              //         decoration: BoxDecoration(
-              //           border: Border.all(
-              //             color: checkbox
-              //                 ? MoralarColors.algaeGreen
-              //                 : MoralarColors.brownishGrey,
-              //             width: 2,
-              //           ),
-              //           color: checkbox
-              //               ? MoralarColors.algaeGreen
-              //               : Colors.white,
-              //           shape: BoxShape.circle,
-              //         ),
-              //         child: Container(
-              //           height: 12,
-              //           width: 12,
-              //           decoration: BoxDecoration(
-              //             border: Border.all(
-              //               color: Colors.white,
-              //               width: 2,
-              //             ),
-              //             color: checkbox
-              //                 ? MoralarColors.algaeGreen
-              //                 : Colors.white,
-              //             shape: BoxShape.circle,
-              //           ),
-              //         ),
-              //       ),
-              //       style: textTheme.bodyText1?.copyWith(
-              //         color: MoralarColors.brownishGrey,
-              //       ),
-              //     ),
-              //   ),
-              // ),
+              Positioned(
+                width: 128,
+                top: 16,
+                left: 24,
+                child: Container(
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.grey.withOpacity(0.7),
+                        blurRadius: 3,
+                        offset: const Offset(0, 1),
+                      ),
+                    ],
+                  ),
+                  padding: const EdgeInsets.symmetric(horizontal: 8),
+                  alignment: Alignment.center,
+                  child: Visibility(
+                    visible: isLoading,
+                    child: Container(
+                      padding: const EdgeInsets.all(4),
+                      child: const SizedBox(
+                        width: 24,
+                        height: 24,
+                        child: CircularProgressIndicator(
+                          valueColor: AlwaysStoppedAnimation<Color>(
+                            MoralarColors.algaeGreen,
+                          ),
+                        ),
+                      ),
+                    ),
+                    replacement: InkWell(
+                      onTap: function,
+                      child: MegaListTile(
+                        title: 'Estou ciente',
+                        leading: InformativeCheckBox(checked: checked),
+                        style: textTheme.bodyText1?.copyWith(
+                          color: MoralarColors.brownishGrey,
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+              ),
             ],
           ),
           Container(
