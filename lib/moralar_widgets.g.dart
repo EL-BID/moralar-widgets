@@ -47,8 +47,6 @@ Answer _$AnswerFromJson(Map<String, dynamic> json) {
         .toList(),
     questionId: json['questionId'] as String?,
     answerDescription: json['answerDescription'] as String?,
-    familyId: json['familyId'] as String?,
-    responsibleForResponsesId: json['responsibleForResponsesId'] as String?,
     id: json['id'] as String?,
   );
 }
@@ -57,8 +55,6 @@ Map<String, dynamic> _$AnswerToJson(Answer instance) => <String, dynamic>{
       'questionDescriptionId': instance.questionDescriptionId,
       'questionId': instance.questionId,
       'answerDescription': instance.answerDescription,
-      'familyId': instance.familyId,
-      'responsibleForResponsesId': instance.responsibleForResponsesId,
       'id': instance.id,
     };
 

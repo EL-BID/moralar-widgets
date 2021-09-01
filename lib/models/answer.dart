@@ -5,16 +5,12 @@ class Answer {
   List<String>? questionDescriptionId;
   String? questionId;
   String? answerDescription;
-  String? familyId;
-  String? responsibleForResponsesId;
   String? id;
 
   Answer({
     this.questionDescriptionId,
     this.questionId,
     this.answerDescription,
-    this.familyId,
-    this.responsibleForResponsesId,
     this.id,
   });
 
