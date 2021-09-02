@@ -8,18 +8,20 @@ environment:
   flutter: ">=1.17.0"
 
 dependencies:
-  json_annotation: ^4.0.1
-  flutter_carousel_slider: ^1.0.8
-  font_awesome_flutter: ^9.1.0
-  mask_text_input_formatter: ^2.0.0
-  get: 4.3.4
-  intl: ^0.17.0
-  validatorless: ^1.2.0
   mega_flutter:
     git:
       url: git@github.com:megaleios-git/mega-flutter
       ref: v0.1.4
     # path: '../mega-flutter'
+  font_awesome_flutter: ^9.1.0
+  flutter_carousel_slider: ^1.0.8
+  get: 4.3.4
+  get_storage: ^2.0.3
+  intl: ^0.17.0
+  json_annotation: ^4.0.1
+  mask_text_input_formatter: ^2.0.0
+  validatorless: ^1.2.0
+
   flutter:
     sdk: flutter
 

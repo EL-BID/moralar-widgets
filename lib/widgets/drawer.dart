@@ -3,12 +3,12 @@ part of moralar_widgets;
 class MoralarDrawer extends StatelessWidget {
   final MoralarDrawerHeader header;
   final List<MoralarDrawerListTile> options;
-  final String? signOut;
+  final VoidCallback signOut;
 
   const MoralarDrawer({
     required this.header,
     this.options = const [],
-    this.signOut,
+    required this.signOut,
   });
 
   @override
@@ -55,10 +55,7 @@ class MoralarDrawer extends StatelessWidget {
               MoralarDrawerListTile(
                 titleText: 'Sair',
                 icon: FontAwesomeIcons.signOutAlt,
-                onTap: () {
-                  MegaFlutter.instance.auth.signOut();
-                  Get.offAndToNamed(signOut!);
-                },
+                onTap: signOut,
               ),
             ],
           ),
