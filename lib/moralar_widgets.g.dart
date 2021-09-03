@@ -426,25 +426,6 @@ Map<String, dynamic> _$ScheduleDetailsToJson(ScheduleDetails instance) =>
       'id': instance.id,
     };
 
-ScheduleHistory _$ScheduleHistoryFromJson(Map<String, dynamic> json) {
-  return ScheduleHistory(
-    date: json['date'] as int?,
-    scheduleId: json['scheduleId'] as String,
-    typeScheduleStatus: json['typeScheduleStatus'] as int?,
-    typeSubject: json['typeSubject'] as int?,
-    id: json['id'] as String,
-  );
-}
-
-Map<String, dynamic> _$ScheduleHistoryToJson(ScheduleHistory instance) =>
-    <String, dynamic>{
-      'date': instance.date,
-      'scheduleId': instance.scheduleId,
-      'typeSubject': instance.typeSubject,
-      'typeScheduleStatus': instance.typeScheduleStatus,
-      'id': instance.id,
-    };
-
 Spouse _$SpouseFromJson(Map<String, dynamic> json) {
   return Spouse(
     name: json['name'] as String,
@@ -459,18 +440,6 @@ Map<String, dynamic> _$SpouseToJson(Spouse instance) => <String, dynamic>{
       'birthday': instance.birthday,
       'genre': instance.genre,
       'scholarity': instance.scholarity,
-    };
-
-Timeline _$TimelineFromJson(Map<String, dynamic> json) {
-  return Timeline(
-    data: (json['data'] as List<dynamic>)
-        .map((e) => ScheduleHistory.fromJson(e as Map<String, dynamic>))
-        .toList(),
-  );
-}
-
-Map<String, dynamic> _$TimelineToJson(Timeline instance) => <String, dynamic>{
-      'data': instance.data,
     };
 
 TTS _$TTSFromJson(Map<String, dynamic> json) {

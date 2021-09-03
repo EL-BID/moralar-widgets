@@ -1,7 +1,7 @@
 part of moralar_widgets;
 
 class StatusResettlement extends StatelessWidget {
-  final ScheduleHistory schedule;
+  final ScheduleDetails schedule;
   final bool isFirst;
 
   const StatusResettlement({
@@ -13,6 +13,8 @@ class StatusResettlement extends StatelessWidget {
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
     return Row(
+      // mainAxisAlignment: MainAxisAlignment.center,
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Column(
           children: [
@@ -22,9 +24,9 @@ class StatusResettlement extends StatelessWidget {
                 children: [
                   const SizedBox(height: 8),
                   Container(
-                    height: 25,
+                    height: 24,
                     width: 2,
-                    color: schedule.typeScheduleStatus == 1
+                    color: schedule.typeScheduleStatus == 4
                         ? MoralarColors.kellyGreen
                         : MoralarColors.brownGrey,
                   ),
@@ -35,7 +37,7 @@ class StatusResettlement extends StatelessWidget {
             Container(
               height: 30,
               width: 30,
-              decoration: schedule.typeScheduleStatus == 1
+              decoration: schedule.typeScheduleStatus == 4
                   ? const BoxDecoration(
                       color: MoralarColors.kellyGreen,
                       borderRadius: BorderRadius.all(
@@ -51,7 +53,7 @@ class StatusResettlement extends StatelessWidget {
                       ),
                     ),
               child: Visibility(
-                visible: schedule.typeScheduleStatus == 1,
+                visible: schedule.typeScheduleStatus == 4,
                 child: Container(
                   alignment: Alignment.center,
                   child: const FaIcon(FontAwesomeIcons.check,
@@ -62,14 +64,31 @@ class StatusResettlement extends StatelessWidget {
           ],
         ),
         Container(
-          padding: EdgeInsets.fromLTRB(16, isFirst ? 0 : 36, 16, 0),
-          child: Text(
-            Scheduling.statusSubject(schedule.typeSubject!),
-            style: textTheme.headline1!.copyWith(
-              color: schedule.typeScheduleStatus == 1
-                  ? MoralarColors.kellyGreen
-                  : MoralarColors.brownGrey,
-            ),
+          padding: const EdgeInsets.symmetric(horizontal: 16),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Visibility(
+                visible: !isFirst,
+                child: const SizedBox(
+                  height: 36,
+                ),
+              ),
+              Text(
+                Scheduling.statusSubject(schedule.typeSubject ?? 9),
+                style: textTheme.headline1!.copyWith(
+                  color: schedule.typeScheduleStatus == 4
+                      ? MoralarColors.kellyGreen
+                      : MoralarColors.brownGrey,
+                ),
+              ),
+              Text(
+                schedule.description ?? '',
+                style: textTheme.bodyText1!.copyWith(
+                  color: MoralarColors.brownGrey,
+                ),
+              ),
+            ],
           ),
         ),
       ],

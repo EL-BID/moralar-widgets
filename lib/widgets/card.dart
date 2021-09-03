@@ -121,12 +121,10 @@ class QuizCard extends StatelessWidget {
 }
 
 class ScheduleCard extends StatelessWidget {
-  final ScheduleHistory? schedule;
   final ScheduleDetails? scheduleDetails;
   final Function() function;
 
   const ScheduleCard({
-    this.schedule,
     this.scheduleDetails,
     required this.function,
   });
@@ -140,22 +138,13 @@ class ScheduleCard extends StatelessWidget {
     String date;
     String hour;
 
-    if (schedule != null) {
-      currentColor = Scheduling.statusColor(schedule!.typeScheduleStatus!);
-      currentTitle = Scheduling.statusSubject(schedule!.typeSubject!);
-      currentText = Scheduling.statusName(schedule!.typeScheduleStatus!);
-      date = MoralarDate.secondsForDateHours(schedule!.date!).substring(0, 10);
-      hour = MoralarDate.secondsForDateHours(schedule!.date!).substring(11, 16);
-    } else {
-      currentColor =
-          Scheduling.statusColor(scheduleDetails!.typeScheduleStatus!);
-      currentTitle = Scheduling.statusSubject(scheduleDetails!.typeSubject!);
-      currentText = Scheduling.statusName(scheduleDetails!.typeScheduleStatus!);
-      date = MoralarDate.secondsForDateHours(scheduleDetails!.date!)
-          .substring(0, 10);
-      hour = MoralarDate.secondsForDateHours(scheduleDetails!.date!)
-          .substring(11, 16);
-    }
+    currentColor = Scheduling.statusColor(scheduleDetails!.typeScheduleStatus!);
+    currentTitle = Scheduling.statusSubject(scheduleDetails!.typeSubject!);
+    currentText = Scheduling.statusName(scheduleDetails!.typeScheduleStatus!);
+    date = MoralarDate.secondsForDateHours(scheduleDetails!.date!)
+        .substring(0, 10);
+    hour = MoralarDate.secondsForDateHours(scheduleDetails!.date!)
+        .substring(11, 16);
 
     return InkWell(
       onTap: function,
