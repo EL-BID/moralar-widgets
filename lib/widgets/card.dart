@@ -1255,16 +1255,18 @@ class InformativeCard extends StatelessWidget {
 class NotifcationCard extends StatelessWidget {
   final MoralarNotification notification;
   final Function()? function;
+  final bool isRead;
 
   const NotifcationCard({
     required this.notification,
     this.function,
+    required this.isRead,
   });
 
   @override
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
-    final bool isRead = notification.status;
+
     final String date =
         MoralarDate.secondsForDateHours(notification.created).substring(0, 10);
     final String hour =
@@ -1358,10 +1360,12 @@ class NotifcationCard extends StatelessWidget {
 class NotificationDetailsCard extends StatelessWidget {
   final MoralarNotification notification;
   final Function()? function;
+  final bool isRead;
 
   const NotificationDetailsCard({
     required this.notification,
     this.function,
+    required this.isRead,
   });
 
   @override
@@ -1371,7 +1375,6 @@ class NotificationDetailsCard extends StatelessWidget {
         MoralarDate.secondsForDateHours(notification.created).substring(0, 10);
     final String hour =
         MoralarDate.secondsForDateHours(notification.created).substring(11, 16);
-    final bool isRead = notification.status;
 
     return InkWell(
       onTap: function!,

@@ -35,6 +35,7 @@ class _FamilyUrls {
   final changeInformative = '/Informative/ChangeStatusViewed';
   final notificaitons = '/Notification/GetAllNotification';
   final registerUnRegisterDeviceId = '/Profile/RegisterUnRegisterDeviceId';
+  final readNotification = '/Notification/ChangeToReadInfo';
 }
 
 class _TTSUrls {

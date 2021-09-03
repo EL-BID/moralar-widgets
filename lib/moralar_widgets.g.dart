@@ -205,6 +205,7 @@ MoralarNotification _$MoralarNotificationFromJson(Map<String, dynamic> json) {
   return MoralarNotification(
     status: json['status'] as bool,
     created: json['created'] as int,
+    dateViewed: json['dateViewed'] as int?,
     title: json['title'] as String,
     description: json['description'] as String,
     image: json['image'] as String?,
@@ -216,6 +217,7 @@ Map<String, dynamic> _$MoralarNotificationToJson(
         MoralarNotification instance) =>
     <String, dynamic>{
       'status': instance.status,
+      'dateViewed': instance.dateViewed,
       'created': instance.created,
       'title': instance.title,
       'description': instance.description,
