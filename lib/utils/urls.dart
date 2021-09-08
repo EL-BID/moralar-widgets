@@ -42,4 +42,5 @@ class _FamilyUrls {
 class _TTSUrls {
   final token = '/Profile/Token';
   final getInfo = '/Profile/GetInfo';
+  final changePassword = '/Profile/ChangePassword';
 }

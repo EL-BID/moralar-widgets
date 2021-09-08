@@ -25,7 +25,7 @@ class PasswordProvider extends RemoteProvider {
   Future<bool> changePassword(
       String newPassword, String currentPassword) async {
     final String endpoint = MoralarWidgets.instance.userType == UserType.tts
-        ? ''
+        ? Urls.tts.changePassword
         : Urls.family.changePassword;
     try {
       final response = await post(
