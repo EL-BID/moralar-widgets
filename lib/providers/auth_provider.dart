@@ -21,7 +21,7 @@ class AuthProvider extends AuthRemoteProvider {
       } else if (MoralarWidgets.instance.userType == UserType.tts) {
         endpoint = Urls.tts.token;
         body.addAll({'cpf': credentials.cpf});
-        body.addAll({'typeUserProfile': 1});
+        // body.addAll({'typeUserProfile': 1});
       }
     }
 

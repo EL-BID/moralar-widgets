@@ -3,12 +3,12 @@ part of moralar_widgets;
 class LoginBinding extends Bindings {
   final VoidCallback onSignedIn;
   final VoidCallback recoveryPassword;
-  final String? firstAccess;
+  final String firstAccess;
 
   LoginBinding({
     required this.onSignedIn,
     required this.recoveryPassword,
-    this.firstAccess,
+    this.firstAccess = '',
   });
 
   @override
@@ -17,7 +17,7 @@ class LoginBinding extends Bindings {
       () => LoginController(
         onSignedIn: onSignedIn,
         recoveryPassword: recoveryPassword,
-        firstAccess: firstAccess!,
+        firstAccess: firstAccess,
       ),
     );
     Get.lazyPut<FamilyProvider>(

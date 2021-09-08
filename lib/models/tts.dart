@@ -2,7 +2,9 @@ part of moralar_widgets;
 
 @JsonSerializable()
 class TTS extends MoralarUser {
+  String jobPost;
   TTS({
+    required this.jobPost,
     required String name,
     required String cpf,
     required String email,
