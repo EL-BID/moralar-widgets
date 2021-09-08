@@ -1,7 +1,7 @@
 part of moralar_widgets;
 
 class MoralarDrawer extends StatelessWidget {
-  final MoralarDrawerHeader header;
+  final Widget header;
   final List<MoralarDrawerListTile> options;
   final VoidCallback signOut;
 

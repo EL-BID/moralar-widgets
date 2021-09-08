@@ -462,6 +462,7 @@ Map<String, dynamic> _$SpouseToJson(Spouse instance) => <String, dynamic>{
 
 TTS _$TTSFromJson(Map<String, dynamic> json) {
   return TTS(
+    phone: json['phone'] as String?,
     jobPost: json['jobPost'] as String,
     name: json['name'] as String,
     cpf: json['cpf'] as String,
@@ -474,6 +475,7 @@ Map<String, dynamic> _$TTSToJson(TTS instance) => <String, dynamic>{
       'cpf': instance.cpf,
       'email': instance.email,
       'jobPost': instance.jobPost,
+      'phone': instance.phone,
     };
 
 MoralarUser _$MoralarUserFromJson(Map<String, dynamic> json) {
