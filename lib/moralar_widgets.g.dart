@@ -58,6 +58,24 @@ Map<String, dynamic> _$AnswerToJson(Answer instance) => <String, dynamic>{
       'id': instance.id,
     };
 
+AnswerDetails _$AnswerDetailsFromJson(Map<String, dynamic> json) {
+  return AnswerDetails(
+    title: json['title'] as String,
+    question: json['question'] as String,
+    typeResponse: json['typeResponse'] as int,
+    answers:
+        (json['answers'] as List<dynamic>).map((e) => e as String).toList(),
+  );
+}
+
+Map<String, dynamic> _$AnswerDetailsToJson(AnswerDetails instance) =>
+    <String, dynamic>{
+      'title': instance.title,
+      'question': instance.question,
+      'typeResponse': instance.typeResponse,
+      'answers': instance.answers,
+    };
+
 Course _$CourseFromJson(Map<String, dynamic> json) {
   return Course(
     title: json['title'] as String,

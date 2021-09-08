@@ -22,6 +22,7 @@ part 'controllers/login_controller.dart';
 part 'controllers/recovery_password_controller.dart';
 part 'models/address.dart';
 part 'models/answer.dart';
+part 'models/answer_details.dart';
 part 'models/course.dart';
 part 'models/description.dart';
 part 'models/document_credentials.dart';

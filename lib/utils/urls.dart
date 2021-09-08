@@ -30,11 +30,12 @@ class _FamilyUrls {
   final videos = '/Video/GetAll';
   final quiz = '/Quiz/GetQuizByFamily';
   final quizDetails = '/Quiz/Detail';
+  final response = '/QuestionAnswer/GetResponses';
   final registerQuiz = '/QuestionAnswer/Register';
   final informative = '/Informative/GetAllInformativeByFamily';
   final changeInformative = '/Informative/ChangeStatusViewed';
   final notificaitons = '/Notification/GetAllNotification';
-  final registerUnRegisterDeviceId = '/Profile/RegisterUnRegisterDeviceId';
+  final registerUnRegisterDeviceId = '/Family/RegisterUnRegisterDeviceId';
   final readNotification = '/Notification/ChangeToReadInfo';
 }
 

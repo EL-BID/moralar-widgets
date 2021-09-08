@@ -2,9 +2,9 @@ part of moralar_widgets;
 
 class QuizService {
   static String statusName(int status) {
-    if (status == 0) {
+    if (status == 1) {
       return 'Respondido';
-    } else if (status == 1) {
+    } else if (status == 0) {
       return 'Não respondido';
     } else {
       return '';
@@ -12,9 +12,9 @@ class QuizService {
   }
 
   static Color statusColor(int status) {
-    if (status == 0) {
+    if (status == 1) {
       return MoralarColors.kellyGreen;
-    } else if (status == 1) {
+    } else if (status == 0) {
       return MoralarColors.strawberry;
     } else {
       return Colors.white;
@@ -74,7 +74,12 @@ class QuizHeader extends StatelessWidget {
 class OpenQuestion extends StatelessWidget {
   final TextEditingController controller;
   final Function(String?)? onChanged;
-  const OpenQuestion({required this.controller, this.onChanged});
+  final bool readOnly;
+  const OpenQuestion({
+    required this.controller,
+    this.onChanged,
+    this.readOnly = false,
+  });
   @override
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
@@ -87,6 +92,7 @@ class OpenQuestion extends StatelessWidget {
         label: 'Responda a questão acima',
         labelStyle: textTheme.headline6,
         onChanged: onChanged,
+        readOnly: readOnly,
       ),
     );
   }
