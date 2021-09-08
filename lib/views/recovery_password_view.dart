@@ -56,15 +56,18 @@ class RecoveryPasswordView extends GetView<RecoveryPasswordController> {
                             color: MoralarColors.waterBlue, fontSize: 16),
                       ),
                       const SizedBox(height: 80),
-                      MoralarButton(
-                        onPressed: () {
-                          controller.validateCPF();
-                        },
-                        child: Container(
-                          alignment: Alignment.center,
-                          child: Text('Salvar', style: textTheme.button),
-                        ),
-                      ),
+                      Obx(() {
+                        return MoralarButton(
+                          isLoading: controller.isLoading.value,
+                          onPressed: () {
+                            controller.validateCPF();
+                          },
+                          child: Container(
+                            alignment: Alignment.center,
+                            child: Text('Salvar', style: textTheme.button),
+                          ),
+                        );
+                      }),
                     ],
                   ),
                 ),
