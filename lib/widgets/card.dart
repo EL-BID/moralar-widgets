@@ -1467,12 +1467,12 @@ class NotificationDetailsCard extends StatelessWidget {
 }
 
 class FamilyCard extends StatelessWidget {
-  final int status;
+  final FamilyTTS family;
   final Function()? function;
   final bool isDetail;
 
   const FamilyCard({
-    required this.status,
+    required this.family,
     this.function,
     this.isDetail = false,
   });
@@ -1483,7 +1483,7 @@ class FamilyCard extends StatelessWidget {
       onTap: function ?? () {},
       child: Container(
         margin: const EdgeInsets.only(bottom: 24),
-        height: 148,
+        height: 164,
         width: double.infinity,
         decoration: BoxDecoration(
           color: Colors.white,
@@ -1504,14 +1504,15 @@ class FamilyCard extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const BoldNormal(
-                        title: 'Número de Cadastro', body: '#1231245'),
+                    BoldNormal(
+                        title: 'Número de Cadastro', body: family.number),
                     const SizedBox(height: 8),
-                    const BoldNormal(
-                        title: 'Morador Titular', body: 'Lucas Santos'),
+                    BoldNormal(title: 'Morador Titular', body: family.name),
                     const SizedBox(height: 8),
-                    const BoldNormal(
-                        title: 'CPF do titular', body: '777.777.777-77'),
+                    BoldNormal(
+                      title: 'CPF do titular',
+                      body: UtilBrasilFields.obterCpf(family.cpf),
+                    ),
                     const SizedBox(height: 16),
                     MegaListTile(
                       leading: Container(
@@ -1519,10 +1520,10 @@ class FamilyCard extends StatelessWidget {
                         width: 8,
                         decoration: BoxDecoration(
                           shape: BoxShape.circle,
-                          color: Family.statusColor(status),
+                          color: Family.statusColor(family.typeSubject),
                         ),
                       ),
-                      title: Family.statusName(status),
+                      title: Family.statusName(family.typeSubject),
                     )
                   ],
                 ),
@@ -1545,6 +1546,7 @@ class FamilyCard extends StatelessWidget {
 }
 
 class FilterCard extends StatelessWidget {
+  final TextEditingController? searchFamily;
   final String filterHint;
   final List<String> filterStatus;
   final VoidCallback? onPressed;
@@ -1552,6 +1554,7 @@ class FilterCard extends StatelessWidget {
   final bool isMatch;
 
   const FilterCard({
+    this.searchFamily,
     this.filterHint = 'Selecionar',
     this.filterStatus = const ['Selecionar'],
     this.onPressed,
@@ -1583,7 +1586,7 @@ class FilterCard extends StatelessWidget {
             mainAxisSize: MainAxisSize.min,
             children: [
               MoralarTextField(
-                controller: TextEditingController(),
+                controller: searchFamily ?? TextEditingController(),
                 label: 'Pesquisa por Família',
                 color: MoralarColors.brownGrey,
                 prefixIcon: Container(

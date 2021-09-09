@@ -173,6 +173,38 @@ Map<String, dynamic> _$FamilyMemberToJson(FamilyMember instance) =>
       'scholarity': instance.scholarity,
     };
 
+FamilyTTS _$FamilyTTSFromJson(Map<String, dynamic> json) {
+  return FamilyTTS(
+    id: json['id'] as String,
+    created: json['created'] as int,
+    number: json['number'] as String,
+    name: json['name'] as String,
+    cpf: json['cpf'] as String,
+    birthday: json['birthday'] as int?,
+    genre: json['genre'] as int,
+    email: json['email'] as String,
+    phone: json['phone'] as String,
+    scholarity: json['scholarity'] as int,
+    typeSubject: json['typeSubject'] as int,
+    typeScheduleStatus: json['typeScheduleStatus'] as int,
+  );
+}
+
+Map<String, dynamic> _$FamilyTTSToJson(FamilyTTS instance) => <String, dynamic>{
+      'id': instance.id,
+      'created': instance.created,
+      'number': instance.number,
+      'name': instance.name,
+      'cpf': instance.cpf,
+      'birthday': instance.birthday,
+      'genre': instance.genre,
+      'email': instance.email,
+      'phone': instance.phone,
+      'scholarity': instance.scholarity,
+      'typeSubject': instance.typeSubject,
+      'typeScheduleStatus': instance.typeScheduleStatus,
+    };
+
 FamilyUser _$FamilyUserFromJson(Map<String, dynamic> json) {
   return FamilyUser(
     holder: FamilyHolder.fromJson(json['holder'] as Map<String, dynamic>),

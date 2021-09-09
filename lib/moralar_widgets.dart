@@ -1,5 +1,6 @@
 library moralar_widgets;
 
+import 'package:brasil_fields/brasil_fields.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
@@ -28,6 +29,7 @@ part 'models/description.dart';
 part 'models/document_credentials.dart';
 part 'models/family_holder.dart';
 part 'models/family_member.dart';
+part 'models/family_tts.dart';
 part 'models/family_user.dart';
 part 'models/informative.dart';
 part 'models/notification.dart';
