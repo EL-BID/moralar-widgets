@@ -7,14 +7,15 @@ class LoginView extends GetView<LoginController> {
 
     _cpfLogin() {
       return MoralarScaffold(
-        appBar: const MoralarAppBar(
+        appBar: MoralarAppBar(
           titleText: 'Login',
+          leading: Container(),
         ),
         body: SingleChildScrollView(
           child: Form(
             key: controller.cpfFormKey,
             child: Container(
-              height: MediaQuery.of(context).size.height - 100,
+              height: MediaQuery.of(context).size.height,
               padding: const EdgeInsets.symmetric(horizontal: 24),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -35,7 +36,9 @@ class LoginView extends GetView<LoginController> {
                           controller: controller.cpf,
                           label: 'CPF',
                           formats: [Formats.cpfMaskFormatter],
-                          keyboard: TextInputType.number,
+                          keyboard: const TextInputType.numberWithOptions(
+                            signed: true,
+                          ),
                           validators: [
                             Validatorless.cpf('CPF Inválido'),
                             Validatorless.required('Preencha com seu CPF'),
@@ -74,11 +77,11 @@ class LoginView extends GetView<LoginController> {
                             ),
                           );
                         }),
-                        const SizedBox(height: 16),
                       ],
                     ),
                   ),
                   const MoralarPageController(isFirstPage: true),
+                  const SizedBox(height: 96),
                 ],
               ),
             ),
@@ -208,7 +211,6 @@ class LoginView extends GetView<LoginController> {
       physics: const NeverScrollableScrollPhysics(),
       controller: controller.pageController,
       children: [
-        // _teste(),
         _cpfLogin(),
         _passwordLogin(),
       ],
