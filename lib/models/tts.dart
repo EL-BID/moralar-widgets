@@ -4,8 +4,10 @@ part of moralar_widgets;
 class TTS extends MoralarUser {
   String jobPost;
   String? phone;
+  String id;
   TTS({
     this.phone,
+    required this.id,
     required this.jobPost,
     required String name,
     required String cpf,

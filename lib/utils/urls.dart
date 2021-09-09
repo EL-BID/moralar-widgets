@@ -44,4 +44,6 @@ class _TTSUrls {
   final getInfo = '/Profile/GetInfo';
   final changePassword = '/Profile/ChangePassword';
   final forgotPassword = '/Profile/ForgotPassword';
+  final edit = '/Profile/UpdateProfile';
+  final quiz = '/Quiz/GetByName';
 }
