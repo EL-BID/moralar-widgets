@@ -1548,17 +1548,19 @@ class FamilyCard extends StatelessWidget {
 
 class FilterCard extends StatelessWidget {
   final TextEditingController? searchFamily;
+  final TextEditingController? searchProperty;
   final String filterHint;
   final List<String> filterStatus;
-  final VoidCallback? onPressed;
+  final VoidCallback onPressed;
   final Function(String?)? onChanged;
   final bool isMatch;
 
   const FilterCard({
     this.searchFamily,
+    this.searchProperty,
     this.filterHint = 'Selecionar',
     this.filterStatus = const ['Selecionar'],
-    this.onPressed,
+    required this.onPressed,
     this.onChanged,
     this.isMatch = false,
   });
@@ -1633,7 +1635,7 @@ class FilterCard extends StatelessWidget {
                   ],
                 ),
                 replacement: MoralarTextField(
-                  controller: TextEditingController(),
+                  controller: searchProperty ?? TextEditingController(),
                   label: 'Pesquisa por Imóvel',
                   color: MoralarColors.brownGrey,
                   prefixIcon: Container(
@@ -1648,7 +1650,7 @@ class FilterCard extends StatelessWidget {
                 height: 2,
               ),
               InkWell(
-                onTap: onPressed ?? () {},
+                onTap: onPressed,
                 child: Container(
                   padding: const EdgeInsets.symmetric(vertical: 12),
                   width: double.infinity,
@@ -2047,7 +2049,8 @@ class PropertyTTSCard extends StatelessWidget {
 }
 
 class MatchCard extends StatelessWidget {
-  const MatchCard({Key? key}) : super(key: key);
+  final Match match;
+  const MatchCard({required this.match});
 
   @override
   Widget build(BuildContext context) {
@@ -2068,18 +2071,27 @@ class MatchCard extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         mainAxisSize: MainAxisSize.min,
-        children: const [
-          BoldNormal(title: 'Número do Cadastro', body: '#12345'),
-          SizedBox(height: 4),
-          BoldNormal(title: 'Morador Titular', body: 'Diego Mura'),
-          SizedBox(height: 4),
-          BoldNormal(title: 'CPF do titular', body: '123.123.123-12'),
-          SizedBox(height: 4),
-          BoldNormal(title: 'Código do imóvel', body: '#2012314'),
-          SizedBox(height: 4),
-          BoldNormal(title: 'Endereço', body: 'Avenida Paulista, 2022'),
-          SizedBox(height: 4),
-          BoldNormal(title: 'Número de interessados', body: '22 famílias'),
+        children: [
+          BoldNormal(title: 'Número do Cadastro', body: match.holderNumber),
+          const SizedBox(height: 4),
+          BoldNormal(title: 'Morador Titular', body: match.holderName),
+          const SizedBox(height: 4),
+          BoldNormal(
+              title: 'CPF do titular',
+              body: UtilBrasilFields.obterCpf(match.holderCpf)),
+          const SizedBox(height: 4),
+          BoldNormal(
+              title: 'Código do imóvel', body: '#${match.residencialCode}'),
+          const SizedBox(height: 4),
+          BoldNormal(
+              title: 'Endereço',
+              body:
+                  // ignore: lines_longer_than_80_chars
+                  '${match.residencialPropertyAdress.streetAddress}, ${match.residencialPropertyAdress.number}'),
+          const SizedBox(height: 4),
+          BoldNormal(
+              title: 'Número de interessados',
+              body: '${match.interest} famílias'),
         ],
       ),
     );

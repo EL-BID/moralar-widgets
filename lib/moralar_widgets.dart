@@ -32,6 +32,7 @@ part 'models/family_member.dart';
 part 'models/family_tts.dart';
 part 'models/family_user.dart';
 part 'models/informative.dart';
+part 'models/matchs.dart';
 part 'models/notification.dart';
 part 'models/property.dart';
 part 'models/property_features.dart';

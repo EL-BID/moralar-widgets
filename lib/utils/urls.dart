@@ -47,4 +47,5 @@ class _TTSUrls {
   final edit = '/Profile/UpdateProfile';
   final quiz = '/Quiz/GetByName';
   final timeline = '/Family/SearchTimeLine';
+  final matchs = '/PropertiesInterest/SearchMatch';
 }

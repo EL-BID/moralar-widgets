@@ -247,6 +247,35 @@ Map<String, dynamic> _$InformativeToJson(Informative instance) =>
       'id': instance.id,
     };
 
+Match _$MatchFromJson(Map<String, dynamic> json) {
+  return Match(
+    id: json['id'] as String,
+    familyId: json['familyId'] as String,
+    residencialPropertyId: json['residencialPropertyId'] as String,
+    holderName: json['holderName'] as String,
+    holderEmail: json['holderEmail'] as String,
+    holderCpf: json['holderCpf'] as String,
+    holderNumber: json['holderNumber'] as String,
+    residencialCode: json['residencialCode'] as String,
+    interest: json['interest'] as int,
+    residencialPropertyAdress: Address.fromJson(
+        json['residencialPropertyAdress'] as Map<String, dynamic>),
+  );
+}
+
+Map<String, dynamic> _$MatchToJson(Match instance) => <String, dynamic>{
+      'id': instance.id,
+      'familyId': instance.familyId,
+      'residencialPropertyId': instance.residencialPropertyId,
+      'holderName': instance.holderName,
+      'holderEmail': instance.holderEmail,
+      'holderCpf': instance.holderCpf,
+      'holderNumber': instance.holderNumber,
+      'residencialCode': instance.residencialCode,
+      'interest': instance.interest,
+      'residencialPropertyAdress': instance.residencialPropertyAdress,
+    };
+
 MoralarNotification _$MoralarNotificationFromJson(Map<String, dynamic> json) {
   return MoralarNotification(
     status: json['status'] as bool,
