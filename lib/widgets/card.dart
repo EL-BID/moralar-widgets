@@ -1505,13 +1505,14 @@ class FamilyCard extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     BoldNormal(
-                        title: 'Número de Cadastro', body: family.number),
+                        title: 'Número de Cadastro', body: family.holderNumber),
                     const SizedBox(height: 8),
-                    BoldNormal(title: 'Morador Titular', body: family.name),
+                    BoldNormal(
+                        title: 'Morador Titular', body: family.holderName),
                     const SizedBox(height: 8),
                     BoldNormal(
                       title: 'CPF do titular',
-                      body: UtilBrasilFields.obterCpf(family.cpf),
+                      body: UtilBrasilFields.obterCpf(family.holderCpf),
                     ),
                     const SizedBox(height: 16),
                     MegaListTile(

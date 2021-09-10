@@ -3,29 +3,25 @@ part of moralar_widgets;
 @JsonSerializable()
 class FamilyTTS {
   String id;
-  int created;
-  String number;
-  String name;
-  String cpf;
-  int? birthday;
-  int genre;
-  String email;
-  String phone;
-  int scholarity;
+  String place;
+  String description;
+  String familyId;
+  String holderNumber;
+  String holderName;
+  String holderCpf;
+  int date;
   int typeSubject;
   int typeScheduleStatus;
 
   FamilyTTS({
     required this.id,
-    required this.created,
-    required this.number,
-    required this.name,
-    required this.cpf,
-    this.birthday,
-    required this.genre,
-    required this.email,
-    required this.phone,
-    required this.scholarity,
+    required this.place,
+    required this.description,
+    required this.familyId,
+    required this.holderNumber,
+    required this.holderName,
+    required this.holderCpf,
+    required this.date,
     required this.typeSubject,
     required this.typeScheduleStatus,
   });
