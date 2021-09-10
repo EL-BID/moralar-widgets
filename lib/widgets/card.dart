@@ -1671,7 +1671,7 @@ class FilterCard extends StatelessWidget {
 
 class FamilyInfoCard extends StatelessWidget {
   final String title;
-  final List<Widget> cards;
+  final Widget cards;
 
   const FamilyInfoCard({
     required this.title,
@@ -1707,117 +1707,166 @@ class FamilyInfoCard extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 24),
-          Column(
-            children: cards,
-          ),
+          cards,
         ],
       ),
     );
   }
 }
 
-class MoralarTTSCard extends StatelessWidget {
-  final int status;
-  final Function()? function;
-  final bool isCourse;
+class CourseTTSCard extends StatelessWidget {
+  final CourseTTS course;
 
-  const MoralarTTSCard(
-      {required this.status, required this.isCourse, this.function});
+  const CourseTTSCard({required this.course});
 
   @override
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
-    const brownGrey = Color(0xFFb2b2b2);
-    final currentColor = isCourse
-        ? CourseService.statusColor(status)
-        : QuizService.statusColor(status);
-    final currentText = isCourse
-        ? CourseService.statusName(status)
-        : QuizService.statusName(status);
+    final currentColor = CourseService.statusColor(course.typeStatusCourse);
+    final currentText = CourseService.statusName(course.typeStatusCourse);
 
-    return InkWell(
-      onTap: function ?? () {},
-      child: Container(
-        margin: const EdgeInsets.only(bottom: 24),
-        height: isCourse ? 164 : 100,
-        width: double.infinity,
-        decoration: BoxDecoration(
-          color: Colors.white,
-          boxShadow: [
-            BoxShadow(
-              color: Colors.grey.withOpacity(0.7),
-              // spreadRadius: 1,
-              blurRadius: 3,
-              offset: const Offset(0, 3),
-            ),
-          ],
-        ),
-        child: Row(
-          children: [
-            Expanded(
-              child: Container(
-                padding: const EdgeInsets.only(right: 16, left: 16, top: 16),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      isCourse ? 'Curso 1' : 'Questionario/Enquete',
-                      style: textTheme.headline1,
+    return Container(
+      margin: const EdgeInsets.only(bottom: 24),
+      height: 164,
+      width: double.infinity,
+      decoration: BoxDecoration(
+        color: Colors.white,
+        boxShadow: [
+          BoxShadow(
+            color: Colors.grey.withOpacity(0.7),
+            // spreadRadius: 1,
+            blurRadius: 3,
+            offset: const Offset(0, 3),
+          ),
+        ],
+      ),
+      child: Row(
+        children: [
+          Expanded(
+            child: Container(
+              padding: const EdgeInsets.only(right: 16, left: 16, top: 16),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    course.title,
+                    style: textTheme.headline1,
+                  ),
+                  const SizedBox(height: 8),
+                  MegaListTile(
+                    title:
+                        // ignore: lines_longer_than_80_chars
+                        '${MoralarDate.secondsForDate(course.startDate)} até ${MoralarDate.secondsForDate(course.endDate)}',
+                    leading: const Icon(
+                      FontAwesomeIcons.calendar,
+                      size: 16,
+                      color: MoralarColors.brownGrey,
                     ),
-                    const SizedBox(height: 8),
-                    Visibility(
-                      visible: isCourse,
-                      child: MegaListTile(
-                        title: '26/09/2020',
+                    style: textTheme.bodyText1,
+                  ),
+                  Column(
+                    children: [
+                      const SizedBox(height: 8),
+                      MegaListTile(
+                        title: '${course.schedule ?? '--'}hrs',
                         leading: const Icon(
-                          FontAwesomeIcons.calendar,
+                          FontAwesomeIcons.clock,
                           size: 16,
-                          color: brownGrey,
+                          color: MoralarColors.brownGrey,
                         ),
                         style: textTheme.bodyText1,
                       ),
-                    ),
-                    Visibility(
-                      visible: isCourse,
-                      child: Column(
-                        children: [
-                          const SizedBox(height: 8),
-                          MegaListTile(
-                            title: '14:30hrs',
-                            leading: const Icon(
-                              FontAwesomeIcons.clock,
-                              size: 16,
-                              color: brownGrey,
-                            ),
-                            style: textTheme.bodyText1,
-                          ),
-                        ],
+                    ],
+                  ),
+                  const SizedBox(height: 8),
+                  MegaListTile(
+                    title: currentText,
+                    leading: Container(
+                      width: 16,
+                      height: 16,
+                      alignment: Alignment.center,
+                      decoration: BoxDecoration(
+                        color: currentColor,
+                        shape: BoxShape.circle,
                       ),
                     ),
-                    const SizedBox(height: 8),
-                    MegaListTile(
-                      title: currentText,
-                      leading: Container(
-                        width: 16,
-                        height: 16,
-                        alignment: Alignment.center,
-                        decoration: BoxDecoration(
-                          color: currentColor,
-                          shape: BoxShape.circle,
-                        ),
-                      ),
-                      style: textTheme.bodyText2,
-                    ),
-                  ],
-                ),
+                    style: textTheme.bodyText2,
+                  ),
+                ],
               ),
             ),
-            Container(
-              color: currentColor,
-              width: 24,
-            )
-          ],
-        ),
+          ),
+          Container(
+            color: currentColor,
+            width: 24,
+          )
+        ],
+      ),
+    );
+  }
+}
+
+class QuizTTSCard extends StatelessWidget {
+  final Quiz quiz;
+
+  const QuizTTSCard({required this.quiz});
+
+  @override
+  Widget build(BuildContext context) {
+    final textTheme = Theme.of(context).textTheme;
+    final currentColor = QuizService.statusColor(quiz.typeStatus);
+    final currentText = QuizService.statusName(quiz.typeStatus);
+
+    return Container(
+      margin: const EdgeInsets.only(bottom: 24),
+      height: 164,
+      width: double.infinity,
+      decoration: BoxDecoration(
+        color: Colors.white,
+        boxShadow: [
+          BoxShadow(
+            color: Colors.grey.withOpacity(0.7),
+            // spreadRadius: 1,
+            blurRadius: 3,
+            offset: const Offset(0, 3),
+          ),
+        ],
+      ),
+      child: Row(
+        children: [
+          Expanded(
+            child: Container(
+              padding: const EdgeInsets.only(right: 16, left: 16, top: 16),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    quiz.title,
+                    style: textTheme.headline1,
+                  ),
+                  const SizedBox(height: 48),
+                  MegaListTile(
+                    title: currentText,
+                    leading: Container(
+                      width: 16,
+                      height: 16,
+                      alignment: Alignment.center,
+                      decoration: BoxDecoration(
+                        color: currentColor,
+                        shape: BoxShape.circle,
+                      ),
+                    ),
+                    style: textTheme.bodyText2,
+                  ),
+                ],
+              ),
+            ),
+          ),
+          Container(
+            color: currentColor,
+            width: 24,
+          )
+        ],
       ),
     );
   }

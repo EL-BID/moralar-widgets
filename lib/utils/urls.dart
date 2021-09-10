@@ -48,4 +48,6 @@ class _TTSUrls {
   final quiz = '/Quiz/GetByName';
   final timeline = '/Family/SearchTimeLine';
   final matchs = '/PropertiesInterest/SearchMatch';
+  final courseByFamily = '/Course/GetCourseByFamilyId';
+  final quizByFamily = '/Quiz/GetQuizByFamilyId';
 }

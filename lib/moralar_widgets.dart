@@ -25,6 +25,7 @@ part 'models/address.dart';
 part 'models/answer.dart';
 part 'models/answer_details.dart';
 part 'models/course.dart';
+part 'models/course_tts.dart';
 part 'models/description.dart';
 part 'models/document_credentials.dart';
 part 'models/family_holder.dart';

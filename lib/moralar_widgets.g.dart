@@ -112,6 +112,26 @@ Map<String, dynamic> _$CourseToJson(Course instance) => <String, dynamic>{
       'id': instance.id,
     };
 
+CourseTTS _$CourseTTSFromJson(Map<String, dynamic> json) {
+  return CourseTTS(
+    title: json['title'] as String,
+    startDate: json['startDate'] as int,
+    endDate: json['endDate'] as int,
+    schedule: json['schedule'] as String?,
+    typeStatusCourse: json['typeStatusCourse'] as int,
+    id: json['id'] as String,
+  );
+}
+
+Map<String, dynamic> _$CourseTTSToJson(CourseTTS instance) => <String, dynamic>{
+      'title': instance.title,
+      'startDate': instance.startDate,
+      'endDate': instance.endDate,
+      'schedule': instance.schedule,
+      'typeStatusCourse': instance.typeStatusCourse,
+      'id': instance.id,
+    };
+
 Description _$DescriptionFromJson(Map<String, dynamic> json) {
   return Description(
     description: json['description'] as String,
