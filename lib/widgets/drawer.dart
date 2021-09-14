@@ -29,24 +29,18 @@ class MoralarDrawer extends StatelessWidget {
       body: SingleChildScrollView(
         child: Container(
           padding: const EdgeInsets.all(24),
-          height: Get.height - 80,
           child: Column(
             children: [
-              Expanded(
-                child: Column(
-                  children: [
-                    header,
-                    const SizedBox(height: 16),
-                    const Divider(
-                      thickness: 1,
-                      color: Colors.white,
-                    ),
-                    Column(
-                      children: options,
-                    ),
-                  ],
-                ),
+              header,
+              const SizedBox(height: 16),
+              const Divider(
+                thickness: 1,
+                color: Colors.white,
               ),
+              Column(
+                children: options,
+              ),
+              const SizedBox(height: 128),
               const Divider(
                 thickness: 1,
                 color: Colors.white,
