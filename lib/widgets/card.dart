@@ -1808,8 +1808,9 @@ class CourseTTSCard extends StatelessWidget {
 
 class QuizTTSCard extends StatelessWidget {
   final Quiz quiz;
+  final VoidCallback function;
 
-  const QuizTTSCard({required this.quiz});
+  const QuizTTSCard({required this.quiz, required this.function});
 
   @override
   Widget build(BuildContext context) {
@@ -1817,56 +1818,59 @@ class QuizTTSCard extends StatelessWidget {
     final currentColor = QuizService.statusColor(quiz.typeStatus);
     final currentText = QuizService.statusName(quiz.typeStatus);
 
-    return Container(
-      margin: const EdgeInsets.only(bottom: 24),
-      height: 164,
-      width: double.infinity,
-      decoration: BoxDecoration(
-        color: Colors.white,
-        boxShadow: [
-          BoxShadow(
-            color: Colors.grey.withOpacity(0.7),
-            // spreadRadius: 1,
-            blurRadius: 3,
-            offset: const Offset(0, 3),
-          ),
-        ],
-      ),
-      child: Row(
-        children: [
-          Expanded(
-            child: Container(
-              padding: const EdgeInsets.only(right: 16, left: 16, top: 16),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    quiz.title,
-                    style: textTheme.headline1,
-                  ),
-                  const SizedBox(height: 48),
-                  MegaListTile(
-                    title: currentText,
-                    leading: Container(
-                      width: 16,
-                      height: 16,
-                      alignment: Alignment.center,
-                      decoration: BoxDecoration(
-                        color: currentColor,
-                        shape: BoxShape.circle,
-                      ),
+    return InkWell(
+      onTap: function,
+      child: Container(
+        margin: const EdgeInsets.only(bottom: 24),
+        height: 164,
+        width: double.infinity,
+        decoration: BoxDecoration(
+          color: Colors.white,
+          boxShadow: [
+            BoxShadow(
+              color: Colors.grey.withOpacity(0.7),
+              // spreadRadius: 1,
+              blurRadius: 3,
+              offset: const Offset(0, 3),
+            ),
+          ],
+        ),
+        child: Row(
+          children: [
+            Expanded(
+              child: Container(
+                padding: const EdgeInsets.only(right: 16, left: 16, top: 16),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      quiz.title,
+                      style: textTheme.headline1,
                     ),
-                    style: textTheme.bodyText2,
-                  ),
-                ],
+                    const SizedBox(height: 48),
+                    MegaListTile(
+                      title: currentText,
+                      leading: Container(
+                        width: 16,
+                        height: 16,
+                        alignment: Alignment.center,
+                        decoration: BoxDecoration(
+                          color: currentColor,
+                          shape: BoxShape.circle,
+                        ),
+                      ),
+                      style: textTheme.bodyText2,
+                    ),
+                  ],
+                ),
               ),
             ),
-          ),
-          Container(
-            color: currentColor,
-            width: 24,
-          )
-        ],
+            Container(
+              color: currentColor,
+              width: 24,
+            )
+          ],
+        ),
       ),
     );
   }
