@@ -118,7 +118,9 @@ class LoginView extends GetView<LoginController> {
                       label: 'CPF',
                       hint: '123.123.123-12',
                       formats: [Formats.cpfMaskFormatter],
-                      keyboard: TextInputType.number,
+                      keyboard: const TextInputType.numberWithOptions(
+                        signed: true,
+                      ),
                       validators: [
                         Validatorless.cpf('CPF Inválido'),
                         Validatorless.required('Preencha esse campo'),

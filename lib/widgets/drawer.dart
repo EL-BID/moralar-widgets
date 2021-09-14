@@ -29,7 +29,7 @@ class MoralarDrawer extends StatelessWidget {
       body: SingleChildScrollView(
         child: Container(
           padding: const EdgeInsets.all(24),
-          height: MediaQuery.of(context).size.height - 80,
+          height: Get.height - 80,
           child: Column(
             children: [
               Expanded(
