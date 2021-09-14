@@ -50,4 +50,5 @@ class _TTSUrls {
   final matchs = '/PropertiesInterest/SearchMatch';
   final courseByFamily = '/Course/GetCourseByFamilyId';
   final quizByFamily = '/Quiz/GetQuizByFamilyId';
+  final responseByFamily = '/QuestionAnswer/GetResponsesByFamily';
 }
