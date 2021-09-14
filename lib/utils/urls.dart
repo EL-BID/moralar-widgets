@@ -51,4 +51,5 @@ class _TTSUrls {
   final courseByFamily = '/Course/GetCourseByFamilyId';
   final quizByFamily = '/Quiz/GetQuizByFamilyId';
   final responseByFamily = '/QuestionAnswer/GetResponsesByFamily';
+  final detailsReunionPGM = '/Schedule/DetailTimeLineProcessReunionPGM';
 }

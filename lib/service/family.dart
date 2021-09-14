@@ -304,12 +304,22 @@ class MemberForm extends StatelessWidget {
 class Family {
   static String statusName(int status) {
     if (status == 0) {
-      return 'Reunião PGM';
+      return 'Visita do TTS';
     } else if (status == 1) {
-      return 'Escolha do Imóvel';
+      return 'Reunião com TTS';
     } else if (status == 2) {
-      return 'Mudança';
+      return 'Reunião PGM';
     } else if (status == 3) {
+      return 'Visita ao imóvel';
+    } else if (status == 4) {
+      return 'Escolha do imóvel';
+    } else if (status == 5) {
+      return 'Demolição';
+    } else if (status == 6) {
+      return 'Outros';
+    } else if (status == 7) {
+      return 'Mudança';
+    } else if (status == 8) {
       return 'Acompanhamento pós-mudança';
     } else {
       return '';
@@ -317,13 +327,13 @@ class Family {
   }
 
   static Color statusColor(int status) {
-    if (status == 0) {
+    if (status == 2) {
       return MoralarColors.strawberry;
-    } else if (status == 1) {
+    } else if (status == 4) {
       return MoralarColors.blue;
-    } else if (status == 2) {
+    } else if (status == 7) {
       return MoralarColors.orangeYellow;
-    } else if (status == 3) {
+    } else if (status == 8) {
       return MoralarColors.kellyGreen;
     } else {
       return Colors.white;

@@ -1877,11 +1877,16 @@ class QuizTTSCard extends StatelessWidget {
 }
 
 class SchedulingTTSCard extends StatelessWidget {
+  final ScheduleDetails schedule;
   final int status;
-  const SchedulingTTSCard({required this.status});
+  const SchedulingTTSCard({required this.schedule, required this.status});
   @override
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
+    final date =
+        MoralarDate.secondsForDateHours(schedule.date ?? 0).substring(0, 10);
+    final hour =
+        MoralarDate.secondsForDateHours(schedule.date ?? 0).substring(11, 16);
 
     return InkWell(
       onTap: () {},
@@ -1904,7 +1909,7 @@ class SchedulingTTSCard extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           children: [
             Container(
-              color: status == 0
+              color: status == 2
                   ? MoralarColors.brownGrey
                   : MoralarColors.kellyGreen,
               width: double.infinity,
@@ -1916,13 +1921,12 @@ class SchedulingTTSCard extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    // ignore: lines_longer_than_80_chars
-                    'Reunião TTSReunião TTSReunião TTSReunião TTSReunião TTSReunião TTSReunião TTSReunião TTSReunião TTSReunião TTSReunião TTSReunião',
+                    schedule.description ?? '',
                     style: textTheme.bodyText1,
                   ),
                   const SizedBox(height: 8),
                   MegaListTile(
-                    title: '26/09/2020 ás 14:35hrs',
+                    title: '$date ás ${hour}hrs',
                     leading: const Icon(
                       FontAwesomeIcons.calendar,
                       size: 16,
@@ -1931,13 +1935,13 @@ class SchedulingTTSCard extends StatelessWidget {
                     style: textTheme.bodyText1,
                   ),
                   MegaListTile(
-                    title: status == 0 ? 'Finalizado' : 'Confirmado',
+                    title: status == 2 ? 'Finalizado' : 'Confirmado',
                     leading: Container(
                       alignment: Alignment.center,
                       width: 16,
                       height: 16,
                       decoration: BoxDecoration(
-                        color: status == 0
+                        color: status == 2
                             ? MoralarColors.brownGrey
                             : MoralarColors.kellyGreen,
                         shape: BoxShape.circle,
@@ -1946,21 +1950,17 @@ class SchedulingTTSCard extends StatelessWidget {
                     style: textTheme.bodyText2,
                   ),
                   Visibility(
-                    visible: status == 0 || status == 2,
+                    visible: status == 7,
                     child: Column(
                       children: [
                         const SizedBox(height: 16),
                         MoralarButton(
                           onPressed: () {},
-                          color: status == 0
-                              ? MoralarColors.brownGrey
-                              : MoralarColors.kellyGreen,
+                          color: MoralarColors.kellyGreen,
                           child: Container(
                             alignment: Alignment.center,
                             child: Text(
-                              status == 0
-                                  ? 'Ver Detalhes'
-                                  : 'Confirmar Mudança',
+                              'Confirmar Mudança',
                               style: textTheme.button,
                             ),
                           ),
