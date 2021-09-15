@@ -792,14 +792,18 @@ class PropertyFilterCard extends StatelessWidget {
                             MoralarTextField(
                               controller: startSquareFootage,
                               label: 'De:',
-                              keyboard: TextInputType.number,
+                              keyboard: const TextInputType.numberWithOptions(
+                                signed: true,
+                              ),
                               labelStyle: textTheme.bodyText2,
                               hintStyle: textTheme.bodyText2,
                             ),
                             MoralarTextField(
                               controller: endSquareFootage,
                               label: 'Até:',
-                              keyboard: TextInputType.number,
+                              keyboard: const TextInputType.numberWithOptions(
+                                signed: true,
+                              ),
                               labelStyle: textTheme.bodyText2,
                               hintStyle: textTheme.bodyText2,
                             ),
@@ -828,14 +832,18 @@ class PropertyFilterCard extends StatelessWidget {
                             MoralarTextField(
                               controller: startCondominiumValue,
                               label: 'De:',
-                              keyboard: TextInputType.number,
+                              keyboard: const TextInputType.numberWithOptions(
+                                signed: true,
+                              ),
                               labelStyle: textTheme.bodyText2,
                               hintStyle: textTheme.bodyText2,
                             ),
                             MoralarTextField(
                               controller: endCondominiumValue,
                               label: 'Até:',
-                              keyboard: TextInputType.number,
+                              keyboard: const TextInputType.numberWithOptions(
+                                signed: true,
+                              ),
                               labelStyle: textTheme.bodyText2,
                               hintStyle: textTheme.bodyText2,
                             ),
@@ -864,14 +872,18 @@ class PropertyFilterCard extends StatelessWidget {
                             MoralarTextField(
                               controller: startIptuValue,
                               label: 'De:',
-                              keyboard: TextInputType.number,
+                              keyboard: const TextInputType.numberWithOptions(
+                                signed: true,
+                              ),
                               labelStyle: textTheme.bodyText2,
                               hintStyle: textTheme.bodyText2,
                             ),
                             MoralarTextField(
                               controller: endIptuValue,
                               label: 'Até:',
-                              keyboard: TextInputType.number,
+                              keyboard: const TextInputType.numberWithOptions(
+                                signed: true,
+                              ),
                               labelStyle: textTheme.bodyText2,
                               hintStyle: textTheme.bodyText2,
                             ),
@@ -900,14 +912,18 @@ class PropertyFilterCard extends StatelessWidget {
                             MoralarTextField(
                               controller: startNumberOfBedrooms,
                               label: 'De:',
-                              keyboard: TextInputType.number,
+                              keyboard: const TextInputType.numberWithOptions(
+                                signed: true,
+                              ),
                               labelStyle: textTheme.bodyText2,
                               hintStyle: textTheme.bodyText2,
                             ),
                             MoralarTextField(
                               controller: endNumberOfBedrooms,
                               label: 'Até:',
-                              keyboard: TextInputType.number,
+                              keyboard: const TextInputType.numberWithOptions(
+                                signed: true,
+                              ),
                               labelStyle: textTheme.bodyText2,
                               hintStyle: textTheme.bodyText2,
                             ),
@@ -933,7 +949,9 @@ class PropertyFilterCard extends StatelessWidget {
                         child: MoralarTextField(
                           controller: neighborhood,
                           label: 'Nome do bairro',
-                          keyboard: TextInputType.number,
+                          keyboard: const TextInputType.numberWithOptions(
+                            signed: true,
+                          ),
                           labelStyle: textTheme.bodyText2,
                           hintStyle: textTheme.bodyText2,
                         ),
@@ -1973,129 +1991,6 @@ class SchedulingTTSCard extends StatelessWidget {
             ),
           ],
         ),
-      ),
-    );
-  }
-}
-
-class PropertyTTSCard extends StatelessWidget {
-  final Function()? function;
-  final bool isHouse;
-
-  const PropertyTTSCard({this.function, required this.isHouse});
-
-  @override
-  Widget build(BuildContext context) {
-    final textTheme = Theme.of(context).textTheme;
-
-    return Container(
-      margin: const EdgeInsets.only(bottom: 24),
-      decoration: BoxDecoration(
-        color: Colors.white,
-        boxShadow: [
-          BoxShadow(
-            color: Colors.grey.withOpacity(0.7),
-            // spreadRadius: 1,
-            blurRadius: 3,
-            offset: const Offset(0, 3),
-          ),
-        ],
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Stack(
-            children: [
-              Container(
-                width: double.infinity,
-                height: 164,
-                child: Image.network(
-                  'https://picsum.photos/200',
-                  fit: BoxFit.cover,
-                ),
-              ),
-              Positioned(
-                width: isHouse ? 80 : 132,
-                top: 16,
-                left: 24,
-                child: Container(
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.grey.withOpacity(0.7),
-                        blurRadius: 3,
-                        offset: const Offset(0, 1),
-                      ),
-                    ],
-                  ),
-                  padding: const EdgeInsets.symmetric(horizontal: 8),
-                  alignment: Alignment.center,
-                  child: MegaListTile(
-                    title: isHouse ? 'Casa' : 'Apartamento',
-                    leading: Icon(
-                      isHouse
-                          ? FontAwesomeIcons.home
-                          : FontAwesomeIcons.solidBuilding,
-                      size: 16,
-                      color: MoralarColors.brownishGrey,
-                    ),
-                    style: textTheme.bodyText1?.copyWith(
-                      color: MoralarColors.brownishGrey,
-                    ),
-                  ),
-                ),
-              ),
-            ],
-          ),
-          Container(
-            padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
-            child: Row(
-              children: [
-                Expanded(
-                  flex: 2,
-                  child: Column(
-                    children: [
-                      MegaListTile(
-                        title: 'Bela Vista',
-                        leading: const Icon(
-                          FontAwesomeIcons.mapMarkerAlt,
-                          size: 16,
-                          color: MoralarColors.brownishGrey,
-                        ),
-                        style: textTheme.bodyText1?.copyWith(
-                          color: MoralarColors.brownishGrey,
-                        ),
-                      ),
-                      MegaListTile(
-                        title: '120 m²',
-                        leading: const Icon(
-                          FontAwesomeIcons.ruler,
-                          size: 16,
-                          color: MoralarColors.brownishGrey,
-                        ),
-                        style: textTheme.bodyText1?.copyWith(
-                          color: MoralarColors.brownishGrey,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-                Expanded(
-                  flex: 3,
-                  child: MoralarButton(
-                    child: Container(
-                      alignment: Alignment.center,
-                      child: Text('Liberar Etapa', style: textTheme.button),
-                    ),
-                    onPressed: function ?? () {},
-                  ),
-                ),
-              ],
-            ),
-          ),
-        ],
       ),
     );
   }

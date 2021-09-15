@@ -177,7 +177,9 @@ class MemberForm extends StatelessWidget {
           controller: _birthdayController,
           readOnly: readOnly,
           formats: [Formats.dateMaskFormatter],
-          keyboard: TextInputType.number,
+          keyboard: const TextInputType.numberWithOptions(
+            signed: true,
+          ),
           color: MoralarColors.waterBlue,
           labelStyle: textTheme.bodyText1
               ?.copyWith(color: MoralarColors.waterBlue, fontSize: 16),
