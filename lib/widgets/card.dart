@@ -1897,7 +1897,12 @@ class QuizTTSCard extends StatelessWidget {
 class SchedulingTTSCard extends StatelessWidget {
   final ScheduleDetails schedule;
   final int status;
-  const SchedulingTTSCard({required this.schedule, required this.status});
+  final VoidCallback function;
+  const SchedulingTTSCard({
+    required this.schedule,
+    required this.status,
+    required this.function,
+  });
   @override
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
@@ -1973,7 +1978,7 @@ class SchedulingTTSCard extends StatelessWidget {
                       children: [
                         const SizedBox(height: 16),
                         MoralarButton(
-                          onPressed: () {},
+                          onPressed: function,
                           color: MoralarColors.kellyGreen,
                           child: Container(
                             alignment: Alignment.center,
