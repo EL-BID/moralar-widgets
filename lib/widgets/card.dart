@@ -150,7 +150,7 @@ class ScheduleCard extends StatelessWidget {
       onTap: function,
       child: Container(
         margin: const EdgeInsets.only(bottom: 24),
-        height: 164,
+        height: 180,
         width: double.infinity,
         decoration: BoxDecoration(
           color: Colors.white,
