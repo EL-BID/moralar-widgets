@@ -4,11 +4,13 @@ class LoginBinding extends Bindings {
   final VoidCallback onSignedIn;
   final VoidCallback recoveryPassword;
   final String firstAccess;
+  final String terms;
 
   LoginBinding({
     required this.onSignedIn,
     required this.recoveryPassword,
     this.firstAccess = '',
+    this.terms = '',
   });
 
   @override
@@ -18,6 +20,7 @@ class LoginBinding extends Bindings {
         onSignedIn: onSignedIn,
         recoveryPassword: recoveryPassword,
         firstAccess: firstAccess,
+        terms: terms,
       ),
     );
     Get.lazyPut<FamilyProvider>(

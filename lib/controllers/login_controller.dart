@@ -4,11 +4,13 @@ class LoginController extends GetxController {
   final VoidCallback onSignedIn;
   final VoidCallback recoveryPassword;
   final String firstAccess;
+  final String terms;
 
   LoginController({
     required this.onSignedIn,
     required this.recoveryPassword,
     required this.firstAccess,
+    required this.terms,
   });
 
   final isLoading = false.obs;

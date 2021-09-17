@@ -52,7 +52,9 @@ class LoginView extends GetView<LoginController> {
                           ),
                         ),
                         const SizedBox(width: 16),
-                        TermsUse(),
+                        TermsUse(
+                          function: () => Get.toNamed(controller.terms),
+                        ),
                       ],
                     ),
                   ),
