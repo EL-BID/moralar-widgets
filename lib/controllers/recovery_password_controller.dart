@@ -84,7 +84,4 @@ class RecoveryPasswordController extends GetxController {
       isLoading.value = false;
     }
   }
-
-  @override
-  void onClose() {}
 }

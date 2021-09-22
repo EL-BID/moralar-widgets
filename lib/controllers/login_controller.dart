@@ -77,14 +77,41 @@ class LoginController extends GetxController {
         isLoading.value = false;
       }
       if (hasError.value) {
-        Get.snackbar(
-          'Algo deu errado',
-          errorMessage.value,
-          colorText: MoralarColors.veryLightPink,
-          backgroundColor: MoralarColors.strawberry,
-        );
+        if (errorMessage.value == 'Já existe um login em outro dispositivo') {
+          Get.defaultDialog(
+            onWillPop: () async {
+              return true;
+            },
+            title: 'Já existe um login em outro dispositivo.',
+            titleStyle: Get.textTheme.headline1,
+            titlePadding: const EdgeInsets.only(top: 24),
+            contentPadding: const EdgeInsets.all(24),
+            middleText: 'Você deseja entrar com esse celular?',
+            middleTextStyle: Get.textTheme.bodyText2,
+            textConfirm: "Confirmar",
+            textCancel: "Cancelar",
+            cancelTextColor: MoralarColors.strawberry,
+            confirmTextColor: MoralarColors.veryLightPink,
+            backgroundColor: MoralarColors.veryLightPink,
+            buttonColor: MoralarColors.strawberry,
+            onConfirm: () async {
+              credentials.useNewDevice = true;
+              Get.back();
+              await signIn();
+              return;
+            },
+          );
+        } else {
+          Get.snackbar(
+            'Algo deu errado',
+            errorMessage.value,
+            colorText: MoralarColors.veryLightPink,
+            backgroundColor: MoralarColors.strawberry,
+          );
+        }
       }
       if (MegaFlutter.instance.auth.currentUser != null) {
+        isLoading.value = false;
         onSignedIn();
       }
     }

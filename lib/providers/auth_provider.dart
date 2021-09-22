@@ -18,6 +18,7 @@ class AuthProvider extends AuthRemoteProvider {
       if (MoralarWidgets.instance.userType == UserType.family) {
         endpoint = Urls.family.token;
         body.addAll({'holderCpf': credentials.cpf});
+        body.addAll({'UseNewDevice': credentials.useNewDevice});
       } else if (MoralarWidgets.instance.userType == UserType.tts) {
         endpoint = Urls.tts.token;
         body.addAll({'cpf': credentials.cpf});
