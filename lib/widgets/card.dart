@@ -1501,7 +1501,6 @@ class FamilyCard extends StatelessWidget {
       onTap: function ?? () {},
       child: Container(
         margin: const EdgeInsets.only(bottom: 24),
-        height: 196,
         width: double.infinity,
         decoration: BoxDecoration(
           color: Colors.white,
@@ -1518,7 +1517,7 @@ class FamilyCard extends StatelessWidget {
           children: [
             Expanded(
               child: Container(
-                padding: const EdgeInsets.only(right: 16, left: 16, top: 16),
+                padding: const EdgeInsets.all(16),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -1543,7 +1542,7 @@ class FamilyCard extends StatelessWidget {
                         ),
                       ),
                       title: Family.statusName(family.typeSubject),
-                    )
+                    ),
                   ],
                 ),
               ),
