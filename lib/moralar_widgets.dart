@@ -93,6 +93,7 @@ class MoralarWidgets {
 
   /// Indica qual tipo de usuário está usando o app.
   final UserType userType;
+  final String baseUrlForHTTP = 'apidev.megaleios.com';
 
   MoralarWidgets._({
     required this.userType,
