@@ -148,12 +148,12 @@ Map<String, dynamic> _$DescriptionToJson(Description instance) =>
 FamilyHolder _$FamilyHolderFromJson(Map<String, dynamic> json) {
   return FamilyHolder(
     cpf: json['cpf'] as String,
-    email: json['email'] as String,
+    email: json['email'] as String?,
     name: json['name'] as String,
     number: json['number'] as String,
     birthday: json['birthday'] as int,
     genre: json['genre'] as int?,
-    phone: json['phone'] as String,
+    phone: json['phone'] as String?,
     scholarity: json['scholarity'] as int?,
     id: json['id'] as String?,
     isFirstAcess: json['isFirstAcess'] as bool?,
@@ -252,7 +252,7 @@ Informative _$InformativeFromJson(Map<String, dynamic> json) {
     datePublish: json['datePublish'] as String,
     image: json['image'] as String,
     description: json['description'] as String,
-    dateViewed: json['dateViewed'] as int,
+    dateViewed: json['dateViewed'] as int?,
     id: json['id'] as String,
   );
 }
@@ -415,6 +415,8 @@ PropertyFilter _$PropertyFilterFromJson(Map<String, dynamic> json) {
     hasAccessLadder: json['hasAccessLadder'] as bool?,
     hasAccessRamp: json['hasAccessRamp'] as bool?,
     hasAdaptedToPcd: json['hasAdaptedToPcd'] as bool?,
+    lat: json['lat'] as double?,
+    lng: json['lng'] as double?,
   );
 }
 
@@ -434,6 +436,8 @@ Map<String, dynamic> _$PropertyFilterToJson(PropertyFilter instance) =>
       'hasAccessLadder': instance.hasAccessLadder,
       'hasAccessRamp': instance.hasAccessRamp,
       'hasAdaptedToPcd': instance.hasAdaptedToPcd,
+      'lat': instance.lat,
+      'lng': instance.lng,
     };
 
 QuestionResponse _$QuestionResponseFromJson(Map<String, dynamic> json) {
@@ -523,8 +527,8 @@ Map<String, dynamic> _$ScheduleDetailsToJson(ScheduleDetails instance) =>
 
 Spouse _$SpouseFromJson(Map<String, dynamic> json) {
   return Spouse(
-    name: json['name'] as String,
-    birthday: json['birthday'] as int,
+    name: json['name'] as String?,
+    birthday: json['birthday'] as int?,
     genre: json['genre'] as int?,
     scholarity: json['scholarity'] as int?,
   );

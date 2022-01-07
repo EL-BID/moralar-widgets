@@ -16,6 +16,8 @@ class PropertyFilter {
   bool? hasAccessLadder;
   bool? hasAccessRamp;
   bool? hasAdaptedToPcd;
+  double? lat;
+  double? lng;
 
   PropertyFilter({
     this.typeProperty,
@@ -32,6 +34,8 @@ class PropertyFilter {
     this.hasAccessLadder,
     this.hasAccessRamp,
     this.hasAdaptedToPcd,
+    this.lat,
+    this.lng,
   });
 
   factory PropertyFilter.fromJson(Map<String, dynamic> json) {

@@ -34,7 +34,7 @@ class _FamilyUrls {
   final registerQuiz = '/QuestionAnswer/Register';
   final informative = '/Informative/GetAllInformativeByFamily';
   final changeInformative = '/Informative/ChangeStatusViewed';
-  final notificaitons = '/Notification/GetAllNotification';
+  final notifications = '/Notification/GetAllNotificationByFamily';
   final registerUnRegisterDeviceId = '/Family/RegisterUnRegisterDeviceId';
   final readNotification = '/Notification/ChangeToReadInfo';
 }

@@ -2,14 +2,14 @@ part of moralar_widgets;
 
 @JsonSerializable()
 class Spouse {
-  String name;
-  int birthday;
+  String? name;
+  int? birthday;
   int? genre;
   int? scholarity;
 
   Spouse({
-    required this.name,
-    required this.birthday,
+    this.name = "",
+    this.birthday = 0,
     this.genre = -1,
     this.scholarity = -1,
   });

@@ -5,14 +5,14 @@ class FamilyHolder extends MoralarUser {
   String number;
   int birthday;
   int? genre;
-  String phone;
+  String? phone;
   int? scholarity;
   String? id;
   bool? isFirstAcess;
 
   FamilyHolder({
     required String cpf,
-    required String email,
+    String? email = "",
     required String name,
     this.number = '',
     this.birthday = 0,
@@ -23,7 +23,7 @@ class FamilyHolder extends MoralarUser {
     this.isFirstAcess = true,
   }) : super(
           name: name,
-          email: email,
+          email: email ?? "",
           cpf: cpf,
         );
 

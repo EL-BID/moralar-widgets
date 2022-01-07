@@ -1,5 +1,7 @@
 library moralar_widgets;
 
+import 'dart:developer';
+
 import 'package:brasil_fields/brasil_fields.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
@@ -13,6 +15,8 @@ import 'package:intl/intl.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'package:mega_flutter/mega_flutter.dart';
+import 'package:moralar_widgets/utils/birth_mask_formatter.dart';
+import 'package:ua_client_hints/ua_client_hints.dart';
 import 'package:validatorless/validatorless.dart';
 
 part 'bindings/change_password_binding.dart';
@@ -93,7 +97,7 @@ class MoralarWidgets {
 
   /// Indica qual tipo de usuário está usando o app.
   final UserType userType;
-  final String baseUrlForHTTP = 'apidev.megaleios.com';
+  final String baseUrlForHTTP = 'apihom.megaleios.com';
 
   MoralarWidgets._({
     required this.userType,

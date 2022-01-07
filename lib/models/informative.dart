@@ -6,7 +6,7 @@ class Informative {
   String datePublish;
   String image;
   String description;
-  int dateViewed;
+  int? dateViewed;
   String id;
 
   Informative({
@@ -14,7 +14,7 @@ class Informative {
     required this.datePublish,
     required this.image,
     required this.description,
-    required this.dateViewed,
+    this.dateViewed = 0,
     required this.id,
   });
 

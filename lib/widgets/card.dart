@@ -21,14 +21,18 @@ class ActivityCard extends StatelessWidget {
         width: double.infinity,
         color: color ?? Theme.of(context).primaryColor,
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             Container(
               height: 50,
               width: 50,
               child: icon,
             ),
-            const SizedBox(height: 12),
-            Text(title, style: textTheme.button),
+            Text(
+              title,
+              style: textTheme.button,
+              textAlign: TextAlign.center,
+            ),
           ],
         ),
       ),
@@ -1430,17 +1434,14 @@ class NotificationDetailsCard extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(height: 32),
-                  Visibility(
-                    visible: notification.image != null,
-                    child: Container(
-                      width: double.infinity,
-                      height: 180,
-                      child: Image.network(
-                        notification.image!,
-                        fit: BoxFit.cover,
-                      ),
+                  notification.image != null ? Container(
+                    width: double.infinity,
+                    height: 180,
+                    child: Image.network(
+                      notification.image!,
+                      fit: BoxFit.cover,
                     ),
-                  ),
+                  ) : Container(),
                   const SizedBox(height: 8),
                   Row(
                     children: [

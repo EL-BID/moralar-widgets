@@ -27,7 +27,10 @@ class AuthProvider extends AuthRemoteProvider {
     }
 
     try {
-      final response = await post(endpoint, body: body);
+      MegaResponse response = await post(
+        endpoint,
+        body: body,
+      );
       return AuthToken.fromResponse(response);
     } on MegaResponseException catch (e) {
       print(e.message);

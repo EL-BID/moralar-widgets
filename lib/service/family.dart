@@ -40,20 +40,32 @@ class SpouseForm extends StatelessWidget {
           label: 'Nome do Cônjuge',
           color: MoralarColors.waterBlue,
           controller: TextEditingController(text: spouse.name),
-          readOnly: true,
+          readOnly: false,
           labelStyle: textTheme.bodyText1
               ?.copyWith(color: MoralarColors.waterBlue, fontSize: 16),
+          onChanged: (text){
+            spouse.name = text;
+          },
         ),
         const SizedBox(height: 16),
         MoralarTextField(
           label: 'Data de Nascimento',
           controller: TextEditingController(
-            text: MoralarDate.secondsForDate(spouse.birthday),
+            text: MoralarDate.secondsForDate(spouse.birthday ?? 0),
           ),
-          readOnly: true,
+          keyboard: TextInputType.datetime,
+          readOnly: false,
+          formats: [BirthMaskTextInputFormatter()],
           color: MoralarColors.waterBlue,
           labelStyle: textTheme.bodyText1
               ?.copyWith(color: MoralarColors.waterBlue, fontSize: 16),
+          onChanged: (text){
+            if(text != null && text.length == 10){
+              DateTime date = DateTime.tryParse(text.substring(6, 10) + text.substring(3, 5) + text.substring(0, 2))!.toUtc();
+              spouse.birthday = (date.millisecondsSinceEpoch ~/ 1000);
+            }
+            print(spouse.birthday);
+          },
         ),
         const SizedBox(height: 32),
         Container(
@@ -72,14 +84,14 @@ class SpouseForm extends StatelessWidget {
               groupValue: radio,
               onChanged: onChangedRadio,
               contentPadding: EdgeInsets.zero,
-              title: Text('Masculino', style: textTheme.bodyText2),
+              title: Text('Feminino', style: textTheme.bodyText2),
             ),
             RadioListTile(
               value: 1,
               groupValue: radio,
               onChanged: onChangedRadio,
               contentPadding: EdgeInsets.zero,
-              title: Text('Feminino', style: textTheme.bodyText2),
+              title: Text('Masculino', style: textTheme.bodyText2),
             ),
             RadioListTile(
               value: 2,
