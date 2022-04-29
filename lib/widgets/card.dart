@@ -87,7 +87,7 @@ class QuizCard extends StatelessWidget {
                     ),
                     const SizedBox(height: 8),
                     MegaListTile(
-                      title: MoralarDate.secondsForDate(quiz.created ?? 0),
+                      title: MoralarDate.secondsForDate(quiz.created),
                       leading: const Icon(
                         FontAwesomeIcons.calendar,
                         size: 16,
@@ -1745,7 +1745,6 @@ class CourseTTSCard extends StatelessWidget {
 
     return Container(
       margin: const EdgeInsets.only(bottom: 24),
-      height: 164,
       width: double.infinity,
       decoration: BoxDecoration(
         color: Colors.white,
@@ -1857,15 +1856,29 @@ class QuizTTSCard extends StatelessWidget {
           children: [
             Expanded(
               child: Container(
-                padding: const EdgeInsets.only(right: 16, left: 16, top: 16),
+                padding: const EdgeInsets.only(right: 16, left: 16),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     Text(
                       quiz.title,
                       style: textTheme.headline1,
                     ),
-                    const SizedBox(height: 48),
+                    Column( 
+                      children: [
+                        const SizedBox(height: 8),
+                        MegaListTile(
+                          title: MoralarDate.secondsForDateHours(quiz.created).substring(0, 10),
+                          leading: const Icon(
+                            FontAwesomeIcons.clock,
+                            size: 16,
+                            color: MoralarColors.brownGrey,
+                          ),
+                          style: textTheme.bodyText1,
+                        ),
+                      ],
+                    ),
                     MegaListTile(
                       title: currentText,
                       leading: Container(

@@ -4,16 +4,20 @@ part of moralar_widgets;
 class Quiz {
   String title;
   int typeQuiz;
+  String? familyId;
+  String? quizId;
   bool? questionRegister;
-  int? created;
+  int created;
   int typeStatus;
   String id;
 
   Quiz({
     required this.title,
     required this.typeQuiz,
+    this.familyId,
+    this.quizId,
     this.questionRegister,
-    this.created,
+    required this.created,
     required this.typeStatus,
     required this.id,
   });

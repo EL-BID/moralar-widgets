@@ -463,8 +463,10 @@ Quiz _$QuizFromJson(Map<String, dynamic> json) {
   return Quiz(
     title: json['title'] as String,
     typeQuiz: json['typeQuiz'] as int,
+    familyId: json['familyId'] as String?,
+    quizId: json['quizId'] as String?,
     questionRegister: json['questionRegister'] as bool?,
-    created: json['created'] as int?,
+    created: json['created'] as int,
     typeStatus: json['typeStatus'] as int,
     id: json['id'] as String,
   );
@@ -473,6 +475,8 @@ Quiz _$QuizFromJson(Map<String, dynamic> json) {
 Map<String, dynamic> _$QuizToJson(Quiz instance) => <String, dynamic>{
       'title': instance.title,
       'typeQuiz': instance.typeQuiz,
+      'familyId': instance.familyId,
+      'quizId': instance.quizId,
       'questionRegister': instance.questionRegister,
       'created': instance.created,
       'typeStatus': instance.typeStatus,
@@ -487,6 +491,7 @@ QuizDetails _$QuizDetailsFromJson(Map<String, dynamic> json) {
         .map((e) => QuestionResponse.fromJson(e as Map<String, dynamic>))
         .toList(),
     id: json['id'] as String,
+    created: json['created'] as int,
   );
 }
 
@@ -496,6 +501,7 @@ Map<String, dynamic> _$QuizDetailsToJson(QuizDetails instance) =>
       'typeQuiz': instance.typeQuiz,
       'questionViewModel': instance.questionViewModel,
       'id': instance.id,
+      'created': instance.created,
     };
 
 ScheduleDetails _$ScheduleDetailsFromJson(Map<String, dynamic> json) {

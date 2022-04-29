@@ -28,6 +28,7 @@ class _FamilyUrls {
   final interestCourse = '/Course/RegisterFamilyToTrainning';
   final desinterestCourse = '/Course/CancelFamilyToTrainning';
   final videos = '/Video/GetAll';
+  final registerView = '/Video/RegisterVideoViewed';
   final quiz = '/Quiz/GetQuizByFamily';
   final quizDetails = '/Quiz/Detail';
   final response = '/QuestionAnswer/GetResponses';
@@ -45,13 +46,13 @@ class _TTSUrls {
   final changePassword = '/Profile/ChangePassword';
   final forgotPassword = '/Profile/ForgotPassword';
   final edit = '/Profile/UpdateProfile';
-  final quiz = '/Quiz/GetByName';
+  final quiz = '/QuizFamily/Available/';
   final timeline = '/Family/SearchTimeLine';
-  final timelineExport = '/ApiMoralarDev/api/v1/Family/TimeLineExport';
+  final timelineExport = '/ApiMoralarHml/api/v1/Family/TimeLineExport';
   final matchs = '/PropertiesInterest/SearchMatch';
   final courseByFamily = '/Course/GetCourseByFamilyId';
   final quizByFamily = '/Quiz/GetQuizByFamilyId';
-  final responseByFamily = '/QuestionAnswer/GetResponsesByFamily';
+  final responseByFamily = '/QuestionAnswer/GetResponses';
   final detailsReunionPGM = '/Schedule/DetailTimeLineProcessReunionPGM';
   final changeTypeSubject = '/Schedule/ChangeSubject';
 }

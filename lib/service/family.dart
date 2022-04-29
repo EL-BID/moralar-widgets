@@ -341,16 +341,17 @@ class Family {
   }
 
   static Color statusColor(int status) {
-    if (status == 2) {
-      return MoralarColors.strawberry;
-    } else if (status == 4) {
-      return MoralarColors.blue;
-    } else if (status == 7) {
-      return MoralarColors.orangeYellow;
-    } else if (status == 8) {
-      return MoralarColors.kellyGreen;
-    } else {
-      return Colors.white;
+    switch(status){
+      case 2:
+        return MoralarColors.strawberry;
+      case 4:
+        return MoralarColors.blue;
+      case 7:
+        return MoralarColors.orangeYellow;
+      case 8:
+        return MoralarColors.kellyGreen;
+      default:
+        return MoralarColors.orangeYellow;
     }
   }
 }

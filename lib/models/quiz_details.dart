@@ -6,12 +6,14 @@ class QuizDetails {
   int typeQuiz;
   List<QuestionResponse> questionViewModel;
   String id;
+  int created;
 
   QuizDetails({
     required this.title,
     required this.typeQuiz,
     required this.questionViewModel,
     required this.id,
+    required this.created,
   });
 
   factory QuizDetails.fromJson(Map<String, dynamic> json) {
