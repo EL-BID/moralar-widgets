@@ -6,12 +6,14 @@ class AnswerDetails {
   String question;
   int typeResponse;
   List<String> answers;
+  String? familyNumber;
 
   AnswerDetails({
     required this.title,
     required this.question,
     required this.typeResponse,
     required this.answers,
+    this.familyNumber,
   });
 
   factory AnswerDetails.fromJson(Map<String, dynamic> json) {

@@ -65,6 +65,7 @@ AnswerDetails _$AnswerDetailsFromJson(Map<String, dynamic> json) {
     typeResponse: json['typeResponse'] as int,
     answers:
         (json['answers'] as List<dynamic>).map((e) => e as String).toList(),
+    familyNumber: json['familyNumber'] as String?,
   );
 }
 
@@ -74,6 +75,7 @@ Map<String, dynamic> _$AnswerDetailsToJson(AnswerDetails instance) =>
       'question': instance.question,
       'typeResponse': instance.typeResponse,
       'answers': instance.answers,
+      'familyNumber': instance.familyNumber,
     };
 
 Course _$CourseFromJson(Map<String, dynamic> json) {
@@ -249,9 +251,9 @@ Map<String, dynamic> _$FamilyUserToJson(FamilyUser instance) =>
 Informative _$InformativeFromJson(Map<String, dynamic> json) {
   return Informative(
     informativeId: json['informativeId'] as String,
-    datePublish: json['datePublish'] as String,
-    image: json['image'] as String,
-    description: json['description'] as String,
+    datePublish: json['datePublish'] as String?,
+    image: json['image'] as String?,
+    description: json['description'] as String?,
     dateViewed: json['dateViewed'] as int?,
     id: json['id'] as String,
   );

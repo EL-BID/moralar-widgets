@@ -23,6 +23,7 @@ class _FamilyUrls {
   final interestProperty = '/PropertiesInterest/Register';
   final desinterestProperty = '/PropertiesInterest/InterestCancel';
   final matchs = '/PropertiesInterest/DetailFamilyMatch';
+  final registeredNeighborhoods = '/ResidencialProperty/RegisteredNeighborhoods';
   final courses = '/Course/GetAll';
   final courseDetails = '/Course/Detail';
   final interestCourse = '/Course/RegisterFamilyToTrainning';
@@ -50,6 +51,7 @@ class _TTSUrls {
   final timeline = '/Family/SearchTimeLine';
   final timelineExport = '/ApiMoralarHml/api/v1/Family/TimeLineExport';
   final matchs = '/PropertiesInterest/SearchMatch';
+  final matchsFamily = '/PropertiesInterest/DetailFamilyMatch';
   final courseByFamily = '/Course/GetCourseByFamilyId';
   final quizByFamily = '/Quiz/GetQuizByFamilyId';
   final responseByFamily = '/QuestionAnswer/GetResponses';

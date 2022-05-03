@@ -3,9 +3,9 @@ part of moralar_widgets;
 @JsonSerializable()
 class Informative {
   String informativeId;
-  String datePublish;
-  String image;
-  String description;
+  String? datePublish;
+  String? image;
+  String? description;
   int? dateViewed;
   String id;
 

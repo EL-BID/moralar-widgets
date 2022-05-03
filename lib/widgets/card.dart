@@ -602,7 +602,7 @@ class PropertyCard extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   MegaListTile(
-                    title: address.streetAddress!,
+                    title: address.neighborhood!,
                     leading: const Icon(
                       FontAwesomeIcons.mapMarkerAlt,
                       size: 16,
@@ -1175,13 +1175,13 @@ class InformativeCard extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.stretch,
         mainAxisSize: MainAxisSize.min,
         children: [
-          Stack(
+          if(info.image != null) Stack(
             children: [
               Container(
                 width: double.infinity,
                 height: 200,
                 child: Image.network(
-                  info.image,
+                  info.image!,
                   fit: BoxFit.cover,
                 ),
               ),
@@ -1237,14 +1237,14 @@ class InformativeCard extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  info.description,
+                  info.description ?? "",
                   style: textTheme.bodyText1?.copyWith(
                     color: MoralarColors.brownishGrey,
                   ),
                 ),
                 const SizedBox(height: 8),
                 MegaListTile(
-                  title: info.datePublish,
+                  title: info.datePublish ?? "",
                   leading: const Icon(
                     FontAwesomeIcons.calendar,
                     size: 16,
@@ -1865,7 +1865,7 @@ class QuizTTSCard extends StatelessWidget {
                       quiz.title,
                       style: textTheme.headline1,
                     ),
-                    Column( 
+                    Column(
                       children: [
                         const SizedBox(height: 8),
                         MegaListTile(
