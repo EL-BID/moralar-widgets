@@ -11,6 +11,8 @@ class RecoveryPasswordController extends GetxController {
   TextEditingController motherName = TextEditingController();
   TextEditingController cityName = TextEditingController();
   TextEditingController cpf = TextEditingController();
+  TextEditingController newPassword = TextEditingController();
+  TextEditingController confirmPassword = TextEditingController();
 
   Future<void> validateCPF() async {
     if (cpfFormKey.currentState!.validate()) {
@@ -25,6 +27,7 @@ class RecoveryPasswordController extends GetxController {
             motherName.text,
             cityName.text,
             Formats.unmaskCpf(cpf.text),
+            newPassword.text,
           );
           if (response) {
             Get.back();
@@ -54,34 +57,87 @@ class RecoveryPasswordController extends GetxController {
   Future<void> recoveryPassword() async {
     if (passwordFormKey.currentState!.validate()) {
       passwordFormKey.currentState!.save();
-      try {
-        isLoading.value = true;
-        final response = await _passwordProvider.recoveryPassword(
-          motherName.text,
-          cityName.text,
-          Formats.unmaskCpf(cpf.text),
+      if(newPassword.text != "" && newPassword.text != confirmPassword.text){
+        Get.snackbar(
+          'Ops! Algo deu errado.',
+          "As senhas precisam ser iguais!",
+          colorText: MoralarColors.veryLightPink,
+          backgroundColor: MoralarColors.strawberry,
         );
-        if (response) {
-          Get.back();
+      }else {
+        try {
+          isLoading.value = true;
+          final response = await _passwordProvider.recoveryPassword(
+            motherName.text,
+            cityName.text,
+            Formats.unmaskCpf(cpf.text),
+            newPassword.text,
+          );
+          if (response) {
+            Get.back();
+            if(newPassword.text != ""){
+              Get.snackbar(
+                'Sucesso!',
+                'Senha alterada com sucesso!',
+                colorText: MoralarColors.veryLightPink,
+                backgroundColor: MoralarColors.strawberry,
+                duration: const Duration(seconds: 5),
+              );
+            }else{
+              Get.snackbar(
+                'Senha alterada com sucesso!',
+                'Conferir em seu e-mail a sua nova senha.',
+                colorText: MoralarColors.veryLightPink,
+                backgroundColor: MoralarColors.strawberry,
+                duration: const Duration(seconds: 5),
+              );
+            }
+            isLoading.value = false;
+          }
+        } on MegaResponseException catch (e) {
           Get.snackbar(
-            'Senha alterada com sucesso!',
-            'Conferir em seu e-mail a sua nova senha.',
+            'Ops! Algo deu errado.',
+            e.message!,
             colorText: MoralarColors.veryLightPink,
             backgroundColor: MoralarColors.strawberry,
-            duration: const Duration(seconds: 5),
           );
           isLoading.value = false;
         }
-      } on MegaResponseException catch (e) {
+      }
+      isLoading.value = false;
+    }
+  }
+
+  Future<void> forgotPassword() async {
+    try {
+      isLoading.value = true;
+      final response = await _passwordProvider.forgotPassword(
+        Formats.unmaskCpf(cpf.text),
+      );
+      if (response) {
+        Get.back();
+        Get.snackbar(
+          'Senha alterada com sucesso!',
+          'Conferir em seu e-mail a sua nova senha.',
+          colorText: MoralarColors.veryLightPink,
+          backgroundColor: MoralarColors.strawberry,
+          duration: const Duration(seconds: 5),
+        );
+        isLoading.value = false;
+      }
+    } on MegaResponseException catch (e) {
+      if(e.message == "Familia sem e-mail cadastrado"){
+        pageController.jumpToPage(1);
+      }else {
         Get.snackbar(
           'Ops! Algo deu errado.',
           e.message!,
           colorText: MoralarColors.veryLightPink,
           backgroundColor: MoralarColors.strawberry,
         );
-        isLoading.value = false;
       }
       isLoading.value = false;
     }
+    isLoading.value = false;
   }
 }

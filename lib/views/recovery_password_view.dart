@@ -26,15 +26,6 @@ class RecoveryPasswordView extends GetView<RecoveryPasswordController> {
                     fontSize: 24,
                   ),
                 ),
-                Container(
-                  padding: const EdgeInsets.all(24),
-                  child: Text(
-                    // ignore: lines_longer_than_80_chars
-                    'Lorem ipsum dolor sit amet, consectetur  adi sed do eiusmod tempor  incididunt ut labore etdolore magna aliqua.  Ut enim ad minim',
-                    style: textTheme.bodyText1,
-                    textAlign: TextAlign.center,
-                  ),
-                ),
                 const SizedBox(height: 32),
                 MoralarTextField(
                   controller: controller.cpf,
@@ -58,7 +49,8 @@ class RecoveryPasswordView extends GetView<RecoveryPasswordController> {
                   return MoralarButton(
                     isLoading: controller.isLoading.value,
                     onPressed: () {
-                      controller.validateCPF();
+                      // controller.validateCPF();
+                      controller.forgotPassword();
                     },
                     child: Container(
                       alignment: Alignment.center,
@@ -96,15 +88,7 @@ class RecoveryPasswordView extends GetView<RecoveryPasswordController> {
                     fontSize: 24,
                   ),
                 ),
-                Container(
-                  padding: const EdgeInsets.all(24),
-                  child: Text(
-                    // ignore: lines_longer_than_80_chars
-                    'Lorem ipsum dolor sit amet, consectetur  adi sed do eiusmod tempor  incididunt ut labore etdolore magna aliqua.  Ut enim ad minim',
-                    style: textTheme.bodyText1,
-                    textAlign: TextAlign.center,
-                  ),
-                ),
+                const SizedBox(height: 24),
                 MoralarTextField(
                   controller: controller.motherName,
                   label: 'Primeiro nome da sua mãe',
@@ -127,7 +111,33 @@ class RecoveryPasswordView extends GetView<RecoveryPasswordController> {
                   labelStyle: textTheme.bodyText1
                       ?.copyWith(color: MoralarColors.waterBlue, fontSize: 16),
                 ),
-                const SizedBox(height: 64),
+                const SizedBox(height: 24),
+                MoralarTextField(
+                  controller: controller.newPassword,
+                  label: 'Nova senha',
+                  isPassword: true,
+                  validators: [
+                    Validatorless.required(
+                        'Não é possível deixar esse campo em branco'),
+                  ],
+                  color: MoralarColors.waterBlue,
+                  labelStyle: textTheme.bodyText1
+                      ?.copyWith(color: MoralarColors.waterBlue, fontSize: 16),
+                ),
+                const SizedBox(height: 24),
+                MoralarTextField(
+                  controller: controller.confirmPassword,
+                  label: 'Confirmar nova senha',
+                  isPassword: true,
+                  validators: [
+                    Validatorless.required(
+                        'Não é possível deixar esse campo em branco'),
+                  ],
+                  color: MoralarColors.waterBlue,
+                  labelStyle: textTheme.bodyText1
+                      ?.copyWith(color: MoralarColors.waterBlue, fontSize: 16),
+                ),
+                const SizedBox(height: 24),
                 Obx(() {
                   return MoralarButton(
                     onPressed: () {

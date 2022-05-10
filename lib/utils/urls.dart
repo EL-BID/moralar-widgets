@@ -16,6 +16,7 @@ class _FamilyUrls {
   final forgotPassword = '/Family/ForgotPassword';
   final changePassword = '/Family/ChangePassword';
   final scheduling = '/Schedule/GetScheduleByFamily';
+  final schedulingHistory = '/Schedule/GetHistoryByFamily';
   final schedulingDetails = '/Schedule/Detail';
   final changeStatusSchedule = '/Schedule/ChangeStatus';
   final timeline = '/Family/TimeLineProcessMandatory';
@@ -49,7 +50,9 @@ class _TTSUrls {
   final edit = '/Profile/UpdateProfile';
   final quiz = '/QuizFamily/Available/';
   final timeline = '/Family/SearchTimeLine';
+  final timelineData = '/Schedule/DetailTimeLine';
   final timelineExport = '/ApiMoralarHml/api/v1/Family/TimeLineExport';
+  final nextStage = '/Schedule/ToStageChosenProperty';
   final matchs = '/PropertiesInterest/SearchMatch';
   final matchsFamily = '/PropertiesInterest/DetailFamilyMatch';
   final courseByFamily = '/Course/GetCourseByFamilyId';

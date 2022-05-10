@@ -229,14 +229,14 @@ class MemberForm extends StatelessWidget {
               groupValue: radio,
               onChanged: onChangedRadio,
               contentPadding: EdgeInsets.zero,
-              title: Text('Masculino', style: textTheme.bodyText2),
+              title: Text('Feminino', style: textTheme.bodyText2),
             ),
             RadioListTile(
               value: 1,
               groupValue: radio,
               onChanged: onChangedRadio,
               contentPadding: EdgeInsets.zero,
-              title: Text('Feminino', style: textTheme.bodyText2),
+              title: Text('Masculino', style: textTheme.bodyText2),
             ),
             RadioListTile(
               value: 2,

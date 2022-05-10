@@ -63,33 +63,38 @@ class StatusResettlement extends StatelessWidget {
             ),
           ],
         ),
-        Container(
-          padding: const EdgeInsets.symmetric(horizontal: 16),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Visibility(
-                visible: !isFirst,
-                child: const SizedBox(
-                  height: 36,
+        Expanded(
+          child: Container(
+            padding: const EdgeInsets.symmetric(horizontal: 16),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Visibility(
+                  visible: !isFirst,
+                  child: const SizedBox(
+                    height: 36,
+                  ),
                 ),
-              ),
-              Text(
-                Scheduling.statusSubject(schedule.typeSubject ?? 9),
-                style: textTheme.headline1!.copyWith(
-                  color: schedule.typeScheduleStatus == 4
-                      ? MoralarColors.kellyGreen
-                      : MoralarColors.brownGrey,
+                Text(
+                  Scheduling.statusSubject(schedule.typeSubject ?? 9),
+                  style: textTheme.headline1!.copyWith(
+                    color: schedule.typeScheduleStatus == 4
+                        ? MoralarColors.kellyGreen
+                        : MoralarColors.brownGrey,
+                  ),
+                  overflow: TextOverflow.ellipsis,
                 ),
-              ),
-              Text(
-                schedule.description ?? '',
-                style: textTheme.bodyText1!.copyWith(
-                  color: MoralarColors.brownGrey,
+                Text(
+                  schedule.description ?? '',
+                  style: textTheme.bodyText1!.copyWith(
+                    color: MoralarColors.brownGrey,
+                  ),
+                  maxLines: 5,
+                  overflow: TextOverflow.ellipsis,
                 ),
-              ),
-            ],
-          ),
+              ],
+            ),
+          )
         ),
       ],
     );

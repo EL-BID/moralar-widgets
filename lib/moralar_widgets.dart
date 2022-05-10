@@ -9,8 +9,10 @@ import 'package:flutter/painting.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_carousel_slider/carousel_slider.dart';
 import 'package:flutter_carousel_slider/carousel_slider_indicators.dart';
+import 'package:flutter_html/flutter_html.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
+import 'package:hive/hive.dart';
 import 'package:intl/intl.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
@@ -108,7 +110,7 @@ class MoralarWidgets {
     required UserType userType,
   }) async {
     await MegaFlutter.initialize(
-      baseUrl: 'https://apihom.megaleios.com/ApiMoralarHml/api/v1',
+      baseUrl: 'https://apidev.megaleios.com/ApiMoralarDev/api/v1',
       authProvider: AuthProvider(),
     );
     instance = MoralarWidgets._(

@@ -57,7 +57,6 @@ class QuizCard extends StatelessWidget {
       onTap: function,
       child: Container(
         margin: const EdgeInsets.only(bottom: 24),
-        height: 180,
         width: double.infinity,
         decoration: BoxDecoration(
           color: Colors.white,
@@ -74,7 +73,7 @@ class QuizCard extends StatelessWidget {
           children: [
             Expanded(
               child: Container(
-                padding: const EdgeInsets.only(right: 16, left: 16, top: 16),
+                padding: const EdgeInsets.only(right: 16, left: 16, top: 16, bottom: 10),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -85,7 +84,6 @@ class QuizCard extends StatelessWidget {
                         color: currentColor,
                       ),
                     ),
-                    const SizedBox(height: 8),
                     MegaListTile(
                       title: MoralarDate.secondsForDate(quiz.created),
                       leading: const Icon(
@@ -95,7 +93,30 @@ class QuizCard extends StatelessWidget {
                       ),
                       style: textTheme.bodyText1,
                     ),
-                    const SizedBox(height: 8),
+                    if(quiz.holderNumber != null) MegaListTile(
+                      title: quiz.holderNumber ?? "",
+                      leading: Text(
+                        "Cadastro:",
+                        style: textTheme.bodyText1,
+                      ),
+                      style: textTheme.bodyText1,
+                    ),
+                    if(quiz.holderName != null) MegaListTile(
+                      title: quiz.holderName ?? "",
+                      leading: Text(
+                        "Name:",
+                        style: textTheme.bodyText1,
+                      ),
+                      style: textTheme.bodyText1,
+                    ),
+                    if(quiz.holderCpf != null) MegaListTile(
+                      title: quiz.holderCpf ?? "",
+                      leading: Text(
+                        "CPF:",
+                        style: textTheme.bodyText1,
+                      ),
+                      style: textTheme.bodyText1,
+                    ),
                     MegaListTile(
                       title: currentText,
                       leading: Container(
@@ -1287,7 +1308,6 @@ class NotifcationCard extends StatelessWidget {
       onTap: function ?? () {},
       child: Container(
         margin: const EdgeInsets.only(bottom: 24),
-        height: 164,
         width: double.infinity,
         decoration: BoxDecoration(
           color: Colors.white,
@@ -1317,11 +1337,8 @@ class NotifcationCard extends StatelessWidget {
                       ),
                     ),
                     const SizedBox(height: 8),
-                    Expanded(
-                      child: Text(
-                        notification.description,
-                        style: textTheme.bodyText1,
-                      ),
+                    Html(
+                      data: notification.description,
                     ),
                     Row(
                       children: [
@@ -1410,8 +1427,7 @@ class NotificationDetailsCard extends StatelessWidget {
             Container(
               height: 24,
               width: double.infinity,
-              color:
-                  isRead ? MoralarColors.brownGrey : MoralarColors.kellyGreen,
+              color: isRead ? MoralarColors.brownGrey : MoralarColors.kellyGreen,
             ),
             Container(
               padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
@@ -1427,11 +1443,8 @@ class NotificationDetailsCard extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(height: 16),
-                  Text(
-                    '${notification.description}',
-                    style: textTheme.bodyText1?.copyWith(
-                      color: MoralarColors.brownishGrey,
-                    ),
+                  Html(
+                    data: notification.description,
                   ),
                   const SizedBox(height: 32),
                   notification.image != null ? Container(
@@ -1916,6 +1929,24 @@ class SchedulingTTSCard extends StatelessWidget {
     required this.status,
     required this.function,
   });
+
+  String getScheduleStatus(){
+    switch(status){
+      case 0:
+        return "Aguardando confirmação";
+      case 1:
+        return "Confirmado";
+      case 2:
+        return "Aguardando reagendamento";
+      case 3:
+        return "Reagendado";
+      case 4:
+        return "Finalizado";
+      default:
+        return "Finalizado";
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
@@ -1971,7 +2002,7 @@ class SchedulingTTSCard extends StatelessWidget {
                     style: textTheme.bodyText1,
                   ),
                   MegaListTile(
-                    title: status == 2 ? 'Finalizado' : 'Confirmado',
+                    title: getScheduleStatus(),
                     leading: Container(
                       alignment: Alignment.center,
                       width: 16,

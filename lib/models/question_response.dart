@@ -1,10 +1,19 @@
 part of moralar_widgets;
 
+@HiveType(typeId: 1)
 @JsonSerializable()
 class QuestionResponse {
+
+  @HiveField(0)
   String nameQuestion;
+
+  @HiveField(1)
   int typeResponse;
+
+  @HiveField(2)
   List<Description> description;
+
+  @HiveField(3)
   String id;
 
   QuestionResponse({

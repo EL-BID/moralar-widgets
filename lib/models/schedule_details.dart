@@ -1,15 +1,34 @@
 part of moralar_widgets;
 
+@HiveType(typeId: 6)
 @JsonSerializable()
 class ScheduleDetails {
+
+  @HiveField(0)
   int? date;
+
+  @HiveField(1)
   String? place;
+
+  @HiveField(2)
   String? description;
-  String familyId;
+
+  @HiveField(3)
+  String? familyId;
+
+  @HiveField(4)
   String? holderNumber;
+
+  @HiveField(5)
   String? holderCpf;
+
+  @HiveField(6)
   int? typeSubject;
+
+  @HiveField(7)
   int? typeScheduleStatus;
+
+  @HiveField(8)
   String id;
 
   ScheduleDetails({

@@ -63,9 +63,12 @@ AnswerDetails _$AnswerDetailsFromJson(Map<String, dynamic> json) {
     title: json['title'] as String,
     question: json['question'] as String,
     typeResponse: json['typeResponse'] as int,
+    date: json['date'] as int?,
     answers:
         (json['answers'] as List<dynamic>).map((e) => e as String).toList(),
     familyNumber: json['familyNumber'] as String?,
+    familyHolderName: json['familyHolderName'] as String?,
+    familyHolderCpf: json['familyHolderCpf'] as String?,
   );
 }
 
@@ -74,8 +77,11 @@ Map<String, dynamic> _$AnswerDetailsToJson(AnswerDetails instance) =>
       'title': instance.title,
       'question': instance.question,
       'typeResponse': instance.typeResponse,
+      'date': instance.date,
       'answers': instance.answers,
       'familyNumber': instance.familyNumber,
+      'familyHolderName': instance.familyHolderName,
+      'familyHolderCpf': instance.familyHolderCpf,
     };
 
 Course _$CourseFromJson(Map<String, dynamic> json) {
@@ -207,6 +213,22 @@ FamilyTTS _$FamilyTTSFromJson(Map<String, dynamic> json) {
     date: json['date'] as int,
     typeSubject: json['typeSubject'] as int,
     typeScheduleStatus: json['typeScheduleStatus'] as int,
+    canNextStage: json['canNextStage'] as bool?,
+    detailQuiz: json['detailQuiz'] != null ? (json['detailQuiz'] as List)
+      .map((item) => Quiz.fromJson(item))
+      .toList() : null,
+    detailEnquete: json['detailEnquete'] != null ? (json['detailEnquete'] as List)
+        .map((item) => Quiz.fromJson(item))
+        .toList() : null,
+    courses: json['courses'] != null ? (json['courses'] as List)
+        .map((item) => CourseTTS.fromJson(item))
+        .toList() : null,
+    interestResidencialProperty: json['interestResidencialProperty'] != null ? (json['interestResidencialProperty'] as List)
+        .map((item) => Property.fromJson(item))
+        .toList() : null,
+    schedules: json['schedules'] != null ? (json['schedules'] as List)
+        .map((item) => ScheduleDetails.fromJson(item))
+        .toList() : null,
   );
 }
 
@@ -221,6 +243,12 @@ Map<String, dynamic> _$FamilyTTSToJson(FamilyTTS instance) => <String, dynamic>{
       'date': instance.date,
       'typeSubject': instance.typeSubject,
       'typeScheduleStatus': instance.typeScheduleStatus,
+      'canNextStage': instance.canNextStage,
+      'detailQuiz': instance.detailQuiz,
+      'detailEnquete': instance.detailEnquete,
+      'courses': instance.courses,
+      'interestResidencialProperty': instance.interestResidencialProperty,
+      'schedules': instance.schedules,
     };
 
 FamilyUser _$FamilyUserFromJson(Map<String, dynamic> json) {
@@ -467,6 +495,9 @@ Quiz _$QuizFromJson(Map<String, dynamic> json) {
     typeQuiz: json['typeQuiz'] as int,
     familyId: json['familyId'] as String?,
     quizId: json['quizId'] as String?,
+    holderName: json['holderName'] as String?,
+    holderNumber: json['holderNumber'] as String?,
+    holderCpf: json['holderCpf'] as String?,
     questionRegister: json['questionRegister'] as bool?,
     created: json['created'] as int,
     typeStatus: json['typeStatus'] as int,
@@ -479,6 +510,9 @@ Map<String, dynamic> _$QuizToJson(Quiz instance) => <String, dynamic>{
       'typeQuiz': instance.typeQuiz,
       'familyId': instance.familyId,
       'quizId': instance.quizId,
+      'holderName': instance.holderName,
+      'holderNumber': instance.holderNumber,
+      'holderCpf': instance.holderCpf,
       'questionRegister': instance.questionRegister,
       'created': instance.created,
       'typeStatus': instance.typeStatus,
@@ -511,7 +545,7 @@ ScheduleDetails _$ScheduleDetailsFromJson(Map<String, dynamic> json) {
     date: json['date'] as int?,
     place: json['place'] as String?,
     description: json['description'] as String?,
-    familyId: json['familyId'] as String,
+    familyId: json['familyId'] as String?,
     holderNumber: json['holderNumber'] as String?,
     holderCpf: json['holderCpf'] as String?,
     typeScheduleStatus: json['typeScheduleStatus'] as int?,

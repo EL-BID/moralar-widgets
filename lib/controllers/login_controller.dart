@@ -84,7 +84,7 @@ class LoginController extends GetxController {
             },
             title: 'Já existe um login em outro dispositivo.',
             titleStyle: Get.textTheme.headline1,
-            titlePadding: const EdgeInsets.only(top: 24),
+            titlePadding: const EdgeInsets.only(top: 20, left: 20, right: 20),
             contentPadding: const EdgeInsets.all(24),
             middleText: 'Você deseja entrar com esse celular?',
             middleTextStyle: Get.textTheme.bodyText2,
