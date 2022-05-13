@@ -1756,6 +1756,10 @@ class CourseTTSCard extends StatelessWidget {
     final currentColor = CourseService.statusColor(course.typeStatusCourse);
     final currentText = CourseService.statusName(course.typeStatusCourse);
 
+    if(course.schedule == null){
+      course.schedule = DateFormat.Hm().format(DateTime.fromMillisecondsSinceEpoch(course.startDate));
+    }
+
     return Container(
       margin: const EdgeInsets.only(bottom: 24),
       width: double.infinity,
@@ -1798,7 +1802,7 @@ class CourseTTSCard extends StatelessWidget {
                     children: [
                       const SizedBox(height: 8),
                       MegaListTile(
-                        title: '${course.schedule ?? '--'}hrs',
+                        title: '${course.schedule ?? '--'}',
                         leading: const Icon(
                           FontAwesomeIcons.clock,
                           size: 16,

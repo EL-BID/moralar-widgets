@@ -110,7 +110,7 @@ class MoralarWidgets {
     required UserType userType,
   }) async {
     await MegaFlutter.initialize(
-      baseUrl: 'https://apidev.megaleios.com/ApiMoralarDev/api/v1',
+      baseUrl: 'https://apihom.megaleios.com/ApiMoralarHml/api/v1',
       authProvider: AuthProvider(),
     );
     instance = MoralarWidgets._(
